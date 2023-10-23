@@ -1,4 +1,4 @@
-export const apiURL = 'https://handy-utn-4b0caf9e5e4f.herokuapp.com/api';
+export const apiURL = 'https://handy-utn-backend-815e66e9002b.herokuapp.com/api';
 
 export const postURL = apiURL + '/post'
 export const filteredPostsURL = postURL + '/filteredPosts'
