@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-title>Chat</mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let message of messages">
+      <p><strong>{{ message.from.username }} [{{ message.timestamp | date:'MMM d, y, h:mm:ss a' }}]</strong>: {{ message.text }}</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+        <mat-label>Mensaje</mat-label>
+        <input [formControl]="messageControl"(keydown.enter)="sendMessage()">
+      <button mat-raised-button color="primary" type="submit" (click)="sendMessage()">Enviar</button>
+  </mat-card-actions>
+</mat-card>

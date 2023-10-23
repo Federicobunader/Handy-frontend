@@ -1,0 +1,138 @@
+.title{
+  font-size: 3rem;
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  color: #E1AE63;
+  letter-spacing: 0.1rem;
+}
+
+.column-left {
+  float: left;
+  width: 50%;
+  text-align: left;
+}
+  
+.column-right {
+  float: left;
+  width: 50%;
+  text-align: left;
+  padding-left:
+}
+
+.row{
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  padding-left: 7rem;
+} 
+
+.loginBox{
+  padding-top: 3rem;
+  width: 70%;
+}
+
+.loginLabel{  
+  font-family: 'Roboto', monospace;
+  color: #885B34;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.loginInput{
+  width: 100%;
+  height: 30px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-color: #885B34;
+  border-bottom-width: 3px;
+  margin-bottom: 40px;
+  background-color: #f8f3e7;
+}
+
+.passwordCheckbox{
+  font-family: 'Roboto', monospace;
+  color: #885B34;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: -1.5rem;
+}
+
+.forgotPassword{
+  font-family: 'Roboto', monospace;
+  color: #885B34;
+  font-weight: bold;
+  font-size: 15px;
+  align-items: right;
+  cursor:pointer;
+}
+
+.loginButton{
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: white;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  font-size: large;
+  letter-spacing: 0.1rem;
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.loginButton:hover{
+  background-color: #885B34;
+}
+
+.registerButton{
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  color: white;
+  font-size: large;
+  letter-spacing: 0.1rem;
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.registerButton:hover{
+  background-color: #885B34;
+}
+
+.googleButton{
+  width: 50px;
+  border-radius: 100%;
+  border: 2px solid #E7BF81;
+  text-align: center;
+  margin-top: 1rem;
+  cursor:pointer;
+}
+
+.googleButton:hover{
+  border: 2px solid #885B34;
+  width: 55px;
+}
+
+.footer{
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  color: #C2C2C2;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+  

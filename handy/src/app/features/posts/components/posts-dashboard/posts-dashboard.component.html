@@ -1,0 +1,103 @@
+<body style="min-height:50vh;overflow:auto;background-color:#f8f3e7;">
+  <nav-bar [navBarWithButtons]=true *ngIf="toolsSearch"></nav-bar>
+  <div style="padding-top:7rem;padding-left:7rem;padding-right:7rem;">
+    <div *ngIf="toolsSearch">
+      <div>
+        <h1 class="title">Buscá lo que necesitás</h1>
+      </div>
+      <div class="filteringSection">
+        <input class="searchbar" placeholder="Buscar..." type="text" matInput name="title" [(ngModel)]="selectedTitle" (input)="filteredPostsToShow()">
+        <div style="margin-left:1rem;display:inherit;width:80%;">
+          <div class="order">
+            <p class="filterLabel">Ordenar por</p>
+            <select class="picklist" #orderingOptions (change)="orderBySelected(orderingOptions.value)">
+              <option default>Ninguno</option>
+              <option *ngFor="let option of orderByOptions" [value]="option.name">
+                {{ option.name }}
+              </option>
+            </select>
+          </div>    
+          <button class="resetFilters" (click)="showFilters()">{{showLabel}}</button>       
+        </div> 
+      </div>      
+      <div *ngIf="showAllFilters" class="filtersBox">
+        <div class="filteringSection">
+          <div class="filter">
+            <p class="filterLabel">Categoría</p>
+            <select id="category" class="picklist" #categoryOptions (change)="getSubCategories(categoryOptions.value)">
+              <option value="0" default>--Seleccionar--</option>
+              <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+          <div class="filterMultiselect" *ngIf="this.selectedCategoryID != 0 && this.selectedCategoryID != undefined">
+            <p class="filterLabel">Subcategoría</p>
+              <mat-select multiple #subcategoryOptions class="multiselectPicklist" (selectionChange)="updateSelectedSubCategoryID($event.value)">
+                <mat-option value="-1" selected>Todas</mat-option>
+                <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">
+                    {{ subcategory.name }}
+                </mat-option>
+              </mat-select>
+          </div>
+          <div class="filterMultiselect" *ngIf="this.selectedCategoryID != 0 && this.selectedCategoryID != undefined">
+            <p class="filterLabel">Marca</p>
+              <mat-select multiple #brandOptions class="multiselectPicklist" (selectionChange)="updateSelectedBrandID($event.value)">
+                <mat-option value="-1" selected>Todas</mat-option>
+                <mat-option *ngFor="let brand of brands" [value]="brand.id">
+                  {{ brand.name }}
+                </mat-option>
+              </mat-select>
+          </div>
+          <div class="filter">
+            <p class="filterLabel">Provincia</p>
+            <select id="province" class="picklist" #provinceOptions (change)="getLocations(provinceOptions.value)">
+              <option value="0" default>--Seleccionar--</option>
+              <option *ngFor="let province of provinces" [value]="province.id">
+                {{ province.name }}
+              </option>
+            </select>
+          </div>
+          <div class="filterMultiselect" *ngIf="selectedProvinceID != 0 && selectedProvinceID != undefined">
+            <p class="filterLabel">Localidad</p>
+            <mat-select multiple class="multiselectPicklist" #locationOptions (selectionChange)="updateSelectedLocationID(locationOptions.value)">
+              <mat-option value="-1" selected>Todas</mat-option>
+              <mat-option *ngFor="let location of locations" [value]="location.id">
+                {{ location.name }}
+              </mat-option>
+            </mat-select>
+          </div>
+          <button class="resetFilters" (click)="cleanFilters()">Limpiar filtros</button>
+        </div>        
+      </div>
+      <hr class="line">
+    </div>
+    <div *ngIf="this.postsToShow.length == 0">
+      <p class="message">{{emptyMessage}}</p>
+      <div *ngIf="!toolsSearch">
+        <button class="createPostButton" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
+      </div>
+    </div>
+    <div *ngIf="this.postsToShow.length > 0">
+      <div style="display: inline-flex;" *ngFor="let post of postsToShow" (click)="sendTo(post)">
+        <div class="productBox">  
+          <img src={{post.photos[0].url}} class="postPicture">
+          <hr class="productBoxLine">
+          <div class="postInformation">
+            <a><b>{{post.title}}</b></a>
+            <p style="margin-top:1rem;">${{post.product.rentalPrice}} por día</p>
+            <div style="display:inline-flex;font-size:0.8rem;">
+              <mat-icon style="margin-top:-0.2rem;transform:scale(0.8);margin-left:-0.3rem;">location_on</mat-icon>
+              <p>{{post.address.location.name}}</p>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <hr *ngIf="toolsSearch" class="line">
+  </div>
+  <div *ngIf="toolsSearch" style="padding-top:30vh;padding-bottom:1rem;background-color:#f8f3e7;">
+    <p class="footer">© 2023 Handy Argentina</p>
+    <p class="footer">Contacto: atencionalcliente@handy.com</p>
+  </div>
+</body>

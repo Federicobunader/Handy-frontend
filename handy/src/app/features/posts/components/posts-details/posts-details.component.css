@@ -1,0 +1,134 @@
+.title{
+    font-size: 3rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #E1AE63;
+    padding-bottom: 1rem;
+    letter-spacing: 0.1rem;
+}
+
+.postCreationBox{
+    background-color:#f8f3e7;
+    padding: 3rem;
+    width: 90%;
+    border: 3px solid #E7BF81;
+}
+
+.tabLabel{   
+    font-family: 'Roboto', monospace;
+    color: #E7BF81;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.postCreationLabel{  
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.postCreationInput{
+    width: 80%;
+    height: 2rem;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-color: #885B34;
+    border-bottom-width: 0.2rem;
+    margin-bottom: 3rem;
+    background-color: #f8f3e7;
+}
+
+.postTitleInput{
+    width: 40%;
+    height: 2rem;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-color: #885B34;
+    border-bottom-width: 0.2rem;
+    margin-bottom: 3rem;
+    background-color: #f8f3e7;
+}
+
+.descriptionInput{
+    width: 90%;
+    height: 5rem;
+    border: 0.2rem solid #885B34;
+    margin-bottom: 3rem;
+    background-color: #f8f3e7;
+}
+
+.leasingInput{
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+  
+.column-left {
+    float: left;
+    width: 50%;
+}
+    
+.column-right {
+    float: left;
+    width: 50%;
+}
+
+.categoryInput{
+    width: 80%;
+    height: 70px;
+}
+
+.createButton{
+    width: 30%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: large;
+    font-family: 'Roboto', monospace;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.createButton:hover{
+    background-color: #885B34;
+  }
+
+.createButtonDisabled{
+    width: 30%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: lightgrey;
+    background-color: grey;
+    border-color: lightgrey;
+    font-size: large;
+    font-family: 'Roboto', monospace;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+}
+
+.footer{
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #C2C2C2;
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: -1.2rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}

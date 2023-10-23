@@ -1,0 +1,151 @@
+.purchasedTitle{
+    font-size: 2.5rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #885B34;
+    letter-spacing: 0.1rem;
+    margin-top: 1rem;
+}
+
+.purchasedSubtitle{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #c08a5a;
+    letter-spacing: 0.1rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.title{
+    font-size: 3rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #E1AE63;
+    letter-spacing: 0.1rem;
+    margin-top: 1rem;
+}
+
+.houseDelivery{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+    letter-spacing: 0.1rem;
+}
+
+.summary{
+    font-size: 1.5rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #E1AE63;
+    letter-spacing: 0.1rem;
+}
+
+.totalToPay{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #885B34;
+    letter-spacing: 0.1rem;
+}
+
+.box{
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 3rem;
+}
+
+.toggleUnclickedDisabled{
+    width: 50%;
+    background-color: #E1AE63; 
+    color: white;
+    border: 0.1rem solid #885B34; 
+    cursor: pointer;
+}
+
+.toggleUnclicked{
+    width: 50%;
+    background-color: #E1AE63; 
+    color: white;
+    border: 0.1rem solid #885B34; 
+    cursor: pointer;
+}
+
+.toggleClicked{
+    width: 50%;
+    background-color: #885B34; 
+    color: white;
+    border: 0.1rem solid #885B34; 
+    cursor: pointer;
+}
+
+.toggleUnclicked:hover{
+    background-color: #885B34;
+}
+
+.line{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    border-top: 0.2rem solid #885B34;
+    width: 100%;
+}
+
+.deliveryMessage{
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #885B34;
+    letter-spacing: 0.1rem;
+}
+
+.payButtonDisable{
+    width: 25%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: lightgrey;
+    background-color: grey;
+    border-color: lightgrey;
+    font-size: large;
+    font-family: 'Roboto', monospace;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.payButton{
+  width: 25%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  font-size: large;
+  font-family: 'Roboto', monospace;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor:pointer;
+}
+
+.payButton:hover{
+  background-color: #885B34;
+}
+
+.footer{
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #C2C2C2;
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: -1.2rem;
+}
+
+.transparent .mat-dialog-container {
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.0);
+}

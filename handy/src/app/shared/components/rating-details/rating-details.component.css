@@ -1,0 +1,72 @@
+.title{
+    font-family: 'Roboto', monospace;
+    color: #E1AE63;
+    padding-bottom: 1rem;    
+    letter-spacing: 0.1rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.commentsBox{
+    background-color:#f8f3e7;
+    border: 3px solid #E1AE63;
+}
+
+.commentsInput{
+    border: 0.2rem solid #885B34;
+    background-color: #f8f3e7;
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
+    height: 8rem;
+    min-height: 8rem;
+    max-height: 20rem;
+    padding: 1rem;
+}
+
+.button{
+    width: 30%;
+    margin-left: 2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #885B34;    
+}
+
+.buttonDisabled{
+    width: 30%;
+    margin-left: 2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: lightgrey;
+    background-color: grey;
+    border-color: lightgrey;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+}
+
+.starIcon{
+    transform: scale(2);
+    margin: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}

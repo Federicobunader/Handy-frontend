@@ -1,0 +1,12 @@
+<div class="confirmationBox">
+  <h2 class="title">Ingresá el código que te enviamos por mail para finalizar con el registro</h2>
+  <div style="margin-left: 2rem;margin-bottom: 2rem;">
+    <input [formControl]="codeInput" type="text" class="codeInput"/>
+    <br><mat-error *ngIf="this.codeInput.value != this.code">Los codigos no coinciden, por favor revise e ingreselo nuevamente</mat-error>
+  </div>
+  <div style="text-align:center;margin-bottom:1rem;">
+    <button class="button" (click)="onCancelClick()">Cancelar</button>
+    <button class="buttonDisabled" *ngIf="this.codeInput.value != this.code" (click)="onSaveClick()">Confirmar</button>
+    <button class="button" *ngIf="this.codeInput.value == this.code" (click)="onSaveClick()">Confirmar</button>
+  </div>
+</div>

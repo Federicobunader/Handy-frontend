@@ -1,0 +1,12 @@
+<div style="text-align:center;">
+  <div style="padding:30px;display: inline-flex;"  *ngFor="let sender of senders" (click)="sendTo(sender)">
+    <div class="productBox">
+
+      <hr class="productLine">
+      <div style="padding-top:1rem;padding-left:2rem;">
+        <a style="text-decoration:none"><p class="productTitle">{{sender.username}}</p></a>
+      </div>
+
+    </div>
+  </div>
+</div>

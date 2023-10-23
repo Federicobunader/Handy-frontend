@@ -1,0 +1,87 @@
+.previous{
+    margin-right: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 30%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+    cursor: pointer;
+}
+
+.next{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 30%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+    cursor: pointer;
+}
+
+.previousDisabled{
+    margin-right: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 30%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: lightgrey;
+    background-color: grey;
+    border-color: lightgrey;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+}
+
+.nextDisabled{
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 30%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: lightgrey;
+    background-color: grey;
+    border-color: lightgrey;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+}
+
+.productPicture{
+    max-width: 40rem;
+    max-height: 40rem;
+}
+
+.footer{
+    margin-top: 1rem;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+    color: #E1AE63;
+    font-weight: bold;
+}
+
+
+
+    

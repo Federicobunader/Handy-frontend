@@ -1,0 +1,77 @@
+<body style="overflow:auto;background-color:#f8f3e7;width:100%;">
+  <nav-bar [navBarWithButtons]=true [showCart]=false></nav-bar>  
+  <div style="padding-top:7rem;padding-left:7rem;padding-right:7rem;"> 
+    <div *ngIf="isPurchased">
+      <p class="purchasedTitle">Compra realizada a {{this.purchase.seller.firstName}} {{this.purchase.seller.lastName}} el día {{this.purchase.creationDate}}</p>
+      <p class="purchasedSubtitle">Información del comprador. Nombre: {{this.buyerFullName}} | Mail: {{this.buyerEmail}} | Teléfono: {{this.buyerTel}}</p>
+    </div>
+    <div class="box">
+      <h1 class="title">Entrega</h1> 
+      <hr class="line">
+      <div *ngIf="isPurchased">
+        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" style="width:50%;">
+          <mat-button-toggle disabled [ngClass]="{'toggleClicked' : toggleHome, 'toggleUnclickedDisabled': !toggleHome}">CASA</mat-button-toggle>
+          <mat-button-toggle disabled [ngClass]="{'toggleClicked' : toggleDelivery, 'toggleUnclickedDisabled': !toggleDelivery}">PUNTO DE ENTREGA</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div *ngIf="!isPurchased">
+        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" style="width:50%;">
+          <mat-button-toggle [ngClass]="{'toggleClicked' : toggleHome, 'toggleUnclicked': !toggleHome}" (click)="loadAddressFromUser()" value="home">ENVÍO A MI CASA</mat-button-toggle>
+          <mat-button-toggle [ngClass]="{'toggleClicked' : toggleDelivery, 'toggleUnclicked': !toggleDelivery}" (click)="clearAddress()" value="suggestedAddress">RETIRAR POR PUNTO DE ENTREGA</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div *ngIf="showAddress && !isPurchased" style="margin-bottom:3rem;">
+        <app-address [parentForm]="undefined" (transferAddressForm)="setFormInfoToAddressForm($event)"></app-address>  
+      </div>
+      <div *ngIf="showAddress && isPurchased" style="margin-bottom:1rem;margin-top:2rem;">
+        <p class="houseDelivery"><b>Provincia:</b> {{this.purchase.deliveryPoint.location.province.name}}</p>
+        <p class="houseDelivery"><b>Localidad:</b> {{this.purchase.deliveryPoint.location.name}}</p>
+        <p class="houseDelivery"><b>Código postal:</b> {{this.purchase.deliveryPoint.postcode}}</p>
+        <p class="houseDelivery"><b>Calle y número:</b> {{this.purchase.deliveryPoint.street}}</p>
+        <p class="houseDelivery" *ngIf="this.purchase.deliveryPoint.apartmentFlag"><b>Departamento:</b> {{this.purchase.deliveryPoint.apartment}}</p>
+      </div>
+      <div *ngIf="!showAddress && deliverySelected">
+        <p class="deliveryMessage">Una vez efectuada la compra/alquiler, podrás arreglar con el vendedor el punto de entrega.</p>
+      </div>
+    </div>   
+    <div class="box"> 
+      <h1 class="title">Forma de Pago</h1> 
+      <hr class="line">   
+      <div *ngIf="isPurchased">   
+        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" style="width:50%;">
+          <mat-button-toggle disabled [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclickedDisabled': !togglePaymentMethod1}">EFECTIVO</mat-button-toggle>
+          <mat-button-toggle disabled [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclickedDisabled': !togglePaymentMethod2}">MERCADO PAGO</mat-button-toggle>
+          <mat-button-toggle disabled [ngClass]="{'toggleClicked' : togglePaymentMethod3, 'toggleUnclickedDisabled': !togglePaymentMethod3}">UALA</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div *ngIf="!isPurchased">   
+        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" style="width:50%;">
+          <mat-button-toggle [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclicked': !togglePaymentMethod1}" (click)="setPaymentMethod('Efectivo')" value="efectivo">EFECTIVO</mat-button-toggle>
+          <mat-button-toggle [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclicked': !togglePaymentMethod2}" (click)="setPaymentMethod('Mercado Pago')" value="mercadoPago">MERCADO PAGO</mat-button-toggle>
+          <mat-button-toggle [ngClass]="{'toggleClicked' : togglePaymentMethod3, 'toggleUnclicked': !togglePaymentMethod3}" (click)="setPaymentMethod('Uala')" value="uala">UALA</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div *ngIf="togglePaymentMethod1 && methodSelected">
+        <p class="deliveryMessage">Una vez efectuada la compra/alquiler, podrás arreglar con el vendedor para poder abonar en efectivo.</p>
+      </div>
+    </div> 
+    <hr class="line">  
+    <div style="margin-bottom:3rem;text-align:right;">
+      <p class="totalToPay" *ngIf="!isPurchased">Total a pagar: ${{this.totalToPayPerAuthor.totalToPay}}</p>
+      <p class="totalToPay" *ngIf="isPurchased">Total pagado: ${{this.totalToPayPerAuthor.totalToPay}}</p>
+      <button class="payButtonDisable" *ngIf="!isPurchased && !enablePurchaseButton">PROCEDER AL PAGO</button>
+      <button class="payButton" *ngIf="!isPurchased && enablePurchaseButton" (click)="createPurchase()">{{this.submitLabel}}</button>
+    </div>
+    <div>
+      <h1 class="summary">Resumen de compra</h1>
+      <div style="margin-top:-9rem;margin-bottom:-7rem;width:100%;">
+        <app-cart-dashboard [showBuyButton]=false [isPurchasedSection]=isPurchasedSection [expanded]="false" [isPurchased]=isPurchased [authorID]=this.totalToPayPerAuthorID></app-cart-dashboard>
+      </div>
+    </div>
+  </div>
+  <div style="padding-top:30vh;padding-bottom:1rem;background-color:#f8f3e7;">
+    <p class="footer">© 2023 Handy Argentina</p>
+    <p class="footer">Contacto: atencionalcliente@handy.com</p>
+  </div>
+</body>
+

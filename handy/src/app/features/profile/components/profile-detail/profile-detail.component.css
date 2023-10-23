@@ -1,0 +1,68 @@
+.title{
+  font-size: 3rem;
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  color: #E1AE63;
+  padding-bottom: 1rem;
+  letter-spacing: 0.1rem;
+}
+
+.panelOption{
+  font-size: 1rem;
+  font-family: 'Roboto', monospace;
+  background-color:#E1AE63;
+  height: 4rem;
+  border: 0.1rem solid #885B34;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.panelSubOption{
+  font-size: 1rem;
+  font-family: 'Roboto', monospace;
+  color:#885B34;
+  background-color:#E1AE63;
+  height: 4rem;
+  border: 0.1rem solid #885B34;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+}
+
+.panelSubOption:hover{
+  background-color:#885B34;
+  color:#E1AE63;
+}
+
+.footer{
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  color: #C2C2C2;
+  text-align: center;
+  font-size: 0.7rem;
+  margin-top: -1.2rem;
+} 
+
+  /* Estilos para el componente cargado en el MatExpansionPanel */
+.app-custom-component {
+  flex-grow: 1; /* Ocupar todo el espacio disponible */
+  align-self: stretch; /* Estirarse verticalmente para ajustarse al tamaño del panel */
+  max-width: 100%; /* Ancho máximo */
+  max-height: 100%; /* Alto máximo */
+  /* Agrega otros estilos según tus necesidades */
+}
+
+app-register-dialog {
+  width: 100%;
+  max-width: 100%;
+}
+
+app-posts-dashboard{
+  margin-top: -6rem;
+  margin-bottom: 1rem;
+  margin-left: -6rem;
+}

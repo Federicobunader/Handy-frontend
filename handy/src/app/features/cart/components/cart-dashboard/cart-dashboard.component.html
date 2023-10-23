@@ -1,0 +1,89 @@
+<body style="overflow:auto;background-color:#f8f3e7;width:100%;">
+  <nav-bar [navBarWithButtons]=true [showCart]=false *ngIf="!isPurchasedSection"></nav-bar>
+  <div style="padding-top:7rem;padding-left:7rem;padding-right:7rem;">
+    <div *ngIf="!isPurchasedSection">
+      <div>
+        <h1 class="title">Carrito</h1>
+      </div>
+      <hr class="line">
+    </div>
+    <div *ngIf="totalsToPayPerAuthor.length == 0">
+      <p class="message">¡Tu carrito de compras está vacío!</p>
+      <button class="searchToolsButton" routerLink="/posts">AGREGAR PRODUCTOS AL CARRITO</button>
+    </div>
+    <div class="cartBox" *ngIf="totalsToPayPerAuthor.length > 0">
+      <div style="margin:1rem;" *ngFor="let totalToPayPerAuthor of totalsToPayPerAuthor">
+        <mat-accordion>
+          <mat-expansion-panel hideToggle (opened)="viewTotalsToPayPerCart(totalToPayPerAuthor.id)" [expanded]=expanded class="authorPurchase">
+            <mat-expansion-panel-header class="panelHeader">
+              <div style="width:100%;display:flex;">
+                <div style="width:70%;">
+                  <p class="cartTitle">Compras realizadas a {{totalToPayPerAuthor.author.username}}</p>
+                </div>
+                <div style="width:30%;text-align:right;">
+                  <div style="display:inline-flex;">
+                    <p class="cartPrice">${{totalToPayPerAuthor.totalToPay}}</p>
+                    <button class="payButton" type="button" (click)="pay(totalToPayPerAuthor.id)" *ngIf="showBuyButton">Pagar</button>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel-header>
+            <div class="productBox" *ngFor="let totalToPayPerCart of totalsToPayPerCart">
+              <mat-accordion>
+                <mat-expansion-panel hideToggle class="productPurchase">
+                  <mat-expansion-panel-header class="productPanelHeader">
+                    <mat-panel-title>
+                      <p class="cartDescription">{{totalToPayPerCart.cart.post.title}}</p>
+                    </mat-panel-title>
+                    <mat-panel-description style="text-align:right;display:contents;">
+                      <p class="cartPrice">${{totalToPayPerCart.itemCartTotalToPay}}</p>
+                      <div style="display:inline-flex;">
+                        <button class="button" type="button" (click)="viewPost(totalToPayPerCart.cart.post)">Ir a publicacion</button>
+                        <button class="button" *ngIf="!isPurchased" type="button" (click)="editCart(totalToPayPerCart.cart)">Editar operación</button>
+                        <button class="button" *ngIf="!isPurchased" type="button" (click)="deleteCart(totalToPayPerCart.cart)">Eliminar del carrito</button>
+                      </div>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div style="margin-top:2rem;">
+                    <p class="cartInformation"><b>Unidades: </b>{{totalToPayPerCart.cart.amount}}</p>
+                    <p class="cartInformation" *ngIf="totalToPayPerCart.cart.isLeasing"><b>Precio de compra por unidad: </b>${{totalToPayPerCart.cart.post.product.salesPrice}}</p>
+                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing"><b>Precio de alquiler por día por unidad: </b>{{totalToPayPerCart.cart.post.product.rentalPrice}}</p>
+                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing"><b>Desde: </b>{{totalToPayPerCart.cart.dateFrom}} | <b>Hasta: </b>{{totalToPayPerCart.cart.dateTo}}</p>
+                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing"><b>Depósito: </b>{{totalToPayPerCart.cart.post.product.depositPrice}}</p>
+                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount > 1"><b><u>Resumen:</u></b> ${{totalToPayPerCart.cart.post.product.depositPrice}} + ((${{totalToPayPerCart.cart.post.product.rentalPrice}} x {{totalToPayPerCart.cart.rentalDays}} días) x {{totalToPayPerCart.cart.amount}} unidades)</p>
+                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount == 1"><b><u>Resumen:</u></b> ${{totalToPayPerCart.cart.post.product.depositPrice}} + ((${{totalToPayPerCart.cart.post.product.rentalPrice}} x {{totalToPayPerCart.cart.rentalDays}} días) x {{totalToPayPerCart.cart.amount}} unidad)</p>
+                    <p class="cartInformation" *ngIf="totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount > 1"><b><u>Resumen:</u></b> ${{totalToPayPerCart.cart.post.product.salesPrice}} x {{totalToPayPerCart.cart.amount}} unidades</p>
+                    <p class="cartInformation" *ngIf="totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount == 1"><b><u>Resumen:</u></b> ${{totalToPayPerCart.cart.post.product.salesPrice}} x {{totalToPayPerCart.cart.amount}} unidad</p>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+              <br>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+  <div style="padding-top:30vh;padding-bottom:1rem;background-color:#f8f3e7;" *ngIf="!isPurchasedSection">
+    <p class="footer">© 2023 Handy Argentina</p>
+    <p class="footer">Contacto: atencionalcliente@handy.com</p>
+  </div>
+</body>
+            <!--{{totalToPayPerCart.get(cart.id)}}-->
+            <!--HOLA, LA COSA ES ASI: "TOTALTOPAYPERCART" ES UN MAPA O DICCIONARIO QUE TIENE ESTA ESTRUCTURA:
+            <CART.ID, "COSTO TOTAL DE LO QUE SALE ESE ITEM DEL CARRITO">.
+              IMPORTANTE: LA KEY "-1" EN EL MAPA TE DEVUELVE EL TOTAL DE TODOS LOS ITEMS DEL CARRITO DEL USUARIO.
+            TODO ESTO SE CALCULA EN EL BACK, ASI QUE NO DEBERIA HABER PROBLEMAS CON ESO
+
+          LA COSA DE ESTO, ES QUE NO ME ACUERDO COMO HACER PARA MOSTRAR LOS VALORES DEL MAPA, PORQUE ME ESTA DICIENDO
+        QUE "GET" NO ES UNA FUNCION Y BLA BLA BLA-->
+
+        <!-- <p class="productLocation">{{totalToPayPerCart.get(cart.id)}}</p> ESTO DEVUELVE EL COSTO TOTAL DE ESE ITEM EN PARTICULAR
+
+
+        <p class="productLocation">{{this.totalToPayPerCart.get(-1)}}</p> ESTO DEVUELVE EL TOTAL DE TODO EL CARRITO DEL USUARIO
+      </div>
+    </div>
+    <button class="addButton" (click)="buy()" *ngIf="showBuyButton">COMPRAR</button>
+  </div>
+  -->

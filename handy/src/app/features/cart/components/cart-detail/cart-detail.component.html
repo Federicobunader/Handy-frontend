@@ -1,0 +1,36 @@
+<div class="cartBox">
+    <div *ngIf="!selectionWasDone && this.data.post.isLeasing">
+      <div style="text-align:center;">
+        <p class="cartLabels">¿Desea alquilar o comprar el producto?</p><br>
+        <button class="firstButton" (click)="optionSelected('comprar')">COMPRAR</button>
+        <button class="firstButton" (click)="optionSelected('alquilar')">ALQUILAR</button>
+      </div>
+    </div>
+    <div *ngIf="selectionWasDone || !this.data.post.isLeasing">
+      <p (click)="undoSelection()" class="goBack" *ngIf="optionChosen != ''"><u>Atrás</u></p><br>
+      <p class="title">Agregar al carrito</p><br>
+      <div>
+        <p class="cartLabels" *ngIf="optionChosen == 'alquilar' || optionChosen == ''">Indicá la cantidad que querés alquilar</p>
+        <p class="cartLabels" *ngIf="optionChosen == 'comprar'">Indicá la cantidad que querés comprar</p>
+        <input [formControl]="amount" type="number" min="1" [max]="this.data.post.stock" class="amountInput">
+        <br><mat-error *ngIf="this.amount.value > this.data.post.stock" style="width:80%;">Stock disponible: {{this.data.post.stock}}</mat-error>
+      </div>
+      <div *ngIf="optionChosen == 'alquilar' || optionChosen == ''">
+        <p *ngIf="this.amount.value == 1" class="cartLabels">Indicá hasta qué día necesitás alquilar el producto</p>
+        <p *ngIf="this.amount.value > 1" class="cartLabels">Indicá hasta qué día necesitás alquilar los productos</p>
+        <input type="date" [formControl]="dateTo" class="cartDate">
+        <!-- <mat-error *ngIf="this.content.value.length > 500" style="width:80%;">La consulta no puede ser de mas de 500 caracteres</mat-error> -->
+        <div>
+          <mat-icon style="color:#885B34;width:5%;" (click)="handleInformationClick()">info</mat-icon>
+          <p *ngIf="openInformationModal" class="cartInformation">Recordá que el precio del alquiler se considerará desde el día en que efectúes el pago del alquiler hasta la fecha seleccionada</p>
+        </div>
+      </div>
+      <br><br>
+      <div style="text-align:center;margin-top:-1rem;">
+        <button class="button" (click)="onCancelClick()">Cancelar</button>
+        <button class="button" (click)="onSaveClick()" *ngIf="!disableButton()">Agregar al carrito</button>
+        <button class="buttonDisabled" [disabled]=true *ngIf="disableButton()">Agregar al carrito</button>
+      </div>
+    </div>
+</div>
+

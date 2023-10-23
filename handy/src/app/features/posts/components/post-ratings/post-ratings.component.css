@@ -1,0 +1,40 @@
+.title{
+    font-size: 2rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #E1AE63;
+    padding-bottom: 1rem;    
+    letter-spacing: 0.1rem;
+}
+
+.box{
+    background-color:#f8f3e7;
+    border: 3px solid #E1AE63;
+    padding: 3rem;
+}
+
+.opinionBox{
+    border: 0.2rem solid #885B34;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: #faf5e0;
+    overflow-y: auto;
+}
+
+.opinionInfo{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+}
+
+.picture{
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.starIcon{
+    transform: scale(1);
+    color: #885B34;  
+}

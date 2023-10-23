@@ -1,0 +1,34 @@
+<form enctype="multipart/form-data" style="background-color:#f8f3e7;">
+  <div class="container">
+    <div class="form-container">
+      <mat-card>
+        <div class="drop-zone" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+          <div [innerHTML]="displayMessage"></div>
+          <input type="file" #fileInput (change)="onFileChange($event)" style="display: none;">
+          <button (click)="fileInput.click()" class="photoButton" *ngIf="photosINFO.length < this.maxPhotos">elegí el archivo</button>
+        </div>
+        <div class="preview-container">
+          <div class="preview-image" *ngFor="let photo of photosINFO; let i = index">
+            <img [src]="photo.url" alt="Foto">
+            <button (click)="deletePhoto(i)" class="photoButton">Borrar</button>
+          </div>
+        </div>
+      </mat-card>
+      <div *ngIf="photos.length >= maxPhotos" style="margin-top:30px;">
+        <div class="limit-message" [innerHTML]="limitMessage"></div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!--
+<form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <div>
+    <input type="file" multiple (change)="onFileSelected($event)" />
+  </div>
+  <div>
+    <button type="submit">Subir archivos</button>
+  </div>
+</form>
+
+-->

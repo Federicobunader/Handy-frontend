@@ -1,0 +1,12 @@
+<div class="commentsBox">
+  <h2 class="title">{{title}}</h2>
+  <div style="text-align:center;margin-bottom:2rem;width:100%;">
+    <textarea class="commentsInput" [formControl]="content" type="text"></textarea>
+    <br><mat-error *ngIf="this.content.value.length > 500" style="width:80%;">{{commentsErrorMessage}}</mat-error>
+  </div>
+  <div style="text-align:center;margin-bottom:1rem;">
+    <button class="button" (click)="onCancelClick()">Cancelar</button>
+    <button class="button" (click)="onSaveClick()" *ngIf="this.content.value.length <= 500 && this.content.value.length > 0">{{sendButton}}</button>
+    <button class="buttonDisabled" *ngIf="this.content.value.length > 500 || this.content.value.length == 0" [disabled]=true>{{sendButton}}</button>
+  </div>
+</div>

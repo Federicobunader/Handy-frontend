@@ -1,0 +1,57 @@
+
+<body style="min-height:100vh;overflow:auto;background-color:#f8f3e7;">
+    <nav-bar [navBarWithButtons]=true></nav-bar>
+    <div style="padding-top:7rem;padding-left:7rem;padding-right:7rem;">
+      <div>
+        <h1 class="title">Mi perfil</h1>
+      </div>
+      <div class="app-register-dialog-container">
+        <mat-accordion>
+          <mat-expansion-panel style="background-color:#f8f3e7;" [expanded]="true">
+
+            <mat-expansion-panel-header class="panelOption">
+              <mat-panel-title style="color:#885B34;">ADMINISTRAR MI INFORMACIÓN</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-nav-list class="options-list">
+
+              <a mat-list-item (click)="toggleEditarDatos()" class="panelSubOption"><span style="color:#f8f3e7;">Editar datos personales</span></a>
+              <ng-container *ngIf="showEditarDatos">
+                <app-register-dialog [isEdit]="true" (event)="shutToggle($event)"></app-register-dialog>
+              </ng-container>
+
+              <a mat-list-item (click)="toggleEditarPassword()" class="panelSubOption"><span style="color:#f8f3e7;">Editar contraseña</span></a>
+              <ng-container *ngIf="showEditarPassword">
+                <app-change-password style="width:100%;" (event)="shutToggle($event)"></app-change-password>
+              </ng-container>
+
+              <a mat-list-item (click)="togglePublicaciones()" class="panelSubOption"><span style="color:#f8f3e7;">Ver mis publicaciones</span></a>
+              <ng-container *ngIf="showPublicaciones">
+                <app-posts-dashboard [action]="actionViewMyPost" [toolsSearch]="false" [emptyMessage]="'¡Aún no tenés publicaciones!'"></app-posts-dashboard>
+              </ng-container>
+
+              <a mat-list-item (click)="toggleAlquileres()" class="panelSubOption"><span style="color:#f8f3e7;">Ver estado de mis compras y alquileres</span></a>
+              <ng-container *ngIf="showAlquileres">
+                <app-purchase-dashboard [isBuyer]= "true"></app-purchase-dashboard>
+              </ng-container>
+
+              <a mat-list-item (click)="toggleVentas()" class="panelSubOption"><span style="color:#f8f3e7;">Ver estado de mis ventas y alquileres</span></a>
+              <ng-container *ngIf="showVentas">
+                <app-purchase-dashboard [isBuyer]= "false"></app-purchase-dashboard>
+              </ng-container>
+
+              <!-- <a mat-list-item (click)="toggleInbox()" class="panelSubOption"><span style="color:#f8f3e7;">Inbox</span></a>
+              <ng-container *ngIf="showInbox">
+                <app-inbox></app-inbox>
+              </ng-container> -->
+
+            </mat-nav-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <div style="padding-top:30vh;padding-bottom:1rem;background-color:#f8f3e7;">
+      <p class="footer">© 2023 Handy Argentina</p>
+      <p class="footer">Contacto: atencionalcliente@handy.com</p>
+    </div>
+</body>

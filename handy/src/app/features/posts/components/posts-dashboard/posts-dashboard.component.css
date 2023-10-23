@@ -1,0 +1,247 @@
+.title{
+  font-size: 3rem;
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  color: #E1AE63;
+  padding-bottom: 1rem;
+  letter-spacing: 0.1rem;
+}
+
+.searchbar{
+  width: 40%;
+  height: 1.5rem;
+  padding-left: 1rem;
+  border: 0.1rem solid #E1AE63;
+  border-radius: 1rem;
+}
+
+.mat-mdc-select-placeholder {
+  color:#E1AE63;
+}
+
+::placeholder{
+  color:#E1AE63;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.line{
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  border-top: 0.2rem solid #885B34;
+  width: 100%;
+}
+
+.orderByBox{
+  margin-top: 2rem;
+  margin-left: 30rem;
+  border: 0.1rem solid #E1AE63;
+  padding: 2rem;
+  width: 20rem;
+}
+
+.filteringSection{
+  display: inline-flex;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom:1rem;
+}
+
+.order{
+  margin-left: 1rem;
+  width: 40%;
+}
+
+.filter{
+  margin-right: 1rem;
+  width: 20%;
+}
+
+.filterMultiselect{
+  margin-right: 0.1rem;
+  width: 20%;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.multiselectPicklist{
+  height: 1.1rem; 
+  border:1px solid #885B34;
+  width: 80%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 7px;
+  padding-top: 3px;
+  color: white;
+  background-color: #E1AE63;
+  font-size: small;
+  font-family: 'Roboto', monospace;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.multiselectPicklist:hover{
+  background-color: white;
+  color: #E1AE63;
+}
+
+.picklist{
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  font-size: small;
+  font-family: 'Roboto', monospace;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.picklist:hover{
+  background-color: white;
+  color: #E1AE63;
+}
+
+.filterLabel{
+  color: #885B34;
+  font-size: small;
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  margin-bottom:-0.1rem;
+  margin-left: 0.5rem;
+}
+
+.productBox{
+  height: 18rem;
+  width: 13rem;
+  background-color: #FAFAF5;
+  border: 0.2rem solid #885B34;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+.productBox:hover{
+  background-color: #f9ead4;
+}
+
+.postPicture{
+  height: 9rem;
+  width: 13rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  margin:0rem;
+}
+
+.postInformation{
+  margin:1rem;
+  font-size: 1rem;
+  font-family: 'Roboto', monospace;
+  color: #885B34;
+  padding-bottom: 1rem;
+}
+
+.productBoxLine{
+  border-top: 0.2rem solid #885B34;
+  width: 100%;
+  margin: 0rem;
+  margin-top:-0.3rem;
+}
+
+.filtersBox{
+  border: 0.1rem solid #885B34;
+  border-radius: 10px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  box-shadow: 10px 5px 5px #E1AE63;
+}
+
+.resetFilters{
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 13rem;
+  color: white;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  font-size: small;
+  font-family: 'Roboto', monospace;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  height: 2rem;
+  margin-top:1rem;
+  border-radius: 5px;
+  margin-left: 2rem;
+}
+
+.resetFilters:hover{
+  background-color: #885B34;
+}
+
+.footer{
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  color: #C2C2C2;
+  text-align: center;
+  font-size: 0.7rem;
+  margin-top: -1.2rem;
+} 
+
+.message{
+  font-size: 1rem;
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  color: #E1AE63;
+  padding-bottom: 1rem;
+  letter-spacing: 0.1rem;
+  margin-left: 1rem;
+}
+
+.createPostButton{
+  margin-left: 0.5rem;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: white;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  border-radius: 10px;
+  font-size: medium;
+  font-family: 'Roboto', monospace;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.createPostButton:hover{
+  background-color: #885B34;
+}

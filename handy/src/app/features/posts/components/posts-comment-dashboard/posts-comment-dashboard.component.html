@@ -1,0 +1,32 @@
+<body>
+  <div>
+    <div *ngFor="let comment of comments" style="margin:1rem;">
+      <mat-expansion-panel class="commentBox" hideToggle [expanded]="true">
+        <mat-expansion-panel-header style="width:100%;height:70%;margin:1rem;">
+          <div class="row">
+            <div class="column">
+              <img src={{comment.author.photo[0].url}} class="picture">
+            </div>
+            <div class="column" style="margin-left:2rem;">
+              <p><b>{{comment.author.username}}</b></p>
+              <p>{{comment.content}}</p>
+            </div>
+          </div>
+          <button class="answerButton" type="button" *ngIf="this.post.author.id === this.user.id && comment.answers.length == 0" (click)="answer(comment)">Responder</button>
+        </mat-expansion-panel-header>
+        <div *ngFor="let answerComment of comment.answers" style="margin-left:1rem;">
+          <hr class="line">
+          <div class="row">
+            <div class="column">
+              <img src={{answerComment.author.photo[0].url}} class="picture"> 
+            </div>
+            <div class="column" style="margin-left:2rem;">
+              <p><b>{{answerComment.author.username}}</b></p>
+              <p>{{answerComment.content}}</p>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </div>
+</body>

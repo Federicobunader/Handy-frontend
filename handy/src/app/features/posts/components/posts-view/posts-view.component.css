@@ -1,0 +1,137 @@
+.title{
+    font-size: 4rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+    padding-bottom: 2rem;    
+    letter-spacing: 0.1rem;
+}
+
+.goBack{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #885B34;
+    padding-bottom: 1rem;    
+    cursor: pointer;
+}
+
+.productBox{
+    background-color:#EBE1BE;
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+    width: 100%;
+    border-top: 0.2rem solid #E7BF81;
+    border-bottom: 0.2rem solid #E7BF81;
+    height: 110vh;
+}
+
+.productPicture{
+    width: 100%;
+    height: 60%;
+    border: 0.2rem solid #885B34;
+    cursor: pointer;
+}
+
+.postButton{
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: large;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    margin-bottom:2rem;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+}
+
+.postButton:hover{
+    background-color: #885B34;
+}
+
+.column-left {
+    float: left;
+    width: 30%;
+    margin-left: 7rem;
+}
+    
+.column-right {
+    float: left;
+    margin-left: 5rem;
+    width: 40%;
+    border: 1px solid #E1AE63;
+    padding: 3rem;
+    border-radius: 0.5rem;
+    margin-top: 2.1rem;
+}
+
+.productPrice{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;   
+    text-align: left; 
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.productInfo{
+    font-size: 1.5rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;  
+    margin-bottom: 2rem;
+}
+
+.stockInfo{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;  
+    margin-bottom: 2rem;
+    size: 95%;
+    margin-top: 1rem;
+}
+
+.opinions{
+    font-family: 'Roboto', monospace;
+    color: #885B34;  
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.starIcon{
+    transform: scale(1.5);
+    color: #885B34;
+    margin-left: 0.5rem;  
+    margin-bottom: 2rem;
+}
+
+.footer{
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #C2C2C2;
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: -1.2rem;
+}
+
+.locationIcon{
+    transform: scale(2);
+    padding-bottom: 0.5rem;
+    color:#E1AE63;
+    width:5%;
+    float:left;
+    margin-left:1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}

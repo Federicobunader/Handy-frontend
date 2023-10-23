@@ -1,0 +1,127 @@
+.title{
+    font-size: 2rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #E1AE63;  
+    letter-spacing: 0.1rem;
+}
+
+.cartBox{
+    background-color:#f8f3e7;
+    border: 3px solid #E1AE63;
+    padding: 2rem;
+}
+
+.cartLabels{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;  
+    margin-top: 1rem;
+}
+
+.goBack{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;  
+    cursor: pointer;
+}
+
+.amountInput{
+    width: 20%;
+    height: 2rem;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-color: #885B34;
+    border-bottom-width: 0.2rem;
+    margin-bottom: 1rem;
+    background-color: #f8f3e7;
+    color: #E1AE63;
+    font-family: 'Roboto', monospace;
+    font-size: 1rem;
+}
+
+.cartInformation{
+    font-size: 0.7rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34; 
+    width: 95%;
+    float:right;
+}
+
+.cartDate{
+    font-family: 'Roboto', monospace;
+    color: #E1AE63;
+    font-size: 1rem;
+    width: 50%;
+    height: 2rem;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-color: #885B34;
+    border-bottom-width: 0.2rem;
+    margin-bottom: 1rem;
+    background-color: #f8f3e7;
+}
+
+.firstButton{
+    width: 40%;
+    margin-left: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+    cursor: pointer;
+}
+
+.button{
+    width: 30%;
+    margin-left: 2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+    cursor: pointer;
+}
+
+.buttonDisabled{
+    width: 30%;
+    margin-left: 2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: lightgrey;
+    background-color: grey;
+    border-color: lightgrey;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+}
+
+.button:hover{
+    background-color: #885B34;
+}
+
+.firstButton:hover{
+    background-color: #885B34;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}

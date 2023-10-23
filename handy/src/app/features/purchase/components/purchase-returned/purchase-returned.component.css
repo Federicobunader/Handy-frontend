@@ -1,0 +1,32 @@
+.title{
+    font-size: 1.5rem;
+    font-family: 'Roboto', monospace;
+    color: #E1AE63;
+    padding-bottom: 1rem;    
+    letter-spacing: 0.1rem;
+    text-align: justify;
+}
+
+.box{
+    background-color:#f8f3e7;
+    border: 3px solid #E1AE63;
+    padding:2rem;
+}
+
+.button{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: small;
+    letter-spacing: 0.05rem;
+    font-family: 'Roboto', monospace;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #885B34;    
+}

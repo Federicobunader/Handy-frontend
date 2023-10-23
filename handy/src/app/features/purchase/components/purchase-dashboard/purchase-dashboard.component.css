@@ -1,0 +1,136 @@
+  .message{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #E1AE63;
+    padding-bottom: 1rem;
+    letter-spacing: 0.1rem;
+    margin-left: 1rem;
+  }
+
+  .purchaseCardAsBuyer{
+    background-color:#EBE1BE;
+    border: 0.1rem solid #885B34;
+  }
+
+  .purchaseCardAsSeller{
+    background-color:#ffeca8;
+    border: 0.1rem solid #885B34;
+  }
+
+  .panelHeader{
+    height: 8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .purchaseInfo{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+  }
+
+  .purchaseSubinfo{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+    text-align: justify;
+  }
+
+  .rentalFinished{
+    font-size: 0.7rem;
+    font-family: 'Roboto', monospace;
+    color: #cd8d54;
+    text-align: center;
+  }
+
+  .rentalNormal{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: green;  
+    text-align: center;  
+  }
+
+  .rentalMedium{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: orange; 
+    text-align: center;   
+  }
+
+  .rentalSoon{
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: red;   
+    text-align: center; 
+  }
+
+  .viewDetailsButton{
+    width: 70%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    border-radius: 10px;
+    font-size: small;
+    font-family: 'Roboto', monospace;
+    cursor: pointer;
+    margin-left:0.5rem;
+    margin-right:0.5rem;
+  }
+
+  .viewDetailsButton:hover{
+    background-color: #885B34;
+  }
+
+  .rateButton{
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #885B34;
+    border-color: #E1AE63;
+    border-radius: 10px;
+    font-size: small;
+    font-family: 'Roboto', monospace;
+    cursor: pointer;
+  }
+
+  .rateButton:hover{
+    background-color: #E1AE63;
+  }
+
+  .line{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-top: 0.1rem solid #885B34;
+    width: 100%;
+  }
+
+  .searchToolsButton{
+    margin-left: 0.5rem;
+    width: 80%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    border-radius: 10px;
+    font-size: medium;
+    font-family: 'Roboto', monospace;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .searchToolsButton:hover{
+    background-color: #885B34;
+  }
+  
