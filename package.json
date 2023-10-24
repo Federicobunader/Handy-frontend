@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "angularx-qrcode": "^16.0.2",
+    "ngx-qrcode2": "^9.0.0"
+  }
+}
