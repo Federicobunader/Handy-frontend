@@ -15,7 +15,6 @@ import { PostsCommentDashboardComponent } from './components/posts-comment-dashb
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DialogRatingDetailsComponent } from '../../shared/components/rating-details/rating-details.component';
 import { PostsArViewerComponent } from './components/posts-ar-viewer/posts-ar-viewer.component';
-import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { QRCodeModule } from 'angularx-qrcode';
     MatDialogModule,
     CartRoutingModule,
     MatExpansionModule,
-    QRCodeModule,
   ],
   exports: [
     PostsViewComponent,
