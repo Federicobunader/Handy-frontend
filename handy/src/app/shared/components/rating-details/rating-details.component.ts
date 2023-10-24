@@ -70,7 +70,7 @@ export class DialogRatingDetailsComponent {
           this.dialogRef.close();
         },
         (error) => {
-          Swal.fire('Error', 'Hubo un error', 'error');
+          Swal.fire('Error', 'No se pudo enviar tu calificación', 'error');
           this.dialogRef.close();
         });
     } else {
