@@ -10,6 +10,7 @@ export interface Cart extends IIdentifiable{
   rentalDays: number,
   remainingDays: number,
   userAlreadyRatedPost: boolean,
+  userAlreadyRatedPostAuthor: boolean,
   isPurchased: boolean,
   post: Post,
   user: User,

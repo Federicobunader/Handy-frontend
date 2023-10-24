@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { PostRatingMapper } from 'src/app/core/mappers/post-rating-mapper';
 import { postRatingURL, ratingURL } from 'src/app/core/constants/constants';
 import { PostRating } from 'src/app/core/models/postRating';
+import { CartService } from 'src/app/features/cart/services/cart-service/cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class PostRatingService {
   constructor(
     private postService: PostService,
     private userService: UserService,
+    private cartService: CartService,
     private http: HttpClient,
     private mapper: PostRatingMapper,
     )
@@ -67,6 +69,7 @@ export class PostRatingService {
       description: '',
       post: this.postService.emptyPost(),
       author: this.userService.emptyUser(),
+      cart: this.cartService.emptyCart(),
     }
   }
 }

@@ -9,6 +9,7 @@ import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { UserRating } from 'src/app/core/models/userRating';
 import { UserRatingService } from '../../services/user-rating-service/user-rating.service';
 import Swal from 'sweetalert2';
+import { Cart } from 'src/app/core/models/cart';
 
 @Component({
   selector: 'app-rating',
@@ -23,7 +24,7 @@ export class DialogRatingDetailsComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogRatingDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {post: Post, author: User, userRated: User, isUserRating: boolean},
+    @Inject(MAT_DIALOG_DATA) public data: {post: Post, author: User, userRated: User, isUserRating: boolean, cart: Cart},
     private postRatingService: PostRatingService,
     private userRatingService: UserRatingService,
   ) {
@@ -55,10 +56,12 @@ export class DialogRatingDetailsComponent {
 
   onSaveClick(): void {
 
+    this.postRating.author = this.data.author;
+    this.postRating.score = this.score;
+    this.postRating.description = String(this.comment);
+    this.postRating.cart =this.data.cart;
+
     if(!this.data.isUserRating){
-      this.postRating.author = this.data.author;
-      this.postRating.score = this.score;
-      this.postRating.description = String(this.comment);
       this.postRating.post =  this.data.post;
 
       this.postRatingService
@@ -74,9 +77,6 @@ export class DialogRatingDetailsComponent {
           this.dialogRef.close();
         });
     } else {
-      this.userRating.author = this.data.author;
-      this.userRating.score = this.score;
-      this.userRating.description = String(this.comment);
       this.userRating.ratedUser =  this.data.userRated;
 
       this.userRatingService

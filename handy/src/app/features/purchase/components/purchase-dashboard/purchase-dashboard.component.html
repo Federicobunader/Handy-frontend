@@ -27,7 +27,7 @@
               <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing && total.cart.userAlreadyRatedPost"><b>¡Tu alquiler finalizó el día {{total.cart.dateTo}} y ya dejaste tu calificación sobre esta publicación!</b></p>
               <p class="rentalFinished"  *ngIf="total.cart.isLeasing && total.cart.userAlreadyRatedPost"><b>¡Ya dejaste tu calificación sobre esta publicación!</b></p>
 
-              <button class="rateButton" *ngIf="!total.cart.userAlreadyRatedPost && ((total.cart.remainingDays <= 0 && !total.cart.isLeasing) || total.cart.isLeasing)" (click)="createPostRating(total.cart.post)">Calificar publicación</button>
+              <button class="rateButton" *ngIf="!total.cart.userAlreadyRatedPost && ((total.cart.remainingDays <= 0 && !total.cart.isLeasing) || total.cart.isLeasing)" (click)="createPostRating(total.cart)">Calificar publicación</button>
             </div>
           </div>
         </mat-expansion-panel>
@@ -65,7 +65,7 @@
               <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing"><b>El alquiler finalizó el día {{total.cart.dateTo}}. Por favor, indicá si el producto ya fue devuelto.</b></p>
 
               <button class="rateButton" *ngIf="!total.cart.isLeasing && total.cart.remainingDays <= 0 && !purchase.totalToPayPerAuthor.returnedFlag" (click)="setProductAsReturned(purchase.totalToPayPerAuthor)">Producto devuelto</button> <!-- la condicion deberia ser: que todavia no haya rateado al usuario & sea vendedor & sea alquiler & se haya terminado el tiempo & todavia no haya indicado si devolvio  -->
-              <button class="rateButton" *ngIf="!isBuyer" style="margin-top:1rem;" (click)="createUserRating(total.totalToPayPerAuthor.from)">Calificar usuario</button> <!--  la condicion tiene q ser que todavia no haya rateado al usuario-->
+              <button class="rateButton" *ngIf="!isBuyer" style="margin-top:1rem;" (click)="createUserRating(total.cart)">Calificar usuario</button> <!--  la condicion tiene q ser que todavia no haya rateado al usuario-->
             </div>
           </div>
         </mat-expansion-panel>

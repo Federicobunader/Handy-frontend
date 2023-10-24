@@ -21,7 +21,8 @@ export class CartMapper {
       rentalDays: cart?.rentalDays ? cart.rentalDays : 0,
       remainingDays: cart?.remainingRentalDays ? cart.remainingRentalDays : 0,
       isPurchased: cart?.purchasedFlag ? cart.purchasedFlag : false,
-      userAlreadyRatedPost: cart?.userAlreadyRatedPost ? cart.userAlreadyRatedPost : false,
+      userAlreadyRatedPost: cart?.userAlreadyRatedPost != undefined ? cart.userAlreadyRatedPost : false,
+      userAlreadyRatedPostAuthor: cart?.userAlreadyRatedPostAuthor != undefined ? cart.userAlreadyRatedPostAuthor : false,
       post: this.postMapper.dtoToPost(cart.postDTO),
       user: this.userMapper.dtoToUser(cart.userDTO),
     };

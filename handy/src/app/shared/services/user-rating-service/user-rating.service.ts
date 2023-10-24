@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { userRatingURL } from 'src/app/core/constants/constants';
 import { UserRating } from 'src/app/core/models/userRating';
 import { UserRatingMapper } from 'src/app/core/mappers/user-rating-mapper';
+import { CartService } from 'src/app/features/cart/services/cart-service/cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class UserRatingService {
 
   constructor(
     private userService: UserService,
+    private cartService: CartService,
     private http: HttpClient,
     private mapper: UserRatingMapper,
     )
@@ -65,6 +67,7 @@ export class UserRatingService {
       description: '',
       ratedUser: this.userService.emptyUser(),
       author: this.userService.emptyUser(),
+      cart: this.cartService.emptyCart(),
     }
   }
 }

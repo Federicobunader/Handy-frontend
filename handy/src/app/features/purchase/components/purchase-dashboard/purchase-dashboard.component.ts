@@ -14,6 +14,7 @@ import { DatePipe } from '@angular/common';
 import { DialogRatingDetailsComponent } from 'src/app/shared/components/rating-details/rating-details.component';
 import { PurchaseReturnedComponent } from 'src/app/features/purchase/components/purchase-returned/purchase-returned.component';
 import { TotalToPayPerAuthor } from 'src/app/core/models/total-to-pay-per-author';
+import { Cart } from 'src/app/core/models/cart';
 
 @Component({
   selector: 'app-purchase-dashboard',
@@ -126,26 +127,26 @@ export class PurchaseDashboardComponent {
     this.router.navigate(['posts/view', postId]);
   }
 
-  createPostRating(post: Post): void {
+  createPostRating(cart: Cart): void {
     const dialogRef = this.dialog.open(DialogRatingDetailsComponent, {
       width: '600px',
-      data: {post: post, author: this.from, userRatedUsername: null, isUserRating: false},
+      data: {post: cart.post, author: this.from, userRatedUsername: null, isUserRating: false, cart: cart},
     });
-    dialogRef.componentInstance.postName = post.title;
+    dialogRef.componentInstance.postName = cart.post.title;
     dialogRef.componentInstance.wasSaved = false;
     dialogRef.afterClosed().subscribe( result => {
       this.totalsToPayPerCart.forEach( total => {
-        if(total.cart.post.id == post.id){
+        if(total.cart.post.id == cart.post.id){
           total.cart.userAlreadyRatedPost = dialogRef.componentInstance.wasSaved;
         }
       })
     });
   }
 
-  createUserRating(userInfo: any): void{
+  createUserRating(cart: Cart): void{
     const dialogRef = this.dialog.open(DialogRatingDetailsComponent, {
       width: '600px',
-      data: {post: null, author: this.from, userRated: userInfo, isUserRating: true},
+      data: {post: null, author: this.from, userRated: cart.post.author, isUserRating: true, cart: cart},
     });
   }
 
