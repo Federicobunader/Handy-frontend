@@ -62,6 +62,7 @@ export class CartService {
       isLeasing: false,
       isPurchased: false,
       userAlreadyRatedPost: false,
+      userAlreadyRatedPostAuthor: false,
       dateFrom: new Date(),
       dateTo: new Date(),
       rentalDays: 0,
