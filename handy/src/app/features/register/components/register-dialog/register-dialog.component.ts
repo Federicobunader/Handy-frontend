@@ -49,7 +49,7 @@ export class RegisterDialogComponent{
     username: new FormControl ('', [Validators.required]),
     userPassword: new FormControl ('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*()]{8,}$')]),
     userPasswordCheck: new FormControl ('', [Validators.required, this.passwordMatchValidator.bind(this)]),
-    userTel: new FormControl ('', [Validators.required, Validators.pattern('/^\d{8}$/')]),
+    userTel: new FormControl ('', [Validators.required, Validators.pattern(/^\d{8}$/)]),
     addressForm : new FormGroup ({
       address: new FormControl ('', [Validators.required]),
       location: new FormControl (0, [Validators.required]),
