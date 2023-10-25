@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@google/model-viewer": "^3.3.0",
     "angularx-qrcode": "^16.0.2",
     "ngx-qrcode2": "^9.0.0"
   }
