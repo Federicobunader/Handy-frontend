@@ -18,72 +18,90 @@
                   <br>
                 </div>
                 <div style="float:left;width:50%;">
-                  <p class="postCreationLabel">Stock</p>
-                  <input class="postCreationInput" type="number" matInput name="stock" formControlName="stock">
+                  <p class="postCreationLabel">Nombre del Producto</p>
+                  <input class="postCreationInput" type="text" matInput name="productName" formControlName="productName">
                   <br>
                 </div>
               </div>
-              <div style="margin-top:8.5rem;">
+              <div style="margin-top:10.5rem;">
                 <div class="column-left">
-                  <p class="postCreationLabel">Nombre del Producto</p>
-                  <input class="postCreationInput" type="text" matInput name="productName" formControlName="productName">
-                  <p class="postCreationLabel">Deposito</p>
-                  <input class="postCreationInput" type="number" matInput name="depositPrice" formControlName="depositPrice">
+                  <div style="margin-top: 1rem;">                    
+                    <p class="postCreationLabel">Categoría</p>
+                    <mat-form-field class="categoryInput">
+                        <mat-select formControlName="productCategory" name="productCategory" (selectionChange)="getSubCategories($event.value)" (selectionChange)="getBrands($event.value)">
+                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                                {{category.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            Seleccioná una Categoría
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div style="margin-top: 2rem;">
+                    <p class="postCreationLabel">Marca</p>
+                    <mat-form-field class="categoryInput">
+                        <mat-select formControlName="productBrand" name="productBrand" >
+                            <mat-option *ngFor="let brand of brands" [value]="brand.id">
+                                {{brand.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            Seleccioná una Marca
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
                 </div>
                 <div class="column-right">
-                  <p class="postCreationLabel">Precio de alquiler por día</p>
-                  <input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
-                </div>
-              </div>
-              <div style="margin-top:8.5rem;">
-                <div class="column-left">
-                  <p class="postCreationLabel">Categoría</p>
-                  <mat-form-field class="categoryInput">
-                      <mat-select formControlName="productCategory" name="productCategory" (selectionChange)="getSubCategories($event.value)" (selectionChange)="getBrands($event.value)">
-                          <mat-option *ngFor="let category of categories" [value]="category.id">
-                              {{category.name}}
+                  <div style="margin-top: 1rem;">
+                    <p class="postCreationLabel">Sub-categoría</p>
+                    <mat-form-field class="categoryInput">
+                      <mat-select formControlName="productSubCategory" name="productSubCategory">
+                          <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">
+                              {{subcategory.name}}
                           </mat-option>
                       </mat-select>
                       <mat-error>
-                          Seleccioná una Categoría
+                          Seleccioná una Sub-categoría
                       </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="column-right">
-                  <p class="postCreationLabel">Sub-categoría</p>
-                  <mat-form-field class="categoryInput">
-                    <mat-select formControlName="productSubCategory" name="productSubCategory">
-                        <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">
-                            {{subcategory.name}}
-                        </mat-option>
-                    </mat-select>
-                    <mat-error>
-                        Seleccioná una Sub-categoría
-                    </mat-error>
-                  </mat-form-field>
-
-                  <p class="postCreationLabel">Marca</p>
-                  <mat-form-field class="categoryInput">
-                      <mat-select formControlName="productBrand" name="productBrand" >
-                          <mat-option *ngFor="let brand of brands" [value]="brand.id">
-                              {{brand.name}}
-                          </mat-option>
-                      </mat-select>
-                      <mat-error>
-                          Seleccioná una Marca
-                      </mat-error>
-                  </mat-form-field>
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <p class="postCreationLabel">Descripcion del Producto</p>
-              <textarea class="descriptionInput" type="text" matInput name="productDescription" formControlName="productDescription" spellcheck></textarea>
-              <br>
-              <p class="leasingInput"><input type="checkbox" formControlName="isLeasing"> ¿Querés emplear la modalidad de Leasing?</p>
-              <br>
-              <p *ngIf="this.postForm.get('isLeasing')?.value" class="postCreationLabel">Precio de venta</p>
-              <input *ngIf="this.postForm.get('isLeasing')?.value" class="postTitleInput" type="number" matInput name="salesPrice" formControlName="salesPrice">
-              <br>
-              <p class="leasingInput"><input type="checkbox" formControlName="isActive"> Una vez creada la publicación, ¿querés que se active?</p>
+              <div class="column-right">
+                <div style="margin-top: 2rem;">
+                  <p class="postCreationLabel">Stock</p>
+                  <input class="postCreationInput" type="number" matInput name="stock" formControlName="stock">
+                </div>
+              </div>              
+              <div style="margin-top:8.5rem;margin-bottom: 5rem;">
+                <div class="column-left"> 
+                  <div style="margin-top: 2rem;">
+                    <p class="postCreationLabel">Precio de alquiler por día</p>
+                    <input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
+                  </div>
+                </div>
+                <div class="column-right">
+                  <div style="margin-top: 2rem;">
+                    <p class="postCreationLabel">Deposito</p>
+                    <input class="postCreationInput" type="number" matInput name="depositPrice" formControlName="depositPrice">
+                    <div style="margin-top: -2rem;width: 80%;">
+                      <mat-icon style="color:#885B34;width:5%;" (click)="handleInformationClick()">info</mat-icon>
+                      <p *ngIf="openInformationModal" class="depositInformation">El depósito es un monto que el usuario que alquila deberá pagar a modo de garantía al realizar el alquiler, y el mismo será devuelto al finalizar el mismo, siempre y cuando la herramienta haya sido devuelta en las mismas condiciones.</p>
+                    </div> 
+                  </div>  
+                </div>
+              </div>
+              <div>
+                <p class="postCreationLabel">Descripcion del Producto</p>
+                <textarea class="descriptionInput" type="text" matInput name="productDescription" formControlName="productDescription" spellcheck></textarea>
+                <p class="leasingInput"><input type="checkbox" formControlName="isLeasing"> ¿Querés emplear la modalidad de Leasing?</p>
+                <br>
+                <p *ngIf="this.postForm.get('isLeasing')?.value" class="postCreationLabel">Precio de venta</p>
+                <input *ngIf="this.postForm.get('isLeasing')?.value" class="postTitleInput" type="number" matInput name="salesPrice" formControlName="salesPrice">
+                <br>
+                <p class="leasingInput"><input type="checkbox" formControlName="isActive"> Una vez creada la publicación, ¿querés que se active?</p>
+              </div>
             </div>
           </mat-tab>
           <mat-tab>

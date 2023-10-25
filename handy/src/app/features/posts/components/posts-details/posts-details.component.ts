@@ -294,4 +294,9 @@ export class PostsDetailsComponent {
   getPhotoLimitMessage(){
     return 'Se alcanzó el límite máximo de fotos';
   }
+
+  openInformationModal: Boolean = false;
+  handleInformationClick(): void{
+    this.openInformationModal = !this.openInformationModal;
+  }
 }

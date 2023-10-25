@@ -73,7 +73,7 @@
 }
     
 .column-right {
-    float: left;
+    float: right;
     width: 50%;
 }
 
@@ -124,6 +124,14 @@
     text-align: center;
     font-size: 0.7rem;
     margin-top: -1.2rem;
+}
+
+.depositInformation{
+    font-size: 0.7rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34; 
+    width: 95%;
+    float:right;
 }
 
 input:focus,
