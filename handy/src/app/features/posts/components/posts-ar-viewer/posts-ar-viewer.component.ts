@@ -15,7 +15,7 @@ export class PostsArViewerComponent {
       ) {}
 
       ngOnInit() {
-        const modelName = 'airCompressor'; // Replace this with your logic to get the model name
+        const modelName = 'axe'; // Replace this with your logic to get the model name
         this.postsArService.getModel(modelName).subscribe(data => {
             this.modelUrl = URL.createObjectURL(data);
             console.log(this.modelUrl)
