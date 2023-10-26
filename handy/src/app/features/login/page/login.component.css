@@ -16,7 +16,6 @@
   float: left;
   width: 50%;
   text-align: left;
-  padding-left:
 }
 
 .row{
@@ -25,7 +24,7 @@
   padding-left: 7rem;
 } 
 
-.loginBox{
+.box{
   padding-top: 3rem;
   width: 70%;
 }
@@ -86,6 +85,11 @@
   background-color: #885B34;
 }
 
+.registerButtonContainer{
+  width: 90%;
+  text-align: center;
+}
+
 .registerButton{
   width: 100%;
   padding-left: 40px;
@@ -133,6 +137,84 @@ select:focus,
 textarea:focus,
 button:focus {
   outline: none;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+  .row{
+    padding-top: 0rem;
+    padding-bottom: 2rem;
+    padding-left: 0rem;
+  } 
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-top: 3rem;
+  }
+
+  .column-left {
+    float: left;
+    width: 100%;
+    text-align: left;
+  }
+    
+  .column-right {
+    float: left;
+    width: 100%;
+    text-align: left;
+  }
+
+  .title{
+    font-size: 1.5rem;
+  }
+
+  .box{
+    padding-top: 1rem;
+    width: 80%;
+  }
+
+  .loginLabel{
+    font-size: 1rem;
+  }
+
+  .loginInput{
+    height: 20px;
+    margin-bottom: 20px;
+  }
+
+  .passwordCheckbox{
+    font-size: 12px;
+    margin-top: -0.5rem;
+  }
+
+  .loginButton{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: medium;
+    margin-top: 1rem;
+  }
+
+  .googleButton{
+    width: 30px;
+    margin-top: 0rem;
+  }
+
+  .registerButton{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: medium;
+  }
+
+  .registerButtonContainer{
+    width: 100%;
+  }
 }
 
   

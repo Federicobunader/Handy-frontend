@@ -3,29 +3,35 @@
         <nav-bar [navBarWithButtons]=false></nav-bar>
         <div class="row" *ngIf="!isGoogleAuth; else googleLoginComponent">
             <div class="column-left">
-                <p class="title">Accedé a tu cuenta</p>
-                <div class="loginBox">
-                    <p class="loginLabel">USUARIO</p>
-                    <input class="loginInput" type="text" matInput name="username" formControlName="username" #usernameInput>
-                    <p class="loginLabel">CONTRASEÑA</p>
-                    <input class="loginInput" type="password" id="passwordField" matInput name="password" formControlName="password" #passwordInput>
-                    <p class="passwordCheckbox"><input type="checkbox" (click)="changePasswordType()"> Mostrar contraseña</p>
-                    <div style="text-align:right;">
-                      <p class="forgotPassword" (click)="changePassword()"><u>Olvidé mi contraseña</u></p>
-                    </div>
-                    <div style="text-align:center;">
-                        <button class="loginButton" (click)="loginauth()">INICIAR SESIÓN</button>
-                    </div>
-                    <div style="padding-top:2rem;">
-                        <p class="loginLabel">O iniciá sesión con google:</p>
-                        <a class="googleLogin" (click)="googleLogin()"><img src="../../../../assets/icons/GoogleLogo.png" class="googleButton"></a>
+                <div class="container">
+                    <p class="title">Accedé a tu cuenta</p>
+                    <div class="box">
+                        <p class="loginLabel">USUARIO</p>
+                        <input class="loginInput" type="text" matInput name="username" formControlName="username" #usernameInput>
+                        <p class="loginLabel">CONTRASEÑA</p>
+                        <input class="loginInput" type="password" id="passwordField" matInput name="password" formControlName="password" #passwordInput>
+                        <p class="passwordCheckbox"><input type="checkbox" (click)="changePasswordType()"> Mostrar contraseña</p>
+                        <div style="text-align:right;">
+                        <p class="forgotPassword" (click)="changePassword()"><u>Olvidé mi contraseña</u></p>
+                        </div>
+                        <div style="text-align:center;">
+                            <button class="loginButton" (click)="loginauth()">INICIAR SESIÓN</button>
+                        </div>
+                        <div style="padding-top:2rem;">
+                            <p class="loginLabel">O iniciá sesión con google:</p>
+                            <a class="googleLogin" (click)="googleLogin()"><img src="../../../../assets/icons/GoogleLogo.png" class="googleButton"></a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="column-right">
-                <p class="title">¿Necesitás una cuenta?</p>
-                <div style="padding-top:2rem;width:70%;text-align:center;">
-                    <button class="registerButton" routerLink="/register">REGISTRATE</button>
+                <div class="container">
+                    <p class="title">¿Necesitás una cuenta?</p>
+                    <div class="box">
+                        <div class="registerButtonContainer">
+                            <button class="registerButton" routerLink="/register">REGISTRATE</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
