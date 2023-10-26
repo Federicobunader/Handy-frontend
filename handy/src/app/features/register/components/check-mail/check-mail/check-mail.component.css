@@ -56,9 +56,40 @@
     font-family: 'Roboto', monospace;
 }
 
+.inputContainer{
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+    .title{
+        margin: 1rem;
+        text-align: justify;
+    }
+
+    .inputContainer{
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: -2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .button{
+        width: 40%;
+        margin: 0.5rem;
+    }
+    
+    .buttonDisabled{
+        width: 40%;
+        margin: 0.5rem;
+    }
 }

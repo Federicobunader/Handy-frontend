@@ -1,6 +1,6 @@
 <div class="confirmationBox">
   <h2 class="title">Ingresá el código que te enviamos por mail para finalizar con el registro</h2>
-  <div style="margin-left: 2rem;margin-bottom: 2rem;">
+  <div class="inputContainer">
     <input [formControl]="codeInput" type="text" class="codeInput"/>
     <br><mat-error *ngIf="this.codeInput.value.length > 0 && this.codeInput.value != this.code">Los codigos no coinciden, por favor revise e ingreselo nuevamente</mat-error>
   </div>

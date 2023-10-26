@@ -49,7 +49,7 @@ export class RegisterDialogComponent{
     username: new FormControl ('', [Validators.required]),
     userPassword: new FormControl ('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*()]{8,}$')]),
     userPasswordCheck: new FormControl ('', [Validators.required, this.passwordMatchValidator.bind(this)]),
-    userTel: new FormControl ('', [Validators.required, Validators.pattern(/^\d{8}$/)]),
+    userTel: new FormControl ('', [Validators.required]),
     addressForm : new FormGroup ({
       address: new FormControl ('', [Validators.required]),
       location: new FormControl (0, [Validators.required]),
@@ -189,7 +189,8 @@ export class RegisterDialogComponent{
             },
             (error) => {
               // Error en la operación: mostrar notificación de error con el mensaje del error
-              Swal.fire('Error', 'Usuario o Email repetidos' + error.message, 'error');
+              Swal.fire('Error', 'Usuario o Email repetidos', 'error');
+              console.log('ERROR:', error.message);
             }
           );
   }

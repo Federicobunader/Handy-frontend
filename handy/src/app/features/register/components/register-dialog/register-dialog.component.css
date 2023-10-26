@@ -207,7 +207,7 @@ button:focus {
   .dropArea{
     width: 80%;
     margin: 0rem;
-    margin-top: 1rem !important;
+    margin-top: 4rem !important;
   }
 
   .passwordCheckbox{
