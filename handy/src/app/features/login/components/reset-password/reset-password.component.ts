@@ -44,7 +44,6 @@ export class ResetPasswordComponent {
   onSaveClick(): void {
 
     var user = this.userService.emptyUser();
-    this.showSendingEmail = true;
 
     if (this.userName.valid) {
       this.mailService
@@ -59,7 +58,7 @@ export class ResetPasswordComponent {
       .subscribe(() => {
           this.dialogRef.close(user)
           Swal.fire('Exito', 'Email enviado', 'success');
-          this.showSendingEmail = false;
+          this.showSendingEmail = true;
         },
         (error) => {
           Swal.fire('Error', 'El usuario no existe', 'error');
