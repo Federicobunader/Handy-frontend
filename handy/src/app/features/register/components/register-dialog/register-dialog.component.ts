@@ -24,6 +24,7 @@ export class RegisterDialogComponent{
 
   private $_destroyed = new Subject();
   selectedPaymentMethod: PaymentMethod [] = [];
+  today: Date = new Date();
   @Input() isEdit : Boolean = false;
   @Output() event = new EventEmitter<string>();
 
