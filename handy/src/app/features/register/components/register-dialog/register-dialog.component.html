@@ -50,7 +50,7 @@
                             <mat-error *ngIf="registerForm.get('userFirstName')?.hasError('maxlength')" style="width:80%;">El nombre no puede tener mas de 100 caracteres</mat-error>
                             <p class="registerLabel">Apellido</p>
                             <input class="registerInput" type="text" matInput name="userLastName" formControlName="userLastName">
-                            <mat-error *ngIf="registerForm.get('userLastName')?.hasError('maxlength')" style="width:80%;">El apellido usuario no puede tener mas de 100 caracteres</mat-error>
+                            <mat-error *ngIf="registerForm.get('userLastName')?.hasError('maxlength')" style="width:80%;">El apellido no puede tener mas de 100 caracteres</mat-error>
                             <p class="registerLabel">Email</p>
                             <input class="registerInput" type="email" matInput name="userEmail" formControlName="userEmail">
                             <mat-error *ngIf="registerForm.get('userEmail')?.hasError('maxlength')" style="width:80%;">El mail no puede tener mas de 100 caracteres</mat-error>
