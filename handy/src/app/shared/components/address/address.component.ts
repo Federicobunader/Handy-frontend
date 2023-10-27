@@ -24,7 +24,7 @@ export class AddressComponent implements OnInit {
     address: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
     location: new FormControl (0, [Validators.required, Validators.min(1)]),
     province: new FormControl (0, [Validators.required, Validators.min(1)]),
-    postcode: new FormControl (0, [Validators.required,  Validators.min(1), Validators.maxLength(5)]),
+    postcode: new FormControl (0, [Validators.required,  Validators.min(1), Validators.max(99999)]),
     isApartment: new FormControl (false, [Validators.required]),
     apartment: new FormControl ('', [Validators.maxLength(10)]),
   });

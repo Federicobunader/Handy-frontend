@@ -33,7 +33,7 @@
             </mat-form-field><br><br>
             <p class="registerLabel">Codigo Postal</p>
             <input class="registerInput" type="number" matInput name="postcode" formControlName="postcode"><br>
-            <mat-error *ngIf="addressForm.get('postcode')?.hasError('maxlength')" style="width:80%;">El codigo postal no puede tener mas de 5 caracteres</mat-error>
+            <mat-error *ngIf="addressForm.get('postcode')?.hasError('max')" style="width:80%;">El codigo postal no puede tener mas de 5 caracteres</mat-error>
         </div>
     </div>
 </form>
