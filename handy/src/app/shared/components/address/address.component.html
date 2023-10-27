@@ -34,7 +34,7 @@
             <p class="registerLabel">Codigo Postal</p>
             <input class="registerInput" type="number" matInput name="postcode" formControlName="postcode"><br>
             <mat-error *ngIf="addressForm.get('postcode')?.hasError('max')" style="width:80%;">El codigo postal no puede tener mas de 5 caracteres</mat-error>
-            <mat-error *ngIf="addressForm.get('postcode')?.hasError('min')" style="width:80%;">El codigo postal tiene que ser positivo</mat-error>
+            <mat-error *ngIf="addressForm.get('postcode') != undefined && addressForm.get('postcode')?.hasError('min')" style="width:80%;">El codigo postal tiene que ser positivo</mat-error>
         </div>
     </div>
 </form>

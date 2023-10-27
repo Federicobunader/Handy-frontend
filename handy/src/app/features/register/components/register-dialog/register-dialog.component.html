@@ -58,7 +58,7 @@
                         <div class="column-right">
                             <p class="registerLabel">Fecha de nacimiento</p>
                             <input class="registerDate" type="date" matInput name="userDateBorn" formControlName="userDateBorn">
-                            <mat-error *ngIf="registerForm.get('userDateBorn')?.hasError('ageInvalid')" style="margin-top:-3rem;margin-bottom: 2rem;width: 80%;">Solo mayores de 18 años pueden utilizar Handy</mat-error>
+                            <mat-error *ngIf="registerForm.get('userDateBorn') != undefined && registerForm.get('userDateBorn')?.hasError('ageInvalid')" style="margin-top:-3rem;margin-bottom: 2rem;width: 80%;">Solo mayores de 18 años pueden utilizar Handy</mat-error>
                             <p class="registerLabel">Telefono</p>
                             <input class="registerInput" type="tel" matInput name="userTel" formControlName="userTel">
                             <mat-error *ngIf="registerForm.get('userTel')?.hasError('maxlength')" style="width:80%;">El telefono no puede tener mas de 15 caracteres</mat-error>
