@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit{
 
   loginauth() {
 
-    const username = this.usernameInput.nativeElement.value;
+    const username = this.usernameInput.nativeElement.value.toLocaleLowerCase();
     const password = this.passwordInput.nativeElement.value;
 
     this.authService.login(username, password).subscribe(

@@ -27,8 +27,8 @@ export class PostsDetailsComponent {
   private $_destroyed = new Subject();
 
   postForm = new FormGroup({
-    title: new FormControl ('', [Validators.required]),
-    productName: new FormControl ('', [Validators.required]),
+    title: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
+    productName: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
     productDescription: new FormControl ('', [Validators.required]),
     productCategory: new FormControl (0, [Validators.required]),
     productBrand: new FormControl (0, [Validators.required]),
@@ -45,7 +45,7 @@ export class PostsDetailsComponent {
       province: new FormControl (0, [Validators.required, Validators.min(1)]),
       postcode: new FormControl (0, [Validators.required,  Validators.min(1)]),
       isApartment: new FormControl (false, [Validators.required]),
-      apartment: new FormControl (''),
+      apartment: new FormControl ('', [Validators.maxLength(10)]),
     }),
   });
 

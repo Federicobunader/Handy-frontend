@@ -42,14 +42,14 @@ export class RegisterDialogComponent{
   }
 
   registerForm = new FormGroup({
-    userFirstName: new FormControl ('', [Validators.required]),
-    userLastName: new FormControl ('', [Validators.required]),
-    userEmail: new FormControl ('', [Validators.required,Validators.email]),
+    userFirstName: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
+    userLastName: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
+    userEmail: new FormControl ('', [Validators.required,Validators.email, Validators.maxLength(100)]),
     userDateBorn: new FormControl (new Date(), [Validators.required, this.ageValidator()]),
-    username: new FormControl ('', [Validators.required]),
+    username: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
     userPassword: new FormControl ('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*()]{8,}$')]),
     userPasswordCheck: new FormControl ('', [Validators.required, this.passwordMatchValidator.bind(this)]),
-    userTel: new FormControl ('', [Validators.required]),
+    userTel: new FormControl ('', [Validators.required, Validators.maxLength(15), Validators.pattern('^[0-9]*$')]),
     addressForm : new FormGroup ({
       address: new FormControl ('', [Validators.required]),
       location: new FormControl (0, [Validators.required]),
@@ -110,7 +110,7 @@ export class RegisterDialogComponent{
     this.user.lastName = this.registerForm.get('userLastName')?.value?? '';
     this.user.email = this.registerForm.get('userEmail')?.value ?? '';
     this.user.dateBorn = this.registerForm.get('userDateBorn')?.value ?? new Date();
-    this.user.username = this.registerForm.get('username')?.value ?? '';
+    this.user.username = this.registerForm.get('username')?.value?.toLocaleLowerCase() ?? '';
     this.user.password = this.registerForm.get('userPassword')?.value ?? '';
     this.user.tel = this.registerForm.get('userTel')?.value ?? '';
   }

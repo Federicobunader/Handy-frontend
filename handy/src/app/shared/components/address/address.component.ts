@@ -21,12 +21,12 @@ export class AddressComponent implements OnInit {
   private $_destroyed = new Subject();
 
   addressForm = new FormGroup({
-    address: new FormControl ('', [Validators.required]),
+    address: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
     location: new FormControl (0, [Validators.required, Validators.min(1)]),
     province: new FormControl (0, [Validators.required, Validators.min(1)]),
     postcode: new FormControl (0, [Validators.required,  Validators.min(1)]),
     isApartment: new FormControl (false, [Validators.required]),
-    apartment: new FormControl (''),
+    apartment: new FormControl ('', [Validators.maxLength(10)]),
   });
 
   provinces: Province[] = [];

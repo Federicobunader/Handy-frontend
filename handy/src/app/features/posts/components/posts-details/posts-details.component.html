@@ -15,17 +15,19 @@
                 <div style="float:left;width:50%;">
                   <p class="postCreationLabel">Titulo de la publicacion</p>
                   <input class="postCreationInput" type="text" matInput name="title" formControlName="title">
+                  <mat-error *ngIf="postForm.get('title')?.hasError('maxlength')" style="width:80%;">El titulo no puede tener mas de 100 caracteres</mat-error>
                   <br>
                 </div>
                 <div style="float:left;width:50%;">
                   <p class="postCreationLabel">Nombre del Producto</p>
                   <input class="postCreationInput" type="text" matInput name="productName" formControlName="productName">
+                  <mat-error *ngIf="postForm.get('productName')?.hasError('maxlength')" style="width:80%;">El nombre del producto no puede tener mas de 100 caracteres</mat-error>
                   <br>
                 </div>
               </div>
               <div style="margin-top:10.5rem;">
                 <div class="column-left">
-                  <div style="margin-top: 1rem;">                    
+                  <div style="margin-top: 1rem;">
                     <p class="postCreationLabel">Categoría</p>
                     <mat-form-field class="categoryInput">
                         <mat-select formControlName="productCategory" name="productCategory" (selectionChange)="getSubCategories($event.value)" (selectionChange)="getBrands($event.value)">
@@ -73,9 +75,9 @@
                   <p class="postCreationLabel">Stock</p>
                   <input class="postCreationInput" type="number" matInput name="stock" formControlName="stock">
                 </div>
-              </div>              
+              </div>
               <div style="margin-top:8.5rem;margin-bottom: 5rem;">
-                <div class="column-left"> 
+                <div class="column-left">
                   <div style="margin-top: 2rem;">
                     <p class="postCreationLabel">Precio de alquiler por día</p>
                     <input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
@@ -88,8 +90,8 @@
                     <div style="margin-top: -2rem;width: 80%;">
                       <mat-icon style="color:#885B34;width:5%;" (click)="handleInformationClick()">info</mat-icon>
                       <p *ngIf="openInformationModal" class="depositInformation">El depósito es un monto que el usuario que alquila deberá pagar a modo de garantía al realizar el alquiler, y el mismo será devuelto al finalizar el mismo, siempre y cuando la herramienta haya sido devuelta en las mismas condiciones.</p>
-                    </div> 
-                  </div>  
+                    </div>
+                  </div>
                 </div>
               </div>
               <div>
