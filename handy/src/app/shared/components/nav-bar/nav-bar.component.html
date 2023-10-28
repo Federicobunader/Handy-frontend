@@ -9,13 +9,12 @@
         <img src="../../../../assets/icons/HandyLogo2.png" style="width:90px;margin-top:-30px;margin-left:10px;cursor:pointer;" routerLink="/home">
       </div>
       <div class="column-right-nav">
-        <a class="nav-bar-link" routerLink="/posts">Buscar herramientas</a>
-        <a class="nav-bar-link" routerLink="/posts/details">Crear publicación</a>
-        <a class="nav-bar-link" routerLink="/profile">Mi perfil</a>
-        <a class="nav-bar-link" routerLink="/home" (click)="logoutauth()">Cerrar sesión</a>
-        <!--<a class="nav-bar-link" routerLink="/home" (click)="signOut()">Cerrar sesión</a>-->
-        <button class="nav-bar-button" type="button" routerLink="/carts" *ngIf="showCart"><mat-icon style="transform: scale(1.5);">shopping_cart</mat-icon></button>
+        <a class="nav-bar-link showButtons" routerLink="/posts">Buscar herramientas</a>
+        <a class="nav-bar-link showButtons" routerLink="/posts/details">Crear publicación</a>
+        <a class="nav-bar-link showButtons" routerLink="/profile">Mi perfil</a>
+        <button class="nav-bar-button" title="Carrito de Compras" type="button" routerLink="/carts" *ngIf="showCart"><mat-icon class="icon">shopping_cart</mat-icon></button>
         <button class="nav-bar-button" type="button" routerLink="/posts" *ngIf="!showCart">Seguir comprando</button>
+        <button class="nav-bar-button-log-out" title="Cerrar Sesión" type="button" routerLink="/home" (click)="logoutauth()"><mat-icon class="icon">power_settings_new</mat-icon></button>
       </div>
     </div>
   </nav>

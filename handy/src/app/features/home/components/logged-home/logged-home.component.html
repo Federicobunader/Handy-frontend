@@ -1,91 +1,27 @@
-<nav-bar [navBarWithButtons]=true></nav-bar>
-<body style="min-height:100vh;background-color:#f8f3e7;">
+<body style="min-height:100vh;overflow:auto;background-color:#f8f3e7;">
+  <nav-bar [navBarWithButtons]=true style="margin-right:1rem;"></nav-bar>
   <div>
     <div class="row">
       <div class="column-left">
-        <div style="padding-top: 1rem;">
+        <div>
           <p class="title">Alquilá tus herramientas</p><p class="title"> con Handy</p>
           <p *ngIf="userName" class="label">¡Te damos la bienvenida, {{ userName }}!</p>
-          <!--<p class="label">Nombre: {{ userInfo?.info?.name }}</p>
-          <p class="label">Email: {{ userInfo?.info?.email }}</p>
-          <div class="label">Imagen:<img src="{{ userInfo?.info?.picture }}"></div>-->
-        </div>
-        <div style="text-align:right;margin-top:1rem;">
-          <button class="home-button" type="button" routerLink="/posts">BUSCAR HERRAMIENTAS</button>
-          <button class="home-button" type="button" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
         </div>
       </div>
       <div class="column-right">
-        <img src="../../../../assets/icons/HomePicture.jpg" style="padding-left:2rem;width:25rem;border-radius:1rem;height:15rem;">
+        <div class="photoContainer">
+          <img src="../../../../assets/icons/HomePicture.jpg" class="photo">
+        </div>
       </div>
     </div>
-    <!--<button class="home-button" type="button">PAGAR CON UALA</button>-->
-    <app-payment-uala-bis></app-payment-uala-bis>
-
-    <div style="padding-top:50vh;padding-bottom:1rem;">
+    <div class="buttonsContainer">
+      <button class="home-button" type="button" routerLink="/posts">BUSCAR HERRAMIENTAS</button>
+      <button class="home-button" type="button" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
+      <button class="home-button showButtons" type="button" routerLink="/profile">MI PERFIL</button>
+    </div>
+    <div style="padding-top:10rem;padding-bottom:1rem;">
       <p class="footer">© 2023 Handy Argentina</p>
       <p class="footer">Contacto: atencionalcliente@handy.com</p>
     </div>
-  </div>
-</body>
-
-<!-- <div style="background-color:#FAF3DB;height:300%">
-    <div>
-      <h1 class="title">BIENVENIDO DEVUELTA A HANDY</h1>
-    </div>
-    <div style="text-align:center;margin-top:70px;">
-      <button class="home-button" type="button" routerLink="">BUSCAR PRODUCTOS</button>
-      <button class="home-button" type="button" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
-    </div>
-    <div style="margin-top:50px;">
-      <hr class="line">
-      <h2 class="subtitle">Quizás te pueda interesar...</h2>
-      ESTO TENDRÍA QUE SER UNA ITREACIÓN DE LOS PRODUCTOS QUE LE INTERESA AL USUARIO. CUANDO TENGAMOS ESO LO CAMBIO. POR EL MOMENTO LO HARDCODEO
-      <div style="text-align:center;">
-        <div style="padding:30px;display: inline-flex;" *ngFor="let product of productsSuggested">
-          <div class="product">
-            <a href={{product.postUrl}}><img src={{product.picture}} class="productPicture"></a>
-            <hr class="productLine">
-            <div style="padding:30px;">
-              <a href={{product.postUrl}} style="text-decoration:none"><p class="productTitle">{{product.title}}</p></a>
-              <p class="productPrice">${{product.price}}</p>
-              <p class="productLocation">{{product.location}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr class="line">
-    </div>
-    tengo q hacer algo para que, si son mas de 4 productos los ofrecidos, se escondan los otros y haya q apretar una flechita para ver el resto.... otra opcion seria directamente solo recomendar 4
-    <div style="text-align:center;padding-top:20px;">
-      <img src="../../../../assets/icons/HomePicture1.png" style="width:100%;padding-top:40px;">
-    </div>
-    <div style="padding-top:50px;">
-      <div class="row">
-        <div class="column-left">
-          <p class="sub-title">¿Quiénes somos?</p>
-        </div>
-        <div class="column-right">
-          <p class="info">Handy es una idea que surgió con el objetivo de desarrollar el proyecto final de un grupo de 5 amigos, estudiantes de la carrera Ingeniería de Sistemas de Información en la Universidad Tecnológica Nacional, apasionados por la tecnologia y la innovacion.</p>
-        </div>
-      </div>
-      <div>
-        <div class="row">
-          <div class="column-left">
-            <p class="sub-title">¿Qué es Handy?</p>
-          </div>
-          <div class="column-right">
-            <p class="info">Handy es una página web orientada al leasing de herramientas en la cual los usuarios pueden tanto subir publicaciones de herramientas para poner el alquiler, como buscar herramientas para alquilar y hacer uso de ellas. Todos estos alquileres pueden ser con posibilidad de compra, siempre y cuando quien alquila lo decida.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column-left">
-            <p class="sub-title">Contacto</p>
-          </div>
-          <div class="column-right">
-            <p class="info">Podés contactarte con el equipo de Handy enviando un email a contacto@handy.com</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
+  </div> 
+</body> 

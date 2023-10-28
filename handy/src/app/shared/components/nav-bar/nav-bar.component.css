@@ -1,46 +1,112 @@
+.showButtons {
+  display: inline;
+}
 
 .column-left-nav {
-    float: left;
-    width: 20%;
-    text-align: left;
-  }
-    
-  .column-right-nav {
-    float: left;
-    width: 80%;
-    text-align: right;
-    margin-top: -1rem;
-  }
-  
-  .nav-bar-link{
-    font-size: 1.5rem;
-    font-family: 'Roboto', monospace;
-    color: #E1AE63;
-    padding-right: 2rem;
-    text-decoration: none;
-  }
+  float: left;
+  width: 20%;
+  text-align: left;
+}
 
-  .nav-bar-link:hover{
-    font-size: 1.8rem;
+.column-right-nav {
+  float: left;
+  width: 80%;
+  text-align: right;
+  margin-top: -1rem;
+}
+
+.nav-bar-link {
+  font-size: 1.5rem;
+  font-family: 'Roboto', monospace;
+  color: #E1AE63;
+  padding-right: 2rem;
+  text-decoration: none;
+}
+
+.nav-bar-link:hover {
+  font-size: 1.8rem;
+}
+
+.nav-bar-button {
+  margin-right: 1rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: white;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  border-radius: 10px;
+  font-size: medium;
+  font-family: 'Roboto', monospace;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
+.nav-bar-button:hover {
+  background-color: #EA7F1F;
+}
+
+.icon{
+  transform: scale(1.5);
+}
+
+.nav-bar-button-log-out{
+  margin-right: 2rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: white;
+  background-color: #d42f29;
+  border-color: #af2520;
+  border-radius: 10px;
+  font-size: medium;
+  font-family: 'Roboto', monospace;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
+.nav-bar-button-log-out:hover {
+  background-color: #af2520;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .showButtons {
+    display: none;
   }
   
-  .nav-bar-button{
-    margin-right: 2rem;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    color: white;
-    background-color: #E1AE63;
-    border-color: #885B34;
-    border-radius: 10px;
+  .nav-bar-button-log-out{
+    margin-right: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
     font-size: medium;
-    font-family: 'Roboto', monospace;
     font-weight: 500;
-    letter-spacing: 0.1rem;
-    cursor: pointer;
+    margin-top: 0.5rem;
   }
 
-  .nav-bar-button:hover{
-    background-color: #EA7F1F;
+  .nav-bar-link {
+    font-size: 1rem;
+    padding-right: 1rem;
   }
+
+  .icon{
+    transform: scale(1);
+    padding-top: 0.4rem;
+  }
+  
+  .nav-bar-button {
+    margin-right: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-size: medium;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+}
