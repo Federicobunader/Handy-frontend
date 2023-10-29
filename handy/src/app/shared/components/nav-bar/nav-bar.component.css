@@ -48,11 +48,11 @@
   background-color: #EA7F1F;
 }
 
-.icon{
+.icon {
   transform: scale(1.5);
 }
 
-.nav-bar-button-log-out{
+.nav-bar-button-log-out {
   margin-right: 2rem;
   padding-left: 20px;
   padding-right: 20px;
@@ -77,8 +77,8 @@
   .showButtons {
     display: none;
   }
-  
-  .nav-bar-button-log-out{
+
+  .nav-bar-button-log-out {
     margin-right: 1rem;
     padding-left: 10px;
     padding-right: 10px;
@@ -91,14 +91,14 @@
 
   .nav-bar-link {
     font-size: 1rem;
-    padding-right: 1rem;
+    padding-right: 2.5rem;
   }
 
-  .icon{
+  .icon {
     transform: scale(1);
     padding-top: 0.4rem;
   }
-  
+
   .nav-bar-button {
     margin-right: 1rem;
     padding-left: 10px;

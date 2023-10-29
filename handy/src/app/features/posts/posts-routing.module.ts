@@ -5,6 +5,7 @@ import { PostsDashboardComponent } from './components/posts-dashboard/posts-dash
 import { PostsDetailsComponent } from './components/posts-details/posts-details.component';
 import { PostsViewComponent } from './components/posts-view/posts-view.component';
 import { PostsArViewerComponent } from './components/posts-ar-viewer/posts-ar-viewer.component';
+import { PostRecommendationComponent } from './components/post-recommendation/post-recommendation.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'posts/AR',
     component: PostsArViewerComponent,
+  },
+  {
+    path: 'posts/recommendation',
+    component: PostRecommendationComponent,
   },
 ];
 

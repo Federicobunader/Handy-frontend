@@ -8,6 +8,7 @@ import { PostsDetailsComponent } from './components/posts-details/posts-details.
 import { DialogPostsRatingsComponent } from './components/post-ratings/post-ratings.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PostsViewComponent } from './components/posts-view/posts-view.component';
+import { PostRecommendationComponent } from './components/post-recommendation/post-recommendation.component';
 import { DialogPostPhotoDetailsComponent } from './components/post-photos-details/post-photos-details.component';
 import { CartRoutingModule } from '../cart/cart-routing.module';
 import { DialogPostsCommentDetailsComponent } from './components/posts-comment-details/posts-comment-details.component';
@@ -22,6 +23,7 @@ import { PostsArViewerComponent } from './components/posts-ar-viewer/posts-ar-vi
     PostsDashboardComponent,
     PostsDetailsComponent,
     PostsViewComponent,
+    PostRecommendationComponent,
     DialogPostsCommentDetailsComponent,
     PostsCommentDashboardComponent,
     DialogPostsRatingsComponent,

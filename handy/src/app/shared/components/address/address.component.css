@@ -1,11 +1,11 @@
-.registerLabel{  
+.registerLabel {
   font-family: 'Roboto', monospace;
   color: #885B34;
   font-size: 1.5rem;
   font-weight: 900;
 }
 
-.registerInput{
+.registerInput {
   width: 80%;
   height: 2rem;
   border-top-width: 0px;
@@ -17,12 +17,12 @@
   background-color: #f8f3e7;
 }
 
-.addressCheckbox{
+.addressCheckbox {
   font-family: 'Roboto', monospace;
   color: #885B34;
   font-weight: bold;
   font-size: 1.5rem;
-} 
+}
 
 input:focus,
 select:focus,
@@ -41,32 +41,25 @@ button:focus {
   width: 50%;
 }
 
-.addressInput{
+.addressInput {
   width: 80%;
   height: 70px;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 480px){
+@media only screen and (min-width: 320px) and (max-width: 480px) {
   .column-left {
     width: 100%;
   }
-  
+
   .column-right {
     width: 100%;
   }
 
-  .registerLabel{
+  .registerLabel {
     font-size: 1.2rem;
   }
 
-  .addressCheckbox{
+  .addressCheckbox {
     font-size: 1.2rem;
-  } 
+  }
 }
-  
-
-  
-
-  
-
-  

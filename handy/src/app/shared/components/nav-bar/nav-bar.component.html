@@ -1,20 +1,26 @@
-
-<nav class="navbar" style="background-color:#885B34;width:100%;height:50px;padding-top:30px;padding-bottom:10px;" *ngIf="!navBarWithButtons">
-    <img src="../../../../assets/icons/HandyLogo2.png" style="width:90px;margin-top:-30px;margin-left:10px;cursor:pointer;" routerLink="/home">
+<nav class="navbar" style="background-color:#885B34;width:100%;height:50px;padding-top:30px;padding-bottom:10px;"
+  *ngIf="!navBarWithButtons">
+  <img src="../../../../assets/icons/HandyLogo2.png"
+    style="width:90px;margin-top:-30px;margin-left:10px;cursor:pointer;" routerLink="/home">
 </nav>
 
-<nav class="navbar" style="background-color:#885B34;width:100%;height:50px;padding-top:30px;padding-bottom:10px;" *ngIf="navBarWithButtons">
-    <div>
-      <div class="column-left-nav">
-        <img src="../../../../assets/icons/HandyLogo2.png" style="width:90px;margin-top:-30px;margin-left:10px;cursor:pointer;" routerLink="/home">
-      </div>
-      <div class="column-right-nav">
-        <a class="nav-bar-link showButtons" routerLink="/posts">Buscar herramientas</a>
-        <a class="nav-bar-link showButtons" routerLink="/posts/details">Crear publicación</a>
-        <a class="nav-bar-link showButtons" routerLink="/profile">Mi perfil</a>
-        <button class="nav-bar-button" title="Carrito de Compras" type="button" routerLink="/carts" *ngIf="showCart"><mat-icon class="icon">shopping_cart</mat-icon></button>
-        <button class="nav-bar-button" type="button" routerLink="/posts" *ngIf="!showCart">Seguir comprando</button>
-        <button class="nav-bar-button-log-out" title="Cerrar Sesión" type="button" routerLink="/home" (click)="logoutauth()"><mat-icon class="icon">power_settings_new</mat-icon></button>
-      </div>
+<nav class="navbar" style="background-color:#885B34;width:100%;height:50px;padding-top:30px;padding-bottom:10px;"
+  *ngIf="navBarWithButtons">
+  <div>
+    <div class="column-left-nav">
+      <img src="../../../../assets/icons/HandyLogo2.png"
+        style="width:90px;margin-top:-30px;margin-left:10px;cursor:pointer;" routerLink="/home">
     </div>
-  </nav>
+    <div class="column-right-nav">
+      <a class="nav-bar-link showButtons" routerLink="/posts/recommendation">Tooly</a>
+      <a class="nav-bar-link showButtons" routerLink="/posts">Buscar herramientas</a>
+      <a class="nav-bar-link showButtons" routerLink="/posts/details">Crear publicación</a>
+      <a class="nav-bar-link showButtons" routerLink="/profile">Mi perfil</a>
+      <button class="nav-bar-button" title="Carrito de Compras" type="button" routerLink="/carts"
+        *ngIf="showCart"><mat-icon class="icon">shopping_cart</mat-icon></button>
+      <button class="nav-bar-button" type="button" routerLink="/posts" *ngIf="!showCart">Seguir comprando</button>
+      <button class="nav-bar-button-log-out" title="Cerrar Sesión" type="button" routerLink="/home"
+        (click)="logoutauth()"><mat-icon class="icon">power_settings_new</mat-icon></button>
+    </div>
+  </div>
+</nav>

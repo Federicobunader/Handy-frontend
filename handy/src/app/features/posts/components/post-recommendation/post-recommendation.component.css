@@ -1,0 +1,124 @@
+.container{
+    margin: 6rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #E1AE63;
+    letter-spacing: 0.1rem;
+    margin-bottom: 2rem;
+}
+
+.subTitle {
+    font-family: 'Roboto', monospace;
+    color: #E7BF81;
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+  
+}
+
+.label{
+    font-family: 'Roboto', monospace;
+    color: #E7BF81;
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+}
+
+.photoWebContainer{
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.photoMobileContainer{
+    display: none;
+}
+
+.photo{
+    width: 8rem;
+    height: 8rem;  
+    padding-bottom: 1rem;  
+}
+
+.input{
+    width: 70%;
+    height: 2rem;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-color: #885B34;
+    border-bottom-width: 0.2rem;
+    margin-bottom: 2rem;
+    background-color: #f8f3e7;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.button{
+    width: 20%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: large;
+    font-family: 'Roboto', monospace;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.button:hover{
+    background-color: #885B34;
+}
+
+.footer {
+    font-family: 'Roboto', monospace;
+    font-weight: bold;
+    color: #C2C2C2;
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: -1.2rem;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .container{
+        margin: 2rem;
+    }
+    .photoWebContainer{
+        display: none;
+    }    
+    .photoMobileContainer{
+        display: block;
+        margin-bottom: 2rem;
+    }
+    .button{
+        width: 80%;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: medium;
+    }
+    .subTitle{
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    .label{
+        font-size: 1.2rem;        
+    }
+    .input{
+        width: 90%;
+    }
+}

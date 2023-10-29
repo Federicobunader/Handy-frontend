@@ -4,7 +4,8 @@
     <div class="row">
       <div class="column-left">
         <div>
-          <p class="title">Alquilá tus herramientas</p><p class="title"> con Handy</p>
+          <p class="title">Alquilá tus herramientas</p>
+          <p class="title"> con Handy</p>
           <p *ngIf="userName" class="label">¡Te damos la bienvenida, {{ userName }}!</p>
         </div>
       </div>
@@ -15,13 +16,14 @@
       </div>
     </div>
     <div class="buttonsContainer">
-      <button class="home-button" type="button" routerLink="/posts">BUSCAR HERRAMIENTAS</button>
-      <button class="home-button" type="button" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
+      <button class="home-button showButtons" type="button" routerLink="/posts/recommendation">TOOLY</button>
+      <button class="home-button showButtons" type="button" routerLink="/posts">BUSCAR HERRAMIENTAS</button>
+      <button class="home-button showButtons" type="button" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
       <button class="home-button showButtons" type="button" routerLink="/profile">MI PERFIL</button>
     </div>
     <div style="padding-top:10rem;padding-bottom:1rem;">
       <p class="footer">© 2023 Handy Argentina</p>
       <p class="footer">Contacto: handy2023.information@gmail.com</p>
     </div>
-  </div> 
-</body> 
+  </div>
+</body>
