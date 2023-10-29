@@ -14,6 +14,7 @@ import { DialogPostPhotoDetailsComponent } from '../post-photos-details/post-pho
 import { PostRatingService } from '../../services/post-rating-service/post-rating.service';
 import { PostsCommentDashboardComponent } from '../posts-comment-dashboard/posts-comment-dashboard.component';
 import { PostRating } from 'src/app/core/models/postRating';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-posts-view',
@@ -35,7 +36,8 @@ export class PostsViewComponent {
       public dialog: MatDialog,
       private sessiontokenService: SessiontokenService,
       private userService: UserService,
-      private router: Router,) {}
+      private router: Router,
+      private _location: Location) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -163,6 +165,10 @@ export class PostsViewComponent {
 
   get canBeSold(){
     return this.post.product.salesPrice != undefined;
+  }
+
+  goBack(){
+    this._location.back();
   }
 
 }

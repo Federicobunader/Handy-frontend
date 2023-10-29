@@ -1,85 +1,89 @@
 
 <body style="overflow:auto;background-color:#f8f3e7;width:100%;">
-  <nav-bar [navBarWithButtons]=true></nav-bar>
-  <div style="padding-top:3rem;padding-left:7rem;padding-right:7rem;">
-    <p class="goBack" routerLink=".."><u>← Volver atrás</u></p> <!-- FALTA AGREGAR LOGICA PARA QUE VUELVA A LA PAGINA EN LA Q ESTABA ANTES -->
+  <nav-bar [navBarWithButtons]=true style="margin-right:1rem;"></nav-bar>
+  <div class="topContainer">
+    <p class="goBack" (click)="goBack()"><u>← Volver atrás</u></p> 
     <p class="title">{{this.post.title}}</p>
   </div>
   <div class="productBox">
-    <div style="margin-top:1rem;">
+    <div class="row">
       <div class="column-left">
-        <p class="stockInfo" style="margin-bottom:-0.1rem;cursor:pointer;" (click)="openPhotosModal()">+{{amountOfPictures}} fotos</p>
-        <img src={{this.post.photos[0].url}} class="productPicture" (click)="openPhotosModal()">
-        <p class="productInfo" style="size:95%;margin-bottom:1rem;font-size:1rem;color:#E1AE63;">Publicación de {{this.post.author.username}}</p>
-        <p class="stockInfo" *ngIf="this.post.stock == 1">{{this.post.stock}} unidad disponible</p>
-        <p class="stockInfo" *ngIf="this.post.stock == 0">Sin stock</p>
-        <p class="stockInfo" *ngIf="this.post.stock > 1">{{this.post.stock}} unidades disponibles</p>
-        <div style="margin-top:2rem;" *ngIf="this.post.stock > 0">
-            <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createCart()">AGREGAR AL CARRITO</button>
-            <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createComment()">HACER UNA CONSULTA</button>
-            <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="viewAR()">VISUALIZAR CON REALIDAD AUMENTADA</button>
-            <button class="postButton" *ngIf="this.post.author.id === this.user.id" (click)="editPost()">EDITAR PUBLICACION</button>
-            <!-- <button class="askButton" (click)="createChat()">MENSAJE PRIVADO (no va aca)</button> -->
+        <div class="productPicAndActionsContainer">
+          <p class="stockInfo" style="margin-bottom:-0.1rem;cursor:pointer;" (click)="openPhotosModal()">+{{amountOfPictures}} fotos</p>
+          <img src={{this.post.photos[0].url}} class="productPicture" (click)="openPhotosModal()">
+          <p class="productInfo" style="size:95%;margin-bottom:1rem;font-size:1rem;color:#E1AE63;">Publicación de {{this.post.author.username}}</p>
+          <p class="stockInfo" *ngIf="this.post.stock == 1">{{this.post.stock}} unidad disponible</p>
+          <p class="stockInfo" *ngIf="this.post.stock == 0">Sin stock</p>
+          <p class="stockInfo" *ngIf="this.post.stock > 1">{{this.post.stock}} unidades disponibles</p>
+          <div style="margin-top:2rem;" *ngIf="this.post.stock > 0">
+              <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createCart()">AGREGAR AL CARRITO</button>
+              <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createComment()">HACER UNA CONSULTA</button>
+              <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="viewAR()">VISUALIZAR CON REALIDAD AUMENTADA</button>
+              <button class="postButton" *ngIf="this.post.author.id === this.user.id" (click)="editPost()">EDITAR PUBLICACION</button>
+              <!-- <button class="askButton" (click)="createChat()">MENSAJE PRIVADO (no va aca)</button> -->
+          </div>
         </div>
       </div>
       <div class="column-right">
-        <p class="productPrice"><span style="font-size:4rem;margin-right:0.5rem;">${{this.post.product.rentalPrice}}</span> alquiler por día + ${{this.post.product.depositPrice}} de depósito</p><br>
-        <p class="productPrice" *ngIf="this.post.isLeasing"><span style="font-size:4rem;margin-right:0.5rem;">${{this.post.product.salesPrice}}</span> precio de venta</p><br>
-        <div style="margin-top:1rem;">
-          <mat-icon class="locationIcon">location_on</mat-icon>
-          <p class="productInfo" style="size:95%;">{{this.post.address.location.name}}, {{this.post.address.location.province.name}}</p>
+        <div class="productInfoContainer">
+          <p class="productPrice"><span class="priceNumber">${{this.post.product.rentalPrice}}</span> alquiler por día + ${{this.post.product.depositPrice}} de depósito</p><br>
+          <p class="productPrice" *ngIf="this.post.isLeasing"><span class="priceNumber">${{this.post.product.salesPrice}}</span> precio de venta</p><br>
+          <div class="locationContainer">
+            <mat-icon class="locationIcon">location_on</mat-icon>
+            <p class="productInfo">{{this.post.address.location.name}}, {{this.post.address.location.province.name}}</p>
+          </div>
+          <div class="ratingContainer">
+            <div *ngIf="this.averageScore < 1">
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+            </div>
+            <div *ngIf="this.averageScore >= 1 && this.averageScore < 2">
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+            </div>
+            <div *ngIf="this.averageScore >= 2 && this.averageScore < 3">
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+            </div>
+            <div *ngIf="this.averageScore >= 3 && this.averageScore < 4">
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+            </div>
+            <div *ngIf="this.averageScore >= 4 && this.averageScore < 5">
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+            </div>
+            <div *ngIf="this.averageScore == 5">
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+              <mat-icon class="starIcon">star</mat-icon>
+            </div>
+            <a class="opinions" *ngIf="this.ratings.length != 0" (click)="showPostRatings()"><u>{{ratingMessage}}</u></a>
+            <p class="opinions" *ngIf="this.ratings.length == 0">{{ratingMessage}}</p>
+          </div>
+          <div>
+            <br><p class="productInfo" style="font-size:1rem;"><u>Acerca de este producto</u></p>
+            <p class="productInfo" style="margin-top:-1rem;width:100%;text-align:justify;letter-spacing:1px;">{{this.post.product.description}}</p>
+          </div>
         </div>
-        <div style="display:flex;">
-          <div *ngIf="this.averageScore < 1">
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-          </div>
-          <div *ngIf="this.averageScore >= 1 && this.averageScore < 2">
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-          </div>
-          <div *ngIf="this.averageScore >= 2 && this.averageScore < 3">
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-          </div>
-          <div *ngIf="this.averageScore >= 3 && this.averageScore < 4">
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-          </div>
-          <div *ngIf="this.averageScore >= 4 && this.averageScore < 5">
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star_outline</mat-icon>
-          </div>
-          <div *ngIf="this.averageScore == 5">
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-            <mat-icon class="starIcon">star</mat-icon>
-          </div>
-          <a class="opinions" *ngIf="this.ratings.length != 0" (click)="showPostRatings()"><u>{{ratingMessage}}</u></a>
-          <p class="opinions" *ngIf="this.ratings.length == 0">{{ratingMessage}}</p>
         </div>
-        <div>
-          <br><p class="productInfo" style="font-size:1rem;">Acerca de este producto</p>
-          <p class="productInfo" style="margin-top:-1rem;width:100%;text-align:justify;letter-spacing:1px;">{{this.post.product.description}}</p>
-        </div>
-      </div>
     </div>
   </div>
   <br>
@@ -88,7 +92,7 @@
   </div>
   <div style="padding-top:30vh;padding-bottom:1rem;background-color:#f8f3e7;">
     <p class="footer">© 2023 Handy Argentina</p>
-    <p class="footer">Contacto: atencionalcliente@handy.com</p>
+    <p class="footer">Contacto: handy2023.information@gmail.com</p>
   </div>
 </body>
 

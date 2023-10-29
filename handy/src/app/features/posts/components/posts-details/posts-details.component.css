@@ -1,4 +1,4 @@
-.title{
+.title {
     font-size: 3rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
@@ -7,28 +7,28 @@
     letter-spacing: 0.1rem;
 }
 
-.postCreationBox{
-    background-color:#f8f3e7;
+.postCreationBox {
+    background-color: #f8f3e7;
     padding: 3rem;
     width: 90%;
     border: 3px solid #E7BF81;
 }
 
-.tabLabel{   
+.tabLabel {
     font-family: 'Roboto', monospace;
     color: #E7BF81;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-.postCreationLabel{  
+.postCreationLabel {
     font-family: 'Roboto', monospace;
     color: #885B34;
     font-size: 1.5rem;
     font-weight: 900;
 }
 
-.postCreationInput{
+.postCreationInput {
     width: 80%;
     height: 2rem;
     border-top-width: 0px;
@@ -36,11 +36,11 @@
     border-right-width: 0px;
     border-color: #885B34;
     border-bottom-width: 0.2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     background-color: #f8f3e7;
 }
 
-.postTitleInput{
+.postTitleInput {
     width: 40%;
     height: 2rem;
     border-top-width: 0px;
@@ -52,7 +52,7 @@
     background-color: #f8f3e7;
 }
 
-.descriptionInput{
+.descriptionInput {
     width: 90%;
     height: 5rem;
     border: 0.2rem solid #885B34;
@@ -60,29 +60,29 @@
     background-color: #f8f3e7;
 }
 
-.leasingInput{
+.checkboxInput {
     font-family: 'Roboto', monospace;
     color: #885B34;
     font-weight: bold;
     font-size: 1.5rem;
 }
-  
+
 .column-left {
     float: left;
     width: 50%;
 }
-    
+
 .column-right {
     float: right;
     width: 50%;
 }
 
-.categoryInput{
+.selectorInput {
     width: 80%;
     height: 70px;
 }
 
-.createButton{
+.createButton {
     width: 30%;
     padding-left: 40px;
     padding-right: 40px;
@@ -98,11 +98,11 @@
     cursor: pointer;
 }
 
-.createButton:hover{
+.createButton:hover {
     background-color: #885B34;
-  }
+}
 
-.createButtonDisabled{
+.createButtonDisabled {
     width: 30%;
     padding-left: 40px;
     padding-right: 40px;
@@ -117,7 +117,7 @@
     font-weight: bold;
 }
 
-.footer{
+.footer {
     font-family: 'Roboto', monospace;
     font-weight: bold;
     color: #C2C2C2;
@@ -126,12 +126,13 @@
     margin-top: -1.2rem;
 }
 
-.depositInformation{
+.depositInformation {
     font-size: 0.7rem;
     font-family: 'Roboto', monospace;
-    color: #885B34; 
-    width: 95%;
-    float:right;
+    color: #885B34;
+    width: 90%;
+    float: right;
+    margin-left: 1px;
 }
 
 input:focus,
@@ -139,4 +140,125 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+
+.container {
+    padding-top: 7rem;
+    padding-left: 7rem;
+    padding-right: 7rem;
+}
+
+.row {
+    margin-top: 50px;
+    margin-left: 30px;
+}
+
+.column-left {
+    float: left;
+    width: 50%;
+}
+
+.column-right {
+    float: left;
+    width: 50%;
+}
+
+.mobileMessage {
+    display: none;
+}
+
+.informationContainer {
+    margin-top: -1.5rem;
+    width: 80%;
+}
+
+.informationIcon {
+    color: #885B34;
+    transform: scale(1);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .container {
+        padding-top: 3rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+    .title {
+        font-size: 2rem;
+        margin-left: 2rem;
+    }
+    .postCreationBox {
+        padding: 1rem;
+        width: 90%;
+        border: 0px solid #E7BF81;
+        margin-bottom: 2rem;
+    }
+    .tabLabel {
+        font-size: 1rem;
+    }
+    .postCreationLabel {
+        font-size: 1.2rem;
+    }
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+    .column-left {
+        float: left;
+        width: 100%;
+    }
+    .column-right {
+        float: left;
+        width: 100%;
+    }
+    .postCreationInput {
+        width: 90%;
+    }
+    .selectorInput {
+        width: 90%;
+        height: 60px;
+    }
+    .informationContainer {
+        margin-top: -1.5rem;
+        margin-bottom: 1.5rem;
+        width: 90%;
+        text-align: justify;
+    }
+    .informationIcon {
+        transform: scale(0.9);
+    }
+    .checkboxInput {
+        font-size: 1.2rem;
+        width: 90%;
+        text-align: justify;
+    }
+    .depositInformation {
+        width: 90%;
+    }
+    .createButton {
+        width: 80%;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: medium;
+    }
+    .createButtonDisabled {
+        width: 80%;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: medium;
+    }
+    .mobileMessage {
+        display: flex;
+        font-family: 'Roboto', monospace;
+        color: #885B34;
+        font-size: 0.7rem;
+        font-weight: 900;
+        margin-left: 2rem;
+        width: 80%;
+        text-align: justify;
+    }
 }

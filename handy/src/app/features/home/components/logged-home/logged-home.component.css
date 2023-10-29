@@ -79,6 +79,14 @@
   height: 15rem;
 }
 
+.label{
+  font-size: 1.5rem;
+  font-family: 'Roboto', monospace;
+  color: #E1AE63;
+  padding-top: 1rem;
+  text-align: right;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 480px){
   .showButtons{
     display: inline;
@@ -142,5 +150,9 @@
     width: 20rem;
     font-size: medium;
   }
-  
+
+  .label{
+    font-size: 1rem;
+    text-align: center;
+  }
 }

@@ -141,7 +141,7 @@ button:focus {
   margin-top: -1.2rem;
 }
 
-.mediaMessage{
+.mobileMessage{
   display: none;
 }
 
@@ -214,7 +214,7 @@ button:focus {
     font-size: 0.8rem;
   }
 
-  .mediaMessage{
+  .mobileMessage{
     display: flex;
     font-family: 'Roboto', monospace;
     color: #885B34;

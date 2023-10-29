@@ -1,13 +1,13 @@
 <body style="min-height:50vh;overflow:auto;background-color:#f8f3e7;">
-  <nav-bar [navBarWithButtons]=true *ngIf="toolsSearch"></nav-bar>
-  <div style="padding-top:7rem;padding-left:7rem;padding-right:7rem;">
+  <nav-bar [navBarWithButtons]=true *ngIf="toolsSearch" style="margin-right:1rem;"></nav-bar>
+  <div class="container">
     <div *ngIf="toolsSearch">
       <div>
         <h1 class="title">Buscá lo que necesitás</h1>
       </div>
       <div class="filteringSection">
         <input class="searchbar" placeholder="Buscar..." type="text" matInput name="title" [(ngModel)]="selectedTitle" (input)="filteredPostsToShow()">
-        <div style="margin-left:1rem;display:inherit;width:80%;">
+        <div class="filteringContainer">
           <div class="order">
             <p class="filterLabel">Ordenar por</p>
             <select class="picklist" #orderingOptions (change)="orderBySelected(orderingOptions.value)">
@@ -17,7 +17,7 @@
               </option>
             </select>
           </div>    
-          <button class="resetFilters" (click)="showFilters()">{{showLabel}}</button>       
+          <button class="filterButton" (click)="showFilters()">{{showLabel}}</button>       
         </div> 
       </div>      
       <div *ngIf="showAllFilters" class="filtersBox">
@@ -67,7 +67,7 @@
               </mat-option>
             </mat-select>
           </div>
-          <button class="resetFilters" (click)="cleanFilters()">Limpiar filtros</button>
+          <button class="filterButton" (click)="cleanFilters()">Limpiar filtros</button>
         </div>        
       </div>
       <hr class="line">
@@ -78,7 +78,7 @@
         <button class="createPostButton" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
       </div>
     </div>
-    <div *ngIf="this.postsToShow.length > 0">
+    <div *ngIf="this.postsToShow.length > 0" class="postsSection">
       <div style="display: inline-flex;" *ngFor="let post of postsToShow" (click)="sendTo(post)">
         <div class="productBox">  
           <img src={{post.photos[0].url}} class="postPicture">
@@ -98,6 +98,6 @@
   </div>
   <div *ngIf="toolsSearch" style="padding-top:30vh;padding-bottom:1rem;background-color:#f8f3e7;">
     <p class="footer">© 2023 Handy Argentina</p>
-    <p class="footer">Contacto: atencionalcliente@handy.com</p>
+    <p class="footer">Contacto: handy2023.information@gmail.com</p>
   </div>
 </body>
