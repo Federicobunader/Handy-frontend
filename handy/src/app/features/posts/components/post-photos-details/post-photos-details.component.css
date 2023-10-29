@@ -82,6 +82,13 @@
     font-weight: bold;
 }
 
+@media only screen and (min-width: 320px) and (max-width: 480px) {    
+    .productPicture{
+        max-width: 15rem;
+        max-height: 15rem;
+    }
+}
+
 
 
     

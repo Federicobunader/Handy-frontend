@@ -134,3 +134,13 @@
     background-color: #885B34;
   }
   
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    .searchToolsButton{
+      width: 100%;
+      font-size: small;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }

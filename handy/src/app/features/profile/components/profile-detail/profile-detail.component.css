@@ -1,4 +1,4 @@
-.title{
+.title {
   font-size: 3rem;
   font-family: 'Roboto', monospace;
   font-weight: bold;
@@ -7,10 +7,10 @@
   letter-spacing: 0.1rem;
 }
 
-.panelOption{
+.panelOption {
   font-size: 1rem;
   font-family: 'Roboto', monospace;
-  background-color:#E1AE63;
+  background-color: #E1AE63;
   height: 4rem;
   border: 0.1rem solid #885B34;
 }
@@ -21,11 +21,11 @@
   align-items: flex-start;
 }
 
-.panelSubOption{
+.panelSubOption {
   font-size: 1rem;
   font-family: 'Roboto', monospace;
-  color:#885B34;
-  background-color:#E1AE63;
+  color: #885B34;
+  background-color: #E1AE63;
   height: 4rem;
   border: 0.1rem solid #885B34;
   margin-bottom: 1rem;
@@ -33,26 +33,30 @@
   border-radius: 0.5rem;
 }
 
-.panelSubOption:hover{
-  background-color:#885B34;
-  color:#E1AE63;
+.panelSubOption:hover {
+  background-color: #885B34;
+  color: #E1AE63;
 }
 
-.footer{
+.footer {
   font-family: 'Roboto', monospace;
   font-weight: bold;
   color: #C2C2C2;
   text-align: center;
   font-size: 0.7rem;
   margin-top: -1.2rem;
-} 
+}
 
-  /* Estilos para el componente cargado en el MatExpansionPanel */
+/* Estilos para el componente cargado en el MatExpansionPanel */
 .app-custom-component {
-  flex-grow: 1; /* Ocupar todo el espacio disponible */
-  align-self: stretch; /* Estirarse verticalmente para ajustarse al tamaño del panel */
-  max-width: 100%; /* Ancho máximo */
-  max-height: 100%; /* Alto máximo */
+  flex-grow: 1;
+  /* Ocupar todo el espacio disponible */
+  align-self: stretch;
+  /* Estirarse verticalmente para ajustarse al tamaño del panel */
+  max-width: 100%;
+  /* Ancho máximo */
+  max-height: 100%;
+  /* Alto máximo */
   /* Agrega otros estilos según tus necesidades */
 }
 
@@ -61,8 +65,31 @@ app-register-dialog {
   max-width: 100%;
 }
 
-app-posts-dashboard{
+app-posts-dashboard {
   margin-top: -6rem;
   margin-bottom: 1rem;
   margin-left: -6rem;
+}
+
+.container {
+  padding-top: 7rem;
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .container {
+    padding-top: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .panelOption {
+    font-size: 0.9rem;
+  }
+
 }

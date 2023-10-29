@@ -3,8 +3,8 @@
   <div style="display:inline;text-align:center;border-top:0.2rem solid #885B34;background-color:#885B34;">
     <p class="footer">Foto {{photoNumber}} de {{post.photos.length}}</p>
     <button *ngIf="showPrevious" (click)="previousPicture()" class="previous"><</button>
-    <button *ngIf="!showPrevious" class="previousDisabled"><</button>
+    <button *ngIf="!showPrevious" class="previousDisabled" disabled><</button>
     <button *ngIf="showNext" (click)="nextPicture()" class="next">></button>
-    <button *ngIf="!showNext" class="nextDisabled">></button>
+    <button *ngIf="!showNext" class="nextDisabled" disabled>></button>
   </div>
 </div>

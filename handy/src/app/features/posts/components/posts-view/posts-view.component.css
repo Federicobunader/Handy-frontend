@@ -1,22 +1,22 @@
-.title{
+.title {
     font-size: 4rem;
     font-family: 'Roboto', monospace;
     color: #885B34;
-    padding-bottom: 2rem;    
+    padding-bottom: 2rem;
     letter-spacing: 0.1rem;
 }
 
-.goBack{
+.goBack {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
     color: #885B34;
-    padding-bottom: 1rem;    
+    padding-bottom: 1rem;
     cursor: pointer;
 }
 
-.productBox{
-    background-color:#EBE1BE;
+.productBox {
+    background-color: #EBE1BE;
     padding-bottom: 6rem;
     width: 100%;
     border-top: 0.2rem solid #E7BF81;
@@ -24,14 +24,14 @@
     overflow: auto;
 }
 
-.productPicture{
+.productPicture {
     width: 100%;
     height: 60%;
     border: 0.2rem solid #885B34;
     cursor: pointer;
 }
 
-.postButton{
+.postButton {
     width: 100%;
     padding-left: 30px;
     padding-right: 30px;
@@ -43,12 +43,12 @@
     font-size: large;
     font-family: 'Roboto', monospace;
     font-weight: bold;
-    margin-bottom:2rem;
+    margin-bottom: 2rem;
     letter-spacing: 0.1rem;
     cursor: pointer;
 }
 
-.postButton:hover{
+.postButton:hover {
     background-color: #885B34;
 }
 
@@ -57,18 +57,18 @@
     width: 30%;
 }
 
-.productPicAndActionsContainer{
+.productPicAndActionsContainer {
     margin: 4rem;
     padding-left: 6rem;
 }
-    
+
 .column-right {
     float: left;
     width: 70%;
     margin-top: 1rem;
 }
 
-.productInfoContainer{
+.productInfoContainer {
     border: 1px solid #E1AE63;
     padding-top: 3rem;
     padding-left: 3rem;
@@ -79,34 +79,34 @@
     margin: 4rem;
 }
 
-.productPrice{
+.productPrice {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
-    color: #885B34;   
-    text-align: left; 
+    color: #885B34;
+    text-align: left;
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
 
-.productInfo{
+.productInfo {
     font-size: 1.5rem;
     font-family: 'Roboto', monospace;
-    color: #885B34;  
+    color: #885B34;
     margin-bottom: 2rem;
 }
 
-.stockInfo{
+.stockInfo {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
-    color: #885B34;  
+    color: #885B34;
     margin-bottom: 2rem;
     size: 95%;
     margin-top: 1rem;
 }
 
-.opinions{
+.opinions {
     font-family: 'Roboto', monospace;
-    color: #885B34;  
+    color: #885B34;
     margin-bottom: 2rem;
     font-size: 1rem;
     margin-left: 1rem;
@@ -114,14 +114,14 @@
     cursor: pointer;
 }
 
-.starIcon{
+.starIcon {
     transform: scale(1.5);
     color: #885B34;
-    margin-left: 0.5rem;  
+    margin-left: 0.5rem;
     margin-bottom: 2rem;
 }
 
-.footer{
+.footer {
     font-family: 'Roboto', monospace;
     font-weight: bold;
     color: #C2C2C2;
@@ -130,7 +130,7 @@
     margin-top: -1.2rem;
 }
 
-.locationIcon{
+.locationIcon {
     transform: scale(1.5);
     padding-bottom: 0.9rem;
     color: #E1AE63;
@@ -145,75 +145,89 @@ button:focus {
     outline: none;
 }
 
-.topContainer{
+.topContainer {
     padding-top: 3rem;
     padding-left: 7rem;
     padding-right: 7rem;
 }
 
-.row{
+.row {
     margin-top: 1rem;
 }
 
-.priceNumber{
+.priceNumber {
     font-size: 4rem;
     margin-right: 0.5rem;
 }
 
-.locationContainer{
+.locationContainer {
     margin-top: 1rem;
 }
 
-.ratingContainer{
+.ratingContainer {
     display: flex;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-    .topContainer{
+    .topContainer {
         padding-top: 1rem;
         padding-left: 2rem;
         padding-right: 0rem;
     }
-    .title{
+
+    .title {
         font-size: 2rem;
     }
-    .goBack{
+
+    .goBack {
         font-size: 0.8rem;
-        padding-bottom: 1rem; 
+        padding-bottom: 1rem;
     }
-    .productBox{
+
+    .productBox {
         padding: 0rem;
         margin: 0rem;
-    }    
-    .row{
+    }
+
+    .row {
         display: flex;
         flex-direction: column;
     }
+
     .column-left {
         width: 100%;
     }
-    .productPicAndActionsContainer{
+
+    .productPicAndActionsContainer {
         margin: 3rem;
         padding-left: 0rem;
-    }        
+    }
+
     .column-right {
         width: 100%;
         margin-top: 0rem;
-    }    
-    .productInfoContainer{
-        margin: 2rem;
+    }
+
+    .productInfoContainer {
+        margin-top: 0rem;
+        margin-bottom: 2rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
         padding-top: 2rem;
         padding-left: 1rem;
         padding-right: 1rem;
         padding-bottom: 2rem;
-    }   
-    .stockInfo{
+    }
+
+    .stockInfo {
         font-size: 0.7rem;
     }
-    .productInfo{
+
+    .productInfo {
         font-size: 1rem;
     }
-    .postButton{
+
+    .postButton {
         width: 100%;
         padding-left: 20px;
         padding-right: 20px;
@@ -222,27 +236,34 @@ button:focus {
         font-size: medium;
         margin-bottom: 0rem;
     }
-    .priceNumber{
+
+    .priceNumber {
         font-size: 2rem;
     }
-    .productPrice{
+
+    .productPrice {
         margin-top: 0rem;
     }
-    .locationIcon{
+
+    .locationIcon {
         transform: scale(1);
         margin-left: 0rem;
     }
-    .locationContainer{
+
+    .locationContainer {
         margin: 0reM;
     }
-    .starIcon{
+
+    .starIcon {
         transform: scale(1);
         margin: 0rem;
     }
-    .ratingContainer{
+
+    .ratingContainer {
         display: block;
     }
-    .opinions{
+
+    .opinions {
         margin: 0rem;
         font-size: 0.9rem;
     }

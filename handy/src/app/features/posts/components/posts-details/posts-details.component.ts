@@ -51,8 +51,9 @@ export class PostsDetailsComponent {
 
   post : Post = this.postService.emptyPost();
   private postID! : number
-  createOrUpdateLabel: string = "CREAR PUBLICACIÓN";
-  activeCheckboxLabel: string = "Una vez creada la publicación, ¿querés que se active?";
+  createOrUpdateTitle : string = "Creá tu publicación";
+  createOrUpdateLabel : string = "CREAR PUBLICACIÓN";
+  activeCheckboxLabel : string = "Una vez creada la publicación, ¿querés que se active?";
 
   categories: Category[] = [];
   brands: Brand [] = [];
@@ -252,10 +253,12 @@ export class PostsDetailsComponent {
     if(this.post.id != undefined){
       this.createOrUpdateLabel = "GUARDAR CAMBIOS";
       this.activeCheckboxLabel = "Publicación activa";
+      this.createOrUpdateTitle = "Editá tu publicación";
     }
     else{
       this.createOrUpdateLabel = "CREAR PUBLICACIÓN";
       this.activeCheckboxLabel = "Una vez creada la publicación, ¿querés que se active?";
+      this.createOrUpdateTitle = "Creá tu publicación";
     }
   }
 
