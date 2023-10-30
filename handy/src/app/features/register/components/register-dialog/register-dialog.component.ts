@@ -260,6 +260,10 @@ export class RegisterDialogComponent{
     return field1 != null && field2 != null ? (field1.value == '' || field2.value == '' ? false : field1.value != field2.value) : false;
   }
 
+  get mobileMessage(){
+    return this.isEdit ? 'Para poder guardar los cambios que hagas, vas a tener que ingresar tu contraseña. Recordá que todos los campos son requeridos.' : 'Todos los campos son requeridos. Para llenar toda tu información, deberás deslizar hacia la derecha y hacer click en cada una de las secciones a completar.';
+  } 
+
   get buttonLabel(){
     return this.isEdit ? 'GUARDAR CAMBIOS' : 'REGISTRATE';
   }

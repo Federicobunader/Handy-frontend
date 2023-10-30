@@ -167,10 +167,15 @@ button:focus {
     width: 100%;
   }
 
+  .registerTab{
+    font-size: 1.2rem;
+  }
+
   .registerBox{
     padding: 1rem;
     width: 90%;
     border: 0px solid #E7BF81;
+    margin-bottom: 2rem;
   }
 
   .profilePictureContainer{

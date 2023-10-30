@@ -18,7 +18,7 @@
       <a class="nav-bar-link showButtons" routerLink="/profile">Mi perfil</a>
       <button class="nav-bar-button" title="Carrito de Compras" type="button" routerLink="/carts"
         *ngIf="showCart"><mat-icon class="icon">shopping_cart</mat-icon></button>
-      <button class="nav-bar-button" type="button" routerLink="/posts" *ngIf="!showCart">Seguir comprando</button>
+      <button class="nav-bar-button-cart" type="button" routerLink="/posts" *ngIf="!showCart">Seguir comprando</button>
       <button class="nav-bar-button-log-out" title="Cerrar Sesión" type="button" routerLink="/home"
         (click)="logoutauth()"><mat-icon class="icon">power_settings_new</mat-icon></button>
     </div>
