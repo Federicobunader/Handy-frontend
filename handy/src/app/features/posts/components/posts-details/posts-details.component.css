@@ -183,57 +183,71 @@ button:focus {
         padding-left: 0rem;
         padding-right: 0rem;
     }
+
     .title {
         font-size: 2rem;
         margin-left: 2rem;
     }
+
     .postCreationBox {
         padding: 1rem;
         width: 90%;
         border: 0px solid #E7BF81;
         margin-bottom: 2rem;
     }
+
     .tabLabel {
         font-size: 1rem;
     }
+
     .postCreationLabel {
         font-size: 1.2rem;
     }
+
     .row {
         display: flex;
         flex-direction: column;
     }
+
     .column-left {
         float: left;
         width: 100%;
     }
+
     .column-right {
         float: left;
         width: 100%;
     }
+
     .postCreationInput {
         width: 90%;
     }
+
     .selectorInput {
         width: 90%;
     }
+
     .informationContainer {
         margin-top: -1.5rem;
         margin-bottom: 1.5rem;
         width: 90%;
         text-align: justify;
     }
+
     .informationIcon {
         transform: scale(0.9);
     }
+
     .checkboxInput {
         font-size: 1.2rem;
         width: 90%;
         text-align: justify;
     }
+
     .depositInformation {
         width: 90%;
     }
+
     .createButton {
         width: 80%;
         padding-left: 20px;
@@ -242,6 +256,7 @@ button:focus {
         padding-bottom: 10px;
         font-size: medium;
     }
+
     .createButtonDisabled {
         width: 80%;
         padding-left: 20px;
@@ -250,6 +265,7 @@ button:focus {
         padding-bottom: 10px;
         font-size: medium;
     }
+
     .mobileMessage {
         display: flex;
         font-family: 'Roboto', monospace;

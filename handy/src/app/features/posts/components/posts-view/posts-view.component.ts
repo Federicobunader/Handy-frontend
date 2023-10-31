@@ -11,6 +11,7 @@ import { SessiontokenService } from 'src/app/features/home/services/sessiontoken
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { User } from 'src/app/core/models/user';
 import { DialogPostPhotoDetailsComponent } from '../post-photos-details/post-photos-details.component';
+import { PostsArViewerComponent } from '../posts-ar-viewer/posts-ar-viewer.component';
 import { PostRatingService } from '../../services/post-rating-service/post-rating.service';
 import { PostsCommentDashboardComponent } from '../posts-comment-dashboard/posts-comment-dashboard.component';
 import { PostRating } from 'src/app/core/models/postRating';
@@ -100,10 +101,6 @@ export class PostsViewComponent {
     });
   }
 
-  viewAR(): void{
-    this.router.navigate(['posts/AR']);
-  }
-
   createChat(): void{
     this.router.navigate(['chat', this.post.author.id]);
   }
@@ -142,6 +139,13 @@ export class PostsViewComponent {
     });
     dialogRef.componentInstance.title = 'Dejá tu consulta';
     dialogRef.componentInstance.sendButton = 'Enviar consulta';
+  }  
+
+  viewAR(): void{
+    const dialogRef = this.dialog.open(PostsArViewerComponent, {
+      width: '1200px',
+    });
+    //this.router.navigate(['posts/AR']);
   }
 
   post : Post = this.postService.emptyPost();

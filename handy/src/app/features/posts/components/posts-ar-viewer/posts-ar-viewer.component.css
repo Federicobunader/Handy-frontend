@@ -2,3 +2,72 @@ model-viewer {
   width: 100%;
   height: 400px;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  border: 0.4rem solid #885B34;
+  height: 10rem;
+  background-color: #f8f3e7;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.mobileView {
+  display: none;
+}
+
+.webView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.webMessage {
+  font-size: 1.5rem;
+  font-family: 'Roboto', monospace;
+  color: #E1AE63;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  margin: auto;
+}
+
+.button {
+  margin-top: 3rem;
+  width: 30%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  font-size: small;
+  letter-spacing: 0.05rem;
+  font-family: 'Roboto', monospace;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #885B34;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .webView {
+    display: none;
+  }
+
+  .mobileView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    height: 30rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
