@@ -1,4 +1,4 @@
-.title{
+.title {
   font-size: 3rem;
   font-family: 'Roboto', monospace;
   font-weight: bold;
@@ -7,7 +7,7 @@
   letter-spacing: 0.1rem;
 }
 
-.searchbar{
+.searchbar {
   width: 40%;
   height: 1.5rem;
   padding-left: 1rem;
@@ -16,28 +16,28 @@
 }
 
 .mat-mdc-select-placeholder {
-  color:#E1AE63;
+  color: #E1AE63;
 }
 
-::placeholder{
-  color:#E1AE63;
+::placeholder {
+  color: #E1AE63;
 }
 
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-    outline: none;
+  outline: none;
 }
 
-.line{
+.line {
   margin-bottom: 2rem;
   margin-top: 2rem;
   border-top: 0.2rem solid #885B34;
   width: 100%;
 }
 
-.orderByBox{
+.orderByBox {
   margin-top: 2rem;
   margin-left: 30rem;
   border: 0.1rem solid #E1AE63;
@@ -45,24 +45,24 @@ button:focus {
   width: 20rem;
 }
 
-.filteringSection{
+.filteringSection {
   display: inline-flex;
   align-items: flex-end;
   width: 100%;
-  margin-bottom:1rem;
+  margin-bottom: 1rem;
 }
 
-.order{
+.order {
   margin-left: 1rem;
   width: 40%;
 }
 
-.filter{
+.filter {
   margin-right: 1rem;
   width: 20%;
 }
 
-.filterMultiselect{
+.filterMultiselect {
   margin-right: 0.1rem;
   width: 20%;
 }
@@ -85,9 +85,9 @@ button:focus {
   display: block;
 }
 
-.multiselectPicklist{
-  height: 1.1rem; 
-  border:1px solid #885B34;
+.multiselectPicklist {
+  height: 1.1rem;
+  border: 1px solid #885B34;
   width: 80%;
   padding-left: 10px;
   padding-right: 10px;
@@ -102,12 +102,12 @@ button:focus {
   border-radius: 1rem;
 }
 
-.multiselectPicklist:hover{
+.multiselectPicklist:hover {
   background-color: white;
   color: #E1AE63;
 }
 
-.picklist{
+.picklist {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
@@ -123,21 +123,21 @@ button:focus {
   border-radius: 1rem;
 }
 
-.picklist:hover{
+.picklist:hover {
   background-color: white;
   color: #E1AE63;
 }
 
-.filterLabel{
+.filterLabel {
   color: #885B34;
   font-size: small;
   font-family: 'Roboto', monospace;
   font-weight: bold;
-  margin-bottom:-0.1rem;
+  margin-bottom: -0.1rem;
   margin-left: 0.5rem;
 }
 
-.productBox{
+.productBox {
   height: 18rem;
   width: 13rem;
   background-color: #FAFAF5;
@@ -147,38 +147,38 @@ button:focus {
   margin: 1rem;
 }
 
-.productBox:hover{
+.productBox:hover {
   background-color: #f9ead4;
 }
 
-.postsSection{
+.postsSection {
   margin: auto;
 }
 
-.postPicture{
+.postPicture {
   height: 9rem;
   width: 13rem;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  margin:0rem;
+  margin: 0rem;
 }
 
-.postInformation{
-  margin:1rem;
+.postInformation {
+  margin: 1rem;
   font-size: 1rem;
   font-family: 'Roboto', monospace;
   color: #885B34;
   padding-bottom: 1rem;
 }
 
-.productBoxLine{
+.productBoxLine {
   border-top: 0.2rem solid #885B34;
   width: 100%;
   margin: 0rem;
-  margin-top:-0.3rem;
+  margin-top: -0.3rem;
 }
 
-.filtersBox{
+.filtersBox {
   border: 0.1rem solid #885B34;
   border-radius: 10px;
   padding-top: 1rem;
@@ -188,7 +188,7 @@ button:focus {
   box-shadow: 10px 5px 5px #E1AE63;
 }
 
-.filterButton{
+.filterButton {
   padding-left: 10px;
   padding-right: 10px;
   width: 13rem;
@@ -200,25 +200,25 @@ button:focus {
   letter-spacing: 0.1rem;
   cursor: pointer;
   height: 2rem;
-  margin-top:1rem;
+  margin-top: 1rem;
   border-radius: 5px;
   margin-left: 2rem;
 }
 
-.filterButton:hover{
+.filterButton:hover {
   background-color: #885B34;
 }
 
-.footer{
+.footer {
   font-family: 'Roboto', monospace;
   font-weight: bold;
   color: #C2C2C2;
   text-align: center;
   font-size: 0.7rem;
   margin-top: -1.2rem;
-} 
+}
 
-.message{
+.message {
   font-size: 1rem;
   font-family: 'Roboto', monospace;
   font-weight: bold;
@@ -228,7 +228,7 @@ button:focus {
   margin-left: 1rem;
 }
 
-.createPostButton{
+.createPostButton {
   margin-left: 0.5rem;
   width: 100%;
   padding-left: 40px;
@@ -246,17 +246,17 @@ button:focus {
   cursor: pointer;
 }
 
-.createPostButton:hover{
+.createPostButton:hover {
   background-color: #885B34;
 }
 
-.container{
+.container {
   padding-top: 7rem;
   padding-left: 7rem;
   padding-right: 7rem;
 }
 
-.filteringContainer{
+.filteringContainer {
   margin-left: 1rem;
   display: inherit;
   width: 80%;
@@ -268,58 +268,89 @@ button:focus {
     padding-left: 0rem;
     padding-right: 0rem;
   }
+
   .title {
     font-size: 2rem;
     margin-left: 2rem;
   }
-  .filteringSection{
+
+  .filteringSection {
     display: block;
   }
-  .searchbar{
+
+  .searchbar {
     width: 80%;
     margin-left: 2rem;
   }
-  .order{
+
+  .order {
     margin-left: 1rem;
     width: 70%;
     margin-top: 1rem;
   }
-  .filterButton{
+
+  .filterButton {
     margin-left: 1.2rem;
     margin-top: 1.5rem;
   }
-  .filtersBox{
+
+  .filtersBox {
     margin: 2rem;
     box-shadow: none;
   }
-  .filter{
+
+  .filter {
     margin-right: 1rem;
     width: 100%;
     margin-top: 0.5rem;
   }
-  .filterMultiselect{
+
+  .filterMultiselect {
     margin-right: 1rem;
     width: 100%;
     margin-top: 0.5rem;
   }
-  .line{
+
+  .line {
     width: 90%;
   }
-  .postsSection{
-    margin: auto; 
-    display: flex; 
-    justify-content: center;
+
+  .postsSectionContainer{
+    margin: 1.3rem;
   }
-  .productBox{
-    height: 14rem;
+
+  .postsSection {
+    width: 100%;
+  }
+
+  .productBox {
+    height: 16rem;
     width: 8rem;
   }
-  .postPicture{
+
+  .postPicture {
     height: 6rem;
     width: 8rem;
   }
-  .postInformation{
+
+  .postInformation {
     margin: 0.5rem;
     font-size: 0.8rem;
+  }
+
+  .message {
+    font-weight: normal;
+    color: #E1AE63;
+    margin: 0rem;
+    text-align: center;
+  }
+
+  .createPostButton {
+    margin: 0rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: small;
   }
 }

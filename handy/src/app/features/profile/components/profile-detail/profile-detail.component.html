@@ -27,7 +27,7 @@
 
               <a mat-list-item (click)="togglePublicaciones()" class="panelSubOption"><span style="color:#f8f3e7;">Ver mis publicaciones</span></a>
               <ng-container *ngIf="showPublicaciones">
-                <app-posts-dashboard [action]="actionViewMyPost" [toolsSearch]="false" [emptyMessage]="'¡Aún no tenés publicaciones!'"></app-posts-dashboard>
+                <app-posts-dashboard [action]="actionViewMyPost" [toolsSearch]="false" [emptyMessage]="'¡Todavía no tenés publicaciones!'"></app-posts-dashboard>
               </ng-container>
 
               <a mat-list-item (click)="toggleAlquileres()" class="panelSubOption"><span style="color:#f8f3e7;">Ver estado de mis compras y alquileres</span></a>

@@ -29,7 +29,7 @@ export class PostsDetailsComponent {
   postForm = new FormGroup({
     title: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
     productName: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
-    productDescription: new FormControl ('', [Validators.required]),
+    productDescription: new FormControl ('', [Validators.required, Validators.maxLength(500)]),
     productCategory: new FormControl (0, [Validators.required]),
     productBrand: new FormControl (0, [Validators.required]),
     productSubCategory: new FormControl (0, [Validators.required]),

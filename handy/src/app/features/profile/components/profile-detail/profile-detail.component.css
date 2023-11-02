@@ -93,8 +93,10 @@ app-posts-dashboard {
   }
 
   app-posts-dashboard {
-    margin-top: -2rem;
-    margin-left: 0rem;
+    margin-top: -4rem;
+    margin-left: -1rem;
+    height: 25rem;
+    overflow-y: auto;
   }
 
   app-register-dialog{

@@ -78,19 +78,22 @@
         <button class="createPostButton" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
       </div>
     </div>
-    <div *ngIf="this.postsToShow.length > 0" class="postsSection">
-      <div style="display: inline-flex;" *ngFor="let post of postsToShow" (click)="sendTo(post)">
-        <div class="productBox">  
-          <img src={{post.photos[0].url}} class="postPicture">
-          <hr class="productBoxLine">
-          <div class="postInformation">
-            <a><b>{{post.title}}</b></a>
-            <p style="margin-top:1rem;">${{post.product.rentalPrice}} por día</p>
-            <div style="display:inline-flex;font-size:0.8rem;">
-              <mat-icon style="margin-top:-0.2rem;transform:scale(0.8);margin-left:-0.3rem;">location_on</mat-icon>
-              <p>{{post.address.location.name}}</p>
-            </div>
-          </div>  
+    <div class="postsSectionContainer">
+      <div *ngIf="this.postsToShow.length > 0" class="postsSection">
+        <div style="display: inline-flex;" *ngFor="let post of postsToShow" (click)="sendTo(post)">
+          <div class="productBox">  
+            <img src={{post.photos[0].url}} class="postPicture">
+            <hr class="productBoxLine">
+            <div class="postInformation">
+              <a><b>{{post.title}}</b></a>
+              <p style="margin-top:1rem;">${{post.product.rentalPrice}} por día</p>
+              <div style="display:inline-flex;font-size:0.8rem;">
+                <mat-icon style="margin-top:-0.2rem;transform:scale(0.8);margin-left:-0.3rem;">location_on</mat-icon>
+                <p>{{post.address.location.name}}</p>
+              </div>
+              <p *ngIf="this.post.author.id == this.user.id && this.toolsSearch" style="color:rgb(211, 78, 78);font-weight:bold;">Tu publicación</p>
+            </div>  
+          </div>
         </div>
       </div>
     </div>
