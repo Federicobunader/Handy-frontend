@@ -26,7 +26,7 @@
       </div>
       <div class="column-right">
         <div class="productInfoContainer">
-          <p class="productPrice"><span class="priceNumber">${{this.post.product.rentalPrice}}</span> alquiler por día + ${{this.post.product.depositPrice}} de depósito</p><br>
+          <p class="productPrice"><span class="priceNumber">${{this.post.product.rentalPrice}}</span> alquiler por día <span *ngIf="this.post.product.depositPrice > 0">+ ${{this.post.product.depositPrice}} de depósito</span></p><br>
           <p class="productPrice" *ngIf="this.post.isLeasing"><span class="priceNumber">${{this.post.product.salesPrice}}</span> precio de venta</p><br>
           <div class="locationContainer">
             <mat-icon class="locationIcon">location_on</mat-icon>

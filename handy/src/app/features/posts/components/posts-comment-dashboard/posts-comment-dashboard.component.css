@@ -1,4 +1,4 @@
-.commentBox{
+.commentBox {
     border: 0.1rem solid #885B34;
     border-radius: 1rem;
     margin: 1rem;
@@ -6,13 +6,21 @@
     background-color: #faf5e0;
 }
 
-.answered{
+.header {
+    width: 100%;
+    height: 70%;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.answered {
     margin: auto;
     margin-left: -4rem;
     color: #885B34;
 }
 
-.answerButton{
+.answerButton {
     margin: auto;
     margin-right: 3rem;
     height: 100%;
@@ -28,29 +36,80 @@
     cursor: pointer;
 }
 
-.answerButton:hover{
+.answerButton:hover {
     background-color: #885B34;
 }
 
-.picture{
+.picture {
     width: 80px;
     height: 80px;
     text-align: center;
     border-radius: 10px;
 }
 
-.line{
+.line {
     margin-bottom: 2rem;
     border-top: 0.1rem solid #885B34;
 }
 
-.row{
+.row {
     width: 90%;
     height: 20%;
     max-width: 90%;
 }
 
-.column{
+.column-left {
     float: left;
     text-align: left;
+    width: 10%;
+}
+
+.column-right {
+    float: left;
+    text-align: left;
+    width: 70%;
+}
+
+.commentContainer {
+    display: contents;
+}
+
+.answerContainer {
+    margin-left: 1rem;
+    padding: 0rem;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .row {
+        display: grid;
+        margin-bottom: 1rem;
+    }
+
+    .header {
+        padding: 0rem;
+    }
+
+    .commentContainer {
+        display: inline-table;
+        width: 100%;
+    }
+
+    .column-right {
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    .answerContainer {
+        margin-left: -0.5rem;
+    }
+
+    .picture {
+        width: 40px;
+        height: 40px;
+    }
+
+    .answerButton {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 }

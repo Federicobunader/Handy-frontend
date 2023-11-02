@@ -27,6 +27,23 @@
   font-size: 1.8rem;
 }
 
+.nav-bar-button-cart{
+  margin-right: 1rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: white;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  border-radius: 10px;
+  font-size: medium;
+  font-family: 'Roboto', monospace;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+}
+
 .nav-bar-button {
   margin-right: 1rem;
   padding-left: 20px;
@@ -74,6 +91,16 @@
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
+
+  .column-right-nav{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+  }
+  
   .showButtons {
     display: none;
   }
@@ -97,6 +124,12 @@
   .icon {
     transform: scale(1);
     padding-top: 0.4rem;
+  }
+
+  .nav-bar-button-cart{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: small;
   }
 
   .nav-bar-button {

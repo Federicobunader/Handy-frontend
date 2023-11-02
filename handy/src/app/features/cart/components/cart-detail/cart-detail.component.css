@@ -1,32 +1,32 @@
-.title{
+.title {
     font-size: 2rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
-    color: #E1AE63;  
+    color: #E1AE63;
     letter-spacing: 0.1rem;
 }
 
-.cartBox{
-    background-color:#f8f3e7;
+.cartBox {
+    background-color: #f8f3e7;
     border: 3px solid #E1AE63;
     padding: 2rem;
 }
 
-.cartLabels{
+.cartLabels {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
-    color: #885B34;  
+    color: #885B34;
     margin-top: 1rem;
 }
 
-.goBack{
+.goBack {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
-    color: #885B34;  
+    color: #885B34;
     cursor: pointer;
 }
 
-.amountInput{
+.amountInput {
     width: 20%;
     height: 2rem;
     border-top-width: 0px;
@@ -41,15 +41,16 @@
     font-size: 1rem;
 }
 
-.cartInformation{
+.cartInformation {
     font-size: 0.7rem;
     font-family: 'Roboto', monospace;
-    color: #885B34; 
+    color: #885B34;
     width: 95%;
-    float:right;
+    float: right;
+    margin-bottom: 1rem;
 }
 
-.cartDate{
+.cartDate {
     font-family: 'Roboto', monospace;
     color: #E1AE63;
     font-size: 1rem;
@@ -64,25 +65,25 @@
     background-color: #f8f3e7;
 }
 
-.firstButton{
+.firstButton {
     width: 40%;
-    margin-left: 2rem;
+    margin: 0.5rem;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
     color: white;
-    background-color: #E1AE63;
-    border-color: #885B34;
+    background-color: #885B34;
+    border-color: #E1AE63;
     font-size: small;
     letter-spacing: 0.05rem;
     font-family: 'Roboto', monospace;
     cursor: pointer;
 }
 
-.button{
+.button {
     width: 30%;
-    margin-left: 2rem;
+    margin: 0.5rem;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
@@ -96,9 +97,9 @@
     cursor: pointer;
 }
 
-.buttonDisabled{
+.buttonDisabled {
     width: 30%;
-    margin-left: 2rem;
+    margin: 0.5rem;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
@@ -111,12 +112,12 @@
     font-family: 'Roboto', monospace;
 }
 
-.button:hover{
+.button:hover {
     background-color: #885B34;
 }
 
-.firstButton:hover{
-    background-color: #885B34;
+.firstButton:hover {
+    background-color: #E1AE63;
 }
 
 input:focus,
@@ -124,4 +125,61 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+
+.buttonsContainer {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.informationIcon {
+    color: #885B34;
+    transform: scale(1);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .cartBox {
+        padding: 2rem;
+    }
+
+    .firstButton {
+        width: 70%;
+        margin-left: 0rem;
+        margin-bottom: 1rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .button {
+        width: 70%;
+        margin-left: 0rem;
+        margin-bottom: 1rem;
+    }
+
+    .buttonDisabled {
+        width: 70%;
+        margin-left: 0rem;
+        margin-bottom: 1rem;
+    }
+
+    .cartDate {
+        width: 70%;
+    }
+
+    .informationIcon {
+        transform: scale(0.9);
+    }
+
+    .cartInformation {
+        width: 85%;
+    }
+
+    .buttonsContainer {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 100%;
+    }
 }

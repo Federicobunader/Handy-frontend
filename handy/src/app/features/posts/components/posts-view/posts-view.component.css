@@ -58,7 +58,9 @@
 }
 
 .productPicAndActionsContainer {
-    margin: 4rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
     padding-left: 6rem;
 }
 
@@ -234,7 +236,7 @@ button:focus {
         padding-top: 10px;
         padding-bottom: 10px;
         font-size: medium;
-        margin-bottom: 0rem;
+        margin-bottom: 1rem;
     }
 
     .priceNumber {

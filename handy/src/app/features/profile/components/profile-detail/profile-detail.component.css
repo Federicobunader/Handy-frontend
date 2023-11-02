@@ -92,4 +92,15 @@ app-posts-dashboard {
     font-size: 0.9rem;
   }
 
+  app-posts-dashboard {
+    margin-top: -2rem;
+    margin-left: 0rem;
+  }
+
+  app-register-dialog{
+    width: 122%;
+    max-width: 130%;
+    margin: -2rem;
+  }
+
 }
