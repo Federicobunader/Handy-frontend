@@ -1,0 +1,86 @@
+<form [formGroup]="registerForm" style="background-color:#f8f3e7;">
+    <body style="min-height:100vh;background-color:#f8f3e7;">
+        <nav-bar [navBarWithButtons]=false *ngIf="!isEdit"></nav-bar>
+        <div class="container">
+            <div *ngIf="!isEdit">
+                <p class="title">Registrate</p>
+            </div>
+            <div class="mediaMessage">
+                <p>Para llenar toda tu información, deberás deslizar hacia la derecha y hacer click en cada una de las secciones a completar.</p>
+            </div>
+            <mat-tab-group class="registerBox">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <span class="registerTab">Datos de la cuenta</span>
+                    </ng-template>
+                    <div class="row">
+                        <div class="column-left">
+                            <p class="registerLabel">Nombre de usuario</p>
+                            <input class="registerInput" matInput name="username" formControlName="username">
+                            <mat-error *ngIf="registerForm.get('username')?.hasError('maxlength')" style="width:80%;">El nombre de usuario no puede tener mas de 100 caracteres</mat-error>
+                            <br>
+                            <p class="registerLabel">{{passwordLabel}}</p>
+                            <input class="registerInput" id="passwordField" ng-model="passwordField" type="password" matInput name="userPassword" formControlName="userPassword">
+                            <p class="passwordCheckbox"><input type="checkbox" (click)="changePasswordType()"> Mostrar contraseña</p>
+                            <mat-error *ngIf = "registerForm.get('userPassword')?.value != '' && registerForm.get('userPassword')?.invalid" style="width:80%;">La contraseña no es valida. La misma debe tener una longitud mínima de 8 caracteres y contener simultaneamente al menos un numero y una letra.</mat-error>
+                            <br>
+                            <p class="registerLabel">Repetí tu contraseña</p>
+                            <input class="registerInput" type="password" id="repeatPasswordField" matInput name="userPasswordCheck" formControlName="userPasswordCheck">
+                            <p class="passwordCheckbox"><input type="checkbox" (click)="changeRepeatPasswordType()">Mostrar contraseña</p>
+                            <mat-error *ngIf="passwordsDontMatch" style="width:80%;">Las contraseñas no coinciden</mat-error>
+                        </div>
+                        <div class="column-right">
+                           <div class="profilePictureContainer">
+                                <p class="registerLabel">Foto de perfil</p>
+                                <div class="dropArea">
+                                    <app-photo (photosToTransfer) = "setPhotoToUser($event)" (photosINFOToTransfer) = "setPhotoInfoToUser($event)" [maxPhotos]= 1 [displayMessage]="getPhotoDisplayMessage()" [limitMessage]="getPhotoLimitMessage()"></app-photo>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <span class="registerTab">Datos personales</span>
+                    </ng-template>
+                    <div class="row">
+                        <div class="column-left">
+                            <p class="registerLabel">Nombre</p>
+                            <input class="registerInput" type="text" matInput name="userFirstName" formControlName="userFirstName">
+                            <mat-error *ngIf="registerForm.get('userFirstName')?.hasError('maxlength')" style="width:80%;">El nombre no puede tener mas de 100 caracteres</mat-error>
+                            <p class="registerLabel">Apellido</p>
+                            <input class="registerInput" type="text" matInput name="userLastName" formControlName="userLastName">
+                            <mat-error *ngIf="registerForm.get('userLastName')?.hasError('maxlength')" style="width:80%;">El apellido usuario no puede tener mas de 100 caracteres</mat-error>
+                            <p class="registerLabel">Email</p>
+                            <input class="registerInput" type="email" matInput name="userEmail" formControlName="userEmail">
+                            <mat-error *ngIf="registerForm.get('userEmail')?.hasError('maxlength')" style="width:80%;">El mail no puede tener mas de 100 caracteres</mat-error>
+                        </div>
+                        <div class="column-right">
+                            <p class="registerLabel">Fecha de nacimiento</p>
+                            <input class="registerDate" type="date" matInput name="userDateBorn" formControlName="userDateBorn">
+                            <mat-error *ngIf="registerForm.get('userDateBorn')?.hasError('ageInvalid')" style="margin-top:-3rem;margin-bottom: 2rem;width: 80%;">Solo mayores de 18 años pueden utilizar Handy</mat-error>
+                            <p class="registerLabel">Telefono</p>
+                            <input class="registerInput" type="tel" matInput name="userTel" formControlName="userTel">
+                            <mat-error *ngIf="registerForm.get('userTel')?.hasError('maxlength')" style="width:80%;">El telefono no puede tener mas de 15 caracteres</mat-error>
+                            <mat-error *ngIf="registerForm.get('userTel')?.hasError('pattern')" style="width:80%;">El telefono solo puede tener numeros</mat-error>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <span class="registerTab">Datos de dirección</span>
+                    </ng-template>
+                    <app-address [parentForm]="registerForm" (transferAddressForm)="setFormInfoToAddressForm($event)" (transferAddressFormValidatorCheck)="setAddressFormValidator($event)"></app-address>
+                </mat-tab>
+            </mat-tab-group>
+            <div style="text-align:center;margin-top:20px;">
+                <button class="registerButtonDisabled" *ngIf="registerForm.invalid || !this.isAddressFormValid" [disabled]="registerForm.invalid || !this.isAddressFormValid">{{buttonLabel}}</button>
+                <button class="registerButton" (click)="saveOrUpdate()" *ngIf="registerForm.valid && this.isAddressFormValid">{{buttonLabel}}</button>
+            </div>
+        </div>
+    </body>
+    <div style="background-color:#f8f3e7;padding-bottom:1rem;padding-top:10vh;">
+        <p class="footer" *ngIf="!isEdit">© 2023 Handy Argentina</p>
+        <p class="footer" *ngIf="!isEdit">Contacto: atencionalcliente@handy.com</p>
+    </div>
+</form>
