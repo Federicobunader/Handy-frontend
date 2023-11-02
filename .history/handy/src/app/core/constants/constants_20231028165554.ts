@@ -1,5 +1,5 @@
 //export const apiURL = 'https://handy-utn-backend-815e66e9002b.herokuapp.com/api';
-export const apiURL = 'http://localhost:8080/api';
+export const apiURL = 'https://localhost:8080/api';
 
 
 export const postURL = apiURL + '/post'
@@ -34,4 +34,3 @@ export const updatePasswordURL = userURL + '/updatePassword'
 export const checkpasswordsURL = userURL + '/checkpasswords'
 export const checkIfUserAlreadyExistWithMail = userURL + '/checkIfUserAlreadyExistWithMail'
 export const ARURL = apiURL + '/augmented_reality'
-export const chatGPTURL = apiURL + '/chat'

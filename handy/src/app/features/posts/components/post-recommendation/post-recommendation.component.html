@@ -27,9 +27,9 @@
                     propia cuenta.</p>
             </div>
             <div style="text-align: center;">
-                <p class="label">¿Que tarea necesitás llevar a cabo?</p>
-                <input class="input"><br>
-                <button class="button">Consultar a Tooly</button>
+                <p class="label">¿Qué tarea necesitás llevar a cabo?</p>
+                <input class="input" placeholder="Por ejemplo: Armar una mesa" [formControl]="prompt"><br>
+                <button class="button" (click)="getPostsByPrompt()">Consultar a Tooly</button>
             </div>
         </div>
     </div>

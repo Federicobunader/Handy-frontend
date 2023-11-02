@@ -1,0 +1,139 @@
+<form [formGroup]="postForm">
+  <body style="min-height:100vh;background-color:#f8f3e7;">
+    <nav-bar [navBarWithButtons]=true></nav-bar>
+    <div style="padding-top:7rem;padding-left:7rem;padding-right:7rem;">
+      <div>
+        <h1 class="title">Creá tu publicación</h1>
+      </div>
+        <mat-tab-group class="postCreationBox">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span class="tabLabel">Información de la publicación</span>
+            </ng-template>
+            <div style="margin-left:30px;">
+              <div style="margin-top:-5rem;">
+                <div style="float:left;width:50%;">
+                  <p class="postCreationLabel">Titulo de la publicacion</p>
+                  <input class="postCreationInput" type="text" matInput name="title" formControlName="title">
+                  <br>
+                </div>
+                <div style="float:left;width:50%;">
+                  <p class="postCreationLabel">Nombre del Producto</p>
+                  <input class="postCreationInput" type="text" matInput name="productName" formControlName="productName">
+                  <br>
+                </div>
+              </div>
+              <div style="margin-top:10.5rem;">
+                <div class="column-left">
+                  <div style="margin-top: 1rem;">                    
+                    <p class="postCreationLabel">Categoría</p>
+                    <mat-form-field class="categoryInput">
+                        <mat-select formControlName="productCategory" name="productCategory" (selectionChange)="getSubCategories($event.value)" (selectionChange)="getBrands($event.value)">
+                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                                {{category.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            Seleccioná una Categoría
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div style="margin-top: 2rem;">
+                    <p class="postCreationLabel">Marca</p>
+                    <mat-form-field class="categoryInput">
+                        <mat-select formControlName="productBrand" name="productBrand" >
+                            <mat-option *ngFor="let brand of brands" [value]="brand.id">
+                                {{brand.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            Seleccioná una Marca
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="column-right">
+                  <div style="margin-top: 1rem;">
+                    <p class="postCreationLabel">Sub-categoría</p>
+                    <mat-form-field class="categoryInput">
+                      <mat-select formControlName="productSubCategory" name="productSubCategory">
+                          <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">
+                              {{subcategory.name}}
+                          </mat-option>
+                      </mat-select>
+                      <mat-error>
+                          Seleccioná una Sub-categoría
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="column-right">
+                <div style="margin-top: 2rem;">
+                  <p class="postCreationLabel">Stock</p>
+                  <input class="postCreationInput" type="number" matInput name="stock" formControlName="stock">
+                </div>
+              </div>              
+              <div style="margin-top:8.5rem;margin-bottom: 5rem;">
+                <div class="column-left"> 
+                  <div style="margin-top: 2rem;">
+                    <p class="postCreationLabel">Precio de alquiler por día</p>
+                    <input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
+                  </div>
+                </div>
+                <div class="column-right">
+                  <div style="margin-top: 2rem;">
+                    <p class="postCreationLabel">Deposito</p>
+                    <input class="postCreationInput" type="number" matInput name="depositPrice" formControlName="depositPrice">
+                    <div style="margin-top: -2rem;width: 80%;">
+                      <mat-icon style="color:#885B34;width:5%;" (click)="handleInformationClick()">info</mat-icon>
+                      <p *ngIf="openInformationModal" class="depositInformation">El depósito es un monto que el usuario que alquila deberá pagar a modo de garantía al realizar el alquiler, y el mismo será devuelto al finalizar el mismo, siempre y cuando la herramienta haya sido devuelta en las mismas condiciones.</p>
+                    </div> 
+                  </div>  
+                </div>
+              </div>
+              <div>
+                <p class="postCreationLabel">Descripcion del Producto</p>
+                <textarea class="descriptionInput" type="text" matInput name="productDescription" formControlName="productDescription" spellcheck></textarea>
+                <p class="leasingInput"><input type="checkbox" formControlName="isLeasing"> ¿Querés emplear la modalidad de Leasing?</p>
+                <br>
+                <p *ngIf="this.postForm.get('isLeasing')?.value" class="postCreationLabel">Precio de venta</p>
+                <input *ngIf="this.postForm.get('isLeasing')?.value" class="postTitleInput" type="number" matInput name="salesPrice" formControlName="salesPrice">
+                <br>
+                <p class="leasingInput"><input type="checkbox" formControlName="isActive"> Una vez creada la publicación, ¿querés que se active?</p>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span class="tabLabel">Imágenes</span>
+            </ng-template>
+            <div style="margin-top:50px;margin-left:30px;margin-right:30px;margin-bottom:10rem;">
+              <p class="postCreationLabel">Agregá hasta 10 fotos para su publicación</p>
+              <div style="margin-top:10rem;">
+                <div style="margin:auto;">
+                  <app-photo (photosToTransfer) = "setPhotoToPost($event)" (photosINFOToTransfer) = "setPhotoInfoToPost($event)" [maxPhotos]= 10 [displayMessage]="getPhotoDisplayMessage()" [limitMessage]="getPhotoLimitMessage()"></app-photo>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span class="tabLabel">Ubicación</span>
+            </ng-template>
+            <div>
+              <app-address [parentForm]="postForm" (transferAddressForm)="setFormInfoToAddressForm($event)" (transferAddressFormValidatorCheck)="setAddressFormValidator($event)"></app-address>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+        <div style="text-align:center;margin-top:20px;">
+            <button class="createButtonDisabled" *ngIf="postForm.invalid || !this.isAddressFormValid" [disabled]="postForm.invalid || !this.isAddressFormValid">{{this.createOrUpdateLabel}}</button>
+            <button class="createButton" (click)="saveOrUpdate()" *ngIf="postForm.valid && this.isAddressFormValid">{{this.createOrUpdateLabel}}</button>
+        </div>
+    </div>
+  </body>
+  <div style="background-color:#f8f3e7;padding-bottom:1rem;padding-top:10vh;">
+      <p class="footer">© 2023 Handy Argentina</p>
+      <p class="footer">Contacto: atencionalcliente@handy.com</p>
+  </div>
+</form>

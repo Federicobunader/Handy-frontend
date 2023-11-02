@@ -1,0 +1,40 @@
+<form [formGroup]="addressForm">
+    <div class="row" style="margin-top:50px;margin-left:30px;">
+        <div class="column-left">
+            <p class="registerLabel">Provincia</p>
+            <mat-form-field class="addressInput" >
+                <mat-select formControlName="province" name="province" (selectionChange)="getLocations($event.value)">
+                    <mat-option *ngFor="let province of provinces" [value]="province.id">
+                        {{province.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>
+                    Seleccioná una provincia
+                </mat-error>
+            </mat-form-field><br><br>
+            <p class="registerLabel">Calle y número</p>
+            <input class="registerInput" type="text" matInput name="address" formControlName="address"><br>
+            <mat-error *ngIf="addressForm.get('address')?.hasError('maxlength')" style="width:80%;">La direccion no puede tener mas de 100 caracteres</mat-error>
+            <p class="addressCheckbox"><input type="checkbox" formControlName="isApartment"> Agregar piso y departamento</p>
+            <input *ngIf="this.addressForm.get('isApartment')?.value" class="registerInput" type="string" matInput name="apartment" formControlName="apartment"><br>
+            <mat-error *ngIf="addressForm.get('apartment')?.hasError('maxlength')" style="width:80%;">El departamento no puede tener mas de 10 caracteres (Ej válido: 10A)</mat-error>
+        </div>
+        <div class="column-right">
+            <p class="registerLabel">Localidad</p>
+            <mat-form-field class="addressInput">
+                <mat-select formControlName="location" name="location">
+                    <mat-option *ngFor="let location of locations" [value]="location.id">
+                        {{location.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>
+                    Seleccioná una localidad
+                </mat-error>
+            </mat-form-field><br><br>
+            <p class="registerLabel">Codigo Postal</p>
+            <input class="registerInput" type="number" matInput name="postcode" formControlName="postcode"><br>
+            <mat-error *ngIf="addressForm.get('postcode')?.hasError('max')" style="width:80%;">El codigo postal no puede tener mas de 5 caracteres</mat-error>
+            <mat-error *ngIf="addressForm.get('postcode')?.hasError('min')" style="width:80%;">El codigo postal tiene que ser positivo</mat-error>
+        </div>
+    </div>
+</form>
