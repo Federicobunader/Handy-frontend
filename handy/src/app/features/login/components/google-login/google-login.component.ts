@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth-service/auth.service';
-import { GoogleApiService } from '../../services/google-service/google-api.service';
 import { UserInfo } from 'src/app/core/models/userInfo';
 
 @Component({
@@ -13,9 +12,9 @@ export class GoogleLoginComponent{
   mailSnippets: string[] = [];
   userInfo?: UserInfo | null;
 
-  constructor(private authService: AuthService, private googleApi: GoogleApiService){
+  constructor(private authService: AuthService,/* private googleApi: GoogleApiService*/){
   }
-
+/*
   login() {
     if(this.isLoggedIn()){
       this.googleApi.initGoogleLoginFlow();

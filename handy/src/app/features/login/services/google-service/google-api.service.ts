@@ -17,7 +17,7 @@ const oAuthConfig: AuthConfig = {
   //useSilentRefresh: true, // Production should always use HTTPS, but local dev might not
   //disablePKCE: false, // This activates PKCE
   //scope: 'openid profile email https://www.googleapis.com/auth/gmail.readonly',
-  //showDebugInformation: true,
+  showDebugInformation: true,
 }
 
 @Injectable({
@@ -45,13 +45,12 @@ export class GoogleApiService {
    // manually configure a logout url, because googles discovery document does not provide it
    this.oAuthService.logoutUrl = "https://www.google.com/accounts/Logout";
 
-
   }
 
   initGoogleLoginFlow(): void {
     this.oAuthService.loadDiscoveryDocument().then( () => {
       this.oAuthService.tryLoginImplicitFlow().then( () => {
-         if (!this.oAuthService.hasValidAccessToken() && sessionStorage.getItem(this.TOKEN_KEY) == null) {//&&this.isGoogleLogin == true
+         if (!this.oAuthService.hasValidAccessToken()) {
           this.oAuthService.initLoginFlow();
          } else {
           this.oAuthService.loadUserProfile().then( (userProfile) => {

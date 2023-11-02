@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef, AfterContentInit  } from '@angular/core';
 import { SessiontokenService } from '../services/sessiontoken.service';
-import { GoogleApiService } from '../../login/services/google-service/google-api.service';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { UserInfo } from 'src/app/core/models/userInfo';
+import { GoogleApiService } from '../../login/services/google-service/google-api.service';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +12,10 @@ import { UserInfo } from 'src/app/core/models/userInfo';
 export class HomeComponent implements AfterContentInit {
   userInfo?: UserInfo
 
-  constructor(private sessiontokenService: SessiontokenService, private readonly oAuthService: OAuthService, private googleApi: GoogleApiService) {
+  constructor(private sessiontokenService: SessiontokenService, private readonly oAuthService: OAuthService, private googleAPI: GoogleApiService) {
   }
   ngAfterContentInit(): void {
+    this.googleAPI.getUserInfo();
     this.getUserId();
   }
 

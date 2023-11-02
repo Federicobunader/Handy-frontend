@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit{
     private authService: AuthService,
     private router: Router,
     public dialog: MatDialog,
-    //private googleApi: GoogleApiService
+    private googleAPIService: GoogleApiService,
     ) {}
 
   ngOnInit(): void {
@@ -83,7 +83,8 @@ export class LoginComponent implements OnInit{
 
 
   googleLogin() {
-    this.isGoogleAuth = true;
+    //this.isGoogleAuth = true;
     //this.googleApi.setIsGoogleLogin(true);
+    this.googleAPIService.initGoogleLoginFlow();
   }
 }
