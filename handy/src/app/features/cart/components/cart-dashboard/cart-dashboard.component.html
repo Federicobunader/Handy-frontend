@@ -1,13 +1,13 @@
 <body style="overflow:auto;background-color:#f8f3e7;width:100%;">
   <nav-bar [navBarWithButtons]=true [showCart]=false *ngIf="!isPurchasedSection"></nav-bar>
-  <div style="padding-top:7rem;padding-left:7rem;padding-right:7rem;">
+  <div class="container">
     <div *ngIf="!isPurchasedSection">
       <div>
         <h1 class="title">Carrito</h1>
       </div>
       <hr class="line">
     </div>
-    <div *ngIf="totalsToPayPerAuthor.length == 0">
+    <div *ngIf="totalsToPayPerAuthor.length == 0" class="emptyCartContainer">
       <p class="message">¡Tu carrito de compras está vacío!</p>
       <button class="searchToolsButton" routerLink="/posts">AGREGAR PRODUCTOS AL CARRITO</button>
     </div>
@@ -16,12 +16,12 @@
         <mat-accordion>
           <mat-expansion-panel hideToggle (opened)="viewTotalsToPayPerCart(totalToPayPerAuthor.id)" [expanded]=expanded class="authorPurchase">
             <mat-expansion-panel-header class="panelHeader">
-              <div style="width:100%;display:flex;">
-                <div style="width:70%;">
+              <div class="row">
+                <div class="column-left">
                   <p class="cartTitle">Compras realizadas a {{totalToPayPerAuthor.author.username}}</p>
                 </div>
-                <div style="width:30%;text-align:right;">
-                  <div style="display:inline-flex;">
+                <div class="column-right">
+                  <div class="priceAndPayContainer">
                     <p class="cartPrice">${{totalToPayPerAuthor.totalToPay}}</p>
                     <button class="payButton" type="button" (click)="pay(totalToPayPerAuthor.id)" *ngIf="showBuyButton">Pagar</button>
                   </div>
@@ -64,7 +64,7 @@
       </div>
     </div>
   </div>
-  <div style="padding-top:30vh;padding-bottom:1rem;background-color:#f8f3e7;" *ngIf="!isPurchasedSection">
+  <div style="padding-top:40vh;padding-bottom:1rem;background-color:#f8f3e7;" *ngIf="!isPurchasedSection">
     <p class="footer">© 2023 Handy Argentina</p>
     <p class="footer">Contacto: handy2023.information@gmail.com</p>
   </div>
