@@ -72,7 +72,7 @@
       </div>
       <hr class="line">
     </div>
-    <div *ngIf="this.postsToShow.length == 0">
+    <div *ngIf="this.postsToShow.length == 0" class="emptyMessageContainer">
       <p class="message">{{emptyMessage}}</p>
       <div *ngIf="!toolsSearch">
         <button class="createPostButton" routerLink="/posts/details">CREAR PUBLICACIÓN</button>

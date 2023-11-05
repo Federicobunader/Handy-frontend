@@ -353,4 +353,11 @@ button:focus {
     padding-bottom: 10px;
     font-size: small;
   }
+
+  .emptyMessageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
 }

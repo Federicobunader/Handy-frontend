@@ -15,6 +15,8 @@ import { UserService } from 'src/app/shared/services/user/user.service';
 import { Router } from '@angular/router';
 import { BrandsService } from '../../services/brands-service/brands.service';
 import { Brand } from 'src/app/core/models/brand';
+import { MatDialog } from '@angular/material/dialog';
+import { MissingRequiredFieldsComponent } from 'src/app/shared/components/missing-required-fields/missing-required-fields.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -72,7 +74,8 @@ export class PostsDetailsComponent {
     private route: ActivatedRoute,
     private sessiontokenService: SessiontokenService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
   }
 
@@ -174,9 +177,9 @@ export class PostsDetailsComponent {
   }
 
   saveOrUpdate(){
-    if(this.post.photos.length > 0)
-    {
-      if (this.postForm.valid && this.isAddressFormValid) {
+    let invalid = false;
+    if(this.post.photos.length > 0){
+      if (this.postForm.valid && this.isAddressFormValid) {        
         this.setFormInfoToPostForm();
 
         this.postService
@@ -201,12 +204,85 @@ export class PostsDetailsComponent {
               Swal.fire('Error', 'No se pudo crear la publicacion', 'error');
             }
           );
+      } else {
+        invalid = true;
       }
-    }
-    else{
-      Swal.fire('Error', 'La publicación debe tener al menos una foto', 'error');
+    } else {
+      invalid = true;
     }
 
+    if(invalid){
+      this.checkMissingRequiredField();   
+      const dialogRef = this.dialog.open(MissingRequiredFieldsComponent, {
+        width: '600px',
+      });
+      dialogRef.componentInstance.missingFieldsFirstTab = this.missingRequiredFieldsFirstTab;
+      dialogRef.componentInstance.missingFieldsSecondTab = this.missingRequiredFieldsSecondTab;
+      dialogRef.componentInstance.missingFieldsThirdTab = this.missingRequiredFieldsThirdTab;
+      dialogRef.componentInstance.justInvalidFields = this.missingRequiredFieldsFirstTab.length == 0 && this.missingRequiredFieldsSecondTab.length == 0 && this.missingRequiredFieldsThirdTab.length == 0;
+      dialogRef.componentInstance.isEdit = this.post.id != undefined && this.post.id != 0;
+      dialogRef.componentInstance.isRegister = false;
+    }
+  }
+
+  missingRequiredFieldsFirstTab: String[] = [];
+  missingRequiredFieldsSecondTab: String[] = [];
+  missingRequiredFieldsThirdTab: String[] = [];
+  
+  checkMissingRequiredField() {
+    
+    this.missingRequiredFieldsFirstTab = [];
+    this.missingRequiredFieldsSecondTab = [];
+    this.missingRequiredFieldsThirdTab = [];
+
+    if (this.postForm.value.title == "") {
+      this.missingRequiredFieldsFirstTab.push('Título de la publicación');
+    }
+    if (this.postForm.value.productName == "") {
+      this.missingRequiredFieldsFirstTab.push('Nombre del producto');
+    }
+    if (this.postForm.value.stock == 0) {
+      this.missingRequiredFieldsFirstTab.push('Stock');
+    }    
+    if (this.postForm.value.rentalPrice == 0) {
+      this.missingRequiredFieldsFirstTab.push('Precio de alquiler por día');
+    }   
+    if (this.postForm.value.productCategory == 0) {
+      this.missingRequiredFieldsFirstTab.push('Categoría');
+    }   
+    if (this.postForm.value.productSubCategory == 0) {
+      this.missingRequiredFieldsFirstTab.push('Subcategoría');
+    }   
+    if (this.postForm.value.productDescription == "") {
+      this.missingRequiredFieldsFirstTab.push('Descripción del producto');
+    } 
+    if (this.postForm.value.isLeasing) {
+      if (this.postForm.value.salesPrice == 0) {
+        this.missingRequiredFieldsFirstTab.push('Precio de venta');
+      }
+    } 
+
+    if (this.post.photos.length == 0) {
+      this.missingRequiredFieldsSecondTab.push('Al menos una foto');
+    }
+
+    if (this.postForm.value.addressForm?.province == 0) {
+      this.missingRequiredFieldsThirdTab.push('Provincia');
+    }
+    if (this.postForm.value.addressForm?.location == 0) {
+      this.missingRequiredFieldsThirdTab.push('Localidad');
+    }
+    if (this.postForm.value.addressForm?.address == "") {
+      this.missingRequiredFieldsThirdTab.push('Calle y número');
+    }
+    if (this.postForm.value.addressForm?.postcode == 0) {
+      this.missingRequiredFieldsThirdTab.push('Código postal');
+    }
+    if (this.postForm.value.addressForm?.isApartment) {
+      if(this.postForm.value.addressForm?.apartment == ""){
+        this.missingRequiredFieldsThirdTab.push('Piso y departamento');
+      }
+    }
   }
 
   getAuthor(){

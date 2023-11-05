@@ -110,10 +110,7 @@
         </mat-tab>
       </mat-tab-group>
       <div style="text-align:center;margin-top:20px;">
-        <button class="createButtonDisabled" *ngIf="postForm.invalid || !this.isAddressFormValid"
-          [disabled]="postForm.invalid || !this.isAddressFormValid">{{this.createOrUpdateLabel}}</button>
-        <button class="createButton" (click)="saveOrUpdate()"
-          *ngIf="postForm.valid && this.isAddressFormValid">{{this.createOrUpdateLabel}}</button>
+        <button class="createButton" (click)="saveOrUpdate()">{{this.createOrUpdateLabel}}</button>
       </div>
     </div>
   </body>
