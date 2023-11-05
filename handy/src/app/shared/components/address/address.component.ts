@@ -38,8 +38,8 @@ export class AddressComponent implements OnInit {
     private addressService: AddressService,
   ) {
     this.addressForm.valueChanges.subscribe(value => {
+      this.transferAddressForm.emit(this.addressForm);
       if(this.addressForm.valid){
-        this.transferAddressForm.emit(this.addressForm);
         this.transferAddressFormValidatorCheck.emit(true);
       }
       else{

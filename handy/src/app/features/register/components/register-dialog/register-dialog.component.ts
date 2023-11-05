@@ -13,7 +13,7 @@ import { PaymentMethod } from 'src/app/core/models/paymentMethod';
 import { PaymentMethodService } from 'src/app/shared/services/payment-method/payment-method.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCheckMailComponent } from '../check-mail/check-mail/check-mail.component';
-import { RegisterMissingFieldsComponent } from '../register-missing-fields/register-missing-fields.component';
+import { MissingRequiredFieldsComponent } from 'src/app/shared/components/missing-required-fields/missing-required-fields.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -216,40 +216,53 @@ export class RegisterDialogComponent {
 
     if(invalid){
       this.checkMissingRequiredField();     
-      const dialogRef = this.dialog.open(RegisterMissingFieldsComponent, {
+      const dialogRef = this.dialog.open(MissingRequiredFieldsComponent, {
         width: '600px',
       });
-      dialogRef.componentInstance.missingFields = this.missingRequiredFields;
-      dialogRef.componentInstance.justInvalidFields = this.missingRequiredFields.length == 0;
+      dialogRef.componentInstance.missingFieldsFirstTab = this.missingRequiredFieldsFirstTab;
+      dialogRef.componentInstance.missingFieldsSecondTab = this.missingRequiredFieldsSecondTab;
+      dialogRef.componentInstance.missingFieldsThirdTab = this.missingRequiredFieldsThirdTab;
+      dialogRef.componentInstance.justInvalidFields = this.missingRequiredFieldsFirstTab.length == 0 && this.missingRequiredFieldsSecondTab.length == 0 && this.missingRequiredFieldsThirdTab.length == 0;
       dialogRef.componentInstance.isEdit = this.isEdit;
-    }
-   
+      dialogRef.componentInstance.isRegister = true;
+    }   
   }
 
-  missingRequiredFields: String[] = [];
+  missingRequiredFieldsFirstTab: String[] = [];
+  missingRequiredFieldsSecondTab: String[] = [];
+  missingRequiredFieldsThirdTab: String[] = [];
+
   checkMissingRequiredField() {
-    this.missingRequiredFields = [];
+    
+    this.missingRequiredFieldsFirstTab = [];
+    this.missingRequiredFieldsSecondTab = [];
+    this.missingRequiredFieldsThirdTab = [];
+
     if (this.registerForm.value.username == "") {
-      this.missingRequiredFields.push('Nombre de usuario');
+      this.missingRequiredFieldsFirstTab.push('Nombre de usuario');
     }
     if (this.registerForm.value.userPassword == "") {
-      this.missingRequiredFields.push('Contraseña');
+      this.missingRequiredFieldsFirstTab.push('Contraseña');
     }
     if (this.registerForm.value.userPasswordCheck == "") {
-      this.missingRequiredFields.push('Contraseña verificada');
+      this.missingRequiredFieldsFirstTab.push('Contraseña verificada');
     }    
     if (this.user.photo.length != 1) {
-      this.missingRequiredFields.push('Foto');
+      this.missingRequiredFieldsFirstTab.push('Foto');
     }
+
     if (this.registerForm.value.userFirstName == "") {
-      this.missingRequiredFields.push('Nombre');
+      this.missingRequiredFieldsSecondTab.push('Nombre');
     }
     if (this.registerForm.value.userLastName == "") {
-      this.missingRequiredFields.push('Apellido');
+      this.missingRequiredFieldsSecondTab.push('Apellido');
     }
     if (this.registerForm.value.userEmail == "") {
-      this.missingRequiredFields.push('Email');
-    }    
+      this.missingRequiredFieldsSecondTab.push('Email');
+    }   
+    if (this.registerForm.value.userTel == "") {
+      this.missingRequiredFieldsSecondTab.push('Telefono');
+    } 
     // const dateNow = new Date();
     // let dateIntroduced = this.registerForm.value.userDateBorn;
     // if (dateIntroduced != undefined) {
@@ -259,24 +272,22 @@ export class RegisterDialogComponent {
     //     this.missingRequiredFields.push('Fecha de nacimiento');
     //   }
     // }
-    if (this.registerForm.value.userTel == "") {
-      this.missingRequiredFields.push('Telefono');
-    }
+
     if (this.registerForm.value.addressForm?.province == 0) {
-      this.missingRequiredFields.push('Provincia');
+      this.missingRequiredFieldsThirdTab.push('Provincia');
     }
     if (this.registerForm.value.addressForm?.location == 0) {
-      this.missingRequiredFields.push('Localidad');
+      this.missingRequiredFieldsThirdTab.push('Localidad');
     }
     if (this.registerForm.value.addressForm?.address == "") {
-      this.missingRequiredFields.push('Calle y número');
+      this.missingRequiredFieldsThirdTab.push('Calle y número');
     }
     if (this.registerForm.value.addressForm?.postcode == 0) {
-      this.missingRequiredFields.push('Código postal');
+      this.missingRequiredFieldsThirdTab.push('Código postal');
     }
     if (this.registerForm.value.addressForm?.isApartment) {
       if(this.registerForm.value.addressForm?.apartment == ""){
-        this.missingRequiredFields.push('Piso y departamento');
+        this.missingRequiredFieldsThirdTab.push('Piso y departamento');
       }
     }
   }
