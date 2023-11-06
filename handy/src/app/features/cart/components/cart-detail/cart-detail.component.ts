@@ -91,7 +91,6 @@ export class DialogCartDetailComponent {
 
       this.cartService
       .create(this.cart)
-      .pipe(takeUntil(this.$_destroyed))
       .subscribe(
         () => {
           Swal.fire('Exito','¡El producto fue agregado al carrito!','success');
