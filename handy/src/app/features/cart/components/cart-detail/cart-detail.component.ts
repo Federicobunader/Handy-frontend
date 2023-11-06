@@ -97,6 +97,7 @@ export class DialogCartDetailComponent {
           Swal.fire('Exito','¡El producto fue agregado al carrito!','success');
         },
         (error) => {
+          console.error('Error:', error);
           Swal.fire('Error', 'Hubo un error', 'error');
         }
       );

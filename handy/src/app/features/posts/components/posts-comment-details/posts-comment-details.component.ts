@@ -88,6 +88,7 @@ export class DialogPostsCommentDetailsComponent {
         Swal.fire('Exito', successMessage, 'success');
       },
       (error) => {
+        console.error('Error:', error);
         Swal.fire('Error', errorMessage, 'error');
       });
     }
