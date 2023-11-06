@@ -23,14 +23,10 @@ export class CartService {
   }
 
   create(cart: Cart): Observable<Cart> {
-
-    const formData = new FormData();
-    formData.append('cartDTO', new Blob([JSON.stringify(this.mapper.cartToDto(cart))], { type: 'application/json' }));
     return this.http
       .post(
         totalToPayPerCarttURL,
-        //this.mapper.cartToDto(cart)
-        formData,
+        this.mapper.cartToDto(cart)
       )
       .pipe(
         map((response) => {
