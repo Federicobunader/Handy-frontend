@@ -6,10 +6,15 @@ import { RegisterDialogComponent } from './components/register-dialog/register-d
 import { DialogCheckMailComponent } from './components/check-mail/check-mail/check-mail.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { ResetPasswordComponent } from '../login/components/reset-password/reset-password.component';
+import { MissingRequiredFieldsComponent } from 'src/app/shared/components/missing-required-fields/missing-required-fields.component';
 
 @NgModule({
   declarations: [
-    RegisterDialogComponent, DialogCheckMailComponent, ResetPasswordComponent, ChangePasswordComponent
+    RegisterDialogComponent, 
+    DialogCheckMailComponent, 
+    ResetPasswordComponent, 
+    ChangePasswordComponent,
+    MissingRequiredFieldsComponent
   ],
   imports: [
     SharedModule,

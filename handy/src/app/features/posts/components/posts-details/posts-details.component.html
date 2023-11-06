@@ -19,11 +19,11 @@
             <div class="column-left">
               <p class="postCreationLabel">Titulo de la publicacion</p>
               <input class="postCreationInput" type="text" matInput name="title" formControlName="title">
-              <mat-error *ngIf="postForm.get('title')?.hasError('maxlength')" style="width:80%;">El titulo no puede
+              <mat-error *ngIf="postForm.get('title')?.hasError('maxlength')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El titulo no puede
                 tener mas de 100 caracteres</mat-error>
               <p class="postCreationLabel">Nombre del Producto</p>
               <input class="postCreationInput" type="text" matInput name="productName" formControlName="productName">
-              <mat-error *ngIf="postForm.get('productName')?.hasError('maxlength')" style="width:80%;">El nombre del
+              <mat-error *ngIf="postForm.get('productName')?.hasError('maxlength')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El nombre del
                 producto no puede tener mas de 100 caracteres</mat-error>
               <p class="postCreationLabel">Stock</p>
               <input class="postCreationInput" type="number" matInput name="stock" formControlName="stock">
@@ -39,9 +39,6 @@
                     {{category.name}}
                   </mat-option>
                 </mat-select>
-                <mat-error>
-                  Seleccioná una Categoría
-                </mat-error>
               </mat-form-field>
               <p class="postCreationLabel">Sub-categoría</p>
               <mat-form-field class="selectorInput">
@@ -50,9 +47,6 @@
                     {{subcategory.name}}
                   </mat-option>
                 </mat-select>
-                <mat-error>
-                  Seleccioná una Sub-categoría
-                </mat-error>
               </mat-form-field>
               <p class="postCreationLabel">Marca</p>
               <mat-form-field class="selectorInput">
@@ -61,9 +55,6 @@
                     {{brand.name}}
                   </mat-option>
                 </mat-select>
-                <mat-error>
-                  Seleccioná una Marca
-                </mat-error>
               </mat-form-field>
               <p class="postCreationLabel">Deposito</p>
               <input class="postCreationInput" type="number" matInput name="depositPrice"
@@ -80,6 +71,7 @@
               <p class="postCreationLabel">Descripcion del Producto</p>
               <textarea class="descriptionInput" type="text" matInput name="productDescription"
                 formControlName="productDescription" spellcheck></textarea>
+              <mat-error *ngIf="postForm.get('productDescription')?.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">La descripción puede tener hasta 500 caracteres</mat-error>
               <p class="checkboxInput"><input type="checkbox" formControlName="isLeasing"> Quiero que los usuarios
                 puedan comprar mi producto.</p>
               <br>
@@ -118,10 +110,7 @@
         </mat-tab>
       </mat-tab-group>
       <div style="text-align:center;margin-top:20px;">
-        <button class="createButtonDisabled" *ngIf="postForm.invalid || !this.isAddressFormValid"
-          [disabled]="postForm.invalid || !this.isAddressFormValid">{{this.createOrUpdateLabel}}</button>
-        <button class="createButton" (click)="saveOrUpdate()"
-          *ngIf="postForm.valid && this.isAddressFormValid">{{this.createOrUpdateLabel}}</button>
+        <button class="createButton" (click)="saveOrUpdate()">{{this.createOrUpdateLabel}}</button>
       </div>
     </div>
   </body>

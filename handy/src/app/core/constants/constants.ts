@@ -1,5 +1,5 @@
-//export const apiURL = 'https://handy-utn-backend-815e66e9002b.herokuapp.com/api';
-export const apiURL = 'http://localhost:8080/api';
+export const apiURL = 'https://handy-utn-backend-815e66e9002b.herokuapp.com/api';
+//export const apiURL = 'http://localhost:8080/api';
 
 
 export const postURL = apiURL + '/post'

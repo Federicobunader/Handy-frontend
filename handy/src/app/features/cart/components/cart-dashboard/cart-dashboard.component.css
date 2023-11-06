@@ -1,4 +1,10 @@
-.title{
+.container {
+    padding-top: 7rem;
+    padding-left: 7rem;
+    padding-right: 7rem;
+}
+
+.title {
     font-size: 3rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
@@ -7,46 +13,46 @@
     letter-spacing: 0.1rem;
 }
 
-.line{
+.line {
     margin-bottom: 2rem;
     margin-top: 2rem;
     border-top: 0.2rem solid #885B34;
     width: 100%;
 }
 
-.cartBox{
-    background-color:#f8f3e7;
+.cartBox {
+    background-color: #f8f3e7;
     padding-top: 2rem;
     padding-bottom: 6rem;
     width: 100%;
 }
 
-.authorPurchase{
-    background-color:#EBE1BE;
+.authorPurchase {
+    background-color: #EBE1BE;
 }
 
-.panelHeader{
+.panelHeader {
     height: 5rem;
     border: 0.1rem solid #885B34;
 }
 
-.productPanelHeader{
+.productPanelHeader {
     height: 5rem;
     border: 0.1rem solid #885B34;
 }
 
-.productPurchase{
-    background-color:#f8f3e7;
+.productPurchase {
+    background-color: #f8f3e7;
 }
 
-.cartTitle{
+.cartTitle {
     font-size: 1.5rem;
     font-family: 'Roboto', monospace;
     color: #885B34;
     margin-top: 0.5rem;
 }
 
-.cartPrice{
+.cartPrice {
     font-size: 2rem;
     font-family: 'Roboto', monospace;
     color: #885B34;
@@ -54,7 +60,7 @@
     margin-top: 0.5rem;
 }
 
-.payButton{
+.payButton {
     padding-left: 25px;
     padding-right: 25px;
     color: white;
@@ -68,30 +74,30 @@
     border-radius: 5px;
     margin-left: 2rem;
 }
-  
-.payButton:hover{
+
+.payButton:hover {
     background-color: #885B34;
 }
 
-.productBox{
+.productBox {
     margin: 2rem;
 }
 
-.cartDescription{
+.cartDescription {
     font-size: 1.2rem;
     font-family: 'Roboto', monospace;
     color: #885B34;
     margin-top: 0.5rem;
 }
 
-.cartInformation{
+.cartInformation {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     color: #885B34;
     margin-top: 0.5rem;
 }
 
-.button{
+.button {
     padding-left: 15px;
     padding-right: 15px;
     color: white;
@@ -105,11 +111,11 @@
     margin-left: 2rem;
 }
 
-.button:hover{
+.button:hover {
     background-color: #885B34;
 }
 
-.footer{
+.footer {
     font-family: 'Roboto', monospace;
     font-weight: bold;
     color: #C2C2C2;
@@ -118,7 +124,7 @@
     margin-top: -1.2rem;
 }
 
-.message{
+.message {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
@@ -126,9 +132,9 @@
     padding-bottom: 1rem;
     letter-spacing: 0.1rem;
     margin-left: 1rem;
-  }
+}
 
-  .searchToolsButton{
+.searchToolsButton {
     margin-left: 0.5rem;
     width: 30%;
     padding-left: 40px;
@@ -144,8 +150,122 @@
     letter-spacing: 0.1rem;
     font-weight: bold;
     cursor: pointer;
-  }
+}
 
-  .searchToolsButton:hover{
+.searchToolsButton:hover {
     background-color: #885B34;
-  }
+}
+
+.emptyCartContainer {
+    display: block;
+}
+
+.priceAndPayContainer {
+    display: inline-flex;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.column-left {
+    width: 70%;
+}
+
+.column-right {
+    width: 30%;
+    text-align: right;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .container {
+        padding-top: 3rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-left: 2rem;
+    }
+
+    .line {
+        margin-bottom: 0rem;
+        margin-top: 0rem;
+        width: 90%;
+    }
+
+    .message {
+        margin-top: 2rem;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: normal;
+        margin-left: 0rem;
+    }
+
+    .searchToolsButton {
+        width: 80%;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: small;
+    }
+
+    .emptyCartContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cartBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+        width: 90%;
+    }
+
+    .cartTitle {
+        font-size: 1rem;
+    }
+
+    .cartPrice {
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .priceAndPayContainer {
+        display: contents;
+    }
+
+    .payButton {
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: small;
+        margin-left: 0rem;
+    }
+
+    .column-left {
+        width: 60%;
+    }
+
+    .column-right {
+        width: 40%;
+        text-align: right;
+    }
+
+    .productBox {
+        margin-bottom: 0rem;
+        margin-left: 0rem;
+        margin-right: 0rem;
+        margin-top: 1rem;
+    }
+
+    .cartDescription {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,28 @@
+<div class="container">
+    <div *ngIf="editAndPasswordMissing">
+        <p class="label">Para poder guardar tus cambios, deberás ingresar tu contraseña actual y repetirla.</p>
+    </div>
+    <div *ngIf="!editAndPasswordMissing">
+        <div *ngIf="!justInvalidFields">
+            <p class="label">{{missingFieldsMessage}}</p>
+            <p class="label" style="margin-top:1rem;" *ngIf="missingFieldsFirstTab.length > 0">{{firstTabLabel}}</p>
+            <div *ngFor="let firstTabField of missingFieldsFirstTab" class="answerContainer">
+                <li class="label" style="margin-left:1rem;">{{firstTabField}}</li>
+            </div>
+            <p class="label" style="margin-top:1rem;" *ngIf="missingFieldsSecondTab.length > 0">{{secondTabLabel}}</p>
+            <div *ngFor="let secondTabField of missingFieldsSecondTab" class="answerContainer">
+                <li class="label" style="margin-left:1rem;">{{secondTabField}}</li>
+            </div>
+            <p class="label" style="margin-top:1rem;" *ngIf="missingFieldsThirdTab.length > 0">{{thirdTabLabel}}</p>
+            <div *ngFor="let thirdTabField of missingFieldsThirdTab" class="answerContainer">
+                <li class="label" style="margin-left:1rem;">{{thirdTabField}}</li>
+            </div>
+        </div>
+        <div *ngIf="justInvalidFields">
+            <p class="label">{{invalidMessage}}</p>
+        </div>
+    </div>
+    <div class="buttonContainer">
+        <button class="okButton" (click)="onOkClick()">OK</button>
+    </div>
+</div>

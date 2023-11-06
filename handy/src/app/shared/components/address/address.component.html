@@ -14,14 +14,14 @@
             </mat-form-field><br><br>
             <p class="registerLabel">Calle y número</p>
             <input class="registerInput" type="text" matInput name="address" formControlName="address"><br>
-            <mat-error *ngIf="addressForm.get('address')?.hasError('maxlength')" style="width:80%;">La direccion no
+            <mat-error *ngIf="addressForm.get('address')?.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">La direccion no
                 puede tener mas de 100 caracteres</mat-error>
             <p class="addressCheckbox"><input type="checkbox" formControlName="isApartment"> Agregar piso y departamento
             </p>
             <input *ngIf="this.addressForm.get('isApartment')?.value" class="registerInput" type="string" matInput
                 name="apartment" formControlName="apartment"><br>
-            <mat-error *ngIf="addressForm.get('apartment')?.hasError('maxlength')" style="width:80%;">El departamento no
-                puede tener mas de 10 caracteres (Ej válido: 10A)</mat-error>
+            <mat-error *ngIf="addressForm.get('apartment')?.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">El departamento no
+                puede tener mas de 10 caracteres (Ej. válido: 10A)</mat-error>
         </div>
         <div class="column-right">
             <p class="registerLabel">Localidad</p>
@@ -39,7 +39,7 @@
             <input class="registerInput" type="number" matInput name="postcode" formControlName="postcode"><br>
             <mat-error
                 *ngIf="(addressForm.get('postcode') != undefined && addressForm.get('postcode')?.hasError('min')) || addressForm.get('postcode')?.hasError('max')"
-                style="width:80%;margin-top: -3rem;">El codigo postal tiene que ser positivo y no puede tener más de 5
+                style="width:80%;margin-top:-3rem;margin-bottom:1rem;">El codigo postal tiene que ser positivo y no puede tener más de 5
                 caracteres</mat-error>
         </div>
     </div>
