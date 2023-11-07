@@ -123,7 +123,7 @@ export class DialogCartDetailComponent {
   isAnInvalidadDate(){
     const cartDate = new Date(this.dateTo.value);
     const nowDate = new Date();
-    return cartDate.getTime() <= nowDate.getTime()
+    return cartDate.getTime() <= nowDate.getTime() - 1;
   }
 
   disableButton(){
