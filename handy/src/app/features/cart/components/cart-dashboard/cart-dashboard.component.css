@@ -41,6 +41,24 @@
     border: 0.1rem solid #885B34;
 }
 
+.headerTitleAndPrice {
+    width: 40%;
+}
+
+.headerButtons {
+    display: inline-flex;
+    width: 60%;
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 .productPurchase {
     background-color: #f8f3e7;
 }
@@ -98,8 +116,11 @@
 }
 
 .button {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 30%;
     color: white;
     background-color: #E1AE63;
     border-color: #885B34;
@@ -107,7 +128,6 @@
     font-family: 'Roboto', monospace;
     letter-spacing: 0.1rem;
     cursor: pointer;
-    height: 2rem;
     margin-left: 2rem;
 }
 
@@ -164,10 +184,14 @@
     display: inline-flex;
 }
 
-.row {
+.rowWeb {
     width: 100%;
     display: flex;
     align-items: center;
+}
+
+.rowMobile {
+    display: none;
 }
 
 .column-left {
@@ -235,27 +259,27 @@
     .cartPrice {
         font-size: 1rem;
         font-weight: bold;
-        text-align: right;
     }
 
     .priceAndPayContainer {
         display: contents;
+
     }
 
     .payButton {
-        padding-left: 15px;
-        padding-right: 15px;
         font-size: small;
         margin-left: 0rem;
     }
 
     .column-left {
-        width: 60%;
+        width: 100%;
     }
 
     .column-right {
-        width: 40%;
-        text-align: right;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
     }
 
     .productBox {
@@ -267,5 +291,46 @@
 
     .cartDescription {
         font-size: 0.9rem;
+    }
+
+    .panelHeader {
+        height: 7rem;
+    }
+
+    .productPanelHeader {
+        height: 18rem;
+    }
+
+    .headerContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .headerTitleAndPrice {
+        width: 100%;
+        display: flex;
+    }
+
+    .rowWeb {
+        display: none;
+    }
+
+    .rowMobile {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .headerButtons{
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .button{
+        width: 100%;
+        margin-left: 0rem;
+        margin-top: 1rem;
     }
 }
