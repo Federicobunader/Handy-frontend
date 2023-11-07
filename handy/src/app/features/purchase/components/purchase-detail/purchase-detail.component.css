@@ -163,12 +163,33 @@
 .deliveryContainer {
     width: 100%;
 }
+
 .paymentButtons {
     width: 50%;
 }
 
 .paymentContainer {
     width: 100%;
+}
+
+.addressContainer {
+    margin-bottom: 3rem;
+}
+
+.bottomContainer {
+    margin-bottom: 3rem;
+    text-align: right;
+}
+
+.summaryContainer {
+    margin-top: -9rem;
+    margin-bottom: -7rem;
+    width: 100%;
+}
+
+.purchasedDeliveryContainer {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
@@ -207,8 +228,63 @@
         justify-content: center;
     }
 
-    .deliveryMessage{
+    .deliveryMessage {
         text-align: center;
     }
 
+    .addressContainer {
+        margin: 1rem;
+    }
+
+    .bottomContainer {
+        margin: 3rem;
+    }
+
+
+    .payButtonDisable {
+        width: 80%;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: medium;
+        font-weight: normal;
+    }
+
+    .payButton {
+        width: 80%;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: medium;
+        font-weight: normal;
+    }
+
+    .summaryContainer {
+        margin-top: -5rem;
+    }
+
+    .summary {
+        font-size: 1.2rem;
+        margin-left: 2rem;
+    }
+
+    .purchasedTitle {
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin: 2rem;
+        margin-bottom: 1rem !important;
+    }
+
+    .purchasedSubtitle {
+        font-size: 0.8rem;
+        margin: 2rem;
+        margin-top: 0rem !important;
+        font-weight: normal;
+    }
+
+    .purchasedDeliveryContainer {
+        margin-left: 2rem;
+    }
 }

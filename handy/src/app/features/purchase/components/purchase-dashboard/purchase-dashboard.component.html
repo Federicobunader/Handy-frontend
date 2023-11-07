@@ -1,8 +1,8 @@
-<body>
+<body class="containerContainer">
   <!-- buyer UI -->
-  <div *ngIf="isBuyer">
+  <div *ngIf="isBuyer" class="container">
     <mat-accordion [multi]="false">
-      <div style="padding:20px;display:inline-flex;width:20rem;" *ngFor="let purchase of purchases">
+      <div class="cardContainer" *ngFor="let purchase of purchases">
         <mat-expansion-panel hideToggle (opened)="viewTotalsToPayPerCart(purchase.totalToPayPerAuthor.id)" class="purchaseCardAsBuyer">
           <mat-expansion-panel-header class="panelHeader">
             <div style="display:inline;text-align:center;width:20rem;">
@@ -39,9 +39,9 @@
     </div>
   </div>
   <!-- seller UI -->
-  <div *ngIf="!isBuyer">
+  <div *ngIf="!isBuyer" class="container">
     <mat-accordion [multi]="false">
-      <div style="padding:20px;display:inline-flex;width:20rem;" *ngFor="let purchase of purchases">
+      <div class="cardContainer" *ngFor="let purchase of purchases">
         <mat-expansion-panel hideToggle (opened)="viewTotalsToPayPerCart(purchase.totalToPayPerAuthor.id)" class="purchaseCardAsSeller">
           <mat-expansion-panel-header class="panelHeader">
             <div style="display:inline;text-align:center;width:20rem;">

@@ -1,4 +1,4 @@
-  .message{
+  .message {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
@@ -8,64 +8,64 @@
     margin-left: 1rem;
   }
 
-  .purchaseCardAsBuyer{
-    background-color:#EBE1BE;
+  .purchaseCardAsBuyer {
+    background-color: #EBE1BE;
     border: 0.1rem solid #885B34;
   }
 
-  .purchaseCardAsSeller{
-    background-color:#ffeca8;
+  .purchaseCardAsSeller {
+    background-color: #ffeca8;
     border: 0.1rem solid #885B34;
   }
 
-  .panelHeader{
+  .panelHeader {
     height: 8rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
 
-  .purchaseInfo{
+  .purchaseInfo {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     color: #885B34;
   }
 
-  .purchaseSubinfo{
+  .purchaseSubinfo {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     color: #885B34;
     text-align: justify;
   }
 
-  .rentalFinished{
+  .rentalFinished {
     font-size: 0.7rem;
     font-family: 'Roboto', monospace;
     color: #cd8d54;
     text-align: center;
   }
 
-  .rentalNormal{
+  .rentalNormal {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
-    color: green;  
-    text-align: center;  
+    color: green;
+    text-align: center;
   }
 
-  .rentalMedium{
+  .rentalMedium {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
-    color: orange; 
-    text-align: center;   
+    color: orange;
+    text-align: center;
   }
 
-  .rentalSoon{
+  .rentalSoon {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
-    color: red;   
-    text-align: center; 
+    color: red;
+    text-align: center;
   }
 
-  .viewDetailsButton{
+  .viewDetailsButton {
     width: 70%;
     padding-left: 10px;
     padding-right: 10px;
@@ -78,15 +78,15 @@
     font-size: small;
     font-family: 'Roboto', monospace;
     cursor: pointer;
-    margin-left:0.5rem;
-    margin-right:0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 
-  .viewDetailsButton:hover{
+  .viewDetailsButton:hover {
     background-color: #885B34;
   }
 
-  .rateButton{
+  .rateButton {
     width: 100%;
     padding-left: 10px;
     padding-right: 10px;
@@ -101,18 +101,18 @@
     cursor: pointer;
   }
 
-  .rateButton:hover{
+  .rateButton:hover {
     background-color: #E1AE63;
   }
 
-  .line{
+  .line {
     margin-bottom: 1rem;
     margin-top: 1rem;
     border-top: 0.1rem solid #885B34;
     width: 100%;
   }
 
-  .searchToolsButton{
+  .searchToolsButton {
     margin-left: 0.5rem;
     width: 80%;
     padding-left: 40px;
@@ -130,12 +130,18 @@
     cursor: pointer;
   }
 
-  .searchToolsButton:hover{
+  .searchToolsButton:hover {
     background-color: #885B34;
   }
-  
+
+  .cardContainer {
+    padding: 20px;
+    display: inline-flex;
+    width: 20rem;
+  }
+
   @media only screen and (min-width: 320px) and (max-width: 480px) {
-    .searchToolsButton{
+    .searchToolsButton {
       width: 100%;
       font-size: small;
       padding-left: 20px;
@@ -146,9 +152,22 @@
       font-weight: normal;
     }
 
-    .message{
+    .message {
       margin-left: 0rem;
       text-align: center;
       font-weight: normal;
+    }
+
+    .cardContainer {
+      padding: 0px;
+      padding-top: 20px !important;
+      padding-bottom: 20px !important;
+      width: 70%;
+    }
+
+    .containerContainer{
+      overflow-y: scroll;
+      height: 15rem;
+
     }
   }

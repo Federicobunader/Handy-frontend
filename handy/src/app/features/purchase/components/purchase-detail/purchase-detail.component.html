@@ -20,10 +20,10 @@
           <mat-button-toggle [ngClass]="{'toggleClicked' : toggleDelivery, 'toggleUnclicked': !toggleDelivery}" (click)="clearAddress()" value="suggestedAddress">RETIRAR POR PUNTO DE ENTREGA</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
-      <div *ngIf="showAddress && !isPurchased" style="margin-bottom:3rem;">
+      <div *ngIf="showAddress && !isPurchased" class="addressContainer">
         <app-address [parentForm]="undefined" (transferAddressForm)="setFormInfoToAddressForm($event)"></app-address>  
       </div>
-      <div *ngIf="showAddress && isPurchased" style="margin-bottom:1rem;margin-top:2rem;">
+      <div *ngIf="showAddress && isPurchased" class="purchasedDeliveryContainer">
         <p class="houseDelivery"><b>Provincia:</b> {{this.purchase.deliveryPoint.location.province.name}}</p>
         <p class="houseDelivery"><b>Localidad:</b> {{this.purchase.deliveryPoint.location.name}}</p>
         <p class="houseDelivery"><b>Código postal:</b> {{this.purchase.deliveryPoint.postcode}}</p>
@@ -56,7 +56,7 @@
       </div>
     </div> 
     <hr class="line">  
-    <div style="margin-bottom:3rem;text-align:right;">
+    <div class="bottomContainer">
       <p class="totalToPay" *ngIf="!isPurchased">Total a pagar: ${{this.totalToPayPerAuthor.totalToPay}}</p>
       <p class="totalToPay" *ngIf="isPurchased">Total pagado: ${{this.totalToPayPerAuthor.totalToPay}}</p>
       <button class="payButtonDisable" *ngIf="!isPurchased && !enablePurchaseButton">PROCEDER AL PAGO</button>
@@ -64,7 +64,7 @@
     </div>
     <div>
       <h1 class="summary">Resumen de compra</h1>
-      <div style="margin-top:-9rem;margin-bottom:-7rem;width:100%;">
+      <div class="summaryContainer">
         <app-cart-dashboard [showBuyButton]=false [isPurchasedSection]=isPurchasedSection [expanded]="false" [isPurchased]=isPurchased [authorID]=this.totalToPayPerAuthorID></app-cart-dashboard>
       </div>
     </div>
