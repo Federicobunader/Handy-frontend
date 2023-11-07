@@ -90,18 +90,14 @@ export class DialogCartDetailComponent {
 
       this.cartService
       .create(this.cart)
-      .pipe(takeUntil(this.$_destroyed))
-      .subscribe(
-        () => {
-          Swal.fire('Exito','¡El producto fue agregado al carrito!','success');
-        },
-        (error) => {
-          console.error('Error:', error);
-          Swal.fire('Error', 'Hubo un error', 'error');
-        }
-      );
-      this.dialogRef.close();
+      .subscribe(() => {
+        Swal.fire('Exito','¡El producto fue agregado al carrito!','success');
+      },
+      () => {
+        Swal.fire('Error', 'Hubo un error', 'error');
+      });
     }
+    this.dialogRef.close();
   }
 
   openInformationModal: Boolean = false;

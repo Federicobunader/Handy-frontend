@@ -5,7 +5,7 @@ import { User } from "./user";
 export interface TotalToPayPerAuthor extends IIdentifiable{
   author: User;
   from: User;
-  totalToPay: any;
+  totalToPay: number;
   purchasedFlag: boolean;
   returnedFlag: boolean,
 }

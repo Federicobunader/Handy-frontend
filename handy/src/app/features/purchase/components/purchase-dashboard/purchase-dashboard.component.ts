@@ -79,7 +79,7 @@ export class PurchaseDashboardComponent {
       .subscribe( () => {
         this.showEmptyMessage = this.purchases.length == 0;
         this.purchases.forEach( purchase => {
-          purchase.totalToPayPerAuthor.totalToPay = purchase.totalToPayPerAuthor.totalToPay.toLocaleString('es-CO');
+          purchase.totalToPayPerAuthor.totalToPay = purchase.totalToPayPerAuthor.totalToPay;
           purchase.creationDate = this.pipe.transform(purchase.creationDate, 'dd/MM/YYYY');
         });
       });
@@ -95,7 +95,7 @@ export class PurchaseDashboardComponent {
       .subscribe( () => {
         this.showEmptyMessage = this.purchases.length == 0;
         this.purchases.forEach( purchase => {
-          purchase.totalToPayPerAuthor.totalToPay = purchase.totalToPayPerAuthor.totalToPay.toLocaleString('es-CO');
+          purchase.totalToPayPerAuthor.totalToPay = purchase.totalToPayPerAuthor.totalToPay;
           purchase.creationDate = this.pipe.transform(purchase.creationDate, 'dd/MM/YYYY');
         });
       });

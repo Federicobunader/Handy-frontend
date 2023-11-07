@@ -163,7 +163,7 @@ export class PurchaseDetailComponent implements OnInit{
     .subscribe(() => {
       this.purchase.totalToPayPerAuthor = this.totalToPayPerAuthor;
       this.purchase.seller = this.totalToPayPerAuthor.author;
-      this.totalToPayPerAuthor.totalToPay = this.totalToPayPerAuthor.totalToPay.toLocaleString('es-CO');
+      this.totalToPayPerAuthor.totalToPay = this.totalToPayPerAuthor.totalToPay;
     });
   }
 
@@ -231,18 +231,21 @@ export class PurchaseDetailComponent implements OnInit{
           })
         )
         .subscribe( () => {
-          dialogRef.close();
+
           const message = this.method.name == 'Efectivo' ? '¡La compra fue efectuada exitosamente!' : '¡El pago fue efectuado exitosamente!';
-          window.location.reload();
           Swal.fire('Exito', message,'success');
-        },
-        (error) => {
+          window.location.reload();
           dialogRef.close();
+        },
+        () => {
           Swal.fire('Error', 'No se pudo concretar la compra', 'error');
+          window.location.reload();
+          dialogRef.close();
         });
       } else {
-          dialogRef.close();
           Swal.fire('Error', 'No se pudo concretar la compra', 'error');
+          window.location.reload();
+          dialogRef.close();
       }
     }
   }

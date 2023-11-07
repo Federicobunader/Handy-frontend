@@ -152,7 +152,7 @@ export class CartDashboardComponent {
           this.totalsToPayPerAuthor.push(response)))
       )
     .subscribe( () => {
-      this.totalsToPayPerAuthor.forEach( total => total.totalToPay = total.totalToPay.toLocaleString('es-CO'));
+      this.totalsToPayPerAuthor.forEach( total => total.totalToPay = total.totalToPay);
     });
   }
 
@@ -165,7 +165,7 @@ export class CartDashboardComponent {
           this.totalsToPayPerAuthor = response))
       )
     .subscribe(() => {
-      this.totalsToPayPerAuthor.forEach( total => total.totalToPay = total.totalToPay.toLocaleString('es-CO'));
+      this.totalsToPayPerAuthor.forEach( total => total.totalToPay = total.totalToPay);
     });
   }
 

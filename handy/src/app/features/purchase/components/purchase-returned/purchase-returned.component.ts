@@ -29,7 +29,7 @@ export class PurchaseReturnedComponent {
 
   onSaveClick(): void {
     this.data.totalToPayPerAuthor.returnedFlag = true;
-    this.data.totalToPayPerAuthor.totalToPay = parseFloat(this.data.totalToPayPerAuthor.totalToPay);
+    this.data.totalToPayPerAuthor.totalToPay = this.data.totalToPayPerAuthor.totalToPay;
     this.totalToPayPerAuthorService
         .create(this.data.totalToPayPerAuthor)
         .pipe(takeUntil(this.$_destroyed),

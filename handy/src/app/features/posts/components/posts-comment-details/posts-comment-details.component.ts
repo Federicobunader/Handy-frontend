@@ -71,7 +71,6 @@ export class DialogPostsCommentDetailsComponent {
 
   onSaveClick(): void {
     if (this.content.valid) {
-      this.dialogRef.close();
       this.comment.content = this.content.value,
       this.comment.post = this.data.post,
       this.comment.author = this.user,
@@ -82,16 +81,16 @@ export class DialogPostsCommentDetailsComponent {
 
       this.commentService
       .create(this.comment)
-      .pipe(takeUntil(this.$_destroyed))
+      //.pipe(takeUntil(this.$_destroyed))
       .subscribe( () => {
         this.commentService.setComment(this.comment);
         Swal.fire('Exito', successMessage, 'success');
       },
-      (error) => {
-        console.error('Error:', error);
+      () => {
         Swal.fire('Error', errorMessage, 'error');
       });
     }
+    this.dialogRef.close();
   }
 
 }
