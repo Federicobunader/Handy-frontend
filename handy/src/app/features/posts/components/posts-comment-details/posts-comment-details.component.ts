@@ -81,7 +81,6 @@ export class DialogPostsCommentDetailsComponent {
 
       this.commentService
       .create(this.comment)
-      //.pipe(takeUntil(this.$_destroyed))
       .subscribe( () => {
         this.commentService.setComment(this.comment);
         Swal.fire('Exito', successMessage, 'success');
