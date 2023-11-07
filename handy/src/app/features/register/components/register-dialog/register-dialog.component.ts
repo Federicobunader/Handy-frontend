@@ -363,5 +363,4 @@ export class RegisterDialogComponent {
       return age >= 18 ? null : { 'ageInvalid': true };
     };
   }
-
 }

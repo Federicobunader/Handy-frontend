@@ -1,6 +1,6 @@
 <body style="overflow:auto;background-color:#f8f3e7;width:100%;">
   <nav-bar [navBarWithButtons]=true [showCart]=false></nav-bar>  
-  <div style="padding-top:7rem;padding-left:7rem;padding-right:7rem;"> 
+  <div class="container"> 
     <div *ngIf="isPurchased">
       <p class="purchasedTitle">Compra realizada a {{this.purchase.seller.firstName}} {{this.purchase.seller.lastName}} el día {{this.purchase.creationDate}}</p>
       <p class="purchasedSubtitle">Información del comprador. Nombre: {{this.buyerFullName}} | Mail: {{this.buyerEmail}} | Teléfono: {{this.buyerTel}}</p>
@@ -8,14 +8,14 @@
     <div class="box">
       <h1 class="title">Entrega</h1> 
       <hr class="line">
-      <div *ngIf="isPurchased">
-        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" style="width:50%;">
+      <div *ngIf="isPurchased" class="deliveryContainer">
+        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="deliveryButtons">
           <mat-button-toggle disabled [ngClass]="{'toggleClicked' : toggleHome, 'toggleUnclickedDisabled': !toggleHome}">CASA</mat-button-toggle>
           <mat-button-toggle disabled [ngClass]="{'toggleClicked' : toggleDelivery, 'toggleUnclickedDisabled': !toggleDelivery}">PUNTO DE ENTREGA</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
-      <div *ngIf="!isPurchased">
-        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" style="width:50%;">
+      <div *ngIf="!isPurchased" class="deliveryContainer">
+        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="deliveryButtons">
           <mat-button-toggle [ngClass]="{'toggleClicked' : toggleHome, 'toggleUnclicked': !toggleHome}" (click)="loadAddressFromUser()" value="home">ENVÍO A MI CASA</mat-button-toggle>
           <mat-button-toggle [ngClass]="{'toggleClicked' : toggleDelivery, 'toggleUnclicked': !toggleDelivery}" (click)="clearAddress()" value="suggestedAddress">RETIRAR POR PUNTO DE ENTREGA</mat-button-toggle>
         </mat-button-toggle-group>
@@ -37,15 +37,15 @@
     <div class="box"> 
       <h1 class="title">Forma de Pago</h1> 
       <hr class="line">   
-      <div *ngIf="isPurchased">   
-        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" style="width:50%;">
+      <div *ngIf="isPurchased" class="paymentContainer">   
+        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="paymentButtons">
           <mat-button-toggle disabled [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclickedDisabled': !togglePaymentMethod1}">EFECTIVO</mat-button-toggle>
           <mat-button-toggle disabled [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclickedDisabled': !togglePaymentMethod2}">MERCADO PAGO</mat-button-toggle>
           <mat-button-toggle disabled [ngClass]="{'toggleClicked' : togglePaymentMethod3, 'toggleUnclickedDisabled': !togglePaymentMethod3}">UALA</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
-      <div *ngIf="!isPurchased">   
-        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" style="width:50%;">
+      <div *ngIf="!isPurchased" class="paymentContainer">   
+        <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="paymentButtons">
           <mat-button-toggle [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclicked': !togglePaymentMethod1}" (click)="setPaymentMethod('Efectivo')" value="efectivo">EFECTIVO</mat-button-toggle>
           <mat-button-toggle [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclicked': !togglePaymentMethod2}" (click)="setPaymentMethod('Mercado Pago')" value="mercadoPago">MERCADO PAGO</mat-button-toggle>
           <mat-button-toggle [ngClass]="{'toggleClicked' : togglePaymentMethod3, 'toggleUnclicked': !togglePaymentMethod3}" (click)="setPaymentMethod('Uala')" value="uala">UALA</mat-button-toggle>

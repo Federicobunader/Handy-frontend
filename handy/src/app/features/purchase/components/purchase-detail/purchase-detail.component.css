@@ -1,4 +1,4 @@
-.purchasedTitle{
+.purchasedTitle {
     font-size: 2.5rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
@@ -7,7 +7,7 @@
     margin-top: 1rem;
 }
 
-.purchasedSubtitle{
+.purchasedSubtitle {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
@@ -17,7 +17,7 @@
     margin-bottom: 3rem;
 }
 
-.title{
+.title {
     font-size: 3rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
@@ -26,14 +26,14 @@
     margin-top: 1rem;
 }
 
-.houseDelivery{
+.houseDelivery {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     color: #885B34;
     letter-spacing: 0.1rem;
 }
 
-.summary{
+.summary {
     font-size: 1.5rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
@@ -41,7 +41,7 @@
     letter-spacing: 0.1rem;
 }
 
-.totalToPay{
+.totalToPay {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
@@ -49,48 +49,48 @@
     letter-spacing: 0.1rem;
 }
 
-.box{
+.box {
     overflow-y: auto;
     overflow-x: hidden;
     margin-bottom: 3rem;
 }
 
-.toggleUnclickedDisabled{
+.toggleUnclickedDisabled {
     width: 50%;
-    background-color: #E1AE63; 
+    background-color: #E1AE63;
     color: white;
-    border: 0.1rem solid #885B34; 
+    border: 0.1rem solid #885B34;
     cursor: pointer;
 }
 
-.toggleUnclicked{
+.toggleUnclicked {
     width: 50%;
-    background-color: #E1AE63; 
+    background-color: #E1AE63;
     color: white;
-    border: 0.1rem solid #885B34; 
+    border: 0.1rem solid #885B34;
     cursor: pointer;
 }
 
-.toggleClicked{
+.toggleClicked {
     width: 50%;
-    background-color: #885B34; 
+    background-color: #885B34;
     color: white;
-    border: 0.1rem solid #885B34; 
+    border: 0.1rem solid #885B34;
     cursor: pointer;
 }
 
-.toggleUnclicked:hover{
+.toggleUnclicked:hover {
     background-color: #885B34;
 }
 
-.line{
+.line {
     margin-bottom: 2rem;
     margin-top: 2rem;
     border-top: 0.2rem solid #885B34;
     width: 100%;
 }
 
-.deliveryMessage{
+.deliveryMessage {
     margin-top: 1rem;
     font-size: 0.8rem;
     font-family: 'Roboto', monospace;
@@ -99,7 +99,7 @@
     letter-spacing: 0.1rem;
 }
 
-.payButtonDisable{
+.payButtonDisable {
     width: 25%;
     padding-left: 20px;
     padding-right: 20px;
@@ -115,28 +115,28 @@
     border-radius: 10px;
 }
 
-.payButton{
-  width: 25%;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: white;
-  background-color: #E1AE63;
-  border-color: #885B34;
-  font-size: large;
-  font-family: 'Roboto', monospace;
-  letter-spacing: 0.1rem;
-  font-weight: bold;
-  border-radius: 10px;
-  cursor:pointer;
+.payButton {
+    width: 25%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    background-color: #E1AE63;
+    border-color: #885B34;
+    font-size: large;
+    font-family: 'Roboto', monospace;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.payButton:hover{
-  background-color: #885B34;
+.payButton:hover {
+    background-color: #885B34;
 }
 
-.footer{
+.footer {
     font-family: 'Roboto', monospace;
     font-weight: bold;
     color: #C2C2C2;
@@ -148,4 +148,67 @@
 .transparent .mat-dialog-container {
     box-shadow: none;
     background: rgba(0, 0, 0, 0.0);
+}
+
+.container {
+    padding-top: 7rem;
+    padding-left: 7rem;
+    padding-right: 7rem;
+}
+
+.deliveryButtons {
+    width: 50%;
+}
+
+.deliveryContainer {
+    width: 100%;
+}
+.paymentButtons {
+    width: 50%;
+}
+
+.paymentContainer {
+    width: 100%;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .container {
+        padding-top: 3rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-left: 2rem;
+    }
+
+    .line {
+        width: 90%;
+    }
+
+    .deliveryButtons {
+        width: 80%;
+    }
+
+    .paymentContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .paymentButtons {
+        width: 80%;
+    }
+
+    .deliveryContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .deliveryMessage{
+        text-align: center;
+    }
+
 }
