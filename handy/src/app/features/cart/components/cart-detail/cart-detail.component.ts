@@ -80,7 +80,6 @@ export class DialogCartDetailComponent {
 
   onSaveClick(): void {
     if (this.amount.valid) {
-      this.dialogRef.close();
       this.cart.amount = this.amount.value;
       if(this.optionChosen === "comprar"){
         this.cart.isLeasing = true;
@@ -101,6 +100,7 @@ export class DialogCartDetailComponent {
           Swal.fire('Error', 'Hubo un error', 'error');
         }
       );
+      this.dialogRef.close();
     }
   }
 
