@@ -7,7 +7,7 @@ export interface Product extends IIdentifiable{
   description: string;
   brand: Brand;
   subCategory: SubCategory;
-  rentalPrice: any;
-  salesPrice?: any;
-  depositPrice: any;
+  rentalPrice: number;
+  salesPrice?: number;
+  depositPrice: number;
   }

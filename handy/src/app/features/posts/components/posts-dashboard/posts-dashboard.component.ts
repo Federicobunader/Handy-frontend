@@ -235,10 +235,10 @@ export class PostsDashboardComponent implements OnInit {
     this.postsToShow = this.posts.filter(post =>
                       post.title.toLocaleLowerCase().includes(this.selectedTitle.toLocaleLowerCase()));
     this.postsToShow.forEach( post => {
-      post.product.rentalPrice = post.product.rentalPrice.toLocaleString('es-CO'); 
-      post.product.salesPrice = post.product.rentalPrice.toLocaleString('es-CO'); 
-      post.product.depositPrice = post.product.rentalPrice.toLocaleString('es-CO'); 
-    });    
+      post.product.rentalPrice = post.product.rentalPrice;
+      post.product.salesPrice = post.product.rentalPrice;
+      post.product.depositPrice = post.product.rentalPrice;
+    });
   }
 
   getPostForAuthor(){
@@ -283,7 +283,7 @@ export class PostsDashboardComponent implements OnInit {
     this.selectedProvinceID = undefined;
     this.selectedCategoryID = 0;
     this.selectedTitle = "";
-    this.selectedBrandsIDs = [];    
+    this.selectedBrandsIDs = [];
     (<HTMLInputElement>document.getElementById('category')).value = "0";
     (<HTMLInputElement>document.getElementById('province')).value = "0";
     this.applyFilters();

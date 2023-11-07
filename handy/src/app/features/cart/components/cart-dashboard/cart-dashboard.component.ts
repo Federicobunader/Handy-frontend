@@ -134,11 +134,11 @@ export class CartDashboardComponent {
       )
     .subscribe(() => {
       this.totalsToPayPerCart.forEach(total => {
-        total.itemCartTotalToPay = total.itemCartTotalToPay.toLocaleString('es-CO');
-        total.cart.post.product.rentalPrice = total.cart.post.product.rentalPrice.toLocaleString('es-CO');
-        total.cart.post.product.salesPrice = total.cart.post.product.salesPrice.toLocaleString('es-CO');
-        total.cart.post.product.depositPrice = total.cart.post.product.depositPrice.toLocaleString('es-CO');
-        total.totalToPayPerAuthor.totalToPay = total.totalToPayPerAuthor.totalToPay.toLocaleString('es-CO');
+        total.itemCartTotalToPay = total.itemCartTotalToPay;
+        total.cart.post.product.rentalPrice = total.cart.post.product.rentalPrice;
+        total.cart.post.product.salesPrice = total.cart.post.product.salesPrice;
+        total.cart.post.product.depositPrice = total.cart.post.product.depositPrice;
+        total.totalToPayPerAuthor.totalToPay = total.totalToPayPerAuthor.totalToPay;
       });
     });
   }

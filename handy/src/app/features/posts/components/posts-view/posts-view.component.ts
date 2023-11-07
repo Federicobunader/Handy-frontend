@@ -139,7 +139,7 @@ export class PostsViewComponent {
     });
     dialogRef.componentInstance.title = 'Dejá tu consulta';
     dialogRef.componentInstance.sendButton = 'Enviar consulta';
-  }  
+  }
 
   viewAR(): void{
     const dialogRef = this.dialog.open(PostsArViewerComponent, {
@@ -161,9 +161,9 @@ export class PostsViewComponent {
     .subscribe(() => {
       this.postService.setPost(this.post);
       this.amountOfPictures = this.post.photos.length;
-      this.post.product.depositPrice = this.post.product.depositPrice.toLocaleString('es-CO');
-      this.post.product.rentalPrice = this.post.product.rentalPrice.toLocaleString('es-CO');
-      this.post.product.salesPrice = this.post.product.salesPrice.toLocaleString('es-CO');
+      this.post.product.depositPrice = this.post.product.depositPrice;
+      this.post.product.rentalPrice = this.post.product.rentalPrice;
+      this.post.product.salesPrice = this.post.product.salesPrice;
     });
   }
 
