@@ -233,8 +233,9 @@ export class PurchaseDetailComponent implements OnInit{
         .subscribe( () => {
 
           const message = this.method.name == 'Efectivo' ? '¡La compra fue efectuada exitosamente!' : '¡El pago fue efectuado exitosamente!';
-          Swal.fire('Exito', message,'success');
-          window.location.reload();
+          Swal.fire('Exito', message,'success').then(result => {
+            window.location.reload();
+          });
           dialogRef.close();
         },
         () => {

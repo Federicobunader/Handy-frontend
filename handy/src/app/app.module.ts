@@ -13,10 +13,12 @@ import { CartModule } from './features/cart/cart.module';
 import { PurchaseModule } from './features/purchase/purchase.module';
 import { ProfileModule } from './features/profile/profile.module';
 import { ChatModule } from './features/chat/chat.module';
+import { NumberFormatPipe } from './number-format.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NumberFormatPipe,
     ],
   imports: [
     BrowserModule,

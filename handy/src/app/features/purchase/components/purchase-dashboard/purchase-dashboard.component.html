@@ -21,8 +21,8 @@
               <p class="purchaseSubinfo" *ngIf="!total.cart.isLeasing">Alquiler de {{total.cart.post.title}} <b>${{total.itemCartTotalToPay}}</b></p>
 
               <p class="rentalNormal"    *ngIf="total.cart.remainingDays >= 7 && !total.cart.isLeasing">Tenés {{total.cart.remainingDays}} días para devolver tu producto</p>
-              <p class="rentalMedium"    *ngIf="total.cart.remainingDays < 7 && total.cart.remainingDays > 2 && !total.cart.isLeasing">Tenés {{total.cart.remainingDays}} días para devolver tu producto</p>
-              <p class="rentalSoon"      *ngIf="total.cart.remainingDays <= 2 && total.cart.remainingDays > 0 && !total.cart.isLeasing">Tenés {{total.cart.remainingDays}} días para devolver tu producto</p>
+              <p class="rentalMedium"    *ngIf="total.cart.remainingDays < 7 && total.cart.remainingDays >= 2 && !total.cart.isLeasing">Tenés {{total.cart.remainingDays}} días para devolver tu producto</p>
+              <p class="rentalSoon"      *ngIf="total.cart.remainingDays < 1 && total.cart.remainingDays > 0 && !total.cart.isLeasing">Tenés 1 día para devolver tu producto</p>
               <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing && !total.cart.userAlreadyRatedPost"><b>¡Tu alquiler finalizó el día {{total.cart.dateTo}}!</b></p>
               <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing && total.cart.userAlreadyRatedPost"><b>¡Tu alquiler finalizó el día {{total.cart.dateTo}} y ya dejaste tu calificación sobre esta publicación!</b></p>
               <p class="rentalFinished"  *ngIf="total.cart.isLeasing && total.cart.userAlreadyRatedPost"><b>¡Ya dejaste tu calificación sobre esta publicación!</b></p>
