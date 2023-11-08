@@ -20,6 +20,7 @@ export class CommentMapper {
       post: this.postMapper.dtoToPost(comment.postDTO),
       author: this.userMapper.dtoToUser(comment.authorDTO),
       answers: [],
+      creationDate: comment?.creationDateDTO ? comment.creationDateDTO : null,
     }
   };
 
@@ -34,7 +35,8 @@ export class CommentMapper {
       score: comment?.score ? comment.score : 0,
       parentCommentDTO: comment?.parentComment ? this.commentToDto(comment.parentComment, processedComments) : null,
       postDTO: this.postMapper.postToDto(comment.post),
-      authorDTO: this.userMapper.userToDto(comment.author)
+      authorDTO: this.userMapper.userToDto(comment.author),
+      creationDate: comment?.creationDate ? comment.creationDate : null,
     };
   };
 }

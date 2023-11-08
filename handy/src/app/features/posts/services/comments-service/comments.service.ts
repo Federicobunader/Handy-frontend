@@ -86,10 +86,12 @@ export class CommentsService {
         post: this.postService.emptyPost(),
         author: this.userService.emptyUser(),
         answers: [],
+        creationDate: new Date(),
       },
       post: this.postService.emptyPost(),
       author: this.userService.emptyUser(),
       answers: [],
+      creationDate: new Date(),
     }
   }
 }

@@ -10,4 +10,5 @@ export interface Comment extends IIdentifiable{
   post: Post,
   author: User,
   answers: Comment[],
+  creationDate: any,
 }
