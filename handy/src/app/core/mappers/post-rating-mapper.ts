@@ -21,7 +21,7 @@ export class PostRatingMapper {
       description: rating?.description ? rating.description : '',
       post: this.postMapper.dtoToPost(rating.ratedPostDTO),
       author: this.userMapper.dtoToUser(rating.authorDTO),
-      cart: this.cartMapper.dtoToCart(rating.cart),
+      cart: this.cartMapper.dtoToCart(rating.cartDTO),
     }
   };
 
