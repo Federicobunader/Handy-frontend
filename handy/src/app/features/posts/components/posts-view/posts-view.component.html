@@ -18,9 +18,9 @@
               <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createCart()">AGREGAR AL CARRITO</button>
               <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createComment()">HACER UNA CONSULTA</button>
               <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="viewAR()">VISUALIZAR CON REALIDAD AUMENTADA</button>
-              <button class="postButton" *ngIf="this.post.author.id === this.user.id" (click)="editPost()">EDITAR PUBLICACION</button>
               <!-- <button class="askButton" (click)="createChat()">MENSAJE PRIVADO (no va aca)</button> -->
           </div>
+          <button style="margin-top:2rem;" class="postButton" *ngIf="this.post.author.id === this.user.id" (click)="editPost()">EDITAR PUBLICACION</button>
         </div>
       </div>
       <div class="column-right">
