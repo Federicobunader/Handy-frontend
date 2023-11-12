@@ -29,7 +29,37 @@
             <div style="text-align: center;">
                 <p class="label">¿Qué tarea necesitás llevar a cabo?</p>
                 <input class="input" placeholder="Por ejemplo: Armar una mesa" [formControl]="prompt"><br>
-                <button class="button" (click)="getPostsByPrompt()">Consultar a Tooly</button>
+                <button *ngIf="!this.loading" class="button" (click)="getPostsByPrompt()">Consultar a Tooly</button>
+                <p class="emptyTask" *ngIf="this.emptyTask">Debes escribir la tarea a llevar a cabo</p>
+                <div *ngIf="this.loading" style="display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: center;">
+                        <mat-spinner color="accent"></mat-spinner>
+                    </div>
+                    <p class="subTitle" style="margin-top: 1rem;">Buscando las mejores herramientas...</p>
+                </div>
+            </div>
+        </div>
+        <div class="postsSectionContainer">
+            <div *ngIf="this.recommendations.length > 0" class="postsSection">
+                <div *ngFor="let recommendation of recommendations">
+                    <p class="recommendationLabel">{{recommendation.tool}}</p>
+                    <div style="display: inline-flex;" *ngFor="let post of recommendation.posts" (click)="sendTo(post)">
+                        <div class="productBox">
+                            <img src={{post.photos[0].url}} class="postPicture">
+                            <hr class="productBoxLine">
+                            <div class="postInformation">
+                                <a><b>{{post.title}}</b></a>
+                                <p style="margin-top:1rem;">${{post.product.rentalPrice}} por día</p>
+                                <div style="display:inline-flex;font-size:0.8rem;">
+                                    <mat-icon style="margin-top:-0.2rem;transform:scale(0.8);margin-left:-0.3rem;">location_on</mat-icon>
+                                    <p>{{post.address.location.name}}</p>
+                                </div>
+                                <p *ngIf="this.post.author.id == this.user.id" style="color:rgb(211, 78, 78);font-weight:bold;">Tu publicación</p>
+                            </div>  
+                        </div>
+                    </div>
+                    <hr class="line">
+                </div>
             </div>
         </div>
     </div>

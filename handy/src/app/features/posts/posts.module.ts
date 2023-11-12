@@ -16,6 +16,7 @@ import { PostsCommentDashboardComponent } from './components/posts-comment-dashb
 import { MatExpansionModule } from '@angular/material/expansion';
 import { DialogRatingDetailsComponent } from '../../shared/components/rating-details/rating-details.component';
 import { PostsArViewerComponent } from './components/posts-ar-viewer/posts-ar-viewer.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PostsArViewerComponent } from './components/posts-ar-viewer/posts-ar-vi
     MatDialogModule,
     CartRoutingModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     PostsViewComponent,
