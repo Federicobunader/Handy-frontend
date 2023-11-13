@@ -7,11 +7,11 @@
       </div>
       <hr class="line">
     </div>
-    <div *ngIf="totalsToPayPerAuthor.length == 0" class="emptyCartContainer">
+    <div *ngIf="showEmptyMessage" class="emptyCartContainer">
       <p class="message">¡Tu carrito de compras está vacío!</p>
       <button class="searchToolsButton" routerLink="/posts">AGREGAR PRODUCTOS AL CARRITO</button>
     </div>
-    <div class="cartBox" *ngIf="totalsToPayPerAuthor.length > 0">
+    <div class="cartBox" *ngIf="!showEmptyMessage">
       <div style="margin:1rem;" *ngFor="let totalToPayPerAuthor of totalsToPayPerAuthor">
         <mat-accordion>
           <mat-expansion-panel hideToggle (opened)="viewTotalsToPayPerCart(totalToPayPerAuthor.id)" [expanded]=expanded class="authorPurchase">

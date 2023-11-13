@@ -13,6 +13,7 @@ import { DialogCartDetailComponent } from '../cart-detail/cart-detail.component'
 import { TotalToPayPerCartService } from '../../services/total-to-pay-per-cart-service/totalToPayPerCart.service';
 import { TotalToPayPerAuthorService } from '../../services/total-to-pay-per-author-service/totalToPayPerAuthor.service';
 import { CartService } from '../../services/cart-service/cart.service';
+import { ProgressSpinnerComponent } from 'src/app/shared/components/progress-spinner/progress-spinner.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -43,7 +44,12 @@ export class CartDashboardComponent {
   totalsToPayPerAuthor: TotalToPayPerAuthor [] = [];
   totalsToPayPerCart: TotalToPayPerCart [] = [];
 
+  showEmptyMessage: Boolean = false;
   ngOnInit(): void {
+    this.dialog.open(ProgressSpinnerComponent, {
+      panelClass: 'transparent',
+      disableClose: true
+    });
     this.getUser();
   }
 
@@ -77,7 +83,6 @@ export class CartDashboardComponent {
     }else{
         this.getTotalToPayPerAuthorByID();
     }
-
   }
 
   pay(totalToPayPerAuthorID: number){
@@ -93,6 +98,7 @@ export class CartDashboardComponent {
       width: '600px',
       data: {amount: cart.amount, post: cart.post, cart: cart},
     });
+    dialogRef.componentInstance.isEdit = true;
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
@@ -153,6 +159,8 @@ export class CartDashboardComponent {
       )
     .subscribe( () => {
       this.totalsToPayPerAuthor.forEach( total => total.totalToPay = total.totalToPay);
+      this.dialog.closeAll();
+      this.showEmptyMessage = this.totalsToPayPerAuthor.length == 0;
     });
   }
 
@@ -166,6 +174,8 @@ export class CartDashboardComponent {
       )
     .subscribe(() => {
       this.totalsToPayPerAuthor.forEach( total => total.totalToPay = total.totalToPay);
+      this.dialog.closeAll();
+      this.showEmptyMessage = this.totalsToPayPerAuthor.length == 0;
     });
   }
 
