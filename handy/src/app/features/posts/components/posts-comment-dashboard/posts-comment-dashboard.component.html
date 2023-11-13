@@ -1,8 +1,5 @@
 <body>
   <div class="commentsContainer">
-    <div *ngIf="comments.length == 0">
-      <p style="padding:1rem;">¡No hay preguntas en esta publicación!</p>
-    </div>
     <div *ngFor="let comment of comments" style="margin:1rem;">
       <mat-expansion-panel class="commentBox" hideToggle [expanded]="true">
         <mat-expansion-panel-header class="header">

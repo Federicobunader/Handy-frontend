@@ -48,6 +48,7 @@
 .headerButtons {
     display: inline-flex;
     width: 60%;
+    flex-direction: row-reverse;
 }
 
 .headerContainer {

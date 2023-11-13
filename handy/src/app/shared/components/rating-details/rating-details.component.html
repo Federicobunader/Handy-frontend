@@ -1,7 +1,7 @@
 <div class="commentsBox">
-  <h2 class="title" style="font-weight:bold;font-size:1.5rem;" *ngIf="!this.data.isUserRating">Dejá tu puntuación sobre tu experiencia con {{postName}}</h2>
-  <h2 class="title" style="font-weight:bold;font-size:1.5rem;" *ngIf="this.data.isUserRating">Dejá tu puntuación sobre tu experiencia con el usuario @{{this.data.userRated.username}}</h2>
-  <div style="text-align:center;margin-bottom:2rem;margin-top:2rem;width:100%;">
+  <h2 class="title" *ngIf="!this.data.isUserRating">Dejá tu puntuación sobre tu experiencia con {{postName}}</h2>
+  <h2 class="title" *ngIf="this.data.isUserRating">Dejá tu puntuación sobre tu experiencia con el usuario @{{this.data.userRated.username}}</h2>
+  <div class="ratingBox">
     <div>
       <mat-icon class="starIcon" (click)="setScore(1)" [color]="this.score >= 1 ? 'warn' : ''">star</mat-icon>
       <mat-icon class="starIcon" (click)="setScore(2)" [color]="this.score >= 2 ? 'warn' : ''">star</mat-icon>
@@ -10,12 +10,12 @@
       <mat-icon class="starIcon" (click)="setScore(5)" [color]="this.score >= 5 ? 'warn' : ''">star</mat-icon>
     </div>
   </div>
-  <h2 class="title" style="font-size:1rem;">Comentarios:</h2>
-  <div style="text-align:center;margin-bottom:2rem;width:100%;">
+  <h2 class="subtitle">Comentarios:</h2>
+  <div class="commentsContainer">
     <textarea class="commentsInput" type="text" (keyup)="saveComment($event)"></textarea>
     <br><mat-error *ngIf="this.comment.length > 500" style="width:80%;">Tu comentario no puede ser de mas de 500 caracteres</mat-error>
   </div>
-  <div style="text-align:center;margin-bottom:1rem;">
+  <div class="buttonsConatainer">
     <button class="button" (click)="onCancelClick()">Cancelar</button>
     <button class="button"         *ngIf="this.comment.length <= 500" (click)="onSaveClick()">Enviar</button>
     <button class="buttonDisabled" *ngIf="this.comment.length > 500">Enviar</button>

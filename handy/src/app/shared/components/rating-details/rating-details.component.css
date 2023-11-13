@@ -1,18 +1,37 @@
-.title{
+.title {
     font-family: 'Roboto', monospace;
     color: #E1AE63;
-    padding-bottom: 1rem;    
+    padding-bottom: 1rem;
     letter-spacing: 0.1rem;
     margin-top: 2rem;
     margin-left: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-.commentsBox{
-    background-color:#f8f3e7;
+.subtitle {
+    font-family: 'Roboto', monospace;
+    color: #E1AE63;
+    padding-bottom: 1rem;
+    letter-spacing: 0.1rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-size: 1rem;
+}
+
+.commentsBox {
+    background-color: #f8f3e7;
     border: 3px solid #E1AE63;
 }
 
-.commentsInput{
+.ratingBox {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.commentsInput {
     border: 0.2rem solid #885B34;
     background-color: #f8f3e7;
     width: 80%;
@@ -24,7 +43,7 @@
     padding: 1rem;
 }
 
-.button{
+.button {
     width: 30%;
     margin-left: 2rem;
     padding-left: 10px;
@@ -40,11 +59,11 @@
     cursor: pointer;
 }
 
-.button:hover{
-    background-color: #885B34;    
+.button:hover {
+    background-color: #885B34;
 }
 
-.buttonDisabled{
+.buttonDisabled {
     width: 30%;
     margin-left: 2rem;
     padding-left: 10px;
@@ -59,9 +78,20 @@
     font-family: 'Roboto', monospace;
 }
 
-.starIcon{
+.starIcon {
     transform: scale(2);
     margin: 1rem;
+}
+
+.commentsContainer {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.buttonsConatainer {
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 input:focus,
@@ -69,4 +99,37 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .title {
+        margin-top: 0rem;
+        margin-left: 0rem;
+        font-size: 1rem;
+        padding-bottom: 0rem;
+    }
+
+    .commentsBox {
+        padding: 1rem;
+    }
+
+    .ratingBox {
+        margin-bottom: 0rem;
+        margin-top: 0rem;
+    }
+
+    .subtitle {
+        margin-top: 1rem;
+        margin-left: 0rem;
+        padding-bottom: 0rem;
+    }
+
+    .starIcon {
+        transform: scale(1.5);
+        margin: 0.5rem;
+    }
+
+    .buttonsConatainer{
+        text-align: justify;
+    }
 }

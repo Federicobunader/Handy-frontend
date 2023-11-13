@@ -138,9 +138,9 @@ export class PurchaseDetailComponent implements OnInit{
       }
     });
 
-    this.togglePaymentMethod1 = this.method.id == 1;
-    this.togglePaymentMethod2 = this.method.id == 2;
-    this.togglePaymentMethod3 = this.method.id == 3;
+    this.togglePaymentMethod1 = selectedMethod == 'Efectivo';
+    this.togglePaymentMethod2 = selectedMethod == 'Mercado Pago';
+    this.togglePaymentMethod3 = selectedMethod == 'Uala';
 
     if(!this.isPurchased){
       this.purchase.paymentMethod = this.method;

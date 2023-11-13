@@ -82,7 +82,6 @@
 .commentsContainer{
     overflow-y: auto;
     height: 40rem;
-    border: 0.1rem solid #885B34;
     margin: 2rem;
 }
 
