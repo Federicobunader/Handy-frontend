@@ -72,14 +72,14 @@
       </div>
       <hr class="line">
     </div>
-    <div *ngIf="this.postsToShow.length == 0" class="emptyMessageContainer">
+    <div *ngIf="showEmptyMessage" class="emptyMessageContainer">
       <p class="message">{{emptyMessage}}</p>
       <div *ngIf="!toolsSearch">
         <button class="createPostButton" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
       </div>
     </div>
     <div class="postsSectionContainer">
-      <div *ngIf="this.postsToShow.length > 0" class="postsSection">
+      <div *ngIf="!showEmptyMessage" class="postsSection">
         <div style="display: inline-flex;" *ngFor="let post of postsToShow" (click)="sendTo(post)">
           <div class="productBox">  
             <img src={{post.photos[0].url}} class="postPicture">
