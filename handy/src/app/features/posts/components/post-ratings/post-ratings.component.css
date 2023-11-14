@@ -1,19 +1,27 @@
-.title{
+.title {
     font-size: 2rem;
     font-family: 'Roboto', monospace;
     font-weight: bold;
     color: #E1AE63;
-    padding-bottom: 1rem;    
+    padding-bottom: 1rem;
     letter-spacing: 0.1rem;
 }
 
-.box{
-    background-color:#f8f3e7;
+.box {
+    background-color: #f8f3e7;
     border: 3px solid #E1AE63;
     padding: 3rem;
+    height: 30rem;
 }
 
-.opinionBox{
+.scrollable{
+    height: 25rem;
+    overflow-y: scroll;
+    padding: 1rem;
+    padding-top: 0rem !important;
+}
+
+.opinionBox {
     border: 0.2rem solid #885B34;
     border-radius: 1rem;
     padding: 1rem;
@@ -21,20 +29,109 @@
     overflow-y: auto;
 }
 
-.opinionInfo{
+.opinionInfoWeb {
     font-size: 1rem;
     font-family: 'Roboto', monospace;
     color: #885B34;
 }
 
-.picture{
+.opinionInfoMobile {
+    display: none;
+}
+
+.author {
+    margin-right: 1rem;
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+}
+
+.picture {
     width: 80px;
     height: 80px;
     text-align: center;
     border-radius: 10px;
 }
 
-.starIcon{
+.starIcon {
     transform: scale(1);
-    color: #885B34;  
+    color: #885B34;
+}
+
+.imageContainer {
+    float: left;
+    text-align: left;
+    width: 10%;
+}
+
+.ratingContainer {
+    float: left;
+    text-align: left;
+    margin-left: 1rem;
+    width: 90%;
+}
+
+.authorAndStars {
+    display: flex;
+}
+
+.fullContainer {
+    display: flex;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+        font-weight: normal;
+    }
+
+    .box {
+        padding: 2rem;
+    }
+
+    .picture {
+        width: 50px;
+        height: 50px;
+    }
+
+    .author {
+        margin-right: 0rem;
+        font-size: 0.7rem;
+        margin-left: 1rem;
+    }
+
+    .authorAndStars {
+        flex-direction: column;
+    }
+
+    .starIcon {
+        transform: scale(0.8);
+        margin-left: -0.3rem;
+    }
+
+    .starsContainer {
+        margin-left: 1rem;
+        margin-top: -1rem;
+    }
+
+    .opinionInfoWeb {
+        display: none;
+    }
+
+    .opinionInfoMobile {
+        font-size: 1rem;
+        font-family: 'Roboto', monospace;
+        color: #885B34;
+        display: contents;
+    }
+
+    .fullContainer {
+        display: flex;
+        margin-bottom: 0.5rem;
+    }
+
+    .ratingContainer {
+        margin-left: 2rem;
+    }
 }

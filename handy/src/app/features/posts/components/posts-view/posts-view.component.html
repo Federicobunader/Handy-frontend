@@ -32,50 +32,52 @@
             <p class="productInfo">{{this.post.address.location.name}}, {{this.post.address.location.province.name}}</p>
           </div>
           <div class="ratingContainer">
-            <div *ngIf="this.averageScore < 1">
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-            </div>
-            <div *ngIf="this.averageScore >= 1 && this.averageScore < 2">
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-            </div>
-            <div *ngIf="this.averageScore >= 2 && this.averageScore < 3">
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-            </div>
-            <div *ngIf="this.averageScore >= 3 && this.averageScore < 4">
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-            </div>
-            <div *ngIf="this.averageScore >= 4 && this.averageScore < 5">
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star_outline</mat-icon>
-            </div>
-            <div *ngIf="this.averageScore == 5">
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
-              <mat-icon class="starIcon">star</mat-icon>
+            <div *ngIf="this.ratings.length != 0">
+              <div *ngIf="this.averageScore < 1">
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="this.averageScore >= 1 && this.averageScore < 2">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="this.averageScore >= 2 && this.averageScore < 3">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="this.averageScore >= 3 && this.averageScore < 4">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="this.averageScore >= 4 && this.averageScore < 5">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="this.averageScore == 5">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+              </div>
             </div>
             <a class="opinions" *ngIf="this.ratings.length != 0" (click)="showPostRatings()"><u>{{ratingMessage}}</u></a>
-            <p class="opinions" *ngIf="this.ratings.length == 0">{{ratingMessage}}</p>
+            <p class="zeroOpinions" *ngIf="this.ratings.length == 0">{{ratingMessage}}</p>
           </div>
           <div>
             <br><p class="productInfo" style="font-size:1rem;"><u>Acerca de este producto</u></p>

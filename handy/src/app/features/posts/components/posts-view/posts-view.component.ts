@@ -92,7 +92,7 @@ export class PostsViewComponent {
       )
     .subscribe(() => {
       if(this.ratings.length == 0){
-        this.ratingMessage = '¡Sé el primero en opinar sobre este producto!'
+        this.ratingMessage = 'No hay opiniones sobre este producto.'
       } else if (this.ratings.length == 1){
         this.ratingMessage = '1 usuario opinó';
       } else {
