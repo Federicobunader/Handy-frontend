@@ -15,6 +15,7 @@ import { TotalToPayPerAuthorService } from '../../services/total-to-pay-per-auth
 import { CartService } from '../../services/cart-service/cart.service';
 import { ProgressSpinnerComponent } from 'src/app/shared/components/progress-spinner/progress-spinner.component';
 import Swal from 'sweetalert2';
+import { ListOfTotalToPayPerCartGroupByAuthor } from 'src/app/core/models/listOfTotalToPayPerCartGroupByAuthor';
 
 @Component({
   selector: 'app-cart-dashboard',
@@ -43,6 +44,7 @@ export class CartDashboardComponent {
   user: User = this.userService.emptyUser();
   totalsToPayPerAuthor: TotalToPayPerAuthor [] = [];
   totalsToPayPerCart: TotalToPayPerCart [] = [];
+  listOfTotalToPayPerCartGroupByAuthor: ListOfTotalToPayPerCartGroupByAuthor [] = []
 
   showEmptyMessage: Boolean = false;
   ngOnInit(): void {
@@ -123,20 +125,24 @@ export class CartDashboardComponent {
           takeUntil(this.$_destroyed),
         )
         .subscribe(() => {
-          this.viewTotalsToPayPerCart(cart.id);
+          this.viewTotalsToPayPerCart();
           this.getTotalToPay();
         });
       }
     });
   }
 
-  viewTotalsToPayPerCart(totalToPayPerAuthorID: number){
+  viewTotalsToPayPerCart(){
+
+    const listOfTotalToPayPerCartGroupByAuthorIDS = this.totalsToPayPerAuthor.
+                                                        map(totalToPayPerAuthor => { return totalToPayPerAuthor.id})
+
     this.totalToPayPerCartService
-    .getTotalsToPayPerCart(totalToPayPerAuthorID)
+    .getTotalsToPayPerCartForTotalToPayPerAuthorIDList(listOfTotalToPayPerCartGroupByAuthorIDS)
       .pipe(
         takeUntil(this.$_destroyed),
-        map((response: TotalToPayPerCart[]) => (
-          this.totalsToPayPerCart = response))
+        map((response: ListOfTotalToPayPerCartGroupByAuthor[]) => (
+          this.listOfTotalToPayPerCartGroupByAuthor = response))
       )
     .subscribe(() => {});
   }
@@ -165,6 +171,7 @@ export class CartDashboardComponent {
           this.totalsToPayPerAuthor = response))
       )
     .subscribe(() => {
+      this.viewTotalsToPayPerCart();
       this.totalsToPayPerAuthor.forEach( total => total.totalToPay = total.totalToPay);
       this.dialog.closeAll();
       this.showEmptyMessage = this.totalsToPayPerAuthor.length == 0;
