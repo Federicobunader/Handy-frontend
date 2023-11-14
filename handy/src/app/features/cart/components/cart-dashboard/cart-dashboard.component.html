@@ -22,7 +22,7 @@
                 </div>
                 <div class="column-right">
                   <div class="priceAndPayContainer">
-                    <p class="cartPrice">${{totalToPayPerAuthor.totalToPay}}</p>
+                    <p class="cartPrice">{{totalToPayPerAuthor.totalToPay | numberFormat }}</p>
                     <button class="payButton" type="button" (click)="pay(totalToPayPerAuthor.id)" *ngIf="showBuyButton">Pagar</button>
                   </div>
                 </div>
@@ -32,7 +32,7 @@
                   <p class="cartTitle">Compras realizadas a {{totalToPayPerAuthor.author.username}}</p>
                 </div>
                 <div class="column-right">
-                  <p class="cartPrice">${{totalToPayPerAuthor.totalToPay}}</p>
+                  <p class="cartPrice">{{totalToPayPerAuthor.totalToPay | numberFormat }}</p>
                   <button class="payButton" type="button" (click)="pay(totalToPayPerAuthor.id)" *ngIf="showBuyButton">Pagar</button>
                 </div>
               </div>
@@ -43,7 +43,7 @@
                   <mat-expansion-panel-header class="productPanelHeader">
                       <div class="headerContainer">
                         <div class="headerTitleAndPrice">
-                          <span><p class="cartDescription">{{totalToPayPerCart.cart.post.title}}</p> <p class="cartPrice">${{totalToPayPerCart.itemCartTotalToPay}}</p></span>
+                          <span><p class="cartDescription">{{totalToPayPerCart.cart.post.title}}</p> <p class="cartPrice">{{totalToPayPerCart.itemCartTotalToPay | numberFormat }}</p></span>
                         </div>
                         <div class="headerButtons">
                           <button class="button" type="button" (click)="viewPost(totalToPayPerCart.cart.post)">Ir a publicacion</button>
@@ -54,14 +54,14 @@
                   </mat-expansion-panel-header>
                   <div style="margin-top:2rem;">
                     <p class="cartInformation"><b>Unidades: </b>{{totalToPayPerCart.cart.amount}}</p>
-                    <p class="cartInformation" *ngIf="totalToPayPerCart.cart.isLeasing"><b>Precio de compra por unidad: </b>${{totalToPayPerCart.cart.post.product.salesPrice}}</p>
-                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing"><b>Precio de alquiler por día por unidad: </b>${{totalToPayPerCart.cart.post.product.rentalPrice}}</p>
+                    <p class="cartInformation" *ngIf="totalToPayPerCart.cart.isLeasing"><b>Precio de compra por unidad: </b>{{totalToPayPerCart.cart.post.product.salesPrice != undefined ? (totalToPayPerCart.cart.post.product.salesPrice | numberFormat) : totalToPayPerCart.cart.post.product.salesPrice}} </p>
+                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing"><b>Precio de alquiler por día por unidad: </b>{{totalToPayPerCart.cart.post.product.rentalPrice | numberFormat }}</p>
                     <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing"><b>Desde: </b>{{totalToPayPerCart.cart.dateFrom}} | <b>Hasta: </b>{{totalToPayPerCart.cart.dateTo}}</p>
-                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing"><b>Depósito: </b>${{totalToPayPerCart.cart.post.product.depositPrice}}</p>
-                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount > 1"><b><u>Resumen:</u></b> ${{totalToPayPerCart.cart.post.product.depositPrice}} + ((${{totalToPayPerCart.cart.post.product.rentalPrice}} x {{totalToPayPerCart.cart.rentalDays}} días) x {{totalToPayPerCart.cart.amount}} unidades)</p>
-                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount == 1"><b><u>Resumen:</u></b> ${{totalToPayPerCart.cart.post.product.depositPrice}} + ((${{totalToPayPerCart.cart.post.product.rentalPrice}} x {{totalToPayPerCart.cart.rentalDays}} días) x {{totalToPayPerCart.cart.amount}} unidad)</p>
-                    <p class="cartInformation" *ngIf="totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount > 1"><b><u>Resumen:</u></b> ${{totalToPayPerCart.cart.post.product.salesPrice}} x {{totalToPayPerCart.cart.amount}} unidades</p>
-                    <p class="cartInformation" *ngIf="totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount == 1"><b><u>Resumen:</u></b> ${{totalToPayPerCart.cart.post.product.salesPrice}} x {{totalToPayPerCart.cart.amount}} unidad</p>
+                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing"><b>Depósito: </b>{{totalToPayPerCart.cart.post.product.depositPrice | numberFormat }}</p>
+                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount > 1"><b><u>Resumen:</u></b> {{totalToPayPerCart.cart.post.product.depositPrice | numberFormat }} + (({{totalToPayPerCart.cart.post.product.rentalPrice | numberFormat }} x {{totalToPayPerCart.cart.rentalDays}} días) x {{totalToPayPerCart.cart.amount}} unidades) = {{totalToPayPerCart.itemCartTotalToPay | numberFormat }}</p>
+                    <p class="cartInformation" *ngIf="!totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount == 1"><b><u>Resumen:</u></b> {{totalToPayPerCart.cart.post.product.depositPrice | numberFormat }} + (({{totalToPayPerCart.cart.post.product.rentalPrice | numberFormat }} x {{totalToPayPerCart.cart.rentalDays}} días) x {{totalToPayPerCart.cart.amount}} unidad) = {{totalToPayPerCart.itemCartTotalToPay | numberFormat }}</p>
+                    <p class="cartInformation" *ngIf="totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount > 1"><b><u>Resumen:</u></b> {{totalToPayPerCart.cart.post.product.salesPrice != undefined ? (totalToPayPerCart.cart.post.product.salesPrice | numberFormat) : totalToPayPerCart.cart.post.product.salesPrice}} x {{totalToPayPerCart.cart.amount}} unidades = {{totalToPayPerCart.itemCartTotalToPay | numberFormat }}</p>
+                    <p class="cartInformation" *ngIf="totalToPayPerCart.cart.isLeasing && totalToPayPerCart.cart.amount == 1"><b><u>Resumen:</u></b> {{totalToPayPerCart.cart.post.product.salesPrice != undefined ? (totalToPayPerCart.cart.post.product.salesPrice | numberFormat) : totalToPayPerCart.cart.post.product.salesPrice}} x {{totalToPayPerCart.cart.amount}} unidad = {{totalToPayPerCart.itemCartTotalToPay | numberFormat }}</p>
                   </div>
                 </mat-expansion-panel>
               </mat-accordion>

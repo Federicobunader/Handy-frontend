@@ -57,8 +57,8 @@
     </div> 
     <hr class="line">  
     <div class="bottomContainer">
-      <p class="totalToPay" *ngIf="!isPurchased">Total a pagar: ${{this.totalToPayPerAuthor.totalToPay}}</p>
-      <p class="totalToPay" *ngIf="isPurchased">Total pagado: ${{this.totalToPayPerAuthor.totalToPay}}</p>
+      <p class="totalToPay" *ngIf="!isPurchased">Total a pagar: {{this.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
+      <p class="totalToPay" *ngIf="isPurchased">Total pagado: {{this.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
       <button class="payButtonDisable" *ngIf="!isPurchased && !enablePurchaseButton">PROCEDER AL PAGO</button>
       <button class="payButton" *ngIf="!isPurchased && enablePurchaseButton" (click)="createPurchase()">{{this.submitLabel}}</button>
     </div>

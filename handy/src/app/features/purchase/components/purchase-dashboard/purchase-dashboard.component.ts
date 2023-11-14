@@ -113,7 +113,6 @@ export class PurchaseDashboardComponent {
       )
     .subscribe(() => {
       this.totalsToPayPerCart.forEach( total => {
-        total.itemCartTotalToPay = total.itemCartTotalToPay.toLocaleString('es-CO');
         total.cart.dateTo = this.pipe.transform(total.cart.dateTo, 'dd/MM/YYYY');
       });
     });

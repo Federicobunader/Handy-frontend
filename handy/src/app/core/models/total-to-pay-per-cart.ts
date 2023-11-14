@@ -5,7 +5,7 @@ import { User } from "./user";
 
 export interface TotalToPayPerCart extends IIdentifiable{
   cart: Cart;
-  itemCartTotalToPay: any;
+  itemCartTotalToPay: number;
   totalToPayPerAuthor: TotalToPayPerAuthor;
   from: User;
 }

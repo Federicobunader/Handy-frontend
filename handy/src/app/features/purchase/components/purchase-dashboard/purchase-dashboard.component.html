@@ -7,7 +7,7 @@
           <mat-expansion-panel-header class="panelHeader">
             <div style="display:inline;text-align:center;width:20rem;">
               <p class="purchaseInfo"><b>Fecha de operación:</b> {{purchase.creationDate}}</p>
-              <p class="purchaseInfo"><b>Abonado:</b> ${{purchase.totalToPayPerAuthor.totalToPay}}</p>
+              <p class="purchaseInfo"><b>Abonado:</b> {{purchase.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
               <div style="display:flex;">
                 <button class="viewDetailsButton">Vista rápida</button>
                 <button class="viewDetailsButton" (click)="sendToPurchase(purchase)">Ir a la compra</button>
@@ -17,8 +17,8 @@
           <div *ngFor="let total of totalsToPayPerCart">
             <hr class="line">
             <div>
-              <p class="purchaseSubinfo" *ngIf="total.cart.isLeasing">Compra de {{total.cart.post.title}} <b>${{total.itemCartTotalToPay}}</b></p>
-              <p class="purchaseSubinfo" *ngIf="!total.cart.isLeasing">Alquiler de {{total.cart.post.title}} <b>${{total.itemCartTotalToPay}}</b></p>
+              <p class="purchaseSubinfo" *ngIf="total.cart.isLeasing">Compra de {{total.cart.post.title}} <b>{{total.itemCartTotalToPay | numberFormat }}</b></p>
+              <p class="purchaseSubinfo" *ngIf="!total.cart.isLeasing">Alquiler de {{total.cart.post.title}} <b>{{total.itemCartTotalToPay | numberFormat }}</b></p>
 
               <p class="rentalNormal"    *ngIf="total.cart.remainingDays >= 7 && !total.cart.isLeasing">Tenés {{total.cart.remainingDays}} días para devolver tu producto</p>
               <p class="rentalMedium"    *ngIf="total.cart.remainingDays < 7 && total.cart.remainingDays >= 2 && !total.cart.isLeasing">Tenés {{total.cart.remainingDays}} días para devolver tu producto</p>
@@ -46,7 +46,7 @@
           <mat-expansion-panel-header class="panelHeader">
             <div style="display:inline;text-align:center;width:20rem;">
               <p class="purchaseInfo"><b>Fecha de operación:</b> {{purchase.creationDate}}</p>
-              <p class="purchaseInfo"><b>Abonado:</b> ${{purchase.totalToPayPerAuthor.totalToPay}}</p>
+              <p class="purchaseInfo"><b>Abonado:</b> {{purchase.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
               <div style="display:flex;">
                 <button class="viewDetailsButton">Vista rápida</button>
                 <button class="viewDetailsButton" (click)="sendToPurchase(purchase)">Ir a la compra</button>
@@ -56,8 +56,8 @@
           <div *ngFor="let total of totalsToPayPerCart">
             <hr class="line">
             <div>
-              <p class="purchaseSubinfo" *ngIf="total.cart.isLeasing">Compra de {{total.cart.post.title}} <b>${{total.itemCartTotalToPay}}</b></p>
-              <p class="purchaseSubinfo" *ngIf="!total.cart.isLeasing">Alquiler de {{total.cart.post.title}} <b>${{total.itemCartTotalToPay}}</b></p>
+              <p class="purchaseSubinfo" *ngIf="total.cart.isLeasing">Compra de {{total.cart.post.title}} <b>{{total.itemCartTotalToPay | numberFormat }}</b></p>
+              <p class="purchaseSubinfo" *ngIf="!total.cart.isLeasing">Alquiler de {{total.cart.post.title}} <b>{{total.itemCartTotalToPay | numberFormat }}</b></p>
 
               <p class="rentalNormal"    *ngIf="total.cart.remainingDays > 7 && !total.cart.isLeasing">Todavía quedan {{total.cart.remainingDays}} días para que el comprador devuelva tu producto</p>
               <p class="rentalMedium"    *ngIf="total.cart.remainingDays < 7 && total.cart.remainingDays > 2 && !total.cart.isLeasing">Todavía quedan {{total.cart.remainingDays}} días para que el comprador devuelva tu producto</p>

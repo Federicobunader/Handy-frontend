@@ -138,15 +138,7 @@ export class CartDashboardComponent {
         map((response: TotalToPayPerCart[]) => (
           this.totalsToPayPerCart = response))
       )
-    .subscribe(() => {
-      this.totalsToPayPerCart.forEach(total => {
-        total.itemCartTotalToPay = total.itemCartTotalToPay;
-        total.cart.post.product.rentalPrice = total.cart.post.product.rentalPrice;
-        total.cart.post.product.salesPrice = total.cart.post.product.salesPrice;
-        total.cart.post.product.depositPrice = total.cart.post.product.depositPrice;
-        total.totalToPayPerAuthor.totalToPay = total.totalToPayPerAuthor.totalToPay;
-      });
-    });
+    .subscribe(() => {});
   }
 
   getTotalToPayPerAuthorByID(){
