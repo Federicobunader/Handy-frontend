@@ -61,7 +61,7 @@ export class PurchaseDetailComponent implements OnInit{
   buyerFullName: any = '';
   buyerEmail: any = '';
   buyerTel: any = '';
-  submitLabel = 'Proceder al pago';
+  submitLabel = 'PROCEDER AL PAGO';
 
   ngOnInit(): void {
     var buyerIdParam: any = 0;
@@ -131,16 +131,16 @@ export class PurchaseDetailComponent implements OnInit{
       if(paymentMethod.name == selectedMethod){
         this.method = paymentMethod;
         if(this.method.name == 'Efectivo'){
-          this.submitLabel = 'Efectuar compra';
+          this.submitLabel = 'EFECTUAR COMPRA';
         } else {
-          this.submitLabel = 'Proceder al pago';
+          this.submitLabel = 'PROCEDER AL PAGO';
         }
       }
     });
 
-    this.togglePaymentMethod1 = this.method.id == 1;
-    this.togglePaymentMethod2 = this.method.id == 2;
-    this.togglePaymentMethod3 = this.method.id == 3;
+    this.togglePaymentMethod1 = selectedMethod == 'Efectivo';
+    this.togglePaymentMethod2 = selectedMethod == 'Mercado Pago';
+    this.togglePaymentMethod3 = selectedMethod == 'Uala';
 
     if(!this.isPurchased){
       this.purchase.paymentMethod = this.method;

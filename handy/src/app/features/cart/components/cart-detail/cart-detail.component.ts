@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subject, map, takeUntil } from 'rxjs';
@@ -37,6 +37,7 @@ export class DialogCartDetailComponent {
   user: User = this.userService.emptyUser();
   cart: Cart = this.cartService.emptyCart();
   cartID!: number;
+  @Input() isEdit: Boolean = false;
 
   ngOnInit(): void {
     this.getUser();
@@ -44,6 +45,12 @@ export class DialogCartDetailComponent {
       this.cartID = params['id'];
       this.getCart();
     });
+    this.setLabels();
+  }
+
+  button: String = '';
+  setLabels(): void{
+    this.button = this.isEdit ? 'Guardar cambios' : 'Agregar al carrito';
   }
 
   ngOnDestroy(): void {
@@ -91,7 +98,12 @@ export class DialogCartDetailComponent {
       this.cartService
       .create(this.cart)
       .subscribe(() => {
-        Swal.fire('Exito','¡El producto fue agregado al carrito!','success');
+        const message = this.isEdit ? '¡Los cambios se guardaron exitosamente!' : '¡El producto fue agregado al carrito!';
+        Swal.fire('Exito', message, 'success').then(result => {
+          if(this.isEdit){
+            window.location.reload();
+          }
+        });;
       },
       () => {
         Swal.fire('Error', 'Hubo un error', 'error');

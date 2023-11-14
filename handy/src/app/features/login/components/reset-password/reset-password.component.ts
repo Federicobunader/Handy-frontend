@@ -5,7 +5,6 @@ import { Subject, map, takeUntil } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { MailService } from 'src/app/shared/services/mail/mail.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
-// import { MatSpinner } from '@angular/material';
 import Swal from 'sweetalert2';
 
 @Component({

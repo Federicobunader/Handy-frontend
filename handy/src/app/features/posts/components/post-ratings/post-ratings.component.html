@@ -1,61 +1,66 @@
 <div class="box">
-    <p class="title">Opiniones acerca de este producto</p>
+  <p class="title">Opiniones acerca de este producto</p>
+  <hr style="margin-bottom: 1rem;margin-top: 1rem;border-top: 0.1rem solid #E1AE63;">
+  <div class="scrollable">
     <div style="margin-top:2rem;" *ngFor="let rating of ratings">
-        <div class="opinionBox">
-            <div style="display:flex;">
-                <div style="float:left;text-align:left;width:10%;">
-                    <p>foto</p>
-                    <!-- <img src={{rating.author.photo[0].url}} class="picture"> -->
-                </div>
-                <div style="float:left;text-align:left;margin-left:2rem;width:90%;">
-                    <div style="display:flex;">
-                        <p class="opinionInfo" style="margin-right:1rem;margin-top:0.2rem;"><b>@{{rating.author.username}}</b></p>
-                        <div *ngIf="rating.score < 1">
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                        </div>
-                        <div *ngIf="rating.score >= 1 && rating.score < 2">
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                        </div>
-                        <div *ngIf="rating.score >= 2 && rating.score < 3">
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                        </div>
-                        <div *ngIf="rating.score >= 3 && rating.score < 4">
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                        </div>
-                        <div *ngIf="rating.score >= 4 && rating.score < 5">
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star_outline</mat-icon>
-                        </div>
-                        <div *ngIf="rating.score == 5">
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                          <mat-icon class="starIcon">star</mat-icon>
-                        </div>
-                    </div>
-                    <p class="opinionInfo">{{rating.description}}</p>
-                </div>
+      <div class="opinionBox">
+        <div class="fullContainer">
+          <div class="imageContainer">
+            <img src={{rating.author.photo[0].url}} class="picture">
+          </div>
+          <div class="ratingContainer">
+            <div class="authorAndStars">
+              <p class="author"><b>{{rating.author.username}}</b></p>
+              <div *ngIf="rating.score < 1" class="starsContainer">
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="rating.score >= 1 && rating.score < 2" class="starsContainer">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="rating.score >= 2 && rating.score < 3" class="starsContainer">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="rating.score >= 3 && rating.score < 4" class="starsContainer">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="rating.score >= 4 && rating.score < 5" class="starsContainer">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star_outline</mat-icon>
+              </div>
+              <div *ngIf="rating.score == 5">
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+                <mat-icon class="starIcon">star</mat-icon>
+              </div>
             </div>
+            <p class="opinionInfoWeb">{{rating.description}}</p>
+          </div>
         </div>
+        <div class="opinionInfoMobile">
+          <p>{{rating.description}}</p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

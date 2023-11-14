@@ -82,13 +82,12 @@
 .commentsContainer{
     overflow-y: auto;
     height: 40rem;
-    border: 0.1rem solid #885B34;
-    margin: 2rem;
+    padding: 2rem;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     .commentsContainer{
-        margin: 1rem;
+        padding: 1rem;
     }
 
     .row {

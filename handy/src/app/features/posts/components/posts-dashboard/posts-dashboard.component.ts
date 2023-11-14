@@ -19,6 +19,7 @@ import { OrderByTypesService } from '../../services/order-by-types-service/order
 import { OrderByType } from 'src/app/core/models/orderByType';
 import { BrandsService } from '../../services/brands-service/brands.service';
 import { Brand } from 'src/app/core/models/brand';
+import { ProgressSpinnerComponent } from 'src/app/shared/components/progress-spinner/progress-spinner.component';
 
 @Component({
   selector: 'app-posts-dashboard',
@@ -72,15 +73,19 @@ export class PostsDashboardComponent implements OnInit {
   }
 
   user: User = this.userService.emptyUser();
+  showEmptyMessage: Boolean = false;
 
   ngOnInit(): void {
+    this.dialog.open(ProgressSpinnerComponent, {
+      panelClass: 'transparent',
+      disableClose: true
+    });
     this.getCategories();
     this.getProvinces();
     this.getUser();
     this.getOrderByTypes();
   }
 
-  showEmptyMessage = false;
   getPosts(){
     switch(this.action){
       case "viewMyPost":
@@ -231,7 +236,7 @@ export class PostsDashboardComponent implements OnInit {
     this.applyFilters();
   }
 
-  filteredPostsToShow(): void {
+  filteredPostsToShow(): void {    
     this.postsToShow = this.posts.filter(post =>
                       post.title.toLocaleLowerCase().includes(this.selectedTitle.toLocaleLowerCase()));
     this.postsToShow.forEach( post => {
@@ -239,6 +244,8 @@ export class PostsDashboardComponent implements OnInit {
       post.product.salesPrice = post.product.rentalPrice;
       post.product.depositPrice = post.product.rentalPrice;
     });
+    this.showEmptyMessage = this.postsToShow.length == 0;
+    this.dialog.closeAll();
   }
 
   getPostForAuthor(){

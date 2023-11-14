@@ -116,6 +116,15 @@
     cursor: pointer;
 }
 
+.zeroOpinions{
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
 .starIcon {
     transform: scale(1.5);
     color: #885B34;
@@ -226,7 +235,7 @@ button:focus {
     }
 
     .productInfo {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .postButton {
@@ -262,10 +271,17 @@ button:focus {
     }
 
     .ratingContainer {
-        display: block;
+        display: flex;
+        align-items: center;
     }
 
     .opinions {
+        margin: 0rem;
+        font-size: 0.9rem;
+        margin-left: 1rem !important;
+    }
+
+    .zeroOpinions{
         margin: 0rem;
         font-size: 0.9rem;
     }

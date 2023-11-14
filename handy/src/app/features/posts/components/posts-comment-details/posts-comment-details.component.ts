@@ -8,6 +8,8 @@ import { UserService } from 'src/app/shared/services/user/user.service';
 import { CommentsService } from '../../services/comments-service/comments.service';
 import { User } from 'src/app/core/models/user';
 import { Comment } from 'src/app/core/models/comment';
+import { ProgressSpinnerComponent } from 'src/app/shared/components/progress-spinner/progress-spinner.component';
+import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -27,7 +29,7 @@ export class DialogPostsCommentDetailsComponent {
     private sessiontokenService: SessiontokenService,
     private userService: UserService,
     private commentService: CommentsService,
-
+    public dialog: MatDialog,
   ) {
     this.content = new FormControl('', [Validators.required, Validators.maxLength(500)]);
   }
@@ -71,6 +73,10 @@ export class DialogPostsCommentDetailsComponent {
 
   onSaveClick(): void {
     if (this.content.valid) {
+      const spinnerDialog = this.dialog.open(ProgressSpinnerComponent, {
+        panelClass: 'transparent',
+        disableClose: true
+      });
       this.comment.content = this.content.value,
       this.comment.post = this.data.post,
       this.comment.author = this.user,
@@ -83,6 +89,7 @@ export class DialogPostsCommentDetailsComponent {
       .create(this.comment)
       .subscribe( () => {
         this.commentService.setComment(this.comment);
+        spinnerDialog.close();
         Swal.fire('Exito', successMessage, 'success');
       },
       () => {
