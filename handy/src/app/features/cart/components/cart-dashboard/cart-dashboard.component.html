@@ -14,7 +14,7 @@
     <div class="cartBox" *ngIf="totalsToPayPerAuthor.length > 0">
       <div style="margin:1rem;" *ngFor="let totalToPayPerAuthor of totalsToPayPerAuthor">
         <mat-accordion>
-          <mat-expansion-panel hideToggle (opened)="viewTotalsToPayPerCart(totalToPayPerAuthor.id)" [expanded]=expanded class="authorPurchase">
+          <mat-expansion-panel hideToggle [expanded]=expanded class="authorPurchase">
             <mat-expansion-panel-header class="panelHeader">
               <div class="rowWeb">
                 <div class="column-left">

@@ -14,6 +14,7 @@ import { TotalToPayPerCartService } from '../../services/total-to-pay-per-cart-s
 import { TotalToPayPerAuthorService } from '../../services/total-to-pay-per-author-service/totalToPayPerAuthor.service';
 import { CartService } from '../../services/cart-service/cart.service';
 import Swal from 'sweetalert2';
+import { ListOfTotalToPayPerCartGroupByAuthor } from 'src/app/core/models/listOfTotalToPayPerCartGroupByAuthor';
 
 @Component({
   selector: 'app-cart-dashboard',
@@ -42,6 +43,7 @@ export class CartDashboardComponent {
   user: User = this.userService.emptyUser();
   totalsToPayPerAuthor: TotalToPayPerAuthor [] = [];
   totalsToPayPerCart: TotalToPayPerCart [] = [];
+  listOfTotalToPayPerCartGroupByAuthor: ListOfTotalToPayPerCartGroupByAuthor [] = []
 
   ngOnInit(): void {
     this.getUser();
@@ -117,22 +119,27 @@ export class CartDashboardComponent {
           takeUntil(this.$_destroyed),
         )
         .subscribe(() => {
-          this.viewTotalsToPayPerCart(cart.id);
+          this.viewTotalsToPayPerCart();
           this.getTotalToPay();
         });
       }
     });
   }
 
-  viewTotalsToPayPerCart(totalToPayPerAuthorID: number){
+  viewTotalsToPayPerCart(){
+
+    const listOfTotalToPayPerCartGroupByAuthorIDS = this.totalsToPayPerAuthor.
+                                                        map(totalToPayPerAuthor => { return totalToPayPerAuthor.id})
+
     this.totalToPayPerCartService
-    .getTotalsToPayPerCart(totalToPayPerAuthorID)
+    .getTotalsToPayPerCartForTotalToPayPerAuthorIDList(listOfTotalToPayPerCartGroupByAuthorIDS)
       .pipe(
         takeUntil(this.$_destroyed),
-        map((response: TotalToPayPerCart[]) => (
-          this.totalsToPayPerCart = response))
+        map((response: ListOfTotalToPayPerCartGroupByAuthor[]) => (
+          this.listOfTotalToPayPerCartGroupByAuthor = response))
       )
     .subscribe(() => {
+      console.log(this.listOfTotalToPayPerCartGroupByAuthor)
       this.totalsToPayPerCart.forEach(total => {
         total.itemCartTotalToPay = total.itemCartTotalToPay;
         total.cart.post.product.rentalPrice = total.cart.post.product.rentalPrice;
@@ -165,6 +172,7 @@ export class CartDashboardComponent {
           this.totalsToPayPerAuthor = response))
       )
     .subscribe(() => {
+      this.viewTotalsToPayPerCart();
       this.totalsToPayPerAuthor.forEach( total => total.totalToPay = total.totalToPay);
     });
   }
