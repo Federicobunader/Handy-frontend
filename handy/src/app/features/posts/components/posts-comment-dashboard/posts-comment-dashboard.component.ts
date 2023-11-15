@@ -8,6 +8,7 @@ import { UserService } from 'src/app/shared/services/user/user.service';
 import { SessiontokenService } from 'src/app/features/home/services/sessiontoken.service';
 import { PostService } from '../../services/posts-service/posts.service';
 import { Post } from 'src/app/core/models/post';
+import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogPostsCommentDetailsComponent } from '../posts-comment-details/posts-comment-details.component';
 
@@ -32,6 +33,7 @@ export class PostsCommentDashboardComponent {
   user: User = this.userService.emptyUser();
   post: Post = this.postService.emptyPost();
   comments: Comment[] = [];
+  pipe = new DatePipe('en-US');
 
   ngOnInit(): void {
     this.getUser();
@@ -93,13 +95,17 @@ export class PostsCommentDashboardComponent {
 
     this.comments.forEach(comment => {
       this.commentsService
-    .getAnswersForComment(comment.id)
-      .pipe(
-        takeUntil(this.$_destroyed),
-        map((response: Comment[]) => (
-          comment.answers = response))
-      )
-    .subscribe();
+      .getAnswersForComment(comment.id)
+        .pipe(
+          takeUntil(this.$_destroyed),
+          map((response: Comment[]) => (
+            comment.answers = response))
+        )
+      .subscribe(() => {
+        this.comments.forEach( comment => {
+          comment.creationDate = this.pipe.transform(comment.creationDate, 'dd/MM/YYYY');
+        });
+      });
     });
   }
 

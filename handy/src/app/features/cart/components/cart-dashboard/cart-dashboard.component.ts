@@ -29,6 +29,7 @@ export class CartDashboardComponent {
   @Input() isPurchasedSection : Boolean = false;
   @Input() expanded : Boolean = true;
   @Input() authorID = -1;
+  @Input() showButtons = true;
 
   private $_destroyed = new Subject();
 
@@ -101,12 +102,6 @@ export class CartDashboardComponent {
       data: {amount: cart.amount, post: cart.post, cart: cart},
     });
     dialogRef.componentInstance.isEdit = true;
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        // Aquí puedes usar el valor ingresado por el usuario (result)
-      }
-    });
   }
 
   deleteCart(cart: Cart){
@@ -134,8 +129,7 @@ export class CartDashboardComponent {
 
   viewTotalsToPayPerCart(){
 
-    const listOfTotalToPayPerCartGroupByAuthorIDS = this.totalsToPayPerAuthor.
-                                                        map(totalToPayPerAuthor => { return totalToPayPerAuthor.id})
+    const listOfTotalToPayPerCartGroupByAuthorIDS = this.totalsToPayPerAuthor.map(totalToPayPerAuthor => { return totalToPayPerAuthor.id})
 
     this.totalToPayPerCartService
     .getTotalsToPayPerCartForTotalToPayPerAuthorIDList(listOfTotalToPayPerCartGroupByAuthorIDS)
@@ -156,7 +150,7 @@ export class CartDashboardComponent {
           this.totalsToPayPerAuthor.push(response)))
       )
     .subscribe( () => {
-      this.totalsToPayPerAuthor.forEach( total => total.totalToPay = total.totalToPay);
+      this.viewTotalsToPayPerCart();
       this.dialog.closeAll();
       this.showEmptyMessage = this.totalsToPayPerAuthor.length == 0;
     });

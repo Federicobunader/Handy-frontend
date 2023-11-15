@@ -5,6 +5,8 @@ import { Subject, map, takeUntil } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { MailService } from 'src/app/shared/services/mail/mail.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ProgressSpinnerComponent } from 'src/app/shared/components/progress-spinner/progress-spinner.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -22,6 +24,7 @@ export class ResetPasswordComponent {
     @Inject(MAT_DIALOG_DATA) public data: {},
     private mailService: MailService,
     private userService: UserService,
+    public dialog: MatDialog,
   ) {
     this.userName = new FormControl('', [Validators.required]);
   }
@@ -35,12 +38,14 @@ export class ResetPasswordComponent {
   }
 
   onCancelClick(): void {
-    //var user = this.userService.emptyUser();
     this.dialogRef.close();
   }
 
-  showSendingEmail = false;
   onSaveClick(): void {
+    const dialogRef = this.dialog.open(ProgressSpinnerComponent, {
+      panelClass: 'transparent',
+      disableClose: true
+    });
 
     var user = this.userService.emptyUser();
 
@@ -57,11 +62,11 @@ export class ResetPasswordComponent {
       .subscribe(() => {
           this.dialogRef.close(user)
           Swal.fire('Exito', 'Email enviado', 'success');
-          this.showSendingEmail = true;
+          dialogRef.close();
         },
         (error) => {
           Swal.fire('Error', 'El usuario no existe', 'error');
-          this.showSendingEmail = false;
+          dialogRef.close();
         }
       );
     } else {

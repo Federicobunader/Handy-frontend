@@ -41,7 +41,6 @@ export class PurchaseDashboardComponent {
 
   ngOnInit(): void {
     this.getFrom();
-    let ChangedFormat = this.pipe.transform(this.today, 'dd/MM/YYYY');
   }
 
   from: User = this.userService.emptyUser();
