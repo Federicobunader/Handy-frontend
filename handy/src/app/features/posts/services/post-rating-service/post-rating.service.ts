@@ -70,6 +70,7 @@ export class PostRatingService {
       post: this.postService.emptyPost(),
       author: this.userService.emptyUser(),
       cart: this.cartService.emptyCart(),
+      creationDate: new Date(),
     }
   }
 }

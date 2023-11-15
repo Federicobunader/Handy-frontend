@@ -9,4 +9,5 @@ export interface PostRating extends IIdentifiable{
   author: User,
   post: Post,
   cart: Cart,
+  creationDate: any,
 }

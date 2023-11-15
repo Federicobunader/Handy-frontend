@@ -179,7 +179,7 @@ export class PostsDetailsComponent {
   saveOrUpdate(){
     let invalid = false;
     if(this.post.photos.length > 0){
-      if (this.postForm.valid && this.isAddressFormValid) {        
+      if (this.postForm.valid && this.isAddressFormValid) {
         this.setFormInfoToPostForm();
 
         this.postService
@@ -212,7 +212,7 @@ export class PostsDetailsComponent {
     }
 
     if(invalid){
-      this.checkMissingRequiredField();   
+      this.checkMissingRequiredField();
       const dialogRef = this.dialog.open(MissingRequiredFieldsComponent, {
         width: '600px',
       });
@@ -228,9 +228,9 @@ export class PostsDetailsComponent {
   missingRequiredFieldsFirstTab: String[] = [];
   missingRequiredFieldsSecondTab: String[] = [];
   missingRequiredFieldsThirdTab: String[] = [];
-  
+
   checkMissingRequiredField() {
-    
+
     this.missingRequiredFieldsFirstTab = [];
     this.missingRequiredFieldsSecondTab = [];
     this.missingRequiredFieldsThirdTab = [];
@@ -243,24 +243,24 @@ export class PostsDetailsComponent {
     }
     if (this.postForm.value.stock == 0) {
       this.missingRequiredFieldsFirstTab.push('Stock');
-    }    
+    }
     if (this.postForm.value.rentalPrice == 0) {
       this.missingRequiredFieldsFirstTab.push('Precio de alquiler por día');
-    }   
+    }
     if (this.postForm.value.productCategory == 0) {
       this.missingRequiredFieldsFirstTab.push('Categoría');
-    }   
+    }
     if (this.postForm.value.productSubCategory == 0) {
       this.missingRequiredFieldsFirstTab.push('Subcategoría');
-    }   
+    }
     if (this.postForm.value.productDescription == "") {
       this.missingRequiredFieldsFirstTab.push('Descripción del producto');
-    } 
+    }
     if (this.postForm.value.isLeasing) {
       if (this.postForm.value.salesPrice == 0) {
         this.missingRequiredFieldsFirstTab.push('Precio de venta');
       }
-    } 
+    }
 
     if (this.post.photos.length == 0) {
       this.missingRequiredFieldsSecondTab.push('Al menos una foto');
@@ -304,25 +304,27 @@ export class PostsDetailsComponent {
   }
 
   getPost(){
-    this.postService
-    .getPostByID(this.postID)
-      .pipe(
-        takeUntil(this.$_destroyed),
-        map((response: Post) => {
-          this.addressService.setAddress(response.address);
-          this.post = response;
-        }
+    if(this.postID != undefined){
+      this.postService
+      .getPostByID(this.postID)
+        .pipe(
+          takeUntil(this.$_destroyed),
+          map((response: Post) => {
+            this.addressService.setAddress(response.address);
+            this.post = response;
+          }
+        )
       )
-    )
-    .subscribe(() => {
-      this.setDataInfoToForm();
-      this.addressService.setAddress(this.post.address);
-      this.photoService.setPhotosINFO(this.post.photos);
-      this.setButtonMessage();
-      if(this.post.product.subCategory.category.id){
-        this.getBrands(this.post.product.subCategory.category.id);
-      }
-    });
+      .subscribe(() => {
+        this.setDataInfoToForm();
+        this.addressService.setAddress(this.post.address);
+        this.photoService.setPhotosINFO(this.post.photos);
+        this.setButtonMessage();
+        if(this.post.product.subCategory.category.id){
+          this.getBrands(this.post.product.subCategory.category.id);
+        }
+      });
+    }
   }
 
   setButtonMessage(){

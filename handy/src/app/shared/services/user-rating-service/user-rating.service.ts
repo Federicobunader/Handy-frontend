@@ -68,6 +68,7 @@ export class UserRatingService {
       ratedUser: this.userService.emptyUser(),
       author: this.userService.emptyUser(),
       cart: this.cartService.emptyCart(),
+      creationDate: new Date(),
     }
   }
 }

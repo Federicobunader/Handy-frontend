@@ -22,6 +22,7 @@ export class UserRatingMapper {
       ratedUser: this.userMapper.dtoToUser(rating.ratedUserDTO),
       author: this.userMapper.dtoToUser(rating.authorDTO),
       cart: this.cartMapper.dtoToCart(rating.cart),
+      creationDate: rating?.creationDateDTO ? rating.creationDateDTO : null,
     }
   };
 
@@ -34,6 +35,7 @@ export class UserRatingMapper {
       ratedUserDTO: this.userMapper.dtoToUser(rating.ratedUser),
       authorDTO: this.userMapper.userToDto(rating.author),
       cartDTO: this.cartMapper.cartToDto(rating.cart),
+      creationDateDTO: rating?.creationDate ? rating.creationDate : null,
     }
   };
 }

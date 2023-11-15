@@ -36,7 +36,7 @@ export class CommentMapper {
       parentCommentDTO: comment?.parentComment ? this.commentToDto(comment.parentComment, processedComments) : null,
       postDTO: this.postMapper.postToDto(comment.post),
       authorDTO: this.userMapper.userToDto(comment.author),
-      creationDate: comment?.creationDate ? comment.creationDate : null,
+      creationDateDTO: comment?.creationDate ? comment.creationDate : null,
     };
   };
 }

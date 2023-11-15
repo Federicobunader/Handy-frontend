@@ -22,6 +22,7 @@ export class PostRatingMapper {
       post: this.postMapper.dtoToPost(rating.ratedPostDTO),
       author: this.userMapper.dtoToUser(rating.authorDTO),
       cart: this.cartMapper.dtoToCart(rating.cartDTO),
+      creationDate: rating?.creationDateDTO ? rating.creationDateDTO : null,
     }
   };
 
@@ -34,6 +35,7 @@ export class PostRatingMapper {
       ratedPostDTO: this.postMapper.postToDto(rating.post),
       authorDTO: this.userMapper.userToDto(rating.author),
       cartDTO: this.cartMapper.cartToDto(rating.cart),
+      creationDateDTO: rating?.creationDate ? rating.creationDate : null,
     }
   };
 }

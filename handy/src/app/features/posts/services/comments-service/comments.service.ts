@@ -49,7 +49,7 @@ export class CommentsService {
     return this.http
       .get(commentURL + "/" + postID)
       .pipe(
-        map((response) => {
+        map((response: any) => {
           const res: any = response;
 
           return res.map((comment: any) => {
