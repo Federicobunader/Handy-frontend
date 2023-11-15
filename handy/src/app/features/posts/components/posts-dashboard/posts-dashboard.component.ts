@@ -14,7 +14,6 @@ import { SubCategory } from 'src/app/core/models/sub-category';
 import { SessiontokenService } from 'src/app/features/home/services/sessiontoken.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSelect } from '@angular/material/select';
 import { OrderByTypesService } from '../../services/order-by-types-service/order-by-types.service';
 import { OrderByType } from 'src/app/core/models/orderByType';
 import { BrandsService } from '../../services/brands-service/brands.service';

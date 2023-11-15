@@ -5,6 +5,9 @@
       <p class="purchasedTitle">Compra realizada a {{this.purchase.seller.firstName}} {{this.purchase.seller.lastName}} el día {{this.purchase.creationDate}}</p>
       <p class="purchasedSubtitle">Información del comprador. Nombre: {{this.buyerFullName}} | Mail: {{this.buyerEmail}} | Teléfono: {{this.buyerTel}}</p>
     </div>
+    <div *ngIf="!isPurchased">
+      <p routerLink="/carts" class="goBack"><u>Volver al carrito</u></p>
+    </div>
     <div class="box">
       <h1 class="title">Entrega</h1> 
       <hr class="line">
@@ -57,15 +60,15 @@
     </div> 
     <hr class="line">  
     <div class="bottomContainer">
-      <p class="totalToPay" *ngIf="!isPurchased">Total a pagar: ${{this.totalToPayPerAuthor.totalToPay}}</p>
-      <p class="totalToPay" *ngIf="isPurchased">Total pagado: ${{this.totalToPayPerAuthor.totalToPay}}</p>
+      <p class="totalToPay" *ngIf="!isPurchased">Total a pagar: {{this.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
+      <p class="totalToPay" *ngIf="isPurchased">Total abonado: {{this.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
       <button class="payButtonDisable" *ngIf="!isPurchased && !enablePurchaseButton">PROCEDER AL PAGO</button>
       <button class="payButton" *ngIf="!isPurchased && enablePurchaseButton" (click)="createPurchase()">{{this.submitLabel}}</button>
     </div>
     <div>
       <h1 class="summary">Resumen de compra</h1>
       <div class="summaryContainer">
-        <app-cart-dashboard [showBuyButton]=false [isPurchasedSection]=isPurchasedSection [expanded]="false" [isPurchased]=isPurchased [authorID]=this.totalToPayPerAuthorID></app-cart-dashboard>
+        <app-cart-dashboard [showBuyButton]=false [showButtons]=false [isPurchasedSection]=isPurchasedSection [expanded]="false" [isPurchased]=isPurchased [authorID]=this.totalToPayPerAuthorID></app-cart-dashboard>
       </div>
     </div>
   </div>

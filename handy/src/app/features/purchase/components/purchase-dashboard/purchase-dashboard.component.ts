@@ -41,7 +41,6 @@ export class PurchaseDashboardComponent {
 
   ngOnInit(): void {
     this.getFrom();
-    let ChangedFormat = this.pipe.transform(this.today, 'dd/MM/YYYY');
   }
 
   from: User = this.userService.emptyUser();
@@ -113,7 +112,6 @@ export class PurchaseDashboardComponent {
       )
     .subscribe(() => {
       this.totalsToPayPerCart.forEach( total => {
-        total.itemCartTotalToPay = total.itemCartTotalToPay.toLocaleString('es-CO');
         total.cart.dateTo = this.pipe.transform(total.cart.dateTo, 'dd/MM/YYYY');
       });
     });

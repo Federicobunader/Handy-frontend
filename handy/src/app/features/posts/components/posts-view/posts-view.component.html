@@ -25,11 +25,11 @@
       </div>
       <div class="column-right">
         <div class="productInfoContainer">
-          <p class="productPrice"><span class="priceNumber">${{this.post.product.rentalPrice}}</span> alquiler por día <span *ngIf="this.post.product.depositPrice > 0">+ ${{this.post.product.depositPrice}} de depósito</span></p><br>
-          <p class="productPrice" *ngIf="this.post.isLeasing"><span class="priceNumber">${{this.post.product.salesPrice}}</span> precio de venta</p><br>
+          <p class="productPrice"><span class="priceNumber">{{this.post.product.rentalPrice | numberFormat }}</span> alquiler por día <span *ngIf="this.post.product.depositPrice > 0">+ {{this.post.product.depositPrice | numberFormat }} de depósito</span></p><br>
+          <p class="productPrice" *ngIf="this.post.isLeasing"><span class="priceNumber">{{this.post.product.salesPrice != undefined ? (this.post.product.salesPrice | numberFormat) : this.post.product.salesPrice }}</span> precio de venta</p><br>
           <div class="locationContainer">
             <mat-icon class="locationIcon">location_on</mat-icon>
-            <p class="productInfo">{{this.post.address.location.name}}, {{this.post.address.location.province.name}}</p>
+            <p class="productLocation">{{this.post.address.location.name}}, {{this.post.address.location.province.name}}</p>
           </div>
           <div class="ratingContainer">
             <div *ngIf="this.ratings.length != 0">
@@ -80,7 +80,7 @@
             <p class="zeroOpinions" *ngIf="this.ratings.length == 0">{{ratingMessage}}</p>
           </div>
           <div>
-            <br><p class="productInfo" style="font-size:1rem;"><u>Acerca de este producto</u></p>
+            <br><p class="productInfo"><b>Acerca de este producto</b></p>
             <p class="productInfo" style="margin-top:-1rem;width:100%;text-align:justify;letter-spacing:1px;">{{this.post.product.description}}</p>
           </div>
         </div>

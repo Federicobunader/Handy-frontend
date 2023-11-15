@@ -88,9 +88,7 @@ export class DialogCartDetailComponent {
   onSaveClick(): void {
     if (this.amount.valid) {
       this.cart.amount = this.amount.value;
-      if(this.optionChosen === "comprar"){
-        this.cart.isLeasing = true;
-      }
+      this.cart.isLeasing = this.optionChosen === "comprar";
       this.cart.dateTo = this.dateTo.value;
       this.cart.post = this.data.post;
       this.cart.user = this.user;
@@ -123,6 +121,7 @@ export class DialogCartDetailComponent {
     this.selectionWasDone = true;
     this.optionChosen = type;
   }
+  
   undoSelection(): void{
     this.selectionWasDone = false;
     this.optionChosen = '';

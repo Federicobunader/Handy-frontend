@@ -151,9 +151,17 @@
 }
 
 .container {
-    padding-top: 7rem;
+    padding-top: 5rem;
     padding-left: 7rem;
     padding-right: 7rem;
+}
+
+.goBack {
+    font-size: 1rem;
+    font-family: 'Roboto', monospace;
+    color: #885B34;
+    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
 .deliveryButtons {

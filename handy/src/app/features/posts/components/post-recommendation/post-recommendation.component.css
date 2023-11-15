@@ -107,8 +107,8 @@ button:focus {
 }
 
 .productBox {
-    height: 19rem;
-    width: 13rem;
+    height: 21rem;
+    width: 15rem;
     background-color: #FAFAF5;
     border: 0.2rem solid #885B34;
     border-radius: 1rem;
@@ -121,10 +121,10 @@ button:focus {
 }
 
 .productBoxLine {
-    border-top: 0.2rem solid #885B34;
+    border-top: 0.3rem solid #885B34;
     width: 100%;
     margin: 0rem;
-    margin-top: -0.3rem;
+    margin-top: -0.4rem;
 }
 
 .postsSection {
@@ -133,9 +133,9 @@ button:focus {
 
 .postPicture {
     height: 9rem;
-    width: 13rem;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    width: 15rem;
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
     margin: 0rem;
 }
 
@@ -154,7 +154,7 @@ button:focus {
     width: 100%;
 }
 
-.postsSectionContainer{
+.postsSectionContainer {
     margin-top: 1rem;
 }
 
@@ -206,13 +206,14 @@ button:focus {
     }
 
     .productBox {
-        height: 16rem;
-        width: 8rem;
+        height: 18rem;
+        width: 9.3rem;
+        margin: 0.5rem;
     }
 
     .postPicture {
         height: 6rem;
-        width: 8rem;
+        width: 9.3rem;
     }
 
     .postInformation {

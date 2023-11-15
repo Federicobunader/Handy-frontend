@@ -49,12 +49,14 @@
                             <hr class="productBoxLine">
                             <div class="postInformation">
                                 <a><b>{{post.title}}</b></a>
-                                <p style="margin-top:1rem;">${{post.product.rentalPrice}} por día</p>
+                                <p style="margin-top:1rem;">{{post.product.rentalPrice | numberFormat }} por día</p>
+                                <p *ngIf="post.isLeasing">Con posibilidad de compra</p>
+                                <p *ngIf="!post.isLeasing">Sin posibilidad de compra</p>
                                 <div style="display:inline-flex;font-size:0.8rem;">
                                     <mat-icon style="margin-top:-0.2rem;transform:scale(0.8);margin-left:-0.3rem;">location_on</mat-icon>
                                     <p>{{post.address.location.name}}</p>
                                 </div>
-                                <p *ngIf="this.post.author.id == this.user.id" style="color:rgb(211, 78, 78);font-weight:bold;">Tu publicación</p>
+                                <p *ngIf="this.post.author.id == this.user.id" style="color:rgb(211, 78, 78);font-weight:bold;font-size:0.8rem;">Tu publicación</p>
                             </div>  
                         </div>
                     </div>

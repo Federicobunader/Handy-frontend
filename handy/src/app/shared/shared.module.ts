@@ -17,6 +17,7 @@ import { MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { PhotoComponent } from './components/photo/photo/photo.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { NumberFormatPipe } from './components/number-format/number-format.pipe';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -44,7 +45,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AddressComponent,
     PhotoComponent,
     NavBarComponent,
-    ProgressSpinnerComponent
+    ProgressSpinnerComponent,
+    NumberFormatPipe
   ],
   exports: [
     ReactiveFormsModule,
@@ -61,7 +63,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSelectModule,
     HttpClientModule,
     MatCardModule,
-
+    NumberFormatPipe,
     AddressComponent,
     PhotoComponent,
     NavBarComponent,
