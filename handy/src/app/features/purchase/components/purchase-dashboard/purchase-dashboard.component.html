@@ -64,7 +64,7 @@
               <p class="rentalSoon"      *ngIf="total.cart.remainingDays <= 1 && total.cart.remainingDays > 0 && !total.cart.isLeasing">Todavía queda 1 día para que el comprador devuelva tu producto</p>
               <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing"><b>El alquiler finalizó el día {{total.cart.dateTo | dateFormat}}. Por favor, indicá si el producto ya fue devuelto.</b></p>
 
-              <button class="rateButton" *ngIf="!total.cart.isLeasing && total.cart.remainingDays <= 0 && !total.cart.returnedFlag" (click)="setProductAsReturned(purchase.totalToPayPerAuthor)">Producto devuelto</button> <!-- la condicion deberia ser: que todavia no haya rateado al usuario & sea vendedor & sea alquiler & se haya terminado el tiempo & todavia no haya indicado si devolvio  -->
+              <button class="rateButton" *ngIf="!total.cart.isLeasing && total.cart.remainingDays <= 0 && !total.cart.returnedFlag" (click)="setProductAsReturned(total.cart)">Producto devuelto</button> <!-- la condicion deberia ser: que todavia no haya rateado al usuario & sea vendedor & sea alquiler & se haya terminado el tiempo & todavia no haya indicado si devolvio  -->
               <button class="rateButton" *ngIf="!isBuyer" style="margin-top:1rem;" (click)="createUserRating(total.cart)">Calificar usuario</button> <!--  la condicion tiene q ser que todavia no haya rateado al usuario-->
             </div>
           </div>

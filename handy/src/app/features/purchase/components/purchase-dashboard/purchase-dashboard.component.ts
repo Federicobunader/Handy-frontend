@@ -75,9 +75,6 @@ export class PurchaseDashboardComponent {
         )
       .subscribe( () => {
         this.showEmptyMessage = this.purchases.length == 0;
-        this.purchases.forEach( purchase => {
-          purchase.totalToPayPerAuthor.totalToPay = purchase.totalToPayPerAuthor.totalToPay;
-        });
       });
     }
     else{
@@ -90,9 +87,6 @@ export class PurchaseDashboardComponent {
         )
       .subscribe( () => {
         this.showEmptyMessage = this.purchases.length == 0;
-        this.purchases.forEach( purchase => {
-          purchase.totalToPayPerAuthor.totalToPay = purchase.totalToPayPerAuthor.totalToPay;
-        });
       });
     }
 
@@ -106,7 +100,9 @@ export class PurchaseDashboardComponent {
         map((response: TotalToPayPerCart[]) => (
           this.totalsToPayPerCart = response))
       )
-    .subscribe(() => {});
+    .subscribe(() => {
+      console.log('totalsToPayPerCart',this.totalsToPayPerCart)
+    });
   }
 
   sendToPurchase(purchase: Purchase){
@@ -140,10 +136,10 @@ export class PurchaseDashboardComponent {
     });
   }
 
-  setProductAsReturned(totalToPayPerAuthor : TotalToPayPerAuthor){
+  setProductAsReturned(cart : Cart){
     const dialogRef = this.dialog.open(PurchaseReturnedComponent, {
       width: '600px',
-      data: {totalToPayPerAuthor},
+      data: {cart},
     });
 
   }
