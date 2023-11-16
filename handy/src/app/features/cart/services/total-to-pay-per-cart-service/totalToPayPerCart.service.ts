@@ -21,6 +21,19 @@ export class TotalToPayPerCartService {
     this.totalToPayPerCartMapper = new TotalToPayPerCartMapper();
   }
 
+  getTotalsToPayPerCartByReturnedFlag(totalToPayPerAuthorID: number, returnedFlag: boolean): Observable<any> {
+    return this.http
+      .get(totalToPayPerCarttURL + '/totalToPayPerCartsByReturnedFlag/' + totalToPayPerAuthorID + '/' +  returnedFlag)
+      .pipe(
+        map((response) => {
+          const res: any = response;
+          return res.map((totalToPayPerCart: TotalToPayPerCart []) => {
+             return this.totalToPayPerCartMapper.dtoToTotalToPayPerCart(totalToPayPerCart);
+          });
+        })
+      );
+  }
+
   getTotalsToPayPerCart(totalToPayPerAuthorID: number): Observable<any> {
     return this.http
       .get(totalToPayPerCarttURL + '/totalToPayPerCarts/' + totalToPayPerAuthorID)
