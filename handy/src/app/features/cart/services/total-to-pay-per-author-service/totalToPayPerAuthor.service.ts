@@ -66,7 +66,6 @@ export class TotalToPayPerAuthorService {
       from: this.userService.emptyUser(),
       totalToPay: 0,
       purchasedFlag: false,
-      returnedFlag: false,
     }
   }
 

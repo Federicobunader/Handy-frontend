@@ -12,6 +12,7 @@ export interface Cart extends IIdentifiable{
   userAlreadyRatedPost: boolean,
   userAlreadyRatedPostAuthor: boolean,
   isPurchased: boolean,
+  returnedFlag: boolean,
   post: Post,
   user: User,
 }

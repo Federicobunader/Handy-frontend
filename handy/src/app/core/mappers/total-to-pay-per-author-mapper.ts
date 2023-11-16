@@ -19,7 +19,6 @@ import { TotalToPayPerAuthor } from '../models/total-to-pay-per-author';
         from: this.userMapper.dtoToUser(totalToPayPerAuthor?.fromDTO),
         totalToPay: totalToPayPerAuthor?.totalToPay ? totalToPayPerAuthor.totalToPay : 0,
         purchasedFlag: totalToPayPerAuthor?.purchasedFlag != undefined ? totalToPayPerAuthor.purchasedFlag : false,
-        returnedFlag: totalToPayPerAuthor?.returnedFlag != undefined ? totalToPayPerAuthor.returnedFlag : false,
       };
     }
 
@@ -31,7 +30,6 @@ import { TotalToPayPerAuthor } from '../models/total-to-pay-per-author';
         fromDTO: this.userMapper.userToDto(totalToPayPerAuthor.from),
         totalToPay: totalToPayPerAuthor?.totalToPay ? totalToPayPerAuthor.totalToPay : 0,
         purchasedFlag: totalToPayPerAuthor?.purchasedFlag != undefined ? totalToPayPerAuthor.purchasedFlag : false,
-        returnedFlag: totalToPayPerAuthor?.returnedFlag != undefined ? totalToPayPerAuthor.returnedFlag : false,
       };
     }
   }

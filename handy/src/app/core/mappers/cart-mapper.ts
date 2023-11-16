@@ -25,6 +25,7 @@ export class CartMapper {
       userAlreadyRatedPostAuthor: cart?.userAlreadyRatedPostAuthor != undefined ? cart.userAlreadyRatedPostAuthor : false,
       post: this.postMapper.dtoToPost(cart.postDTO),
       user: this.userMapper.dtoToUser(cart.userDTO),
+      returnedFlag: cart?.returnedFlag != undefined ? cart.returnedFlag : false,
     };
   }
 
@@ -40,6 +41,7 @@ export class CartMapper {
       purchasedFlag: cart?.isPurchased ? cart.isPurchased : false,
       postDTO: this.postMapper.postToDto(cart.post),
       userDTO: this.userMapper.userToDto(cart.user),
+      returnedFlag: cart?.returnedFlag != undefined ? cart.returnedFlag : false,
     };
   }
 }

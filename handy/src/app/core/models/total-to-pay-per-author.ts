@@ -7,5 +7,4 @@ export interface TotalToPayPerAuthor extends IIdentifiable{
   from: User;
   totalToPay: number;
   purchasedFlag: boolean;
-  returnedFlag: boolean,
 }

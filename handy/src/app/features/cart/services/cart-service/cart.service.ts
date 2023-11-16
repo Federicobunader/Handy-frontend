@@ -69,6 +69,7 @@ export class CartService {
       remainingDays: 0,
       post: this.postService.emptyPost(),
       user: this.userService.emptyUser(),
+      returnedFlag: false,
     }
   }
 }
