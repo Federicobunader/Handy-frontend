@@ -278,7 +278,7 @@ button:focus {
     .starIcon {
         transform: scale(1);
         margin: 0rem;
-        margin-right: 0.2rem;
+        margin-right: 0rem;
     }
 
     .ratingContainer {
