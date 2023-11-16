@@ -4,6 +4,7 @@ import { Subject, map, takeUntil } from 'rxjs';
 import { CartService } from 'src/app/features/cart/services/cart-service/cart.service';
 import { Cart } from 'src/app/core/models/cart';
 import Swal from 'sweetalert2';
+import { TotalToPayPerAuthorService } from 'src/app/features/cart/services/total-to-pay-per-author-service/totalToPayPerAuthor.service';
 
 @Component({
     selector: 'app-purchase-returned',
@@ -38,6 +39,7 @@ export class PurchaseReturnedComponent {
         )
         .subscribe( () => {
           Swal.fire('Exito', 'Información guardada', 'success');
+          this
           this.dialogRef.close();
         },
         (error) => {

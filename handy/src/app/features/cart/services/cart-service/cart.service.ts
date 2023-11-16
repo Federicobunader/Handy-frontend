@@ -25,7 +25,7 @@ export class CartService {
   create(cart: Cart): Observable<Cart> {
     return this.http
       .post(
-        totalToPayPerCarttURL,
+        cartURL,
         this.mapper.cartToDto(cart)
       )
       .pipe(
