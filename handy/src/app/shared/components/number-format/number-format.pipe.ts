@@ -5,6 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class NumberFormatPipe implements PipeTransform {
   transform(value: number): string {
-    return value.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+    if(value){
+      return value.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+    }
+    return '';
   }
 }
