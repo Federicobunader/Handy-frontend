@@ -9,7 +9,7 @@
                 <img src={{comment.author.photo[0].url}} class="picture">
               </div>
               <div class="column-right">
-                <p><b>{{comment.author.username}}</b> | {{comment.creationDate}}</p>
+                <p><b>{{comment.author.username}}</b> | {{comment.creationDate | dateFormat}}</p>
                 <p>{{comment.content}}</p>
               </div>
             </div>
@@ -24,7 +24,7 @@
                 <img src={{answerComment.author.photo[0].url}} class="picture"> 
               </div>
               <div class="column-right">
-                <p><b>{{answerComment.author.username}}</b> | {{answerComment.creationDate}}</p>
+                <p><b>{{answerComment.author.username}}</b> | {{answerComment.creationDate | dateFormat}}</p>
                 <p>{{answerComment.content}}</p>
               </div>
             </div>

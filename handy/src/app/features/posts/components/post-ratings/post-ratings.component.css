@@ -40,7 +40,7 @@
 }
 
 .author {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     margin-top: 0.2rem;
     font-size: 1rem;
     font-family: 'Roboto', monospace;
@@ -86,6 +86,10 @@
         font-weight: normal;
     }
 
+    .scrollable{
+        padding: 0rem;
+    }
+    
     .box {
         padding: 2rem;
     }
@@ -103,6 +107,7 @@
 
     .authorAndStars {
         flex-direction: column;
+        margin-top: -0.5rem;
     }
 
     .starIcon {

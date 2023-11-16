@@ -13,7 +13,6 @@ import { PaymentMethod } from 'src/app/core/models/paymentMethod';
 import { TotalToPayPerAuthorService } from 'src/app/features/cart/services/total-to-pay-per-author-service/totalToPayPerAuthor.service';
 import { TotalToPayPerAuthor } from 'src/app/core/models/total-to-pay-per-author';
 import Swal from 'sweetalert2';
-import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { PaymentMercadoPagoService } from 'src/app/features/payment-mercado-pago/services/payment-mercado-pago.service';
 import { PaymentUalaBisService } from 'src/app/features/payment-uala-bis/services/payment-uala-bis.service';
@@ -28,7 +27,6 @@ export class PurchaseDetailComponent implements OnInit{
 
   address: FormControl;
   private $_destroyed = new Subject();
-  pipe = new DatePipe('en-US');
 
   constructor(
     private addressService: AddressService,
@@ -100,7 +98,6 @@ export class PurchaseDetailComponent implements OnInit{
           this.getPaymentMethods();
           if(this.purchase.id){
             this.isPurchased = true;
-            this.purchase.creationDate = this.pipe.transform(this.purchase.creationDate, 'dd/MM/YYYY');
             this.setPaymentMethod(this.purchase.paymentMethod.name);
             if(this.purchase.deliveryPoint.street != ""){
               this.loadAddressFromUser();

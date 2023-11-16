@@ -10,7 +10,7 @@
           </div>
           <div class="ratingContainer">
             <div class="authorAndStars">
-              <p class="author"><b>{{rating.author.username}}</b></p>
+              <p class="author"><b>{{rating.author.username}}</b> | {{rating.creationDate | dateFormat}} |</p>
               <div *ngIf="rating.score < 1" class="starsContainer">
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>

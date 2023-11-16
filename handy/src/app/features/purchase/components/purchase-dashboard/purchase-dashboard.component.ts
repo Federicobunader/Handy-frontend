@@ -10,7 +10,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { PurchaseService } from '../../services/purchase.service';
 import { TotalToPayPerCartService } from 'src/app/features/cart/services/total-to-pay-per-cart-service/totalToPayPerCart.service';
 import { TotalToPayPerCart } from 'src/app/core/models/total-to-pay-per-cart';
-import { DatePipe } from '@angular/common';
 import { DialogRatingDetailsComponent } from 'src/app/shared/components/rating-details/rating-details.component';
 import { PurchaseReturnedComponent } from 'src/app/features/purchase/components/purchase-returned/purchase-returned.component';
 import { TotalToPayPerAuthor } from 'src/app/core/models/total-to-pay-per-author';
@@ -26,7 +25,6 @@ export class PurchaseDashboardComponent {
   @Input() isBuyer : boolean = true;
   purchases: Purchase [] = [];
   private $_destroyed = new Subject();
-  pipe = new DatePipe('en-US');
   today = new Date();
 
   constructor(
@@ -79,7 +77,6 @@ export class PurchaseDashboardComponent {
         this.showEmptyMessage = this.purchases.length == 0;
         this.purchases.forEach( purchase => {
           purchase.totalToPayPerAuthor.totalToPay = purchase.totalToPayPerAuthor.totalToPay;
-          purchase.creationDate = this.pipe.transform(purchase.creationDate, 'dd/MM/YYYY');
         });
       });
     }
@@ -95,7 +92,6 @@ export class PurchaseDashboardComponent {
         this.showEmptyMessage = this.purchases.length == 0;
         this.purchases.forEach( purchase => {
           purchase.totalToPayPerAuthor.totalToPay = purchase.totalToPayPerAuthor.totalToPay;
-          purchase.creationDate = this.pipe.transform(purchase.creationDate, 'dd/MM/YYYY');
         });
       });
     }
@@ -110,11 +106,7 @@ export class PurchaseDashboardComponent {
         map((response: TotalToPayPerCart[]) => (
           this.totalsToPayPerCart = response))
       )
-    .subscribe(() => {
-      this.totalsToPayPerCart.forEach( total => {
-        total.cart.dateTo = this.pipe.transform(total.cart.dateTo, 'dd/MM/YYYY');
-      });
-    });
+    .subscribe(() => {});
   }
 
   sendToPurchase(purchase: Purchase){
