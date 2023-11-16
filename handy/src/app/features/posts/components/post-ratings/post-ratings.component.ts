@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Rating } from 'src/app/core/models/rating';
+import { PostRating } from 'src/app/core/models/postRating';
 import { PostRatingService } from '../../services/post-rating-service/post-rating.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { PostRatingService } from '../../services/post-rating-service/post-ratin
   export class DialogPostsRatingsComponent {
 
     constructor(private ratingService: PostRatingService){}
-    ratings : Rating [] = [];
+    ratings : PostRating [] = [];
 
     ngOnInit(){
     }
