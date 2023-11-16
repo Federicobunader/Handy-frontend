@@ -10,5 +10,5 @@ export interface Purchase extends IIdentifiable{
   deliveryPoint: Address;
   buyer: User;
   seller: User;
-  creationDate: any,
+  creationDate: Date,
   }

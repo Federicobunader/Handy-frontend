@@ -10,5 +10,5 @@ export interface UserRating extends IIdentifiable{
   author: User,
   ratedUser: User,
   cart: Cart,
-  creationDate: any,
+  creationDate: Date,
 }
