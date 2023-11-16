@@ -2,7 +2,7 @@
   <nav-bar [navBarWithButtons]=true [showCart]=false></nav-bar>  
   <div class="container"> 
     <div *ngIf="isPurchased">
-      <p class="purchasedTitle">Compra realizada a {{this.purchase.seller.firstName}} {{this.purchase.seller.lastName}} el día {{this.purchase.creationDate}}</p>
+      <p class="purchasedTitle">Compra realizada a {{this.purchase.seller.firstName}} {{this.purchase.seller.lastName}} el día {{this.purchase.creationDate | dateFormat}}</p>
       <p class="purchasedSubtitle">Información del comprador. Nombre: {{this.buyerFullName}} | Mail: {{this.buyerEmail}} | Teléfono: {{this.buyerTel}}</p>
     </div>
     <div *ngIf="!isPurchased">

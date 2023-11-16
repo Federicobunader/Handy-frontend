@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PhotoComponent } from './components/photo/photo/photo.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NumberFormatPipe } from './components/number-format/number-format.pipe';
+import { DateFormatPipe } from './components/date-format/date-format.pipe';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -46,7 +47,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     PhotoComponent,
     NavBarComponent,
     ProgressSpinnerComponent,
-    NumberFormatPipe
+    NumberFormatPipe,
+    DateFormatPipe
   ],
   exports: [
     ReactiveFormsModule,
@@ -64,6 +66,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     MatCardModule,
     NumberFormatPipe,
+    DateFormatPipe,
     AddressComponent,
     PhotoComponent,
     NavBarComponent,

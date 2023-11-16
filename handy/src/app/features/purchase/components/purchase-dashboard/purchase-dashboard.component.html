@@ -6,7 +6,7 @@
         <mat-expansion-panel hideToggle (opened)="viewTotalsToPayPerCart(purchase.totalToPayPerAuthor.id)" class="purchaseCardAsBuyer">
           <mat-expansion-panel-header class="panelHeader">
             <div style="display:inline;text-align:center;width:20rem;">
-              <p class="purchaseInfo"><b>Fecha de operación:</b> {{purchase.creationDate}}</p>
+              <p class="purchaseInfo"><b>Fecha de operación:</b> {{purchase.creationDate | dateFormat}}</p>
               <p class="purchaseInfo"><b>Abonado:</b> {{purchase.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
               <div style="display:flex;">
                 <button class="viewDetailsButton">Vista rápida</button>
@@ -23,8 +23,8 @@
               <p class="rentalNormal"    *ngIf="total.cart.remainingDays > 7  && !total.cart.isLeasing">Tenés {{total.cart.remainingDays}} días para devolver tu producto</p>
               <p class="rentalMedium"    *ngIf="total.cart.remainingDays <= 7 && total.cart.remainingDays > 1 && !total.cart.isLeasing">Tenés {{total.cart.remainingDays}} días para devolver tu producto</p>
               <p class="rentalSoon"      *ngIf="total.cart.remainingDays <= 1 && total.cart.remainingDays > 0 && !total.cart.isLeasing">Tenés 1 día para devolver tu producto</p>
-              <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing && !total.cart.userAlreadyRatedPost"><b>¡Tu alquiler finalizó el día {{total.cart.dateTo}}!</b></p>
-              <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing && total.cart.userAlreadyRatedPost"><b>¡Tu alquiler finalizó el día {{total.cart.dateTo}} y ya dejaste tu calificación sobre esta publicación!</b></p>
+              <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing && !total.cart.userAlreadyRatedPost"><b>¡Tu alquiler finalizó el día {{total.cart.dateTo | dateFormat}}!</b></p>
+              <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing && total.cart.userAlreadyRatedPost"><b>¡Tu alquiler finalizó el día {{total.cart.dateTo | dateFormat}} y ya dejaste tu calificación sobre esta publicación!</b></p>
               <p class="rentalFinished"  *ngIf="total.cart.isLeasing && total.cart.userAlreadyRatedPost"><b>¡Ya dejaste tu calificación sobre esta publicación!</b></p>
 
               <button class="rateButton" *ngIf="!total.cart.userAlreadyRatedPost && ((total.cart.remainingDays <= 0 && !total.cart.isLeasing) || total.cart.isLeasing)" (click)="createPostRating(total.cart)">Calificar publicación</button>
@@ -45,7 +45,7 @@
         <mat-expansion-panel hideToggle (opened)="viewTotalsToPayPerCart(purchase.totalToPayPerAuthor.id)" class="purchaseCardAsSeller">
           <mat-expansion-panel-header class="panelHeader">
             <div style="display:inline;text-align:center;width:20rem;">
-              <p class="purchaseInfo"><b>Fecha de operación:</b> {{purchase.creationDate}}</p>
+              <p class="purchaseInfo"><b>Fecha de operación:</b> {{purchase.creationDate | dateFormat}}</p>
               <p class="purchaseInfo"><b>Abonado:</b> {{purchase.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
               <div style="display:flex;">
                 <button class="viewDetailsButton">Vista rápida</button>
@@ -62,7 +62,7 @@
               <p class="rentalNormal"    *ngIf="total.cart.remainingDays > 7  && !total.cart.isLeasing">Todavía quedan {{total.cart.remainingDays}} días para que el comprador devuelva tu producto</p>
               <p class="rentalMedium"    *ngIf="total.cart.remainingDays <= 7 && total.cart.remainingDays > 1 && !total.cart.isLeasing">Todavía quedan {{total.cart.remainingDays}} días para que el comprador devuelva tu producto</p>
               <p class="rentalSoon"      *ngIf="total.cart.remainingDays <= 1 && total.cart.remainingDays > 0 && !total.cart.isLeasing">Todavía queda 1 día para que el comprador devuelva tu producto</p>
-              <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing"><b>El alquiler finalizó el día {{total.cart.dateTo}}. Por favor, indicá si el producto ya fue devuelto.</b></p>
+              <p class="rentalFinished"  *ngIf="total.cart.remainingDays <= 0 && !total.cart.isLeasing"><b>El alquiler finalizó el día {{total.cart.dateTo | dateFormat}}. Por favor, indicá si el producto ya fue devuelto.</b></p>
 
               <button class="rateButton" *ngIf="!total.cart.isLeasing && total.cart.remainingDays <= 0 && !purchase.totalToPayPerAuthor.returnedFlag" (click)="setProductAsReturned(purchase.totalToPayPerAuthor)">Producto devuelto</button> <!-- la condicion deberia ser: que todavia no haya rateado al usuario & sea vendedor & sea alquiler & se haya terminado el tiempo & todavia no haya indicado si devolvio  -->
               <button class="rateButton" *ngIf="!isBuyer" style="margin-top:1rem;" (click)="createUserRating(total.cart)">Calificar usuario</button> <!--  la condicion tiene q ser que todavia no haya rateado al usuario-->
