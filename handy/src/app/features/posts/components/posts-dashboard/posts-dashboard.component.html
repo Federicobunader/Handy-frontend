@@ -94,6 +94,8 @@
                 <p>{{post.address.location.name}}</p>
               </div>
               <p *ngIf="this.post.author.id == this.user.id && this.toolsSearch" style="color:rgb(211, 78, 78);font-weight:bold;font-size:0.8rem;">Tu publicación</p>
+              <p *ngIf="this.post.author.id == this.user.id && !this.toolsSearch && this.post.isActive" style="color:rgb(211, 78, 78);font-weight:bold;font-size:0.8rem;">Publicación activa</p>
+              <p *ngIf="this.post.author.id == this.user.id && !this.toolsSearch && !this.post.isActive" style="color:rgb(211, 78, 78);font-weight:bold;font-size:0.8rem;">Publicación inactiva</p>
             </div>  
           </div>
         </div>

@@ -8,9 +8,12 @@
     <div class="row">
       <div class="column-left">
         <div class="productPicAndActionsContainer">
-          <p class="stockInfo" style="margin-bottom:-0.1rem;cursor:pointer;" (click)="openPhotosModal()">+{{amountOfPictures}} fotos</p>
+          <p class="stockInfo" *ngIf="amountOfPictures > 1" style="margin-bottom:-0.1rem;cursor:pointer;" (click)="openPhotosModal()">+{{amountOfPictures - 1}} fotos</p>
+          <p class="stockInfo" *ngIf="amountOfPictures == 1" style="margin-bottom:-0.1rem;cursor:pointer;" (click)="openPhotosModal()">1 foto</p>
           <img src={{this.post.photos[0].url}} class="productPicture" (click)="openPhotosModal()">
-          <p class="productInfo" style="size:95%;margin-bottom:1rem;font-size:1rem;color:#E1AE63;">Publicación de {{this.post.author.username}}</p>
+          <p class="productInfo" *ngIf="this.post.author.id != this.user.id" style="size:95%;margin-bottom:1rem;font-size:1rem;color:#E1AE63;">Publicación de {{this.post.author.username}}</p>
+          <p class="productInfo" *ngIf="this.post.author.id === this.user.id && this.post.isActive" style="size:95%;margin-bottom:1rem;font-size:1rem;color:rgb(211, 78, 78);font-weight:bold;">TU PUBLICACIÓN SE ENCUENTRA ACTIVA</p>
+          <p class="productInfo" *ngIf="this.post.author.id === this.user.id && !this.post.isActive" style="size:95%;margin-bottom:1rem;font-size:1rem;color:rgb(211, 78, 78);font-weight:bold;">TU PUBLICACIÓN SE ENCUENTRA INACTIVA</p>
           <p class="stockInfo" *ngIf="this.post.stock == 1">{{this.post.stock}} unidad disponible</p>
           <p class="stockInfo" *ngIf="this.post.stock == 0">Sin stock</p>
           <p class="stockInfo" *ngIf="this.post.stock > 1">{{this.post.stock}} unidades disponibles</p>
