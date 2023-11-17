@@ -5,6 +5,7 @@ import { CartService } from 'src/app/features/cart/services/cart-service/cart.se
 import { Cart } from 'src/app/core/models/cart';
 import Swal from 'sweetalert2';
 import { TotalToPayPerAuthorService } from 'src/app/features/cart/services/total-to-pay-per-author-service/totalToPayPerAuthor.service';
+import { TotalToPayPerAuthor } from 'src/app/core/models/total-to-pay-per-author';
 
 @Component({
     selector: 'app-purchase-returned',
@@ -16,8 +17,9 @@ export class PurchaseReturnedComponent {
 
   constructor(
     public dialogRef: MatDialogRef<PurchaseReturnedComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {cart: Cart},
+    @Inject(MAT_DIALOG_DATA) public data: {cart: Cart, totalToPayPerAuthor: TotalToPayPerAuthor},
     private cartService: CartService,
+    private totalToPyPerAuthorService: TotalToPayPerAuthorService,
     )
   {}
   @Output() event = new EventEmitter<string>();
@@ -39,7 +41,14 @@ export class PurchaseReturnedComponent {
         )
         .subscribe( () => {
           Swal.fire('Exito', 'Información guardada', 'success');
-          this
+          this.totalToPyPerAuthorService
+          .create(this.data.totalToPayPerAuthor)
+          .pipe(takeUntil(this.$_destroyed),
+          map((response) => {
+            return this.data.totalToPayPerAuthor = response;
+          })
+        )
+        .subscribe
           this.dialogRef.close();
         },
         (error) => {

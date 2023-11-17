@@ -136,10 +136,10 @@ export class PurchaseDashboardComponent {
     });
   }
 
-  setProductAsReturned(cart : Cart){
+  setProductAsReturned(cart : Cart, totalToPayPerAuthor: TotalToPayPerAuthor){
     const dialogRef = this.dialog.open(PurchaseReturnedComponent, {
       width: '600px',
-      data: {cart},
+      data: {cart, totalToPayPerAuthor},
     });
 
   }

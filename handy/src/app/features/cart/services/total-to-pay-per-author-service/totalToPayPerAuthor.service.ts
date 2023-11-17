@@ -35,7 +35,6 @@ export class TotalToPayPerAuthorService {
       );
   }
 
-
   getTotalToPay(userID: number): Observable<any> {
     return this.http
       .get(totalToPayPerAuthorURL + '/totalToPay/' + userID)
