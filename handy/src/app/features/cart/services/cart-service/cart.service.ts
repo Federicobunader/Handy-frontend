@@ -22,7 +22,20 @@ export class CartService {
     this.mapper = new CartMapper();
   }
 
-  create(cart: Cart): Observable<Cart> {
+  createOrUpdateTotalToPayPerCart(cart: Cart): Observable<Cart> {
+    return this.http
+      .post(
+        totalToPayPerCarttURL,
+        this.mapper.cartToDto(cart)
+      )
+      .pipe(
+        map((response) => {
+          return this.mapper.dtoToCart(response);
+        })
+      );
+  }
+
+  updateCart(cart: Cart): Observable<Cart> {
     return this.http
       .post(
         cartURL,

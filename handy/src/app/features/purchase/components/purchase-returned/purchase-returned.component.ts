@@ -33,7 +33,7 @@ export class PurchaseReturnedComponent {
   onSaveClick(): void {
     this.data.cart.returnedFlag = true;
     this.cartService
-        .create(this.data.cart)
+        .updateCart(this.data.cart)
         .pipe(takeUntil(this.$_destroyed),
           map((response) => {
             return this.data.cart = response;
@@ -41,14 +41,6 @@ export class PurchaseReturnedComponent {
         )
         .subscribe( () => {
           Swal.fire('Exito', 'Información guardada', 'success');
-          this.totalToPyPerAuthorService
-          .create(this.data.totalToPayPerAuthor)
-          .pipe(takeUntil(this.$_destroyed),
-          map((response) => {
-            return this.data.totalToPayPerAuthor = response;
-          })
-        )
-        .subscribe
           this.dialogRef.close();
         },
         (error) => {

@@ -94,7 +94,7 @@ export class DialogCartDetailComponent {
       this.cart.user = this.user;
 
       this.cartService
-      .create(this.cart)
+      .createOrUpdateTotalToPayPerCart(this.cart)
       .subscribe(() => {
         const message = this.isEdit ? '¡Los cambios se guardaron exitosamente!' : '¡El producto fue agregado al carrito!';
         Swal.fire('Exito', message, 'success').then(result => {
@@ -121,7 +121,7 @@ export class DialogCartDetailComponent {
     this.selectionWasDone = true;
     this.optionChosen = type;
   }
-  
+
   undoSelection(): void{
     this.selectionWasDone = false;
     this.optionChosen = '';
