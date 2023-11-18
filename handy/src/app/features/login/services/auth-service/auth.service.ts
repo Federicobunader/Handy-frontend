@@ -40,7 +40,6 @@ export class AuthService {
     params = params.set('email', email);
     return this.http.post(googleLoginURL, params).pipe(
       tap((response: any) => {
-        console.error("FUNCIONO BIEN");
         // Si la respuesta contiene un token, lo guardamos en el localStorage
         if (response.sessionToken) {
           this.setToken(response.sessionToken);

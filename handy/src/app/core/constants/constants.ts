@@ -35,3 +35,9 @@ export const checkpasswordsURL = userURL + '/checkpasswords'
 export const checkIfUserAlreadyExistWithMail = userURL + '/checkIfUserAlreadyExistWithMail'
 export const ARURL = apiURL + '/augmented_reality'
 export const chatGPTURL = apiURL + '/chat'
+
+
+export const googleAccessTokenKey = 'google_access_token';
+export const googleEmailKey = 'google_email';
+export const googleFirstNameKey = 'google_first_name';
+export const googleLastNameKey = 'google_last_name';

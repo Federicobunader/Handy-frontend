@@ -83,8 +83,6 @@ export class LoginComponent implements OnInit{
 
 
   googleLogin() {
-    //this.isGoogleAuth = true;
-    //this.googleApi.setIsGoogleLogin(true);
-    this.googleAPIService.initGoogleLoginFlow();
+    this.googleAPIService.loginWithGoogle();
   }
 }
