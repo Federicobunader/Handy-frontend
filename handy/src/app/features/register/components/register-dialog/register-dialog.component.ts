@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { User } from '../../../../core/models/user';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
@@ -15,13 +15,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogCheckMailComponent } from '../check-mail/check-mail/check-mail.component';
 import { MissingRequiredFieldsComponent } from 'src/app/shared/components/missing-required-fields/missing-required-fields.component';
 import Swal from 'sweetalert2';
+import {googleEmailKey, googleFirstNameKey, googleLastNameKey} from "../../../../core/constants/constants";
 
 @Component({
   selector: 'app-register-dialog',
   templateUrl: './register-dialog.component.html',
   styleUrls: ['./register-dialog.component.css']
 })
-export class RegisterDialogComponent {
+export class RegisterDialogComponent implements OnInit {
 
   private $_destroyed = new Subject();
   selectedPaymentMethod: PaymentMethod[] = [];
@@ -339,11 +340,27 @@ export class RegisterDialogComponent {
   ngOnInit(): void {
     this.getUser();
     this.getPaymentMethods();
+    this.setGoogleLoginValues();
   }
 
   ngOnDestroy(): void {
     this.$_destroyed.next(Subject);
     this.$_destroyed.complete();
+  }
+
+  setGoogleLoginValues(): void {
+    const email = sessionStorage.getItem(googleEmailKey);
+    const firstName = sessionStorage.getItem(googleFirstNameKey);
+    const lastName = sessionStorage.getItem(googleLastNameKey);
+    if (email) {
+      this.registerForm.get('userEmail')?.setValue(email)
+    }
+    if (firstName) {
+      this.registerForm.get('userFirstName')?.setValue(firstName)
+    }
+    if (lastName) {
+      this.registerForm.get('userLastName')?.setValue(lastName)
+    }
   }
 
   get passwordsDontMatch() {

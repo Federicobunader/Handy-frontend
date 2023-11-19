@@ -47,4 +47,10 @@ export class HomeComponent implements AfterContentInit {
       console.error('Token no encontrado en el almacenamiento de sesión');
     }
   }
+
+  userLoggedValue(hasBeenLogged: boolean): void {
+    if (hasBeenLogged) {
+      this.getUserId();
+    }
+  }
 }
