@@ -52,6 +52,7 @@ export class RegisterDialogComponent {
     userPassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*()]{8,}$')]),
     userPasswordCheck: new FormControl('', [Validators.required, this.passwordMatchValidator.bind(this)]),
     userTel: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern('^[0-9]*$')]),
+    userPaymentMethods: new FormControl(this.selectedPaymentMethod,[Validators.required]),
     addressForm: new FormGroup({
       address: new FormControl('', [Validators.required]),
       location: new FormControl(0, [Validators.required]),
@@ -99,6 +100,17 @@ export class RegisterDialogComponent {
     }
   }
 
+  getPaymentMethods(){
+    this.paymentMethodService
+    .getPaymentMethods()
+      .pipe(
+        takeUntil(this.$_destroyed),
+        map((response: PaymentMethod[]) => (
+          this.paymentMethods = response))
+      )
+    .subscribe();
+  }
+
   getPhotoDisplayMessage() {
     return 'Arrastrá y soltá la foto acá o';
   }
@@ -115,6 +127,7 @@ export class RegisterDialogComponent {
     this.user.username = this.registerForm.get('username')?.value?.toLocaleLowerCase() ?? '';
     this.user.password = this.registerForm.get('userPassword')?.value ?? '';
     this.user.tel = this.registerForm.get('userTel')?.value ?? '';
+    this.user.paymentMethods = this.registerForm.get('userPaymentMethods')?.value ?? [];
   }
 
   setFormInfoToAddressForm(addressForm: FormGroup): void {
@@ -148,6 +161,7 @@ export class RegisterDialogComponent {
     this.registerForm.get('userDateBorn')?.setValue(this.user.dateBorn);
     this.registerForm.get('username')?.setValue(this.user.username);
     this.registerForm.get('userTel')?.setValue(this.user.tel);
+    this.registerForm.get('userPaymentMethods')?.setValue(this.user.paymentMethods);
   }
 
   setPhotoInfoToUser(photos: Photo[]): void {
@@ -215,7 +229,7 @@ export class RegisterDialogComponent {
     }
 
     if(invalid){
-      this.checkMissingRequiredField();     
+      this.checkMissingRequiredField();
       const dialogRef = this.dialog.open(MissingRequiredFieldsComponent, {
         width: '600px',
       });
@@ -225,7 +239,7 @@ export class RegisterDialogComponent {
       dialogRef.componentInstance.justInvalidFields = this.missingRequiredFieldsFirstTab.length == 0 && this.missingRequiredFieldsSecondTab.length == 0 && this.missingRequiredFieldsThirdTab.length == 0;
       dialogRef.componentInstance.isEdit = this.isEdit;
       dialogRef.componentInstance.isRegister = true;
-    }   
+    }
   }
 
   missingRequiredFieldsFirstTab: String[] = [];
@@ -233,7 +247,7 @@ export class RegisterDialogComponent {
   missingRequiredFieldsThirdTab: String[] = [];
 
   checkMissingRequiredField() {
-    
+
     this.missingRequiredFieldsFirstTab = [];
     this.missingRequiredFieldsSecondTab = [];
     this.missingRequiredFieldsThirdTab = [];
@@ -246,7 +260,7 @@ export class RegisterDialogComponent {
     }
     if (this.registerForm.value.userPasswordCheck == "") {
       this.missingRequiredFieldsFirstTab.push('Contraseña verificada');
-    }    
+    }
     if (this.user.photo.length != 1) {
       this.missingRequiredFieldsFirstTab.push('Foto');
     }
@@ -259,10 +273,10 @@ export class RegisterDialogComponent {
     }
     if (this.registerForm.value.userEmail == "") {
       this.missingRequiredFieldsSecondTab.push('Email');
-    }   
+    }
     if (this.registerForm.value.userTel == "") {
       this.missingRequiredFieldsSecondTab.push('Telefono');
-    } 
+    }
     // const dateNow = new Date();
     // let dateIntroduced = this.registerForm.value.userDateBorn;
     // if (dateIntroduced != undefined) {
@@ -324,6 +338,7 @@ export class RegisterDialogComponent {
 
   ngOnInit(): void {
     this.getUser();
+    this.getPaymentMethods();
   }
 
   ngOnDestroy(): void {

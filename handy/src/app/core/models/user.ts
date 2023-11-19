@@ -12,5 +12,6 @@ export interface User extends IIdentifiable{
     password: string;
     tel: string;
     address: Address;
-    photo: Photo[]
+    photo: Photo[];
+    paymentMethods: PaymentMethod [];
   }

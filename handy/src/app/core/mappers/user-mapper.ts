@@ -4,6 +4,7 @@ import { AddressMapper } from './address-mapper';
 import { PhotoMapper } from './photo-mapper';
 import { Photo } from '../models/photo';
 import { PaymentMethodMapper } from './payment-method-mapper';
+import { PaymentMethod } from '../models/paymentMethod';
 
 @Injectable({
     providedIn: 'root'
@@ -33,6 +34,11 @@ import { PaymentMethodMapper } from './payment-method-mapper';
             return this.photoMapper.dtoToPhoto(photoDTO)
           })
           : [],
+        paymentMethods: user?.paymentMethodsDTO
+        ? user.paymentMethodsDTO.map((paymentMethodDTO: any) => {
+          return this.paymentMethodMapper.dtoToPaymentMethod(paymentMethodDTO)
+        })
+        : [],
       };
     }
 
@@ -56,6 +62,11 @@ import { PaymentMethodMapper } from './payment-method-mapper';
             return this.photoMapper.photoToDto(photo)
           })
           : [],
+        paymentMethodsDTO: user?.paymentMethods
+        ? user.paymentMethods.map((paymentMethod: PaymentMethod) => {
+          return this.paymentMethodMapper.paymentMethodToDto(paymentMethod)
+        })
+        : [],
     }
 }
 }
