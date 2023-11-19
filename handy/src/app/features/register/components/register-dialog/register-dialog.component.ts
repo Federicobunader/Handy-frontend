@@ -25,7 +25,6 @@ import {googleEmailKey, googleFirstNameKey, googleLastNameKey} from "../../../..
 export class RegisterDialogComponent implements OnInit {
 
   private $_destroyed = new Subject();
-  selectedPaymentMethod: PaymentMethod[] = [];
   today: Date = new Date();
   @Input() isEdit: Boolean = false;
   @Output() event = new EventEmitter<string>();
@@ -53,7 +52,6 @@ export class RegisterDialogComponent implements OnInit {
     userPassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*()]{8,}$')]),
     userPasswordCheck: new FormControl('', [Validators.required, this.passwordMatchValidator.bind(this)]),
     userTel: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern('^[0-9]*$')]),
-    userPaymentMethods: new FormControl(this.selectedPaymentMethod,[Validators.required]),
     addressForm: new FormGroup({
       address: new FormControl('', [Validators.required]),
       location: new FormControl(0, [Validators.required]),
@@ -67,7 +65,6 @@ export class RegisterDialogComponent implements OnInit {
   constructor(
     private userService: UserService,
     private photoService: PhotoService,
-    private paymentMethodService: PaymentMethodService,
     private addressService: AddressService,
     private sessiontokenService: SessiontokenService,
     private router: Router,
@@ -86,7 +83,6 @@ export class RegisterDialogComponent implements OnInit {
 
   user: User = this.userService.emptyUser();
   photo: File[] = [];
-  paymentMethods: PaymentMethod[] = [];
   createOrUpdateLabel: string = "REGISTRARSE";
   isAddressFormValid: boolean = false;
 
@@ -99,17 +95,6 @@ export class RegisterDialogComponent implements OnInit {
     } else {
       return { passwordMismatch: true }; // Error personalizado para contraseñas que no coinciden
     }
-  }
-
-  getPaymentMethods(){
-    this.paymentMethodService
-    .getPaymentMethods()
-      .pipe(
-        takeUntil(this.$_destroyed),
-        map((response: PaymentMethod[]) => (
-          this.paymentMethods = response))
-      )
-    .subscribe();
   }
 
   getPhotoDisplayMessage() {
@@ -128,7 +113,6 @@ export class RegisterDialogComponent implements OnInit {
     this.user.username = this.registerForm.get('username')?.value?.toLocaleLowerCase() ?? '';
     this.user.password = this.registerForm.get('userPassword')?.value ?? '';
     this.user.tel = this.registerForm.get('userTel')?.value ?? '';
-    this.user.paymentMethods = this.registerForm.get('userPaymentMethods')?.value ?? [];
   }
 
   setFormInfoToAddressForm(addressForm: FormGroup): void {
@@ -162,7 +146,6 @@ export class RegisterDialogComponent implements OnInit {
     this.registerForm.get('userDateBorn')?.setValue(this.user.dateBorn);
     this.registerForm.get('username')?.setValue(this.user.username);
     this.registerForm.get('userTel')?.setValue(this.user.tel);
-    this.registerForm.get('userPaymentMethods')?.setValue(this.user.paymentMethods);
   }
 
   setPhotoInfoToUser(photos: Photo[]): void {
@@ -339,7 +322,6 @@ export class RegisterDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    this.getPaymentMethods();
     this.setGoogleLoginValues();
   }
 
