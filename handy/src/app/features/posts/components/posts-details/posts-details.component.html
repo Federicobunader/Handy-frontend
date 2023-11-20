@@ -1,5 +1,4 @@
 <form [formGroup]="postForm">
-
   <body style="min-height:100vh;background-color:#f8f3e7;">
     <nav-bar [navBarWithButtons]=true style="margin-right:1rem;"></nav-bar>
     <div class="container">
@@ -29,6 +28,14 @@
               <input class="postCreationInput" type="number" matInput name="stock" formControlName="stock">
               <p class="postCreationLabel">Precio de alquiler por día</p>
               <input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
+              <p class="postCreationLabel">Medios de pago aceptados</p>
+              <mat-form-field class="selectorInput">
+                <mat-select  multiple name="postPaymentMethods" formControlName="postPaymentMethods">
+                  <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">
+                    {{paymentMethod.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
             <div class="column-right">
               <p class="postCreationLabel">Categoría</p>
@@ -67,29 +74,21 @@
                 </p>
               </div>
             </div>
-            <div>
-              <mat-form-field class="addressInput">
-                <mat-label class="registerLabel">Medios de Pago que tiene</mat-label>
-                <mat-select multiple name="postPaymentMethods" formControlName="postPaymentMethods">
-                  <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">
-                        {{paymentMethod.name}}
-                    </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <p class="postCreationLabel">Descripcion del Producto</p>
-              <textarea class="descriptionInput" type="text" matInput name="productDescription"
-                formControlName="productDescription" spellcheck></textarea>
-              <mat-error *ngIf="postForm.get('productDescription')?.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">La descripción puede tener hasta 500 caracteres</mat-error>
-              <p class="checkboxInput"><input type="checkbox" formControlName="isLeasing"> Quiero que los usuarios
-                puedan comprar mi producto.</p>
-              <br>
-              <p *ngIf="this.postForm.get('isLeasing')?.value" class="postCreationLabel">Precio de venta</p>
-              <input *ngIf="this.postForm.get('isLeasing')?.value" class="postTitleInput" type="number" matInput
-                name="salesPrice" formControlName="salesPrice">
-              <br>
-              <p class="checkboxInput"><input type="checkbox" formControlName="isActive"> {{this.activeCheckboxLabel}}
-              </p>
-            </div>
+          </div>
+          <div class="bottomRow">
+            <p class="postCreationLabel">Descripcion del Producto</p>
+            <textarea class="descriptionInput" type="text" matInput name="productDescription"
+              formControlName="productDescription" spellcheck></textarea>
+            <mat-error *ngIf="postForm.get('productDescription')?.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">La descripción puede tener hasta 500 caracteres</mat-error>
+            <p class="checkboxInput"><input type="checkbox" formControlName="isLeasing"> Quiero que los usuarios
+              puedan comprar mi producto.</p>
+            <br>
+            <p *ngIf="this.postForm.get('isLeasing')?.value" class="postCreationLabel">Precio de venta</p>
+            <input *ngIf="this.postForm.get('isLeasing')?.value" class="postTitleInput" type="number" matInput
+              name="salesPrice" formControlName="salesPrice">
+            <br>
+            <p class="checkboxInput"><input type="checkbox" formControlName="isActive"> {{this.activeCheckboxLabel}}
+            </p>
           </div>
         </mat-tab>
         <mat-tab>

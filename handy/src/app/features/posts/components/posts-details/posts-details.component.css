@@ -153,6 +153,11 @@ button:focus {
     margin-left: 30px;
 }
 
+.bottomRow{
+    margin-top: 36rem;
+    margin-left: 2rem;
+}
+
 .column-left {
     float: left;
     width: 50%;

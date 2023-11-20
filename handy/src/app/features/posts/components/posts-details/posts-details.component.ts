@@ -263,6 +263,9 @@ export class PostsDetailsComponent {
     if (this.postForm.value.productDescription == "") {
       this.missingRequiredFieldsFirstTab.push('Descripción del producto');
     }
+    if(this.postForm.value.postPaymentMethods?.length == 0){
+      this.missingRequiredFieldsFirstTab.push('Al menos una forma de pago');
+    }
     if (this.postForm.value.isLeasing) {
       if (this.postForm.value.salesPrice == 0) {
         this.missingRequiredFieldsFirstTab.push('Precio de venta');
