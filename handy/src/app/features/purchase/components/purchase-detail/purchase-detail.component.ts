@@ -60,10 +60,12 @@ export class PurchaseDetailComponent implements OnInit{
   buyerEmail: any = '';
   buyerTel: any = '';
   submitLabel = 'PROCEDER AL PAGO';
+  availablePaymentMethods: PaymentMethod [] = [];
 
   ngOnInit(): void {
     var buyerIdParam: any = 0;
     this.route.params.subscribe(params => { this.totalToPayPerAuthorID = params['id']; });
+    this.route.queryParamMap.subscribe(param => this.setAvailablePaymentMethods(param.get('paymentMethods')));
     this.route.queryParamMap.subscribe(param => buyerIdParam = param.get('buyerId'));
 
     if(buyerIdParam){
@@ -78,6 +80,24 @@ export class PurchaseDetailComponent implements OnInit{
 
     this.getPaymentMethods();
     this.setTotalToPayPerAuthorAndAuthor();
+  }
+
+  acceptsCash = false;
+  acceptsMP = false;
+  acceptsUala = false;
+  setAvailablePaymentMethods(ids: any){
+    if(ids.includes('1')){
+      this.availablePaymentMethods.push({ id: 1, name: 'Efectivo' });
+      this.acceptsCash = true;
+    }
+    if(ids.includes('2')){
+      this.availablePaymentMethods.push({ id: 2, name: 'Mercado Pago' });
+      this.acceptsMP = true;
+    }
+    if(ids.includes('3')){
+      this.availablePaymentMethods.push({ id: 3, name: 'Uala' });
+      this.acceptsUala = true;
+    }
   }
 
   getPurchase(){

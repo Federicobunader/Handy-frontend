@@ -42,16 +42,16 @@
       <hr class="line">   
       <div *ngIf="isPurchased" class="paymentContainer">   
         <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="paymentButtons">
-          <mat-button-toggle disabled [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclickedDisabled': !togglePaymentMethod1}">EFECTIVO</mat-button-toggle>
-          <mat-button-toggle disabled [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclickedDisabled': !togglePaymentMethod2}">MERCADO PAGO</mat-button-toggle>
-          <mat-button-toggle disabled [ngClass]="{'toggleClicked' : togglePaymentMethod3, 'toggleUnclickedDisabled': !togglePaymentMethod3}">UALA</mat-button-toggle>
+          <mat-button-toggle *ngIf="acceptsCash" disabled [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclickedDisabled': !togglePaymentMethod1}">EFECTIVO</mat-button-toggle>
+          <mat-button-toggle *ngIf="acceptsMP"   disabled [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclickedDisabled': !togglePaymentMethod2}">MERCADO PAGO</mat-button-toggle>
+          <mat-button-toggle *ngIf="acceptsUala" disabled [ngClass]="{'toggleClicked' : togglePaymentMethod3, 'toggleUnclickedDisabled': !togglePaymentMethod3}">UALA</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
       <div *ngIf="!isPurchased" class="paymentContainer">   
         <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="paymentButtons">
-          <mat-button-toggle [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclicked': !togglePaymentMethod1}" (click)="setPaymentMethod('Efectivo')" value="efectivo">EFECTIVO</mat-button-toggle>
-          <mat-button-toggle [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclicked': !togglePaymentMethod2}" (click)="setPaymentMethod('Mercado Pago')" value="mercadoPago">MERCADO PAGO</mat-button-toggle>
-          <mat-button-toggle [ngClass]="{'toggleClicked' : togglePaymentMethod3, 'toggleUnclicked': !togglePaymentMethod3}" (click)="setPaymentMethod('Uala')" value="uala">UALA</mat-button-toggle>
+          <mat-button-toggle *ngIf="acceptsCash" [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclicked': !togglePaymentMethod1}" (click)="setPaymentMethod('Efectivo')" value="efectivo">EFECTIVO</mat-button-toggle>
+          <mat-button-toggle *ngIf="acceptsMP"   [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclicked': !togglePaymentMethod2}" (click)="setPaymentMethod('Mercado Pago')" value="mercadoPago">MERCADO PAGO</mat-button-toggle>
+          <mat-button-toggle *ngIf="acceptsUala" [ngClass]="{'toggleClicked' : togglePaymentMethod3, 'toggleUnclicked': !togglePaymentMethod3}" (click)="setPaymentMethod('Uala')" value="uala">UALA</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
       <div *ngIf="togglePaymentMethod1 && methodSelected">
