@@ -82,6 +82,25 @@
     height: 70px;
 }
 
+.paymentMethodsButton {
+    width: 40%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #885B34;
+    border-color: #E1AE63;
+    font-size: small;
+    font-family: 'Roboto', monospace;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+}
+
+.paymentMethodsButton:hover {
+    background-color: #E1AE63;
+}
+
 .createButton {
     width: 30%;
     padding-left: 40px;
@@ -153,7 +172,7 @@ button:focus {
     margin-left: 30px;
 }
 
-.bottomRow{
+.bottomRow {
     margin-top: 36rem;
     margin-left: 2rem;
 }
@@ -243,7 +262,7 @@ button:focus {
         transform: scale(0.9);
     }
 
-    .bottomRow{
+    .bottomRow {
         margin-top: 0rem;
     }
 
@@ -284,5 +303,10 @@ button:focus {
         margin-left: 2rem;
         width: 80%;
         text-align: justify;
+    }
+
+    .paymentMethodsButton {
+        width: 80%;
+        margin-bottom: 2rem;
     }
 }

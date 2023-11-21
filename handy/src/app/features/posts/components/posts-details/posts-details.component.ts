@@ -324,6 +324,8 @@ export class PostsDetailsComponent {
     .subscribe();
   }
 
+  currentPaymentMethods = '';
+  hasPaymentMethods = false;
   getPost(){
     if(this.postID != undefined){
       this.postService
@@ -337,6 +339,8 @@ export class PostsDetailsComponent {
         )
       )
       .subscribe(() => {
+        this.hasPaymentMethods = this.post.paymentMethods.length > 0;
+        this.currentPaymentMethods = this.post.paymentMethods.map( paymentMethod => paymentMethod.name ).join(', ');
         this.setDataInfoToForm();
         this.addressService.setAddress(this.post.address);
         this.photoService.setPhotosINFO(this.post.photos);
@@ -346,6 +350,10 @@ export class PostsDetailsComponent {
         }
       });
     }
+  }
+
+  showPaymentMethodSelector(){
+    this.hasPaymentMethods = false;
   }
 
   setButtonMessage(){

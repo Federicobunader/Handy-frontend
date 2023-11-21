@@ -29,13 +29,19 @@
               <p class="postCreationLabel">Precio de alquiler por día</p>
               <input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
               <p class="postCreationLabel">Medios de pago aceptados</p>
-              <mat-form-field class="selectorInput">
-                <mat-select  multiple name="postPaymentMethods" formControlName="postPaymentMethods">
-                  <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">
-                    {{paymentMethod.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+              <div *ngIf="!hasPaymentMethods">
+                <mat-form-field class="selectorInput">
+                  <mat-select  multiple name="postPaymentMethods" formControlName="postPaymentMethods">
+                    <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">
+                      {{paymentMethod.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div *ngIf="hasPaymentMethods">
+                <p>{{currentPaymentMethods}}</p>
+                <button class="paymentMethodsButton" (click)="showPaymentMethodSelector()">Cambiar métodos de pago</button>
+              </div>
             </div>
             <div class="column-right">
               <p class="postCreationLabel">Categoría</p>
