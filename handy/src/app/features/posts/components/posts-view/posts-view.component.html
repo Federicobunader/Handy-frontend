@@ -30,6 +30,7 @@
         <div class="productInfoContainer">
           <p class="productPrice"><span class="priceNumber">{{this.post.product.rentalPrice | numberFormat }}</span> alquiler por día <span *ngIf="this.post.product.depositPrice > 0">+ {{this.post.product.depositPrice | numberFormat }} de depósito</span></p><br>
           <p class="productPrice" *ngIf="this.post.isLeasing"><span class="priceNumber">{{this.post.product.salesPrice != undefined ? (this.post.product.salesPrice | numberFormat) : this.post.product.salesPrice }}</span> precio de venta</p><br>
+          <p class="zeroOpinions">Acepta {{availablePaymentMethods}} como medios de pago</p>
           <div class="locationContainer">
             <mat-icon class="locationIcon">location_on</mat-icon>
             <p class="productLocation">{{this.post.address.location.name}}, {{this.post.address.location.province.name}}</p>

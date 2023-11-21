@@ -150,6 +150,7 @@ export class PostsViewComponent {
 
   post : Post = this.postService.emptyPost();
 
+  availablePaymentMethods = '';
   getPost(){
     this.postService
     .getPostByID(this.postID)
@@ -159,6 +160,8 @@ export class PostsViewComponent {
           this.post = response))
       )
     .subscribe(() => {
+      let paymentMethodsNames = this.post.paymentMethods.map( paymentMethod => paymentMethod.name );
+      this.availablePaymentMethods = paymentMethodsNames.join(', ');
       this.postService.setPost(this.post);
       this.amountOfPictures = this.post.photos.length;
       this.post.product.depositPrice = this.post.product.depositPrice;

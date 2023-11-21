@@ -128,7 +128,6 @@
     color: #885B34;
     margin-bottom: 2rem;
     font-size: 1rem;
-    margin-left: 1rem;
     margin-top: 0.5rem;
 }
 
@@ -272,7 +271,7 @@ button:focus {
     }
 
     .locationContainer {
-        margin: 0reM;
+        margin-top: 1rem;
     }
 
     .starIcon {

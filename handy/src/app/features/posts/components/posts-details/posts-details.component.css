@@ -243,6 +243,10 @@ button:focus {
         transform: scale(0.9);
     }
 
+    .bottomRow{
+        margin-top: 0rem;
+    }
+
     .checkboxInput {
         font-size: 1.2rem;
         width: 90%;
