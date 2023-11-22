@@ -46,7 +46,7 @@ export class PostsViewComponent {
       this.getPost();
      });
      this.getUser();
-     this.getAverageScore();
+     //this.getAverageScore();
      this.getRatings();
   }
 
@@ -91,6 +91,9 @@ export class PostsViewComponent {
           this.ratings = response))
       )
     .subscribe(() => {
+      let averageSum = 0;
+      this.ratings.forEach( rating => averageSum += rating.score);
+      this.averageScore = this.ratings.length > 0 ? (averageSum / this.ratings.length) : 0; 
       if(this.ratings.length == 0){
         this.ratingMessage = 'No hay opiniones sobre este producto.'
       } else if (this.ratings.length == 1){
