@@ -85,6 +85,8 @@ export class RegisterDialogComponent implements OnInit {
   photo: File[] = [];
   createOrUpdateLabel: string = "REGISTRARSE";
   isAddressFormValid: boolean = false;
+  userAlreadyExistWithUsernameFlag = false;
+  userAlreadyExistWithEmailFlag = false;
 
   passwordMatchValidator() {
     const originalPassword = this.registerForm?.get('userPassword')?.value;
@@ -210,12 +212,62 @@ export class RegisterDialogComponent implements OnInit {
       .subscribe();
   }
 
+  showMessagesForRegisterAndGenerateAndSendCode(){
+    console.log("Entre al mostrar mensajes de error")
+    if(this.userAlreadyExistWithEmailFlag === true && this.userAlreadyExistWithUsernameFlag === false){
+      Swal.fire('Error', 'El mail ingresado ya existe', 'error');
+    }
+    else if(this.userAlreadyExistWithEmailFlag === false && this.userAlreadyExistWithUsernameFlag === true){
+      Swal.fire('Error', 'El usuario ingresado ya existe', 'error');
+    }
+    else if(this.userAlreadyExistWithEmailFlag === true && this.userAlreadyExistWithUsernameFlag === true){
+      Swal.fire('Error', 'Tanto el mail ingresado como el usuario ingresado ya existen', 'error');
+    }
+    else{
+      this.generateAndSendCode();
+    }
+  }
+
+  userAlreadyExistWithEmail(){
+    this.userService
+      .checkIfUserAlreadyExistWithMail(this.registerForm!.get('userEmail')!.value!)
+      .pipe(
+        map((response: boolean) => {
+          console.log(response)
+            if(response === false){
+              this.userAlreadyExistWithEmailFlag = false;
+            }else{
+              this.userAlreadyExistWithEmailFlag = true;
+            }
+        }
+        ))
+      .subscribe(() => {
+        this.showMessagesForRegisterAndGenerateAndSendCode();
+      });
+  }
+
+  userAlreadyExistWithUsername(){
+    this.userService
+      .userAlreadyExistWithUsername(this.registerForm!.get('username')!.value!)
+      .pipe(
+        map((response: boolean) => {
+          console.log(response)
+            if(response === false){
+              this.userAlreadyExistWithUsernameFlag = false;
+            }else{
+              this.userAlreadyExistWithUsernameFlag = true;
+            }
+        }
+        ))
+      .subscribe(() => this.userAlreadyExistWithEmail());
+  }
+
   saveOrUpdate() {
     let invalid = false;
     if(this.user.photo.length === 1){
       if (this.registerForm.valid && this.isAddressFormValid && !this.passwordsDontMatch) {
         if (!this.isEdit) {
-          this.generateAndSendCode()
+          this.userAlreadyExistWithUsername();
         } else {
           this.checkPasswordForExistentUser();
         }
