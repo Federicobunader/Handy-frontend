@@ -172,6 +172,7 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   createOrUpdateUser() {
+    this.setFormInfoToRegisterForm();
     this.userService
       .register(this.user, this.photo)
       .pipe(takeUntil(this.$_destroyed))
@@ -195,15 +196,21 @@ export class RegisterDialogComponent implements OnInit {
       );
   }
 
+  checkPasswordForExistentUser(){
+    this.userService
+      .checkPassword(this.user.password, this.registerForm!.get('userPassword')!.value!)
+      .pipe(takeUntil(this.$_destroyed))
+      .subscribe(() => this.createOrUpdateUser());
+  }
+
   saveOrUpdate() {
     let invalid = false;
     if(this.user.photo.length === 1){
       if (this.registerForm.valid && this.isAddressFormValid && !this.passwordsDontMatch) {
-        this.setFormInfoToRegisterForm();
         if (!this.isEdit) {
           this.generateAndSendCode()
         } else {
-          this.createOrUpdateUser();
+          this.checkPasswordForExistentUser();
         }
       } else {
         invalid = true;
