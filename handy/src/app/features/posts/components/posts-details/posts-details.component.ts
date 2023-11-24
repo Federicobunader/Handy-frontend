@@ -59,7 +59,7 @@ export class PostsDetailsComponent {
   private postID! : number
   createOrUpdateTitle : string = "Creá tu publicación";
   createOrUpdateLabel : string = "CREAR PUBLICACIÓN";
-  activeCheckboxLabel : string = "Una vez creada la publicación, ¿querés que se active?";
+  activeCheckboxLabel : string = "Activar publicación";
 
   categories: Category[] = [];
   brands: Brand [] = [];
@@ -260,6 +260,9 @@ export class PostsDetailsComponent {
     if (this.postForm.value.productSubCategory == 0) {
       this.missingRequiredFieldsFirstTab.push('Subcategoría');
     }
+    if (this.postForm.value.productBrand == 0) {
+      this.missingRequiredFieldsFirstTab.push('Marca');
+    }
     if (this.postForm.value.productDescription == "") {
       this.missingRequiredFieldsFirstTab.push('Descripción del producto');
     }
@@ -412,5 +415,10 @@ export class PostsDetailsComponent {
   openInformationModal: Boolean = false;
   handleInformationClick(): void{
     this.openInformationModal = !this.openInformationModal;
+  }
+
+  openActiveInformationModal: Boolean = false;
+  handleActiveInformationClick(): void{
+    this.openActiveInformationModal = !this.openActiveInformationModal;
   }
 }

@@ -44,7 +44,8 @@ export class MissingRequiredFieldsComponent {
         if (this.isEdit) {
             this.missingFieldsMessage = 'Te falta completar los siguientes campos para poder guardar tus cambios:';
             this.invalidMessage = 'Ciertos campos ingresados contienen errores. Por favor revisá los mensajes indicados y corregí lo solicitado para poder guardar tus cambios.';
-            this.editAndPasswordMissing = this.missingFieldsFirstTab.length == 2 && this.missingFieldsFirstTab.includes('Contraseña') && this.missingFieldsFirstTab.includes('Contraseña verificada');
+            console.log('this.missingFieldsFirstTab',this.missingFieldsFirstTab)
+            this.editAndPasswordMissing = (this.missingFieldsFirstTab.length == 2 && this.missingFieldsFirstTab.includes('Contraseña') && this.missingFieldsFirstTab.includes('Contraseña verificada')) || (this.missingFieldsFirstTab.length == 1 && (this.missingFieldsFirstTab.includes('Contraseña') || this.missingFieldsFirstTab.includes('Contraseña verificada')));
             this.missingFieldsFirstTab = this.missingFieldsFirstTab.filter(field => field != 'Contraseña' && field != 'Contraseña verificada');
         } else {
             this.missingFieldsMessage = 'Te falta completar los siguientes campos para poder proceder ' + typeOfAction + ':';
