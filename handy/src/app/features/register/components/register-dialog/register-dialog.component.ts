@@ -174,7 +174,6 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   createOrUpdateUser() {
-    this.setFormInfoToRegisterForm();
     this.userService
       .register(this.user, this.photo)
       .pipe(takeUntil(this.$_destroyed))
@@ -224,6 +223,7 @@ export class RegisterDialogComponent implements OnInit {
       Swal.fire('Error', 'Tanto el mail ingresado como el usuario ingresado ya existen', 'error');
     }
     else{
+      this.setFormInfoToRegisterForm();
       this.generateAndSendCode();
     }
   }
