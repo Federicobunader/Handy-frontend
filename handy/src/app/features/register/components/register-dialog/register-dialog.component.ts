@@ -191,7 +191,6 @@ export class RegisterDialogComponent implements OnInit {
         (error) => {
           // Error en la operación: mostrar notificación de error con el mensaje del error
           Swal.fire('Error', 'Usuario o Email repetidos', 'error');
-          console.log('ERROR:', error.message);
         }
       );
   }
@@ -199,8 +198,16 @@ export class RegisterDialogComponent implements OnInit {
   checkPasswordForExistentUser(){
     this.userService
       .checkPassword(this.user.password, this.registerForm!.get('userPassword')!.value!)
-      .pipe(takeUntil(this.$_destroyed))
-      .subscribe(() => this.createOrUpdateUser());
+      .pipe(
+        map((response: boolean) => {
+            if(response === true){
+              this.createOrUpdateUser();
+            }else{
+              Swal.fire('Error', 'Las contraseñas ingresadas no coinciden con la contraseña de tu cuenta', 'error');
+            }
+        }
+        ))
+      .subscribe();
   }
 
   saveOrUpdate() {
