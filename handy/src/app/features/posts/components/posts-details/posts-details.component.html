@@ -26,8 +26,10 @@
                 producto no puede tener mas de 100 caracteres</mat-error>
               <p class="postCreationLabel">Stock</p>
               <input class="postCreationInput" type="number" matInput name="stock" formControlName="stock">
+              <mat-error *ngIf="postForm.get('stock')?.hasError('min')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El stock tiene que ser mayor o igual a 0</mat-error>
               <p class="postCreationLabel">Precio de alquiler por día</p>
-              <input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
+              <span style="color: #885B34;font-weight: bold;">$</span><input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
+              <mat-error *ngIf="postForm.get('rentalPrice')?.hasError('min')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El precio de alquiler por día tiene que ser mayor o igual a $0</mat-error>
               <p class="postCreationLabel">Medios de pago aceptados</p>
               <div *ngIf="!hasPaymentMethods">
                 <mat-form-field class="selectorInput">
@@ -70,13 +72,13 @@
                 </mat-select>
               </mat-form-field>
               <p class="postCreationLabel">Deposito</p>
-              <input class="postCreationInput" type="number" matInput name="depositPrice"
-                formControlName="depositPrice">
+              <span style="color: #885B34;font-weight: bold;">$</span><input class="postCreationInput" type="number" matInput name="depositPrice" formControlName="depositPrice">
+              <mat-error *ngIf="postForm.get('depositPrice')?.hasError('min')" style="width:80%;margin-bottom:1.5rem;margin-top:-1rem;">El depósito tiene que ser mayor o igual a $0</mat-error>
               <div class="informationContainer">
                 <mat-icon class="informationIcon" (click)="handleInformationClick()">info</mat-icon>
                 <p *ngIf="openInformationModal" class="depositInformation">El depósito es un monto que el usuario que
                   alquila deberá pagar a modo de garantía al realizar el alquiler. Una vez finalizado el mismo, el
-                  depósito será devuelto, siempre y cuando la herramienta haya sido devuelta en las mismas condiciones.
+                  depósito deberá ser devuelto, siempre y cuando la herramienta haya sido devuelta en las mismas condiciones.
                 </p>
               </div>
             </div>
@@ -86,15 +88,21 @@
             <textarea class="descriptionInput" type="text" matInput name="productDescription"
               formControlName="productDescription" spellcheck></textarea>
             <mat-error *ngIf="postForm.get('productDescription')?.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">La descripción puede tener hasta 500 caracteres</mat-error>
-            <p class="checkboxInput"><input type="checkbox" formControlName="isLeasing"> Quiero que los usuarios
-              puedan comprar mi producto.</p>
+            <p class="checkboxInput"><input type="checkbox" formControlName="isLeasing"> Quiero que los usuarios puedan comprar mi producto.</p>
             <br>
-            <p *ngIf="this.postForm.get('isLeasing')?.value" class="postCreationLabel">Precio de venta</p>
-            <input *ngIf="this.postForm.get('isLeasing')?.value" class="postTitleInput" type="number" matInput
-              name="salesPrice" formControlName="salesPrice">
+            <div *ngIf="this.postForm.get('isLeasing')?.value">
+              <p class="postCreationLabel">Precio de venta</p>
+              <span style="color: #885B34;font-weight: bold;">$</span><input class="postTitleInput" type="number" matInput name="salesPrice" formControlName="salesPrice">
+              <mat-error *ngIf="postForm.get('salesPrice')?.hasError('min')" style="width:80%;margin-bottom:1.5rem;margin-top:-1rem;">El precio de venta tiene que ser mayor o igual a $0</mat-error>
+            </div>
             <br>
-            <p class="checkboxInput"><input type="checkbox" formControlName="isActive"> {{this.activeCheckboxLabel}}
-            </p>
+            <p class="checkboxInput"><input type="checkbox" formControlName="isActive"> {{this.activeCheckboxLabel}}</p>
+            <div class="activeInformationContainer">
+              <mat-icon class="informationIcon" (click)="handleActiveInformationClick()">info</mat-icon>
+              <p *ngIf="openActiveInformationModal" class="activeInformation">Cuando el checkbox esté tildado, entonces la publicación estará activa, lo que significa que todos los usuarios podrán
+                ver esta publicación al buscar herramientas.
+              </p>
+            </div>
           </div>
         </mat-tab>
         <mat-tab>
