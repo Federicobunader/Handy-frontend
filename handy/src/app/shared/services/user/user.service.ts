@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { checkIfUserAlreadyExistWithMail, checkpasswordsURL, updatePasswordURL, userURL } from 'src/app/core/constants/constants';
+import { checkIfUserAlreadyExistWithMail, checkpasswordsURL, updatePasswordURL, userAlreadyExistWithUsername, userURL } from 'src/app/core/constants/constants';
 import { UserMapper } from 'src/app/core/mappers/user-mapper';
 import { User } from 'src/app/core/models/user';
 import { AddressService } from '../address/address.service';
@@ -24,6 +24,14 @@ export class UserService {
 
     return this.http
       .get<boolean>(checkpasswordsURL, { params: params });
+  }
+
+  userAlreadyExistWithUsername(username: string): Observable<boolean>{
+    let params = new HttpParams();
+    params = params.set('username', username);
+
+    return this.http
+      .get<boolean>(userAlreadyExistWithUsername, { params: params });
   }
 
   checkIfUserAlreadyExistWithMail(mail: string): Observable<boolean>{
