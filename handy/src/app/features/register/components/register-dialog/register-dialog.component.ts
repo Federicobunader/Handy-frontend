@@ -202,6 +202,7 @@ export class RegisterDialogComponent implements OnInit {
       .pipe(
         map((response: boolean) => {
             if(response === true){
+              this.setFormInfoToRegisterForm();
               this.createOrUpdateUser();
             }else{
               Swal.fire('Error', 'Las contraseñas ingresadas no coinciden con la contraseña de tu cuenta', 'error');
