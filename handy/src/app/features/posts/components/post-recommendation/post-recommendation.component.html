@@ -5,7 +5,7 @@
             <div class="photoWebContainer">
               <img src="../../../../assets/icons/Tooly.png" class="photo">
               <div style="display: block;">
-                <p class="title">¡Hola! Soy Tooly.</p>             
+                <p class="title">¡Hola! Soy Tooly.</p>
                 <p class="subTitle">¿Tenés que llevar a cabo una tarea pero no sabés que herramientas necesitás para
                     realizarla? ¡No te preocupes! Comentame lo que necesitás hacer y te voy a recomendar las mejores
                     herramientas que tenemos en Handy para que puedas alquilar/comprar y llevar a cabo la tarea por tu
@@ -15,10 +15,10 @@
             <div class="photoMobileContainer">
                 <div style="display: flex;flex-direction: row-reverse;margin-bottom:1rem;justify-content: flex-end;">
                     <div style="display: block;">
-                        <p class="title">¡Hola!</p>     
-                        <p class="title">Soy</p>     
-                        <p class="title">Tooly.</p>     
-                    </div>                          
+                        <p class="title">¡Hola!</p>
+                        <p class="title">Soy</p>
+                        <p class="title">Tooly.</p>
+                    </div>
                     <img src="../../../../assets/icons/Tooly.png" class="photo">
                 </div>
                 <p class="subTitle">¿Tenés que llevar a cabo una tarea pero no sabés que herramientas necesitás para
@@ -40,29 +40,37 @@
             </div>
         </div>
         <div class="postsSectionContainer">
-            <div *ngIf="this.recommendations.length > 0" class="postsSection">
+            <div *ngIf="this.recommendations.length > 0 || this.wasFound; else noRecommendationFound" class="postsSection">
                 <div *ngFor="let recommendation of recommendations">
                     <p class="recommendationLabel">{{recommendation.tool}}</p>
-                    <div style="display: inline-flex;" *ngFor="let post of recommendation.posts" (click)="sendTo(post)">
+                    <div *ngIf="recommendation.posts.length > 0; else noRecommendationFoundForTool">
+                      <div style="display: inline-flex;" *ngFor="let post of recommendation.posts" (click)="sendTo(post)">
                         <div class="productBox">
-                            <img src={{post.photos[0].url}} class="postPicture">
-                            <hr class="productBoxLine">
-                            <div class="postInformation">
-                                <a><b>{{post.title}}</b></a>
-                                <p style="margin-top:1rem;">{{post.product.rentalPrice | numberFormat }} por día</p>
-                                <p *ngIf="post.isLeasing">Con posibilidad de compra</p>
-                                <p *ngIf="!post.isLeasing">Sin posibilidad de compra</p>
-                                <div style="display:inline-flex;font-size:0.8rem;">
-                                    <mat-icon style="margin-top:-0.2rem;transform:scale(0.8);margin-left:-0.3rem;">location_on</mat-icon>
-                                    <p>{{post.address.location.name}}</p>
-                                </div>
-                                <p *ngIf="this.post.author.id == this.user.id" style="color:rgb(211, 78, 78);font-weight:bold;font-size:0.8rem;">Tu publicación</p>
-                            </div>  
+                          <img src={{post.photos[0].url}} class="postPicture">
+                          <hr class="productBoxLine">
+                          <div class="postInformation">
+                            <a><b>{{post.title}}</b></a>
+                            <p style="margin-top:1rem;">{{post.product.rentalPrice | numberFormat }} por día</p>
+                            <p *ngIf="post.isLeasing">Con posibilidad de compra</p>
+                            <p *ngIf="!post.isLeasing">Sin posibilidad de compra</p>
+                            <div style="display:inline-flex;font-size:0.8rem;">
+                              <mat-icon style="margin-top:-0.2rem;transform:scale(0.8);margin-left:-0.3rem;">location_on</mat-icon>
+                              <p>{{post.address.location.name}}</p>
+                            </div>
+                            <p *ngIf="this.post.author.id == this.user.id" style="color:rgb(211, 78, 78);font-weight:bold;font-size:0.8rem;">Tu publicación</p>
+                          </div>
                         </div>
+                      </div>
                     </div>
+                    <ng-template #noRecommendationFoundForTool>
+                      <p class="subTitle">No hay publicaciones disponibles.</p>
+                    </ng-template>
                     <hr class="line">
                 </div>
             </div>
+            <ng-template #noRecommendationFound>
+              <p class="subTitle">No se encontró una recomendación. Es posible que haya un error en la descripción de la tarea a realizar.</p>
+            </ng-template>
         </div>
     </div>
     <div style="background-color:#f8f3e7;padding-bottom:1rem;padding-top:20vh;">
