@@ -155,12 +155,16 @@ button:focus {
 }
 
 .postsSectionContainer {
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     .container {
         margin: 2rem;
+    }
+
+    .recommendationLabel{
+        line-height: 1.5rem;
     }
 
     .photoWebContainer {
@@ -198,7 +202,6 @@ button:focus {
         margin-left: 1.3rem;
         margin-right: 1.3rem;
         margin-bottom: 1.3rem;
-        margin-top: 3rem;
     }
 
     .postsSection {

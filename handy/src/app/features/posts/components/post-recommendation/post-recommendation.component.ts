@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatGPTService } from '../../services/chat-gpt-service/chat-gpt.service';
 import { FormControl, Validators } from '@angular/forms';
-import { map, take } from 'rxjs';
+import { take } from 'rxjs';
 import { Recommendation } from 'src/app/core/models/recommendation';
 import { Post } from 'src/app/core/models/post';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { SessiontokenService } from 'src/app/features/home/services/sessiontoken.service';
+import { RecommendationResponse } from "../../../../core/models/recommendationResponse";
 
 @Component({
   selector: 'app-post-recommendation',
@@ -21,6 +22,7 @@ export class PostRecommendationComponent implements OnInit {
 
   prompt = new FormControl('', [Validators.required]);
   recommendations: Recommendation[] = [];
+  wasFound: Boolean = true;
 
   constructor(
     private chatGPTService: ChatGPTService,
@@ -59,11 +61,10 @@ export class PostRecommendationComponent implements OnInit {
       this.loading = true;
       this.chatGPTService
         .getPostsByPrompt(prompt)
-        .pipe(
-          take(1),
-          map((response: Recommendation[]) => this.recommendations = response))
-        .subscribe(() => {
-          console.log("Fin");
+        .pipe(take(1))
+        .subscribe((response: RecommendationResponse) => {
+          this.wasFound = response.wasFound;
+          this.recommendations = response.recommendations;
           this.loading = false;
         });
     } else {

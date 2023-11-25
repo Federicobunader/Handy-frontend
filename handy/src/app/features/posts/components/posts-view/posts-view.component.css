@@ -113,6 +113,17 @@
     margin-top: 1rem;
 }
 
+.whatsAppButton{
+  width: 50px;
+  text-align: center;
+  margin-top: 1rem;
+  cursor:pointer;
+}
+
+.whatsAppButton:hover{
+  width: 55px;
+}
+
 .opinions {
     font-family: 'Roboto', monospace;
     color: #885B34;
@@ -244,7 +255,7 @@ button:focus {
     .productLocation{
         font-size: 0.8rem;
         padding-top: 0.3rem;
-        padding-left: 
+        padding-left:
     }
 
     .postButton {
@@ -283,6 +294,11 @@ button:focus {
     .ratingContainer {
         display: flex;
         align-items: center;
+    }
+
+    .whatsAppButton{
+      width: 30px;
+      margin-top: 0rem;
     }
 
     .opinions {

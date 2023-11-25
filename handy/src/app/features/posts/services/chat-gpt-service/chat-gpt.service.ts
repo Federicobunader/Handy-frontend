@@ -2,8 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { chatGPTURL } from 'src/app/core/constants/constants';
-import { RecommendationMapper } from 'src/app/core/mappers/recommendation-mapper';
-import { Recommendation } from 'src/app/core/models/recommendation';
+import {RecommendationResponse} from "../../../../core/models/recommendationResponse";
+import {RecommendationResponseMapper} from "../../../../core/mappers/recommendation-response-mapper";
 
 @Injectable({
     providedIn: 'root'
@@ -11,12 +11,12 @@ import { Recommendation } from 'src/app/core/models/recommendation';
 export class ChatGPTService {
     constructor(
         private http: HttpClient,
-        private mapper: RecommendationMapper
+        private mapper: RecommendationResponseMapper
     ) {
-        this.mapper = new RecommendationMapper();
+        this.mapper = new RecommendationResponseMapper();
     }
 
-    getPostsByPrompt(prompt: string): Observable<Recommendation[]> {
+    getPostsByPrompt(prompt: string): Observable<RecommendationResponse> {
         let params = new HttpParams();
 
         if (prompt && prompt.length) {
@@ -26,10 +26,7 @@ export class ChatGPTService {
             .get<any[]>(chatGPTURL + '/postsByPrompt', { params })
             .pipe(
                 map((response) => {
-                    const res: any = response;
-                    return res.map((recommendationDTO: any) => {
-                        return this.mapper.dtoToRecommendation(recommendationDTO);
-                    });
+                  return this.mapper.dtoToRecommendationResponse(response)
                 })
             );
     }
