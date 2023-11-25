@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { SessiontokenService } from 'src/app/features/home/services/sessiontoken.service';
-import {RecommendationResponse} from "../../../../core/models/recommendationResponse";
+import { RecommendationResponse } from "../../../../core/models/recommendationResponse";
 
 @Component({
   selector: 'app-post-recommendation',
