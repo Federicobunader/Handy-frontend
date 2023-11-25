@@ -202,6 +202,7 @@ export class RegisterDialogComponent implements OnInit {
       .pipe(
         map((response: boolean) => {
             if(response === true){
+              this.setFormInfoToRegisterForm();
               this.createOrUpdateUser();
             }else{
               Swal.fire('Error', 'Las contraseñas ingresadas no coinciden con la contraseña de tu cuenta', 'error');
@@ -309,7 +310,7 @@ export class RegisterDialogComponent implements OnInit {
       this.missingRequiredFieldsFirstTab.push('Contraseña');
     }
     if (this.registerForm.value.userPasswordCheck == "") {
-      this.missingRequiredFieldsFirstTab.push('Contraseña verificada');
+      this.missingRequiredFieldsFirstTab.push('Repetí tu contraseña');
     }
     if (this.user.photo.length != 1) {
       this.missingRequiredFieldsFirstTab.push('Foto');
@@ -325,7 +326,7 @@ export class RegisterDialogComponent implements OnInit {
       this.missingRequiredFieldsSecondTab.push('Email');
     }
     if (this.registerForm.value.userTel == "") {
-      this.missingRequiredFieldsSecondTab.push('Telefono');
+      this.missingRequiredFieldsSecondTab.push('Teléfono');
     }
     // const dateNow = new Date();
     // let dateIntroduced = this.registerForm.value.userDateBorn;
