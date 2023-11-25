@@ -6,7 +6,8 @@
           <div class="commentContainer">
             <div class="row">
               <div class="column-left">
-                <img src={{comment.author.photo[0].url}} class="picture">
+                <div *ngIf="comment.author.photo.length != 0"><img src={{comment.author.photo[0].url}} class="picture"></div>
+                <div *ngIf="comment.author.photo.length == 0"><img src="../../../../assets/icons/UserWithoutPicture.jpg" class="picture"></div>
               </div>
               <div class="column-right">
                 <p><b>{{comment.author.username}}</b> | {{comment.creationDate | dateFormat}}</p>
@@ -21,7 +22,8 @@
           <div class="commentContainer">
             <div class="row">
               <div class="column-left">
-                <img src={{answerComment.author.photo[0].url}} class="picture"> 
+                <div *ngIf="answerComment.author.photo.length != 0"><img src={{answerComment.author.photo[0].url}} class="picture"></div>
+                <div *ngIf="answerComment.author.photo.length == 0"><img src="../../../../assets/icons/UserWithoutPicture.jpg" class="picture"></div>
               </div>
               <div class="column-right">
                 <p><b>{{answerComment.author.username}}</b> | {{answerComment.creationDate | dateFormat}}</p>

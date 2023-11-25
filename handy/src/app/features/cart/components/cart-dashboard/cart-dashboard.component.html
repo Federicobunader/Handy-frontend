@@ -23,7 +23,7 @@
                 <div class="column-right">
                   <div class="priceAndPayContainer">
                     <p class="cartPrice">{{item.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
-                    <button class="payButton" type="button" (click)="pay(item.totalToPayPerAuthor.id)" *ngIf="showBuyButton">Pagar</button>
+                    <button class="payButton" type="button" (click)="pay(item)" *ngIf="showBuyButton">Pagar</button>
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="column-right">
                   <p class="cartPrice">{{item.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
-                  <button class="payButton" type="button" (click)="pay(item.totalToPayPerAuthor.id)" *ngIf="showBuyButton">Pagar</button>
+                  <button class="payButton" type="button" (click)="pay(item)" *ngIf="showBuyButton">Pagar</button>
                 </div>
               </div>
             </mat-expansion-panel-header>

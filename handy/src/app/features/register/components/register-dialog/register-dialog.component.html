@@ -62,14 +62,6 @@
                             <p class="registerLabel">Telefono</p>
                             <input class="registerInput" type="tel" matInput name="userTel" formControlName="userTel">
                             <mat-error *ngIf="registerForm.get('userTel')?.hasError('pattern') || registerForm.get('userTel')?.hasError('maxlength')" style="width:80%;margin-top: -3rem;">El telefono solo puede tener números y la longitud máxima es de 15 caracteres</mat-error>
-                            <mat-form-field class="addressInput">
-                              <mat-label class="registerLabel">Medios de Pago que tiene</mat-label>
-                              <mat-select multiple name="userPaymentMethods" formControlName="userPaymentMethods">
-                                <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">
-                                      {{paymentMethod.name}}
-                                  </mat-option>
-                              </mat-select>
-                            </mat-form-field>
                         </div>
                     </div>
                 </mat-tab>

@@ -25,7 +25,6 @@ import {googleEmailKey, googleFirstNameKey, googleLastNameKey} from "../../../..
 export class RegisterDialogComponent implements OnInit {
 
   private $_destroyed = new Subject();
-  selectedPaymentMethod: PaymentMethod[] = [];
   today: Date = new Date();
   @Input() isEdit: Boolean = false;
   @Output() event = new EventEmitter<string>();
@@ -53,7 +52,6 @@ export class RegisterDialogComponent implements OnInit {
     userPassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*()]{8,}$')]),
     userPasswordCheck: new FormControl('', [Validators.required, this.passwordMatchValidator.bind(this)]),
     userTel: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern('^[0-9]*$')]),
-    userPaymentMethods: new FormControl(this.selectedPaymentMethod,[Validators.required]),
     addressForm: new FormGroup({
       address: new FormControl('', [Validators.required]),
       location: new FormControl(0, [Validators.required]),
@@ -67,7 +65,6 @@ export class RegisterDialogComponent implements OnInit {
   constructor(
     private userService: UserService,
     private photoService: PhotoService,
-    private paymentMethodService: PaymentMethodService,
     private addressService: AddressService,
     private sessiontokenService: SessiontokenService,
     private router: Router,
@@ -86,9 +83,10 @@ export class RegisterDialogComponent implements OnInit {
 
   user: User = this.userService.emptyUser();
   photo: File[] = [];
-  paymentMethods: PaymentMethod[] = [];
   createOrUpdateLabel: string = "REGISTRARSE";
   isAddressFormValid: boolean = false;
+  userAlreadyExistWithUsernameFlag = false;
+  userAlreadyExistWithEmailFlag = false;
 
   passwordMatchValidator() {
     const originalPassword = this.registerForm?.get('userPassword')?.value;
@@ -99,17 +97,6 @@ export class RegisterDialogComponent implements OnInit {
     } else {
       return { passwordMismatch: true }; // Error personalizado para contraseñas que no coinciden
     }
-  }
-
-  getPaymentMethods(){
-    this.paymentMethodService
-    .getPaymentMethods()
-      .pipe(
-        takeUntil(this.$_destroyed),
-        map((response: PaymentMethod[]) => (
-          this.paymentMethods = response))
-      )
-    .subscribe();
   }
 
   getPhotoDisplayMessage() {
@@ -128,7 +115,6 @@ export class RegisterDialogComponent implements OnInit {
     this.user.username = this.registerForm.get('username')?.value?.toLocaleLowerCase() ?? '';
     this.user.password = this.registerForm.get('userPassword')?.value ?? '';
     this.user.tel = this.registerForm.get('userTel')?.value ?? '';
-    this.user.paymentMethods = this.registerForm.get('userPaymentMethods')?.value ?? [];
   }
 
   setFormInfoToAddressForm(addressForm: FormGroup): void {
@@ -162,7 +148,6 @@ export class RegisterDialogComponent implements OnInit {
     this.registerForm.get('userDateBorn')?.setValue(this.user.dateBorn);
     this.registerForm.get('username')?.setValue(this.user.username);
     this.registerForm.get('userTel')?.setValue(this.user.tel);
-    this.registerForm.get('userPaymentMethods')?.setValue(this.user.paymentMethods);
   }
 
   setPhotoInfoToUser(photos: Photo[]): void {
@@ -207,20 +192,84 @@ export class RegisterDialogComponent implements OnInit {
         (error) => {
           // Error en la operación: mostrar notificación de error con el mensaje del error
           Swal.fire('Error', 'Usuario o Email repetidos', 'error');
-          console.log('ERROR:', error.message);
         }
       );
+  }
+
+  checkPasswordForExistentUser(){
+    this.userService
+      .checkPassword(this.user.password, this.registerForm!.get('userPassword')!.value!)
+      .pipe(
+        map((response: boolean) => {
+            if(response === true){
+              this.createOrUpdateUser();
+            }else{
+              Swal.fire('Error', 'Las contraseñas ingresadas no coinciden con la contraseña de tu cuenta', 'error');
+            }
+        }
+        ))
+      .subscribe();
+  }
+
+  showMessagesForRegisterAndGenerateAndSendCode(){
+    console.log("Entre al mostrar mensajes de error")
+    if(this.userAlreadyExistWithEmailFlag === true && this.userAlreadyExistWithUsernameFlag === false){
+      Swal.fire('Error', 'El mail ingresado ya existe', 'error');
+    }
+    else if(this.userAlreadyExistWithEmailFlag === false && this.userAlreadyExistWithUsernameFlag === true){
+      Swal.fire('Error', 'El usuario ingresado ya existe', 'error');
+    }
+    else if(this.userAlreadyExistWithEmailFlag === true && this.userAlreadyExistWithUsernameFlag === true){
+      Swal.fire('Error', 'Tanto el mail ingresado como el usuario ingresado ya existen', 'error');
+    }
+    else{
+      this.setFormInfoToRegisterForm();
+      this.generateAndSendCode();
+    }
+  }
+
+  userAlreadyExistWithEmail(){
+    this.userService
+      .checkIfUserAlreadyExistWithMail(this.registerForm!.get('userEmail')!.value!)
+      .pipe(
+        map((response: boolean) => {
+          console.log(response)
+            if(response === false){
+              this.userAlreadyExistWithEmailFlag = false;
+            }else{
+              this.userAlreadyExistWithEmailFlag = true;
+            }
+        }
+        ))
+      .subscribe(() => {
+        this.showMessagesForRegisterAndGenerateAndSendCode();
+      });
+  }
+
+  userAlreadyExistWithUsername(){
+    this.userService
+      .userAlreadyExistWithUsername(this.registerForm!.get('username')!.value!)
+      .pipe(
+        map((response: boolean) => {
+          console.log(response)
+            if(response === false){
+              this.userAlreadyExistWithUsernameFlag = false;
+            }else{
+              this.userAlreadyExistWithUsernameFlag = true;
+            }
+        }
+        ))
+      .subscribe(() => this.userAlreadyExistWithEmail());
   }
 
   saveOrUpdate() {
     let invalid = false;
     if(this.user.photo.length === 1){
       if (this.registerForm.valid && this.isAddressFormValid && !this.passwordsDontMatch) {
-        this.setFormInfoToRegisterForm();
         if (!this.isEdit) {
-          this.generateAndSendCode()
+          this.userAlreadyExistWithUsername();
         } else {
-          this.createOrUpdateUser();
+          this.checkPasswordForExistentUser();
         }
       } else {
         invalid = true;
@@ -339,7 +388,6 @@ export class RegisterDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    this.getPaymentMethods();
     this.setGoogleLoginValues();
   }
 

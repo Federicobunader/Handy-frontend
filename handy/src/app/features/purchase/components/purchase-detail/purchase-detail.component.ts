@@ -44,6 +44,7 @@ export class PurchaseDetailComponent implements OnInit{
     this.address = new FormControl(addressService.emptyAddress());
   }
 
+  user: User = this.userService.emptyUser();
   purchase: Purchase = this.purchaseService.emptyPurchase()
   totalToPayPerAuthor: TotalToPayPerAuthor = this.totalToPayPerAuthorService.emptyTotalToPayPerAuthor();
   totalToPayPerAuthorID : number = 0;
@@ -59,11 +60,15 @@ export class PurchaseDetailComponent implements OnInit{
   buyerFullName: any = '';
   buyerEmail: any = '';
   buyerTel: any = '';
+  sellerEmail: any = '';
+  sellerTel: any = '';
   submitLabel = 'PROCEDER AL PAGO';
+  availablePaymentMethods: PaymentMethod [] = [];
 
   ngOnInit(): void {
     var buyerIdParam: any = 0;
     this.route.params.subscribe(params => { this.totalToPayPerAuthorID = params['id']; });
+    this.route.queryParamMap.subscribe(param => this.setAvailablePaymentMethods(param.get('paymentMethods')));
     this.route.queryParamMap.subscribe(param => buyerIdParam = param.get('buyerId'));
 
     if(buyerIdParam){
@@ -72,12 +77,31 @@ export class PurchaseDetailComponent implements OnInit{
       this.route.queryParamMap.subscribe(param => this.buyerEmail = param.get('buyerEmail'));
       this.route.queryParamMap.subscribe(param => this.buyerTel = param.get('buyerPhone'));
       this.getPurchase();
+      this.getCurrentUser();
     } else {
       this.getUser();
     }
 
     this.getPaymentMethods();
     this.setTotalToPayPerAuthorAndAuthor();
+  }
+
+  acceptsCash = false;
+  acceptsMP = false;
+  acceptsUala = false;
+  setAvailablePaymentMethods(ids: any){
+    if(ids.includes('1')){
+      this.availablePaymentMethods.push({ id: 1, name: 'Efectivo' });
+      this.acceptsCash = true;
+    }
+    if(ids.includes('2')){
+      this.availablePaymentMethods.push({ id: 2, name: 'Mercado Pago' });
+      this.acceptsMP = true;
+    }
+    if(ids.includes('3')){
+      this.availablePaymentMethods.push({ id: 3, name: 'Uala' });
+      this.acceptsUala = true;
+    }
   }
 
   getPurchase(){
@@ -94,6 +118,8 @@ export class PurchaseDetailComponent implements OnInit{
           )
         )
         .subscribe(() =>{
+          this.sellerEmail = this.purchase.seller.email;
+          this.sellerTel = this.purchase.seller.tel;
           this.addressService.setAddress(this.purchase.deliveryPoint);
           this.getPaymentMethods();
           if(this.purchase.id){
@@ -162,6 +188,23 @@ export class PurchaseDetailComponent implements OnInit{
       this.purchase.seller = this.totalToPayPerAuthor.author;
       this.totalToPayPerAuthor.totalToPay = this.totalToPayPerAuthor.totalToPay;
     });
+  }
+
+  getCurrentUser(){
+    const token = sessionStorage.getItem('token');
+
+    if (token !== null) {
+      this.sessiontokenService.getUser(token).subscribe(
+        (response) => {
+          this.user = response;
+        },
+        (error) => {
+          console.error('Error al obtener el usuario', error);
+        }
+      );
+    } else {
+      console.error('El token de sesión es nulo');
+    }
   }
 
   getUser(){

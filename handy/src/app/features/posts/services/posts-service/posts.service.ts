@@ -161,7 +161,8 @@ export class PostService {
       stock: 0,
       isActive: false,
       isLeasing: false,
-      photos: []
+      photos: [],
+      paymentMethods: [],
     }
   }
 }

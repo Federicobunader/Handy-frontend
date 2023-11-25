@@ -106,7 +106,52 @@ export class PurchaseDashboardComponent {
   }
 
   sendToPurchase(purchase: Purchase){
-    this.router.navigate(['purchase/' + purchase.totalToPayPerAuthor.id], { queryParams: { buyerId: purchase.totalToPayPerAuthor.from.id, buyerName: purchase.totalToPayPerAuthor.from.firstName + ' ' + purchase.totalToPayPerAuthor.from.lastName, buyerEmail: purchase.totalToPayPerAuthor.from.email, buyerPhone: purchase.totalToPayPerAuthor.from.tel }});
+    this.totalToPayPerCartService
+    .getTotalsToPayPerCart(purchase.totalToPayPerAuthor.id)
+      .pipe(
+        takeUntil(this.$_destroyed),
+        map((response: TotalToPayPerCart[]) => (
+          this.totalsToPayPerCart = response))
+      )
+    .subscribe(() => {
+      let availablePaymentMethods = this.getAvailablePaymentMethods(this.totalsToPayPerCart);
+      this.router.navigate(['purchase/' + purchase.totalToPayPerAuthor.id], { queryParams: { paymentMethods: availablePaymentMethods, buyerId: purchase.totalToPayPerAuthor.from.id, buyerName: purchase.totalToPayPerAuthor.from.firstName + ' ' + purchase.totalToPayPerAuthor.from.lastName, buyerEmail: purchase.totalToPayPerAuthor.from.email, buyerPhone: purchase.totalToPayPerAuthor.from.tel }});
+    });
+  }
+
+  
+  getAvailablePaymentMethods(item: TotalToPayPerCart []){
+    let paymentMethod1 = 0;
+    let paymentMethod2 = 0;
+    let paymentMethod3 = 0;
+    let totalCarts = item.length;
+    
+    item.forEach( total => {
+      total.cart.post.paymentMethods.forEach( paymentMethod => {
+        if(paymentMethod.name == 'Efectivo'){
+          paymentMethod1++;
+        }
+        if(paymentMethod.name == 'Mercado Pago'){
+          paymentMethod2++;
+        }
+        if(paymentMethod.name == 'Uala'){
+          paymentMethod3++;
+        }
+      })
+    });
+
+    let availablePaymentMethods = '';
+    if(paymentMethod1 == totalCarts){
+      availablePaymentMethods += 1;
+    }
+    if(paymentMethod2 == totalCarts){
+      availablePaymentMethods += 2;
+    }
+    if(paymentMethod3 == totalCarts){
+      availablePaymentMethods += 3;
+    }
+
+    return availablePaymentMethods;
   }
 
   sendToPost(postId: number){

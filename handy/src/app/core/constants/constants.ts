@@ -33,6 +33,7 @@ export const orderByTypeURL = apiURL + '/order_by_type'
 export const updatePasswordURL = userURL + '/updatePassword'
 export const checkpasswordsURL = userURL + '/checkpasswords'
 export const checkIfUserAlreadyExistWithMail = userURL + '/checkIfUserAlreadyExistWithMail'
+export const userAlreadyExistWithUsername = userURL + '/userAlreadyExistWithUsername'
 export const ARURL = apiURL + '/augmented_reality'
 export const chatGPTURL = apiURL + '/chat'
 

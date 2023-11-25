@@ -307,10 +307,10 @@ export class PostsDashboardComponent implements OnInit {
   }
 
   showAllFilters = false;
-  showLabel = 'Aplicar filtros'
+  showLabel = 'Mostrar opciones de filtros'
   showFilters(){
     this.showAllFilters = !this.showAllFilters;
-    this.showLabel = this.showLabel == 'Aplicar filtros' ? 'Esconder filtros' : 'Aplicar filtros';
+    this.showLabel = this.showLabel == 'Mostrar opciones de filtros' ? 'Esconder filtros' : 'Mostrar opciones de filtros';
   }
 
 }

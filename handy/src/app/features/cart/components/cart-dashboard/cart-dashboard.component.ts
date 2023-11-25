@@ -88,8 +88,43 @@ export class CartDashboardComponent {
     }
   }
 
-  pay(totalToPayPerAuthorID: number){
-    this.router.navigate(['purchase',totalToPayPerAuthorID]);
+  pay(item: ListOfTotalToPayPerCartGroupByAuthor){
+    let availablePaymentMethods = this.getAvailablePaymentMethods(item);
+    this.router.navigate(['purchase', item.totalToPayPerAuthor.id], { queryParams: { paymentMethods: availablePaymentMethods }} );
+  }
+
+  getAvailablePaymentMethods(item: ListOfTotalToPayPerCartGroupByAuthor){
+    let paymentMethod1 = 0;
+    let paymentMethod2 = 0;
+    let paymentMethod3 = 0;
+    let totalCarts = item.listOfTotalToPayPerCart.length;
+    
+    item.listOfTotalToPayPerCart.forEach( total => {
+      total.cart.post.paymentMethods.forEach( paymentMethod => {
+        if(paymentMethod.name == 'Efectivo'){
+          paymentMethod1++;
+        }
+        if(paymentMethod.name == 'Mercado Pago'){
+          paymentMethod2++;
+        }
+        if(paymentMethod.name == 'Uala'){
+          paymentMethod3++;
+        }
+      })
+    });
+
+    let availablePaymentMethods = '';
+    if(paymentMethod1 == totalCarts){
+      availablePaymentMethods += 1;
+    }
+    if(paymentMethod2 == totalCarts){
+      availablePaymentMethods += 2;
+    }
+    if(paymentMethod3 == totalCarts){
+      availablePaymentMethods += 3;
+    }
+
+    return availablePaymentMethods;
   }
 
   viewPost(post: Post){

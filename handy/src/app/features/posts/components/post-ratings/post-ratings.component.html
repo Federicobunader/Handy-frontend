@@ -6,7 +6,8 @@
       <div class="opinionBox">
         <div class="fullContainer">
           <div class="imageContainer">
-            <img src={{rating.author.photo[0].url}} class="picture">
+            <div *ngIf="rating.author.photo.length != 0"><img src={{rating.author.photo[0].url}} class="picture"></div>
+            <div *ngIf="rating.author.photo.length == 0"><img src="../../../../assets/icons/UserWithoutPicture.jpg" class="picture"></div>
           </div>
           <div class="ratingContainer">
             <div class="authorAndStars">

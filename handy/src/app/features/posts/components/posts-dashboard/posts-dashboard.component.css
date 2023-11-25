@@ -192,9 +192,9 @@ button:focus {
 }
 
 .filterButton {
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 13rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 16rem;
   color: white;
   background-color: #E1AE63;
   border-color: #885B34;
