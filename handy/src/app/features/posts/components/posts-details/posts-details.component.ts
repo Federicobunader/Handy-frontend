@@ -248,10 +248,10 @@ export class PostsDetailsComponent {
     if (this.postForm.value.productName == "") {
       this.missingRequiredFieldsFirstTab.push('Nombre del producto');
     }
-    if (this.postForm.value.stock == 0) {
+    if (this.postForm.value.stock == 0 || this.postForm.value.stock == null) {
       this.missingRequiredFieldsFirstTab.push('Stock');
     }
-    if (this.postForm.value.rentalPrice == 0) {
+    if (this.postForm.value.rentalPrice == 0 || this.postForm.value.rentalPrice == null) {
       this.missingRequiredFieldsFirstTab.push('Precio de alquiler por día');
     }
     if (this.postForm.value.productCategory == 0) {
@@ -270,7 +270,7 @@ export class PostsDetailsComponent {
       this.missingRequiredFieldsFirstTab.push('Al menos una forma de pago');
     }
     if (this.postForm.value.isLeasing) {
-      if (this.postForm.value.salesPrice == 0) {
+      if (this.postForm.value.salesPrice == 0 || this.postForm.value.salesPrice == null) {
         this.missingRequiredFieldsFirstTab.push('Precio de venta');
       }
     }
@@ -421,4 +421,5 @@ export class PostsDetailsComponent {
   handleActiveInformationClick(): void{
     this.openActiveInformationModal = !this.openActiveInformationModal;
   }
+
 }
