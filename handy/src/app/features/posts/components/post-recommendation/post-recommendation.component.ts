@@ -52,6 +52,7 @@ export class PostRecommendationComponent implements OnInit {
     }
   }
 
+  showNoResults = false;
   getPostsByPrompt() {
     const prompt = this.prompt.value;
     if (prompt) {
@@ -64,6 +65,7 @@ export class PostRecommendationComponent implements OnInit {
           map((response: Recommendation[]) => this.recommendations = response))
         .subscribe(() => {
           console.log("Fin");
+          this.showNoResults = this.recommendations[0].tool == 'Lo siento';
           this.loading = false;
         });
     } else {
