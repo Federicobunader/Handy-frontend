@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="postsSectionContainer">
-            <div *ngIf="this.recommendations.length > 0 || this.wasFound; else noRecommendationFound" class="postsSection">
+            <div *ngIf="this.wasFound; else noRecommendationFound" class="postsSection">
                 <div *ngFor="let recommendation of recommendations">
                     <p class="recommendationLabel">{{recommendation.tool}}</p>
                     <div *ngIf="recommendation.posts.length > 0; else noRecommendationFoundForTool">
