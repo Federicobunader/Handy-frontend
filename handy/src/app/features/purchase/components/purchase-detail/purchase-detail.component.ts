@@ -68,7 +68,6 @@ export class PurchaseDetailComponent implements OnInit{
   ngOnInit(): void {
     var buyerIdParam: any = 0;
     this.route.params.subscribe(params => { this.totalToPayPerAuthorID = params['id']; });
-    this.route.queryParamMap.subscribe(param => this.setAvailablePaymentMethods(param.get('paymentMethods')));
     this.route.queryParamMap.subscribe(param => buyerIdParam = param.get('buyerId'));
 
     if(buyerIdParam){
@@ -81,25 +80,22 @@ export class PurchaseDetailComponent implements OnInit{
     } else {
       this.getUser();
     }
-
-    this.getPaymentMethods();
     this.setTotalToPayPerAuthorAndAuthor();
   }
 
   acceptsCash = false;
   acceptsMP = false;
   acceptsUala = false;
-  setAvailablePaymentMethods(ids: any){
-    if(ids.includes('1')){
-      this.availablePaymentMethods.push({ id: 1, name: 'Efectivo' });
+  setAvailablePaymentMethods(){
+    const ids = this.availablePaymentMethods.map(availablePaymentMethod => availablePaymentMethod.id);
+
+    if(ids.includes(1)){
       this.acceptsCash = true;
     }
-    if(ids.includes('2')){
-      this.availablePaymentMethods.push({ id: 2, name: 'Mercado Pago' });
+    if(ids.includes(2)){
       this.acceptsMP = true;
     }
-    if(ids.includes('3')){
-      this.availablePaymentMethods.push({ id: 3, name: 'Uala' });
+    if(ids.includes(3)){
       this.acceptsUala = true;
     }
   }
@@ -121,7 +117,6 @@ export class PurchaseDetailComponent implements OnInit{
           this.sellerEmail = this.purchase.seller.email;
           this.sellerTel = this.purchase.seller.tel;
           this.addressService.setAddress(this.purchase.deliveryPoint);
-          this.getPaymentMethods();
           if(this.purchase.id){
             this.isPurchased = true;
             this.setPaymentMethod(this.purchase.paymentMethod.name);
@@ -132,18 +127,6 @@ export class PurchaseDetailComponent implements OnInit{
             }
           }
         });
-  }
-
-
-  getPaymentMethods(){
-    this.paymentMethodService
-    .getPaymentMethods()
-      .pipe(
-        takeUntil(this.$_destroyed),
-        map((response: PaymentMethod[]) => (
-          this.paymentMethods = response))
-      )
-    .subscribe();
   }
 
   methodSelected = false;
@@ -187,6 +170,8 @@ export class PurchaseDetailComponent implements OnInit{
       this.purchase.totalToPayPerAuthor = this.totalToPayPerAuthor;
       this.purchase.seller = this.totalToPayPerAuthor.author;
       this.totalToPayPerAuthor.totalToPay = this.totalToPayPerAuthor.totalToPay;
+      this.availablePaymentMethods = this.totalToPayPerAuthor.author.paymentMethods;
+      this.setAvailablePaymentMethods();
     });
   }
 
