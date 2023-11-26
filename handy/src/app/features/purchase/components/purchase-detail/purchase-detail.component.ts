@@ -298,11 +298,13 @@ export class PurchaseDetailComponent implements OnInit{
   }
 
   setFormInfoToAddressForm(addressForm: FormGroup): void {
-    this.purchase.deliveryPoint.location.province.id = addressForm.get('province')?.value;
-    this.purchase.deliveryPoint.location.id = addressForm.get('location')?.value;
-    this.purchase.deliveryPoint.postcode = addressForm.get('postcode')?.value;
-    this.purchase.deliveryPoint.street = addressForm.get('address')?.value;
-    this.purchase.deliveryPoint.apartmentFlag = addressForm.get('isApartment')?.value;
-    this.purchase.deliveryPoint.apartment = addressForm.get('apartment')?.value;
+    if(!this.isTheBuyerAddress){
+      this.purchase.deliveryPoint.location.province.id = addressForm.get('province')?.value;
+      this.purchase.deliveryPoint.location.id = addressForm.get('location')?.value;
+      this.purchase.deliveryPoint.postcode = addressForm.get('postcode')?.value;
+      this.purchase.deliveryPoint.street = addressForm.get('address')?.value;
+      this.purchase.deliveryPoint.apartmentFlag = addressForm.get('isApartment')?.value;
+      this.purchase.deliveryPoint.apartment = addressForm.get('apartment')?.value;
+    }
   }
 }
