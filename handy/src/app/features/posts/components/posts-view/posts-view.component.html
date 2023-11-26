@@ -11,15 +11,21 @@
           <p class="stockInfo" *ngIf="amountOfPictures > 1" style="margin-bottom:-0.1rem;cursor:pointer;" (click)="openPhotosModal()">+{{amountOfPictures - 1}} fotos</p>
           <p class="stockInfo" *ngIf="amountOfPictures == 1" style="margin-bottom:-0.1rem;cursor:pointer;" (click)="openPhotosModal()">1 foto</p>
           <img src={{this.post.photos[0].url}} class="productPicture" (click)="openPhotosModal()">
-          <p class="productInfo" *ngIf="this.post.author.id != this.user.id" style="size:95%;margin-bottom:1rem;font-size:1rem;color:#E1AE63;">Publicación de {{this.post.author.username}}</p>
           <p class="productInfo" *ngIf="this.post.author.id === this.user.id && this.post.isActive" style="size:95%;margin-bottom:1rem;font-size:1rem;color:rgb(211, 78, 78);font-weight:bold;">TU PUBLICACIÓN SE ENCUENTRA ACTIVA</p>
           <p class="productInfo" *ngIf="this.post.author.id === this.user.id && !this.post.isActive" style="size:95%;margin-bottom:1rem;font-size:1rem;color:rgb(211, 78, 78);font-weight:bold;">TU PUBLICACIÓN SE ENCUENTRA INACTIVA</p>
-          <p class="stockInfo" *ngIf="this.post.stock == 1">{{this.post.stock}} unidad disponible</p>
-          <p class="stockInfo" *ngIf="this.post.stock == 0">Sin stock</p>
-          <p class="stockInfo" *ngIf="this.post.stock > 1">{{this.post.stock}} unidades disponibles</p>
-          <a class="whatsAppContact" target="_blank" href="https://api.whatsapp.com/send/?phone=549{{this.post.author.tel}}&text=Hola,+c%C3%B3mo+est%C3%A1s%3F+Te+quer%C3%ADa+consultar+por+una+publicaci%C3%B3n+que+ten%C3%A9s+en+Handy.">
-            <img src="../../../../../assets/icons/WhatsAppLogo.png" class="whatsAppButton">
-          </a>
+          <div class="pictureFooter">
+            <div>
+              <p class="productAuthor" *ngIf="this.post.author.id != this.user.id">Publicación de {{this.post.author.username}}</p>
+              <p class="stockInfo" *ngIf="this.post.stock == 1">{{this.post.stock}} unidad disponible</p>
+              <p class="stockInfo" *ngIf="this.post.stock == 0">Sin stock</p>
+              <p class="stockInfo" *ngIf="this.post.stock > 1">{{this.post.stock}} unidades disponibles</p> 
+            </div>         
+            <div *ngIf="this.post.author.id != this.user.id">
+              <a class="whatsAppContact" target="_blank" href="https://api.whatsapp.com/send/?phone=549{{this.post.author.tel}}&text=Hola,+c%C3%B3mo+est%C3%A1s%3F+Te+quer%C3%ADa+consultar+por+una+publicaci%C3%B3n+que+ten%C3%A9s+en+Handy.">
+                <img src="../../../../../assets/icons/WhatsAppLogo.png" class="whatsAppButton">
+              </a>
+            </div>
+          </div>          
           <div style="margin-top:2rem;" *ngIf="this.post.stock > 0">
               <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createCart()">AGREGAR AL CARRITO</button>
               <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createComment()">HACER UNA CONSULTA</button>
