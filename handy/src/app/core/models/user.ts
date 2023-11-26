@@ -1,5 +1,6 @@
 import { IIdentifiable } from "./IIdentifiable";
 import { Address } from "./address";
+import { PaymentMethod } from "./paymentMethod";
 import { Photo } from "./photo";
 
 export interface User extends IIdentifiable{
@@ -12,4 +13,5 @@ export interface User extends IIdentifiable{
     tel: string;
     address: Address;
     photo: Photo[];
+    paymentMethods: PaymentMethod [];
   }

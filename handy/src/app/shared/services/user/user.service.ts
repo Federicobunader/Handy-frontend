@@ -121,6 +121,7 @@ export class UserService {
       tel: '',
       address: this.addressService.emptyAddress(),
       photo: [],
+      paymentMethods: [],
     }
   }
 }

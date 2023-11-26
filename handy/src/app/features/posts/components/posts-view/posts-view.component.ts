@@ -93,7 +93,7 @@ export class PostsViewComponent {
     .subscribe(() => {
       let averageSum = 0;
       this.ratings.forEach( rating => averageSum += rating.score);
-      this.averageScore = this.ratings.length > 0 ? (averageSum / this.ratings.length) : 0; 
+      this.averageScore = this.ratings.length > 0 ? (averageSum / this.ratings.length) : 0;
       if(this.ratings.length == 0){
         this.ratingMessage = 'No hay opiniones sobre este producto.'
       } else if (this.ratings.length == 1){
@@ -163,8 +163,6 @@ export class PostsViewComponent {
           this.post = response))
       )
     .subscribe(() => {
-      let paymentMethodsNames = this.post.paymentMethods.map( paymentMethod => paymentMethod.name );
-      this.availablePaymentMethods = paymentMethodsNames.join(', ');
       this.postService.setPost(this.post);
       this.amountOfPictures = this.post.photos.length;
       this.post.product.depositPrice = this.post.product.depositPrice;

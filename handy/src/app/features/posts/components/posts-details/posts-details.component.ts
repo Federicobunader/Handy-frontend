@@ -11,15 +11,12 @@ import { AddressService } from 'src/app/shared/services/address/address.service'
 import { PhotoService } from 'src/app/shared/services/photo/photo.service';
 import { SubCategory } from 'src/app/core/models/sub-category';
 import { SessiontokenService } from 'src/app/features/home/services/sessiontoken.service';
-import { UserService } from 'src/app/shared/services/user/user.service';
 import { Router } from '@angular/router';
 import { BrandsService } from '../../services/brands-service/brands.service';
 import { Brand } from 'src/app/core/models/brand';
 import { MatDialog } from '@angular/material/dialog';
 import { MissingRequiredFieldsComponent } from 'src/app/shared/components/missing-required-fields/missing-required-fields.component';
 import Swal from 'sweetalert2';
-import { PaymentMethodService } from 'src/app/shared/services/payment-method/payment-method.service';
-import { PaymentMethod } from 'src/app/core/models/paymentMethod';
 
 @Component({
   selector: 'app-posts-details',
@@ -29,7 +26,6 @@ import { PaymentMethod } from 'src/app/core/models/paymentMethod';
 export class PostsDetailsComponent {
 
   private $_destroyed = new Subject();
-  selectedPaymentMethod: PaymentMethod[] = [];
 
   postForm = new FormGroup({
     title: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
@@ -44,7 +40,6 @@ export class PostsDetailsComponent {
     stock: new FormControl (0, [Validators.required, Validators.min(0)]),
     isActive: new FormControl (true, [Validators.required]),
     isLeasing: new FormControl (false, [Validators.required]),
-    postPaymentMethods: new FormControl(this.selectedPaymentMethod,[Validators.required]),
     addressForm : new FormGroup ({
       address: new FormControl ('', [Validators.required]),
       location: new FormControl (0, [Validators.required, Validators.min(1)]),
@@ -64,7 +59,6 @@ export class PostsDetailsComponent {
   categories: Category[] = [];
   brands: Brand [] = [];
   subcategories: SubCategory[] = [];
-  paymentMethods: PaymentMethod[] = [];
   photos: File [] = [];
   isAValidPostForm: boolean = false;
   private formValueChangesSubscription: Subscription = new Subscription;
@@ -78,7 +72,6 @@ export class PostsDetailsComponent {
     private photoService: PhotoService,
     private route: ActivatedRoute,
     private sessiontokenService: SessiontokenService,
-    private paymentMethodService: PaymentMethodService,
     private router: Router,
     public dialog: MatDialog
   ) {
@@ -132,7 +125,6 @@ export class PostsDetailsComponent {
     this.postForm.get('stock')?.setValue(this.post.stock);
     this.postForm.get('isActive')?.setValue(this.post.isActive);
     this.postForm.get('isLeasing')?.setValue(this.post.isLeasing);
-    this.postForm.get('postPaymentMethods')?.setValue(this.post.paymentMethods);
 
     if(this.post.product.subCategory.category.id != 0){
       this.getSubCategories(this.post.product.subCategory.category.id);
@@ -153,7 +145,6 @@ export class PostsDetailsComponent {
     this.post.stock = this.postForm.get('stock')?.value ?? 0;
     this.post.isActive = this.postForm.get('isActive')?.value ?? true;
     this.post.isLeasing = this.postForm.get('isLeasing')?.value ?? false;
-    this.post.paymentMethods = this.postForm.get('postPaymentMethods')?.value ?? [];
   }
 
   setFormInfoToAddressForm(addressForm: FormGroup): void {
@@ -266,9 +257,6 @@ export class PostsDetailsComponent {
     if (this.postForm.value.productDescription == "") {
       this.missingRequiredFieldsFirstTab.push('Descripción del producto');
     }
-    if(this.postForm.value.postPaymentMethods?.length == 0){
-      this.missingRequiredFieldsFirstTab.push('Al menos una forma de pago');
-    }
     if (this.postForm.value.isLeasing) {
       if (this.postForm.value.salesPrice == 0 || this.postForm.value.salesPrice == null) {
         this.missingRequiredFieldsFirstTab.push('Precio de venta');
@@ -316,19 +304,6 @@ export class PostsDetailsComponent {
     }
   }
 
-  getPaymentMethods(){
-    this.paymentMethodService
-    .getPaymentMethods()
-      .pipe(
-        takeUntil(this.$_destroyed),
-        map((response: PaymentMethod[]) => (
-          this.paymentMethods = response))
-      )
-    .subscribe();
-  }
-
-  currentPaymentMethods = '';
-  hasPaymentMethods = false;
   getPost(){
     if(this.postID != undefined){
       this.postService
@@ -342,8 +317,6 @@ export class PostsDetailsComponent {
         )
       )
       .subscribe(() => {
-        this.hasPaymentMethods = this.post.paymentMethods.length > 0;
-        this.currentPaymentMethods = this.post.paymentMethods.map( paymentMethod => paymentMethod.name ).join(', ');
         this.setDataInfoToForm();
         this.addressService.setAddress(this.post.address);
         this.photoService.setPhotosINFO(this.post.photos);
@@ -353,10 +326,6 @@ export class PostsDetailsComponent {
         }
       });
     }
-  }
-
-  showPaymentMethodSelector(){
-    this.hasPaymentMethods = false;
   }
 
   setButtonMessage(){
@@ -392,7 +361,6 @@ export class PostsDetailsComponent {
     });
     this.getAuthor();
     this.getCategories();
-    this.getPaymentMethods();
 
     this.formValueChangesSubscription = this.postForm.valueChanges.subscribe(() => {
       if(this.postForm.valid){

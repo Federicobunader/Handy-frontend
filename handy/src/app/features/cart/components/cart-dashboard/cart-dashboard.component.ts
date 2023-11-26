@@ -98,9 +98,9 @@ export class CartDashboardComponent {
     let paymentMethod2 = 0;
     let paymentMethod3 = 0;
     let totalCarts = item.listOfTotalToPayPerCart.length;
-    
+
     item.listOfTotalToPayPerCart.forEach( total => {
-      total.cart.post.paymentMethods.forEach( paymentMethod => {
+      total.totalToPayPerAuthor.author.paymentMethods.forEach( paymentMethod => {
         if(paymentMethod.name == 'Efectivo'){
           paymentMethod1++;
         }

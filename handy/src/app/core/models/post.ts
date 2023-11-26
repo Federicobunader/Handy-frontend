@@ -1,6 +1,5 @@
 import { IIdentifiable } from "./IIdentifiable";
 import { Address } from "./address";
-import { PaymentMethod } from "./paymentMethod";
 import { Photo } from "./photo";
 import { Product } from "./product";
 import { User } from "./user";
@@ -14,5 +13,4 @@ export interface Post extends IIdentifiable{
   isActive: boolean;
   isLeasing: boolean;
   photos : Photo [];
-  paymentMethods: PaymentMethod [];
 }

@@ -3,6 +3,8 @@ import { User } from '../models/user';
 import { AddressMapper } from './address-mapper';
 import { PhotoMapper } from './photo-mapper';
 import { Photo } from '../models/photo';
+import { PaymentMethod } from '../models/paymentMethod';
+import { PaymentMethodMapper } from './payment-method-mapper';
 
 @Injectable({
     providedIn: 'root'
@@ -10,6 +12,7 @@ import { Photo } from '../models/photo';
   export class UserMapper {
     addressMapper = new AddressMapper();
     photoMapper = new PhotoMapper();
+    paymentMethodMapper = new PaymentMethodMapper();
     //Aca transformo la estructura que recibo de Java, la transformo a un model (Se usa para los gets (Traer datos del back))
     //IMPORTANTE: Lo que esta a la izquierda de los :, son las variables del model (front), y lo que esta a la derecha, son las variables
     // DTO de java
@@ -31,6 +34,11 @@ import { Photo } from '../models/photo';
             return this.photoMapper.dtoToPhoto(photoDTO)
           })
           : [],
+        paymentMethods: user?.paymentMethodsDTO
+        ? user.paymentMethodsDTO.map((paymentMethodDTO: any) => {
+          return this.paymentMethodMapper.dtoToPaymentMethod(paymentMethodDTO)
+        })
+        : [],
       };
     }
 
@@ -54,6 +62,11 @@ import { Photo } from '../models/photo';
             return this.photoMapper.photoToDto(photo)
           })
           : [],
+        paymentMethodsDTO: user?.paymentMethods
+        ? user.paymentMethods.map((paymentMethod: PaymentMethod) => {
+          return this.paymentMethodMapper.paymentMethodToDto(paymentMethod)
+        })
+        : [],
     }
 }
 }

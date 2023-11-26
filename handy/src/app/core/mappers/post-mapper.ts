@@ -5,8 +5,6 @@ import { AddressMapper } from './address-mapper';
 import { UserMapper } from './user-mapper';
 import { PhotoMapper } from './photo-mapper';
 import { Photo } from '../models/photo';
-import { PaymentMethodMapper } from './payment-method-mapper';
-import { PaymentMethod } from '../models/paymentMethod';
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +15,7 @@ import { PaymentMethod } from '../models/paymentMethod';
     addressMapper = new AddressMapper();
     userMapper = new UserMapper();
     photoMapper = new PhotoMapper();
-    paymentMethodMapper = new PaymentMethodMapper();
+
 
     dtoToPost(post: any): Post {
       return {
@@ -35,11 +33,6 @@ import { PaymentMethod } from '../models/paymentMethod';
             return this.photoMapper.dtoToPhoto(photo)
           })
           : [],
-        paymentMethods: post?.paymentMethodsDTO
-        ? post.paymentMethodsDTO.map((paymentMethodDTO: any) => {
-          return this.paymentMethodMapper.dtoToPaymentMethod(paymentMethodDTO)
-        })
-        : [],
       };
     }
 
@@ -59,11 +52,6 @@ import { PaymentMethod } from '../models/paymentMethod';
             return this.photoMapper.photoToDto(photo)
           })
           : [],
-        paymentMethodsDTO: post?.paymentMethods
-        ? post.paymentMethods.map((paymentMethod: PaymentMethod) => {
-          return this.paymentMethodMapper.paymentMethodToDto(paymentMethod)
-        })
-        : [],
       };
     }
 

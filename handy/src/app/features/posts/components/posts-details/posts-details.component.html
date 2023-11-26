@@ -30,20 +30,6 @@
               <p class="postCreationLabel">Precio de alquiler por día</p>
               <span style="color: #885B34;font-weight: bold;">$</span><input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
               <mat-error *ngIf="postForm.get('rentalPrice')?.hasError('min')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El precio de alquiler por día debe ser un número mayor o igual a $0</mat-error>
-              <p class="postCreationLabel">Medios de pago aceptados</p>
-              <div *ngIf="!hasPaymentMethods">
-                <mat-form-field class="selectorInput">
-                  <mat-select  multiple name="postPaymentMethods" formControlName="postPaymentMethods">
-                    <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">
-                      {{paymentMethod.name}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-              <div *ngIf="hasPaymentMethods">
-                <p>{{currentPaymentMethods}}</p>
-                <button class="paymentMethodsButton" (click)="showPaymentMethodSelector()">Cambiar métodos de pago</button>
-              </div>
             </div>
             <div class="column-right">
               <p class="postCreationLabel">Categoría</p>
@@ -72,7 +58,7 @@
                 </mat-select>
               </mat-form-field>
               <p class="postCreationLabel">Deposito</p>
-              <span style="color: #885B34;font-weight: bold;">$</span><input class="postCreationInput" type="number" matInput name="depositPrice" formControlName="depositPrice"> 
+              <span style="color: #885B34;font-weight: bold;">$</span><input class="postCreationInput" type="number" matInput name="depositPrice" formControlName="depositPrice">
               <mat-error *ngIf="postForm.get('depositPrice')?.hasError('min')" style="width:80%;margin-bottom:1.5rem;margin-top:-1rem;">El depósito debe ser un número mayor o igual a $0</mat-error>
               <div class="informationContainer">
                 <mat-icon class="informationIcon" (click)="handleInformationClick()">info</mat-icon>

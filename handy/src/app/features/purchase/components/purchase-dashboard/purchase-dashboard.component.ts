@@ -119,15 +119,15 @@ export class PurchaseDashboardComponent {
     });
   }
 
-  
+
   getAvailablePaymentMethods(item: TotalToPayPerCart []){
     let paymentMethod1 = 0;
     let paymentMethod2 = 0;
     let paymentMethod3 = 0;
     let totalCarts = item.length;
-    
+
     item.forEach( total => {
-      total.cart.post.paymentMethods.forEach( paymentMethod => {
+      total.totalToPayPerAuthor.author.paymentMethods.forEach( paymentMethod => {
         if(paymentMethod.name == 'Efectivo'){
           paymentMethod1++;
         }

@@ -26,6 +26,7 @@ export class RegisterDialogComponent implements OnInit {
 
   private $_destroyed = new Subject();
   today: Date = new Date();
+  selectedPaymentMethod: PaymentMethod[] = [];
   @Input() isEdit: Boolean = false;
   @Output() event = new EventEmitter<string>();
 
@@ -52,6 +53,7 @@ export class RegisterDialogComponent implements OnInit {
     userPassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*()]{8,}$')]),
     userPasswordCheck: new FormControl('', [Validators.required, this.passwordMatchValidator.bind(this)]),
     userTel: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern('^[0-9]*$')]),
+    userPaymentMethods: new FormControl(this.selectedPaymentMethod,[Validators.required]),
     addressForm: new FormGroup({
       address: new FormControl('', [Validators.required]),
       location: new FormControl(0, [Validators.required]),
@@ -67,6 +69,7 @@ export class RegisterDialogComponent implements OnInit {
     private photoService: PhotoService,
     private addressService: AddressService,
     private sessiontokenService: SessiontokenService,
+    private paymentMethodService: PaymentMethodService,
     private router: Router,
     public dialog: MatDialog,
   ) {
@@ -83,6 +86,7 @@ export class RegisterDialogComponent implements OnInit {
 
   user: User = this.userService.emptyUser();
   photo: File[] = [];
+  paymentMethods: PaymentMethod[] = [];
   createOrUpdateLabel: string = "REGISTRARSE";
   isAddressFormValid: boolean = false;
   userAlreadyExistWithUsernameFlag = false;
@@ -115,6 +119,7 @@ export class RegisterDialogComponent implements OnInit {
     this.user.username = this.registerForm.get('username')?.value?.toLocaleLowerCase() ?? '';
     this.user.password = this.registerForm.get('userPassword')?.value ?? '';
     this.user.tel = this.registerForm.get('userTel')?.value ?? '';
+    this.user.paymentMethods = this.registerForm.get('userPaymentMethods')?.value ?? [];
   }
 
   setFormInfoToAddressForm(addressForm: FormGroup): void {
@@ -148,6 +153,7 @@ export class RegisterDialogComponent implements OnInit {
     this.registerForm.get('userDateBorn')?.setValue(this.user.dateBorn);
     this.registerForm.get('username')?.setValue(this.user.username);
     this.registerForm.get('userTel')?.setValue(this.user.tel);
+    this.registerForm.get('userPaymentMethods')?.setValue(this.user.paymentMethods);
   }
 
   setPhotoInfoToUser(photos: Photo[]): void {
@@ -328,6 +334,9 @@ export class RegisterDialogComponent implements OnInit {
     if (this.registerForm.value.userTel == "") {
       this.missingRequiredFieldsSecondTab.push('Teléfono');
     }
+    if(this.registerForm.value.userPaymentMethods?.length == 0){
+      this.missingRequiredFieldsFirstTab.push('Al menos una forma de pago');
+    }
     // const dateNow = new Date();
     // let dateIntroduced = this.registerForm.value.userDateBorn;
     // if (dateIntroduced != undefined) {
@@ -357,6 +366,19 @@ export class RegisterDialogComponent implements OnInit {
     }
   }
 
+  getPaymentMethods(){
+    this.paymentMethodService
+    .getPaymentMethods()
+      .pipe(
+        takeUntil(this.$_destroyed),
+        map((response: PaymentMethod[]) => (
+          this.paymentMethods = response))
+      )
+    .subscribe();
+  }
+
+  currentPaymentMethods = '';
+  hasPaymentMethods = false;
   getUser() {
     const token = sessionStorage.getItem('token');
 
@@ -372,6 +394,8 @@ export class RegisterDialogComponent implements OnInit {
           }
           ))
         .subscribe(() => {
+          this.hasPaymentMethods = this.user.paymentMethods.length > 0;
+          this.currentPaymentMethods = this.user.paymentMethods.map( paymentMethod => paymentMethod.name ).join(', ');
           this.setDataInfoToForm();
           this.addressService.setAddress(this.user.address);
           this.photoService.setPhotosINFO(this.user.photo);
@@ -379,6 +403,10 @@ export class RegisterDialogComponent implements OnInit {
     } else {
       console.error('El token de sesión es nulo');
     }
+  }
+
+  showPaymentMethodSelector(){
+    this.hasPaymentMethods = false;
   }
 
   disableFields() {
@@ -390,6 +418,7 @@ export class RegisterDialogComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.setGoogleLoginValues();
+    this.getPaymentMethods();
   }
 
   ngOnDestroy(): void {
