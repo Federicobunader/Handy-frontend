@@ -255,7 +255,13 @@ export class PostsDashboardComponent implements OnInit {
       take(1),
       takeUntil(this.$_destroyed),
       map((response: Post[]) => this.posts = response))
-    .subscribe(() => this.filteredPostsToShow());
+    .subscribe(() => {
+      this.filteredPostsToShow()
+    },
+    (error) => {
+      console.log('error',error);
+      this.dialog.closeAll();
+    });
   }
 
   getDefaultPostsToShow(): void {
@@ -266,7 +272,13 @@ export class PostsDashboardComponent implements OnInit {
         take(1),
         takeUntil(this.$_destroyed),
         map((response: Post[]) => this.posts = response))
-      .subscribe(() => this.filteredPostsToShow());
+      .subscribe(() => {
+        this.filteredPostsToShow()
+      },
+      (error) => {
+        console.log('error',error);
+        this.dialog.closeAll();
+      });
   }
 
   sendTo(post: Post){

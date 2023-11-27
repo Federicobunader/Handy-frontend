@@ -335,7 +335,7 @@ export class RegisterDialogComponent implements OnInit {
       this.missingRequiredFieldsSecondTab.push('Teléfono');
     }
     if(this.registerForm.value.userPaymentMethods?.length == 0){
-      this.missingRequiredFieldsFirstTab.push('Al menos una forma de pago');
+      this.missingRequiredFieldsFirstTab.push('Al menos un medio de pago');
     }
     // const dateNow = new Date();
     // let dateIntroduced = this.registerForm.value.userDateBorn;

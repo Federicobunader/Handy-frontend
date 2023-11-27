@@ -24,8 +24,14 @@
           <mat-button-toggle [ngClass]="{'toggleClicked' : toggleDelivery, 'toggleUnclicked': !toggleDelivery}" (click)="clearAddress()" value="suggestedAddress">RETIRAR POR PUNTO DE ENTREGA</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
-      <div *ngIf="showAddress && !isPurchased" class="addressContainer">
-        <app-address [parentForm]="undefined" (transferAddressForm)="setFormInfoToAddressForm($event)"></app-address>  
+      <div *ngIf="showAddress && !isPurchased" class="purchasedDeliveryContainer">
+        <p class="houseDelivery" style="margin-top:2rem;">Esta es tu dirección registrada en Handy. Si deseás cambiarla, tendrás que ir a Mi Perfil -> Editar datos perosnales</p>
+        <p class="houseDelivery"><b>Provincia:</b> {{this.purchase.buyer.address.location.province.name}}</p>
+        <p class="houseDelivery"><b>Localidad:</b> {{this.purchase.buyer.address.location.name}}</p>
+        <p class="houseDelivery"><b>Código postal:</b> {{this.purchase.buyer.address.postcode}}</p>
+        <p class="houseDelivery"><b>Calle y número:</b> {{this.purchase.buyer.address.street}}</p>
+        <p class="houseDelivery" *ngIf="this.purchase.buyer.address.apartmentFlag"><b>Departamento:</b> {{this.purchase.buyer.address.apartment}}</p>
+        <!-- <app-address [parentForm]="undefined" (transferAddressForm)="setFormInfoToAddressForm($event)"></app-address>   -->
       </div>
       <div *ngIf="showAddress && isPurchased" class="purchasedDeliveryContainer">
         <p class="houseDelivery"><b>Provincia:</b> {{this.purchase.deliveryPoint.location.province.name}}</p>
