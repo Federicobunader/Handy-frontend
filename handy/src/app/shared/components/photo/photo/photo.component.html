@@ -2,7 +2,7 @@
   <div class="container">
     <div class="form-container">
       <mat-card>
-        <div class="drop-zone" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+        <div class="drop-zone" (drop)="onDrop($event)" (dragover)="onDragOver($event)" *ngIf="showDisplayMessage()">
           <div [innerHTML]="displayMessage"></div>
           <input type="file" #fileInput (change)="onFileChange($event)" style="display: none;">
           <button (click)="fileInput.click()" class="photoButton" *ngIf="photosINFO.length < this.maxPhotos">elegí el archivo</button>
