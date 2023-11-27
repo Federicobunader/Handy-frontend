@@ -133,7 +133,7 @@ export class PurchaseDetailComponent implements OnInit{
   method: PaymentMethod = {name: '', id: 0};
   setPaymentMethod(selectedMethod: String){
 
-    this.paymentMethods.forEach( paymentMethod => {
+    this.availablePaymentMethods.forEach( paymentMethod => {
       if(paymentMethod.name == selectedMethod){
         this.method = paymentMethod;
         if(this.method.name == 'Efectivo'){
@@ -155,6 +155,8 @@ export class PurchaseDetailComponent implements OnInit{
   }
 
   get enablePurchaseButton(){
+    console.log(this.methodSelected)
+    console.log(this.deliverySelected)
     return this.methodSelected && this.deliverySelected;
   }
 
