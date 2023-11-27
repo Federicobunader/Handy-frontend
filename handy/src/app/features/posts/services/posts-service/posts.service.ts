@@ -39,6 +39,7 @@ export class PostService {
 
     getActivePostsBySubCategoryAndLocationAndProvince(
       subCategoryID: number[],
+      categoryID: number | undefined,
       locationID: number[],
       brandsID: number[],
       provinceID: number | undefined,
@@ -57,6 +58,10 @@ export class PostService {
 
       if (provinceID) {
         params = params.set('provinceID', provinceID.toString());
+      }
+
+      if (categoryID) {
+        params = params.set('categoryID', categoryID.toString());
       }
 
       if (locationID && locationID.length) {

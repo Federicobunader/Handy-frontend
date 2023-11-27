@@ -128,6 +128,7 @@ export class PostsDashboardComponent implements OnInit {
   getSubCategories(event: any){
     this.selectedCategoryID = event == '--Seleccionar--' ? 0 : event;
     if(this.selectedCategoryID != 0){
+      this.applyFilters();
       this.getSubCategoriesIDs();
       this.getbrands();
       this.categoryService
@@ -235,7 +236,7 @@ export class PostsDashboardComponent implements OnInit {
     this.applyFilters();
   }
 
-  filteredPostsToShow(): void {    
+  filteredPostsToShow(): void {
     this.postsToShow = this.posts.filter(post =>
                       post.title.toLocaleLowerCase().includes(this.selectedTitle.toLocaleLowerCase()));
     this.postsToShow.forEach( post => {
@@ -298,7 +299,7 @@ export class PostsDashboardComponent implements OnInit {
   applyFilters(){
 
     this.postService
-      .getActivePostsBySubCategoryAndLocationAndProvince(this.selectedSubCategoryIDs,this.selectedLocationIDs, this.selectedBrandsIDs,this.selectedProvinceID, this.orderBy, this.activeFlag)
+      .getActivePostsBySubCategoryAndLocationAndProvince(this.selectedSubCategoryIDs, this.selectedCategoryID,this.selectedLocationIDs, this.selectedBrandsIDs,this.selectedProvinceID, this.orderBy, this.activeFlag)
       .pipe(
         take(1),
         takeUntil(this.$_destroyed),
