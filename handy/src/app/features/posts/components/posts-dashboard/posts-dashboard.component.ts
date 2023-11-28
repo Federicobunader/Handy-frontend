@@ -48,7 +48,7 @@ export class PostsDashboardComponent implements OnInit {
   selectedTitle: String = "";
   allSelected = false;
   activeFlag: boolean = true;
-  selectedLeasingFilterFlag: boolean = false;
+  selectedLeasingFilterFlag: boolean | null = null;
 
   categories: Category[] = [];
   subcategories: SubCategory[] = [];
@@ -309,6 +309,7 @@ export class PostsDashboardComponent implements OnInit {
     this.selectedCategoryID = 0;
     this.selectedTitle = "";
     this.selectedBrandsIDs = [];
+    this.selectedLeasingFilterFlag = null;
     (<HTMLInputElement>document.getElementById('category')).value = "0";
     (<HTMLInputElement>document.getElementById('province')).value = "0";
     this.applyFilters();

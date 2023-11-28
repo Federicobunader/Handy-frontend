@@ -45,7 +45,7 @@ export class PostService {
       provinceID: number | undefined,
       orderBy: string,
       activeFlag: boolean,
-      leasingFlag: boolean,
+      leasingFlag: boolean | null,
     ): Observable<Post[]> {
       let params = new HttpParams();
 
