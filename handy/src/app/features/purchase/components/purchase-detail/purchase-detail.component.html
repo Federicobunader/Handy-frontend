@@ -25,7 +25,7 @@
         </mat-button-toggle-group>
       </div>
       <div *ngIf="showAddress && !isPurchased" class="purchasedDeliveryContainer">
-        <p class="houseDelivery" style="margin-top:2rem;">Esta es tu dirección registrada en Handy. Si deseás cambiarla, tendrás que ir a Mi Perfil -> Editar datos perosnales</p>
+        <p class="houseDelivery" style="margin-top:2rem;">Esta es tu dirección registrada en Handy. Si deseás cambiarla, tendrás que ir a Editar datos perosnales en la sección "Mi Perfil"</p>
         <p class="houseDelivery"><b>Provincia:</b> {{this.purchase.buyer.address.location.province.name}}</p>
         <p class="houseDelivery"><b>Localidad:</b> {{this.purchase.buyer.address.location.name}}</p>
         <p class="houseDelivery"><b>Código postal:</b> {{this.purchase.buyer.address.postcode}}</p>

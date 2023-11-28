@@ -164,6 +164,7 @@ export class PostsViewComponent {
       )
     .subscribe(() => {
       this.postService.setPost(this.post);
+      this.availablePaymentMethods = this.post.author.paymentMethods.map( paymentMethod => paymentMethod.name ).join(', ');
       this.amountOfPictures = this.post.photos.length;
       this.post.product.depositPrice = this.post.product.depositPrice;
       this.post.product.rentalPrice = this.post.product.rentalPrice;

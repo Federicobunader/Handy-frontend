@@ -39,11 +39,11 @@
         <div class="productInfoContainer">
           <p class="productPrice"><span class="priceNumber">{{this.post.product.rentalPrice | numberFormat }}</span> alquiler por día <span *ngIf="this.post.product.depositPrice > 0">+ {{this.post.product.depositPrice | numberFormat }} de depósito</span></p><br>
           <p class="productPrice" *ngIf="this.post.isLeasing"><span class="priceNumber">{{this.post.product.salesPrice != undefined ? (this.post.product.salesPrice | numberFormat) : this.post.product.salesPrice }}</span> precio de venta</p><br>
-          <p class="zeroOpinions">Acepta {{availablePaymentMethods}} como medios de pago</p>
-          <div class="locationContainer">
-            <mat-icon class="locationIcon">location_on</mat-icon>
-            <p class="productLocation">{{this.post.address.location.name}}, {{this.post.address.location.province.name}}</p>
-          </div>
+          <div class="paymentMethodsContainer">
+            <mat-icon class="paymentIcon">payment</mat-icon>
+            <p class="paymentMethods" *ngIf="this.post.author.paymentMethods.length > 1">Acepta {{availablePaymentMethods}} como medios de pago</p>
+            <p class="paymentMethods" *ngIf="this.post.author.paymentMethods.length == 1">Acepta únicamente {{availablePaymentMethods}} como medio de pago</p>
+          </div>          
           <div class="ratingContainer">
             <div *ngIf="this.ratings.length != 0">
               <div *ngIf="this.averageScore < 1">
@@ -89,12 +89,23 @@
                 <mat-icon class="starIcon">star</mat-icon>
               </div>
             </div>
+            <div *ngIf="this.ratings.length == 0" class="mobileHide">
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+              <mat-icon class="starIcon">star_outline</mat-icon>
+            </div>
             <a class="opinions" *ngIf="this.ratings.length != 0" (click)="showPostRatings()"><u>{{ratingMessage}}</u></a>
             <p class="zeroOpinions" *ngIf="this.ratings.length == 0">{{ratingMessage}}</p>
           </div>
           <div>
             <br><p class="productInfo"><b>Acerca de este producto</b></p>
             <p class="productInfo" style="margin-top:-1rem;width:100%;text-align:justify;letter-spacing:1px;">{{this.post.product.description}}</p>
+          </div>
+          <div class="locationContainer">
+            <mat-icon class="locationIcon">location_on</mat-icon>
+            <p class="productLocation">{{this.post.address.location.name}}, {{this.post.address.location.province.name}}</p>
           </div>
         </div>
         </div>
