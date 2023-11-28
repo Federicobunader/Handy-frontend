@@ -191,6 +191,18 @@ button:focus {
   box-shadow: 10px 5px 5px #E1AE63;
 }
 
+.starIcon {
+  transform: scale(0.8);
+  color: #885B34;
+  margin-right: -0.3rem;
+}
+
+.scoreContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .filterButton {
   padding-left: 15px;
   padding-right: 15px;
@@ -265,6 +277,13 @@ button:focus {
   width: 80%;
 }
 
+.yourPost {
+  color: rgb(211, 78, 78);
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-bottom: 0rem;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .container {
     padding-top: 3rem;
@@ -327,7 +346,7 @@ button:focus {
   }
 
   .productBox {
-    height: 18rem;
+    height: 20rem;
     width: 9.3rem;
     margin: 0.5rem;
   }
@@ -363,5 +382,13 @@ button:focus {
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+  }
+
+  .scoreContainer {
+    display: contents;
+  }
+
+  .yourPost {
+    margin-left: 0.3rem;
   }
 }
