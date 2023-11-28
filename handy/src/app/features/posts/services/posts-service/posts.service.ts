@@ -44,7 +44,8 @@ export class PostService {
       brandsID: number[],
       provinceID: number | undefined,
       orderBy: string,
-      activeFlag: boolean
+      activeFlag: boolean,
+      leasingFlag: boolean,
     ): Observable<Post[]> {
       let params = new HttpParams();
 
@@ -75,6 +76,10 @@ export class PostService {
       if (activeFlag !== null && activeFlag !== undefined) {
           params = params.set('activeFlag', activeFlag.toString());
       }
+
+      if (leasingFlag !== null && leasingFlag !== undefined) {
+        params = params.set('leasingFlag', leasingFlag.toString());
+    }
 
       return this.http.get<any[]>(filteredPostsURL, { params })
       .pipe(

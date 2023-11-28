@@ -48,6 +48,7 @@ export class PostsDashboardComponent implements OnInit {
   selectedTitle: String = "";
   allSelected = false;
   activeFlag: boolean = true;
+  selectedLeasingFilterFlag: boolean = false;
 
   categories: Category[] = [];
   subcategories: SubCategory[] = [];
@@ -236,6 +237,11 @@ export class PostsDashboardComponent implements OnInit {
     this.applyFilters();
   }
 
+  updateSelectedLeasingFilterFlag(event: any){
+    this.selectedLeasingFilterFlag = event
+    this.applyFilters();
+  }
+
   filteredPostsToShow(): void {
     this.postsToShow = this.posts.filter(post =>
                       post.title.toLocaleLowerCase().includes(this.selectedTitle.toLocaleLowerCase()));
@@ -311,7 +317,7 @@ export class PostsDashboardComponent implements OnInit {
   applyFilters(){
 
     this.postService
-      .getActivePostsBySubCategoryAndLocationAndProvince(this.selectedSubCategoryIDs, this.selectedCategoryID,this.selectedLocationIDs, this.selectedBrandsIDs,this.selectedProvinceID, this.orderBy, this.activeFlag)
+      .getActivePostsBySubCategoryAndLocationAndProvince(this.selectedSubCategoryIDs, this.selectedCategoryID,this.selectedLocationIDs, this.selectedBrandsIDs,this.selectedProvinceID, this.orderBy, this.activeFlag, this.selectedLeasingFilterFlag)
       .pipe(
         take(1),
         takeUntil(this.$_destroyed),

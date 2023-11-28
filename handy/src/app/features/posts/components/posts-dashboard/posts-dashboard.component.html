@@ -16,10 +16,10 @@
                 {{ option.name }}
               </option>
             </select>
-          </div>    
-          <button class="filterButton" (click)="showFilters()">{{showLabel}}</button>       
-        </div> 
-      </div>      
+          </div>
+          <button class="filterButton" (click)="showFilters()">{{showLabel}}</button>
+        </div>
+      </div>
       <div *ngIf="showAllFilters" class="filtersBox">
         <div class="filteringSection">
           <div class="filter">
@@ -67,8 +67,15 @@
               </mat-option>
             </mat-select>
           </div>
+          <div class="filter">
+            <p class="filterLabel">Leasing</p>
+              <mat-checkbox class="example-margin"
+                    (change)="updateSelectedLeasingFilterFlag($event.checked)">
+                    Leasing
+              </mat-checkbox>
+          </div>
           <button class="filterButton" (click)="cleanFilters()">Limpiar filtros</button>
-        </div>        
+        </div>
       </div>
       <hr class="line">
     </div>
@@ -81,7 +88,7 @@
     <div class="postsSectionContainer">
       <div *ngIf="!showEmptyMessage" class="postsSection">
         <div style="display: inline-flex;" *ngFor="let post of postsToShow" (click)="sendTo(post)">
-          <div class="productBox">  
+          <div class="productBox">
             <img src={{post.photos[0].url}} class="postPicture">
             <hr class="productBoxLine">
             <div class="postInformation">
@@ -144,7 +151,7 @@
                   <p *ngIf="this.post.author.id == this.user.id && !this.toolsSearch && !this.post.isActive" class="yourPost">INACTIVA</p>
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
