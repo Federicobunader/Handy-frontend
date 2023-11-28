@@ -13,4 +13,5 @@ export interface Post extends IIdentifiable{
   isActive: boolean;
   isLeasing: boolean;
   photos : Photo [];
+  score: number;
 }

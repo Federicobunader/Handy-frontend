@@ -33,6 +33,7 @@ import { Photo } from '../models/photo';
             return this.photoMapper.dtoToPhoto(photo)
           })
           : [],
+        score: post?.score ? post.score : 0,
       };
     }
 
