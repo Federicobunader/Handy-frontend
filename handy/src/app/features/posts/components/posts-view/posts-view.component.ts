@@ -46,8 +46,6 @@ export class PostsViewComponent {
       this.getPost();
      });
      this.getUser();
-     //this.getAverageScore();
-     this.getRatings();
   }
 
   user: User = this.userService.emptyUser();
@@ -70,17 +68,6 @@ export class PostsViewComponent {
     }
   }
 
-  getAverageScore(){
-    this.postRatingService
-    .getAverageScore(this.postID)
-      .pipe(
-        takeUntil(this.$_destroyed),
-        map((response: number) => (
-          this.averageScore = response))
-      )
-    .subscribe();
-  }
-
   ratingMessage = '';
   getRatings(){
     this.postRatingService
@@ -91,9 +78,7 @@ export class PostsViewComponent {
           this.ratings = response))
       )
     .subscribe(() => {
-      let averageSum = 0;
-      this.ratings.forEach( rating => averageSum += rating.score);
-      this.averageScore = this.ratings.length > 0 ? (averageSum / this.ratings.length) : 0;
+      console.log(this.post)
       if(this.ratings.length == 0){
         this.ratingMessage = 'No hay opiniones sobre este producto.'
       } else if (this.ratings.length == 1){
@@ -164,6 +149,7 @@ export class PostsViewComponent {
       )
     .subscribe(() => {
       this.postService.setPost(this.post);
+      this.getRatings();
       this.availablePaymentMethods = this.post.author.paymentMethods.map( paymentMethod => paymentMethod.name ).join(', ');
       this.amountOfPictures = this.post.photos.length;
       this.post.product.depositPrice = this.post.product.depositPrice;

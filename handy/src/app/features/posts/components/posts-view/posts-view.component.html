@@ -18,14 +18,14 @@
               <p class="productAuthor" *ngIf="this.post.author.id != this.user.id">Publicación de {{this.post.author.username}}</p>
               <p class="stockInfo" *ngIf="this.post.stock == 1">{{this.post.stock}} unidad disponible</p>
               <p class="stockInfo" *ngIf="this.post.stock == 0">Sin stock</p>
-              <p class="stockInfo" *ngIf="this.post.stock > 1">{{this.post.stock}} unidades disponibles</p> 
-            </div>         
+              <p class="stockInfo" *ngIf="this.post.stock > 1">{{this.post.stock}} unidades disponibles</p>
+            </div>
             <div *ngIf="this.post.author.id != this.user.id">
               <a class="whatsAppContact" target="_blank" href="https://api.whatsapp.com/send/?phone=549{{this.post.author.tel}}&text=Hola,+c%C3%B3mo+est%C3%A1s%3F+Te+quer%C3%ADa+consultar+por+una+publicaci%C3%B3n+que+ten%C3%A9s+en+Handy.">
                 <img src="../../../../../assets/icons/WhatsAppLogo.png" class="whatsAppButton">
               </a>
             </div>
-          </div>          
+          </div>
           <div style="margin-top:2rem;" *ngIf="this.post.stock > 0">
               <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createCart()">AGREGAR AL CARRITO</button>
               <button class="postButton" *ngIf="this.post.author.id != this.user.id" (click)="createComment()">HACER UNA CONSULTA</button>
@@ -43,45 +43,45 @@
             <mat-icon class="paymentIcon">payment</mat-icon>
             <p class="paymentMethods" *ngIf="this.post.author.paymentMethods.length > 1">Acepta {{availablePaymentMethods}} como medios de pago</p>
             <p class="paymentMethods" *ngIf="this.post.author.paymentMethods.length == 1">Acepta únicamente {{availablePaymentMethods}} como medio de pago</p>
-          </div>          
+          </div>
           <div class="ratingContainer">
             <div *ngIf="this.ratings.length != 0">
-              <div *ngIf="this.averageScore < 1">
+              <div *ngIf="this.post.score < 1">
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
               </div>
-              <div *ngIf="this.averageScore >= 1 && this.averageScore < 2">
+              <div *ngIf="this.post.score >= 1 && this.post.score < 2">
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
               </div>
-              <div *ngIf="this.averageScore >= 2 && this.averageScore < 3">
+              <div *ngIf="this.post.score >= 2 && this.post.score < 3">
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
               </div>
-              <div *ngIf="this.averageScore >= 3 && this.averageScore < 4">
+              <div *ngIf="this.post.score >= 3 && this.post.score < 4">
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
               </div>
-              <div *ngIf="this.averageScore >= 4 && this.averageScore < 5">
+              <div *ngIf="this.post.score >= 4 && this.post.score < 5">
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star_outline</mat-icon>
               </div>
-              <div *ngIf="this.averageScore == 5">
+              <div *ngIf="this.post.score == 5">
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star</mat-icon>
                 <mat-icon class="starIcon">star</mat-icon>
