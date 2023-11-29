@@ -239,17 +239,15 @@ export class PostsDashboardComponent implements OnInit {
 
   updateSelectedLeasingFilterFlag(event: any){
     this.selectedLeasingFilterFlag = event
+    if(this.selectedLeasingFilterFlag === false){
+      this.selectedLeasingFilterFlag = null;
+    }
     this.applyFilters();
   }
 
   filteredPostsToShow(): void {
     this.postsToShow = this.posts.filter(post =>
                       post.title.toLocaleLowerCase().includes(this.selectedTitle.toLocaleLowerCase()));
-    this.postsToShow.forEach( post => {
-      post.product.rentalPrice = post.product.rentalPrice;
-      post.product.salesPrice = post.product.rentalPrice;
-      post.product.depositPrice = post.product.rentalPrice;
-    });
     this.showEmptyMessage = this.postsToShow.length == 0;
     this.dialog.closeAll();
   }
