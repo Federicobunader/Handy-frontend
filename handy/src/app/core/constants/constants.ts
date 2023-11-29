@@ -36,6 +36,7 @@ export const checkIfUserAlreadyExistWithMail = userURL + '/checkIfUserAlreadyExi
 export const userAlreadyExistWithUsername = userURL + '/userAlreadyExistWithUsername'
 export const ARURL = apiURL + '/augmented_reality'
 export const chatGPTURL = apiURL + '/chat'
+export const handyIAModelURL = apiURL + '/iaModel'
 
 
 export const googleAccessTokenKey = 'google_access_token';
