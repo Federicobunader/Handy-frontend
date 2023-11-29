@@ -233,7 +233,7 @@ button:focus {
     .topContainer {
         padding-top: 1rem;
         padding-left: 2rem;
-        padding-right: 0rem;
+        padding-right: 1rem;
     }
 
     .mobileHide{

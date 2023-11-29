@@ -62,7 +62,7 @@ button:focus {
   width: 20%;
 }
 
-.checkboxFilter{
+.checkboxFilter {
   margin-right: 1rem;
   width: 30%;
 }
@@ -166,10 +166,10 @@ button:focus {
 }
 
 .postsSection {
-  margin: auto;
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: 30px;
 }
 
 .postPicture {
@@ -352,7 +352,7 @@ button:focus {
     margin-top: 1.5rem;
   }
 
-  .cleanFilterButton{
+  .cleanFilterButton {
     margin-left: 1.2rem;
     margin-top: 1.5rem;
   }
@@ -383,13 +383,15 @@ button:focus {
   }
 
   .postsSection {
-    width: 100%;
+    display: flex;
+    grid-gap: 10px;
+    justify-content: center;
   }
 
   .productBox {
     height: 22rem;
     width: 9.3rem;
-    margin: 0.5rem;
+    margin: 0rem;
   }
 
   .postPicture {
@@ -433,7 +435,7 @@ button:focus {
     margin-left: 0.3rem;
   }
 
-  .checkboxFilter{
+  .checkboxFilter {
     margin-top: 1rem;
     width: 100%;
   }

@@ -75,15 +75,17 @@
           <button class="cleanFilterButton" (click)="cleanFilters()">Limpiar filtros</button>
         </div>
       </div>
-      <hr class="line">
     </div>
     <div *ngIf="showEmptyMessage" class="emptyMessageContainer">
+      <hr class="line">
       <p class="message">{{emptyMessage}}</p>
       <div *ngIf="!toolsSearch">
         <button class="createPostButton" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
       </div>
+      <hr class="line">
     </div>
     <div class="postsSectionContainer">
+      <hr class="line">
       <div *ngIf="!showEmptyMessage" class="postsSection">
         <div style="display: inline-flex;" *ngFor="let post of postsToShow" (click)="sendTo(post)">
           <div class="productBox">
@@ -153,8 +155,8 @@
           </div>
         </div>
       </div>
+      <hr class="line">
     </div>
-    <hr *ngIf="toolsSearch" class="line">
   </div>
   <div *ngIf="toolsSearch" style="padding-top:30vh;padding-bottom:1rem;background-color:#f8f3e7;">
     <p class="footer">© 2023 Handy Argentina</p>
