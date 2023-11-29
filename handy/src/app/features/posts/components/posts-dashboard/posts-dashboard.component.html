@@ -77,15 +77,15 @@
       </div>
     </div>
     <div *ngIf="showEmptyMessage" class="emptyMessageContainer">
-      <hr class="line">
+      <hr class="line" *ngIf="toolsSearch">
       <p class="message">{{emptyMessage}}</p>
       <div *ngIf="!toolsSearch">
         <button class="createPostButton" routerLink="/posts/details">CREAR PUBLICACIÓN</button>
       </div>
-      <hr class="line">
+      <hr class="line" *ngIf="toolsSearch">
     </div>
     <div class="postsSectionContainer">
-      <hr class="line">
+      <hr class="line" *ngIf="toolsSearch">
       <div *ngIf="!showEmptyMessage" class="postsSection">
         <div style="display: inline-flex;" *ngFor="let post of postsToShow" (click)="sendTo(post)">
           <div class="productBox">
@@ -155,7 +155,7 @@
           </div>
         </div>
       </div>
-      <hr class="line">
+      <hr class="line" *ngIf="toolsSearch">
     </div>
   </div>
   <div *ngIf="toolsSearch" style="padding-top:30vh;padding-bottom:1rem;background-color:#f8f3e7;">

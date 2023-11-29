@@ -9,6 +9,8 @@ import { CartService } from '../../services/cart-service/cart.service';
 import { Cart } from 'src/app/core/models/cart';
 import { Post } from 'src/app/core/models/post';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ProgressSpinnerComponent } from 'src/app/shared/components/progress-spinner/progress-spinner.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -29,6 +31,7 @@ export class DialogCartDetailComponent {
     private userService: UserService,
     private cartService: CartService,
     private route: ActivatedRoute,
+    public dialog: MatDialog,
   ) {
     this.amount = new FormControl(data.amount, [Validators.required, Validators.min(0), Validators.max(data.post.stock)]);
     this.dateTo = new FormControl(data.cart?.dateTo ? data.cart.dateTo : null);
@@ -87,6 +90,10 @@ export class DialogCartDetailComponent {
 
   onSaveClick(): void {
     if (this.amount.valid) {
+      const dialogRef = this.dialog.open(ProgressSpinnerComponent, {
+        panelClass: 'transparent',
+        disableClose: true
+      });
       this.cart.amount = this.amount.value;
       this.cart.isLeasing = this.optionChosen === "comprar";
       this.cart.dateTo = this.dateTo.value;
@@ -101,10 +108,12 @@ export class DialogCartDetailComponent {
           if(this.isEdit){
             window.location.reload();
           }
-        });;
+        });
+        dialogRef.close();
       },
       () => {
-        Swal.fire('Error', 'Hubo un error', 'error');
+        Swal.fire('Error', 'Hubo un error', 'error');        
+        dialogRef.close();
       });
     }
     this.dialogRef.close();

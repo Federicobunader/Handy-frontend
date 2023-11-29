@@ -54,7 +54,8 @@
 
 .descriptionInput {
     width: 90%;
-    height: 5rem;
+    max-width: 90%;
+    height: 10rem;
     border: 0.2rem solid #885B34;
     margin-bottom: 3rem;
     background-color: #f8f3e7;
