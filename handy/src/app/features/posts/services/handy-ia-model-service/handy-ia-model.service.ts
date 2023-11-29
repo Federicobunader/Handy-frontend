@@ -1,14 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { chatGPTURL } from 'src/app/core/constants/constants';
+import { handyIAModelURL } from 'src/app/core/constants/constants';
 import { RecommendationResponse } from "../../../../core/models/recommendationResponse";
 import { RecommendationResponseMapper } from "../../../../core/mappers/recommendation-response-mapper";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ChatGPTService {
+export class HandyIAModelService {
     constructor(
         private http: HttpClient,
         private mapper: RecommendationResponseMapper
@@ -23,7 +23,7 @@ export class ChatGPTService {
             params = params.set('prompt', prompt);
         }
         return this.http
-            .get<any[]>(chatGPTURL + '/postsByPrompt', { params })
+            .get<any[]>(handyIAModelURL + '/postsByPrompt', { params })
             .pipe(
                 map((response) => {
                   return this.mapper.dtoToRecommendationResponse(response)

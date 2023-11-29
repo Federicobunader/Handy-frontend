@@ -17,6 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { DialogRatingDetailsComponent } from '../../shared/components/rating-details/rating-details.component';
 import { PostsArViewerComponent } from './components/posts-ar-viewer/posts-ar-viewer.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CartRoutingModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
+    MatSlideToggleModule,
   ],
   exports: [
     PostsViewComponent,

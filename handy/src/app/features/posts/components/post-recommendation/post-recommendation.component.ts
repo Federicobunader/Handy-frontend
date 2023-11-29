@@ -9,6 +9,7 @@ import { User } from 'src/app/core/models/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { SessiontokenService } from 'src/app/features/home/services/sessiontoken.service';
 import { RecommendationResponse } from "../../../../core/models/recommendationResponse";
+import { HandyIAModelService } from "../../services/handy-ia-model-service/handy-ia-model.service";
 
 @Component({
   selector: 'app-post-recommendation',
@@ -24,8 +25,12 @@ export class PostRecommendationComponent implements OnInit {
   recommendations: Recommendation[] = [];
   wasFound: Boolean = true;
 
+  handyModelNotWorking: Boolean = false;
+  isHandyModelSelected: Boolean = false;
+
   constructor(
     private chatGPTService: ChatGPTService,
+    private handyIAModelService: HandyIAModelService,
     private router: Router,
     private sessiontokenService: SessiontokenService,
     private userService: UserService
@@ -56,17 +61,30 @@ export class PostRecommendationComponent implements OnInit {
 
   getPostsByPrompt() {
     const prompt = this.prompt.value;
+    this.handyModelNotWorking = false;
     if (prompt) {
       this.emptyTask = false;
       this.loading = true;
-      this.chatGPTService
-        .getPostsByPrompt(prompt)
-        .pipe(take(1))
-        .subscribe((response: RecommendationResponse) => {
-          this.wasFound = response.wasFound;
-          this.recommendations = response.recommendations;
-          this.loading = false;
-        });
+      if (this.isHandyModelSelected) {
+        //this.handyModelNotWorking = true;
+        this.handyIAModelService
+          .getPostsByPrompt(prompt)
+          .pipe(take(1))
+          .subscribe((response: RecommendationResponse) => {
+            this.handyModelNotWorking = !response.wasFound;
+            this.recommendations = response.recommendations;
+            this.loading = false;
+          });
+      } else {
+        this.chatGPTService
+          .getPostsByPrompt(prompt)
+          .pipe(take(1))
+          .subscribe((response: RecommendationResponse) => {
+            this.wasFound = response.wasFound;
+            this.recommendations = response.recommendations;
+            this.loading = false;
+          });
+      }
     } else {
       this.emptyTask = true;
     }
