@@ -4,6 +4,7 @@
     color: #885B34;
     padding-bottom: 2rem;
     letter-spacing: 0.1rem;
+    line-height: 3.5rem;
 }
 
 .goBack {
@@ -102,7 +103,7 @@
     font-family: 'Roboto', monospace;
     color: #885B34;
     margin-bottom: 2rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
 }
 
 .productAuthor {

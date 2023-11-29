@@ -67,14 +67,12 @@
               </mat-option>
             </mat-select>
           </div>
-          <div class="filter">
-            <p class="filterLabel">Leasing</p>
-              <mat-checkbox class="example-margin"
-                    (change)="updateSelectedLeasingFilterFlag($event.checked)">
-                    Leasing
+          <div class="checkboxFilter">
+              <mat-checkbox class="example-margin" (change)="updateSelectedLeasingFilterFlag($event.checked)">
+                    <span class="checkboxLabel" style=>Con posibilidad de compra</span>
               </mat-checkbox>
           </div>
-          <button class="filterButton" (click)="cleanFilters()">Limpiar filtros</button>
+          <button class="cleanFilterButton" (click)="cleanFilters()">Limpiar filtros</button>
         </div>
       </div>
       <hr class="line">

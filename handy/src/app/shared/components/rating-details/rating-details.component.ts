@@ -59,7 +59,7 @@ export class DialogRatingDetailsComponent {
     this.postRating.author = this.data.author;
     this.postRating.score = this.score;
     this.postRating.description = String(this.comment);
-    this.postRating.cart =this.data.cart;
+    this.postRating.cart = this.data.cart;
 
     if(!this.data.isUserRating){
       this.postRating.post =  this.data.post;

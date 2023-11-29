@@ -62,6 +62,11 @@ button:focus {
   width: 20%;
 }
 
+.checkboxFilter{
+  margin-right: 1rem;
+  width: 30%;
+}
+
 .filterMultiselect {
   margin-right: 0.1rem;
   width: 20%;
@@ -137,8 +142,17 @@ button:focus {
   margin-left: 0.5rem;
 }
 
+.checkboxLabel {
+  color: #885B34;
+  font-size: small;
+  font-family: 'Roboto', monospace;
+  font-weight: bold;
+  margin-bottom: -0.1rem;
+  margin-left: -0.5rem;
+}
+
 .productBox {
-  height: 21rem;
+  height: 22rem;
   width: 15rem;
   background-color: #FAFAF5;
   border: 0.2rem solid #885B34;
@@ -155,7 +169,7 @@ button:focus {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .postPicture {
@@ -204,8 +218,8 @@ button:focus {
 }
 
 .filterButton {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   width: 16rem;
   color: white;
   background-color: #E1AE63;
@@ -221,6 +235,28 @@ button:focus {
 }
 
 .filterButton:hover {
+  background-color: #885B34;
+}
+
+
+.cleanFilterButton {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 12rem;
+  color: white;
+  background-color: #E1AE63;
+  border-color: #885B34;
+  font-size: small;
+  font-family: 'Roboto', monospace;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  height: 2rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  margin-left: 2rem;
+}
+
+.cleanFilterButton:hover {
   background-color: #885B34;
 }
 
@@ -316,6 +352,11 @@ button:focus {
     margin-top: 1.5rem;
   }
 
+  .cleanFilterButton{
+    margin-left: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
   .filtersBox {
     margin: 2rem;
     box-shadow: none;
@@ -346,7 +387,7 @@ button:focus {
   }
 
   .productBox {
-    height: 20rem;
+    height: 22rem;
     width: 9.3rem;
     margin: 0.5rem;
   }
@@ -390,5 +431,10 @@ button:focus {
 
   .yourPost {
     margin-left: 0.3rem;
+  }
+
+  .checkboxFilter{
+    margin-top: 1rem;
+    width: 100%;
   }
 }

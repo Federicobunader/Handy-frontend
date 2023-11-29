@@ -167,7 +167,7 @@ export class PurchaseDashboardComponent {
     dialogRef.componentInstance.wasSaved = false;
     dialogRef.afterClosed().subscribe( result => {
       this.totalsToPayPerCart.forEach( total => {
-        if(total.cart.post.id == cart.post.id){
+        if(total.cart.id == cart.id){
           total.cart.userAlreadyRatedPost = dialogRef.componentInstance.wasSaved;
         }
       })

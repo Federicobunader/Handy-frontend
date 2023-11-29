@@ -66,8 +66,8 @@ app-register-dialog {
 }
 
 app-posts-dashboard {
-  margin-top: -6rem;
-  margin-bottom: 1rem;
+  width: 105%;
+  margin-bottom: 7rem;
   margin-left: -6rem;
 }
 
