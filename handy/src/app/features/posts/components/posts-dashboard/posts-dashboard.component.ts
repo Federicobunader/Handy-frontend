@@ -239,6 +239,9 @@ export class PostsDashboardComponent implements OnInit {
 
   updateSelectedLeasingFilterFlag(event: any){
     this.selectedLeasingFilterFlag = event;
+    if(this.selectedLeasingFilterFlag === false){
+      this.selectedLeasingFilterFlag = null;
+    }
     this.applyFilters();
   }
 
