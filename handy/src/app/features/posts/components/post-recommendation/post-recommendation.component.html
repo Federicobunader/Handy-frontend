@@ -62,7 +62,55 @@
                               <mat-icon style="margin-top:-0.2rem;transform:scale(0.8);margin-left:-0.3rem;">location_on</mat-icon>
                               <p>{{post.address.location.name}}</p>
                             </div>
-                            <p *ngIf="this.post.author.id == this.user.id" style="color:rgb(211, 78, 78);font-weight:bold;font-size:0.8rem;">Tu publicación</p>
+                            <div class="scoreContainer">
+                              <div>
+                                <div *ngIf="post.score < 1">
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                </div>
+                                <div *ngIf="post.score >= 1 && post.score < 2">
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                </div>
+                                <div *ngIf="post.score >= 2 && post.score < 3">
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                </div>
+                                <div *ngIf="post.score >= 3 && post.score < 4">
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                </div>
+                                <div *ngIf="post.score >= 4 && post.score < 5">
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star_outline</mat-icon>
+                                </div>
+                                <div *ngIf="post.score == 5">
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                  <mat-icon class="starIcon">star</mat-icon>
+                                </div>
+                              </div>
+                              <div>
+                                <p *ngIf="this.post.author.id == this.user.id" class="yourPost">Tu publicación</p>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { BrandsService } from '../../services/brands-service/brands.service';
 import { Brand } from 'src/app/core/models/brand';
 import { MatDialog } from '@angular/material/dialog';
+import { ProgressSpinnerComponent } from 'src/app/shared/components/progress-spinner/progress-spinner.component';
 import { MissingRequiredFieldsComponent } from 'src/app/shared/components/missing-required-fields/missing-required-fields.component';
 import Swal from 'sweetalert2';
 
@@ -178,6 +179,10 @@ export class PostsDetailsComponent {
     let invalid = false;
     if(this.post.photos.length > 0){
       if (this.postForm.valid && this.isAddressFormValid) {
+        const dialogRef = this.dialog.open(ProgressSpinnerComponent, {
+          panelClass: 'transparent',
+          disableClose: true
+        });
         this.setFormInfoToPostForm();
 
         this.postService
@@ -196,10 +201,12 @@ export class PostsDetailsComponent {
                 Swal.fire('Exito','¡Publicacion creada exitosamente!','success');
               }
               this.router.navigateByUrl('/posts/view/' + this.post.id);
+              dialogRef.close();
             },
             (error) => {
               // Error en la operación: mostrar notificación de error con el mensaje del error
               Swal.fire('Error', 'No se pudo crear la publicacion', 'error');
+              dialogRef.close();
             }
           );
       } else {

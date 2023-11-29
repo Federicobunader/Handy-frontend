@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { PaymentMethod } from 'src/app/core/models/paymentMethod';
 import { PaymentMethodService } from 'src/app/shared/services/payment-method/payment-method.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ProgressSpinnerComponent } from 'src/app/shared/components/progress-spinner/progress-spinner.component';
 import { DialogCheckMailComponent } from '../check-mail/check-mail/check-mail.component';
 import { MissingRequiredFieldsComponent } from 'src/app/shared/components/missing-required-fields/missing-required-fields.component';
 import Swal from 'sweetalert2';
@@ -180,6 +181,10 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   createOrUpdateUser() {
+    const dialogRef = this.dialog.open(ProgressSpinnerComponent, {
+      panelClass: 'transparent',
+      disableClose: true
+    });
     this.userService
       .register(this.user, this.photo)
       .pipe(takeUntil(this.$_destroyed))
@@ -194,10 +199,12 @@ export class RegisterDialogComponent implements OnInit {
             Swal.fire('Exito', message, 'success');
             this.event.emit('Shut register toggle');
           }
+          dialogRef.close();
         },
         (error) => {
           // Error en la operación: mostrar notificación de error con el mensaje del error
           Swal.fire('Error', 'Usuario o Email repetidos', 'error');
+          dialogRef.close();
         }
       );
   }

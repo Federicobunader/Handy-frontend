@@ -74,6 +74,13 @@ export class PostRecommendationComponent implements OnInit {
             this.handyModelNotWorking = !response.wasFound;
             this.recommendations = response.recommendations;
             this.loading = false;
+            this.recommendations.forEach( recommendation => {
+              recommendation.posts.forEach( post => {
+                if(post.title.length >= 50){
+                  post.title = post.title.slice(0, 47) + '...';
+                }
+              })
+            })
           });
       } else {
         this.chatGPTService
@@ -83,6 +90,13 @@ export class PostRecommendationComponent implements OnInit {
             this.wasFound = response.wasFound;
             this.recommendations = response.recommendations;
             this.loading = false;
+            this.recommendations.forEach( recommendation => {
+              recommendation.posts.forEach( post => {
+                if(post.title.length >= 50){
+                  post.title = post.title.slice(0, 47) + '...';
+                }
+              })
+            })
           });
       }
     } else {
