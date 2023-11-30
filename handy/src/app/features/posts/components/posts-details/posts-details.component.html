@@ -76,7 +76,7 @@
             <p class="postCreationLabel">Descripcion del Producto</p>
             <textarea class="descriptionInput" type="text" matInput name="productDescription"
               formControlName="productDescription" spellcheck></textarea>
-            <mat-error *ngIf="postForm.get('productDescription')?.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">La descripción puede tener hasta 500 caracteres</mat-error>
+            <mat-error *ngIf="postForm.get('productDescription')?.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">La descripción puede tener hasta 1500 caracteres</mat-error>
             <p class="checkboxInput"><input type="checkbox" formControlName="isLeasing"> Quiero que los usuarios puedan comprar mi producto.</p>
             <br>
             <div *ngIf="this.postForm.get('isLeasing')?.value">
