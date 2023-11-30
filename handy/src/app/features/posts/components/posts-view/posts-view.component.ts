@@ -4,6 +4,7 @@ import { PostService } from '../../services/posts-service/posts.service';
 import { Subject, map, takeUntil } from 'rxjs';
 import { Post } from 'src/app/core/models/post';
 import { MatDialog } from '@angular/material/dialog';
+import { ProgressSpinnerComponent } from 'src/app/shared/components/progress-spinner/progress-spinner.component';
 import { DialogCartDetailComponent } from 'src/app/features/cart/components/cart-detail/cart-detail.component';
 import { DialogPostsCommentDetailsComponent } from '../posts-comment-details/posts-comment-details.component';
 import { DialogPostsRatingsComponent } from '../post-ratings/post-ratings.component';
@@ -140,6 +141,11 @@ export class PostsViewComponent {
 
   availablePaymentMethods = '';
   getPost(){
+    const dialogRef = this.dialog.open(ProgressSpinnerComponent, {
+      panelClass: 'transparent',
+      disableClose: true
+    });
+
     this.postService
     .getPostByID(this.postID)
       .pipe(
@@ -152,9 +158,7 @@ export class PostsViewComponent {
       this.getRatings();
       this.availablePaymentMethods = this.post.author.paymentMethods.map( paymentMethod => paymentMethod.name ).join(', ');
       this.amountOfPictures = this.post.photos.length;
-      this.post.product.depositPrice = this.post.product.depositPrice;
-      this.post.product.rentalPrice = this.post.product.rentalPrice;
-      this.post.product.salesPrice = this.post.product.salesPrice;
+      dialogRef.close();
     });
   }
 

@@ -242,6 +242,7 @@ button:focus {
 
     .title {
         font-size: 2rem;
+        line-height: 2rem;
     }
 
     .goBack {
@@ -292,6 +293,7 @@ button:focus {
 
     .productInfo {
         font-size: 1rem;
+        line-height: 1.3rem;
     }
 
     .productLocation{

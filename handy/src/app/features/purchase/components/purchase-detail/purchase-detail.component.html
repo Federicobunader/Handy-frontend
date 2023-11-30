@@ -21,7 +21,7 @@
       <div *ngIf="!isPurchased" class="deliveryContainer">
         <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="deliveryButtons">
           <mat-button-toggle [ngClass]="{'toggleClicked' : toggleHome, 'toggleUnclicked': !toggleHome}" (click)="loadAddressFromUser()" value="home">ENVÍO A MI CASA</mat-button-toggle>
-          <mat-button-toggle [ngClass]="{'toggleClicked' : toggleDelivery, 'toggleUnclicked': !toggleDelivery}" (click)="clearAddress()" value="suggestedAddress">RETIRAR POR PUNTO DE ENTREGA</mat-button-toggle>
+          <mat-button-toggle [ngClass]="{'toggleClicked' : toggleDelivery, 'toggleUnclicked': !toggleDelivery}" (click)="clearAddress()" value="suggestedAddress">PUNTO DE ENTREGA</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
       <div *ngIf="showAddress && !isPurchased" class="purchasedDeliveryContainer">
@@ -41,7 +41,7 @@
         <p class="houseDelivery" *ngIf="this.purchase.deliveryPoint.apartmentFlag"><b>Departamento:</b> {{this.purchase.deliveryPoint.apartment}}</p>
       </div>
       <div *ngIf="!showAddress && deliverySelected">
-        <p class="deliveryMessage">Una vez efectuada la compra/alquiler, podrás arreglar con el vendedor el punto de entrega.</p>
+        <p class="deliveryMessage">Una vez efectuada la compra/alquiler, podrás arreglar con el vendedor el punto de entrega para retirar tus productos.</p>
       </div>
     </div>   
     <div class="box"> 
