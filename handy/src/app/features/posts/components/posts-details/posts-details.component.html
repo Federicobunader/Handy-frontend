@@ -27,9 +27,11 @@
               <p class="postCreationLabel">Stock</p>
               <input class="postCreationInput" type="number" matInput name="stock" formControlName="stock">
               <mat-error *ngIf="postForm.get('stock')?.hasError('min')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El stock debe ser un número mayor o igual a 0</mat-error>
+              <mat-error *ngIf="postForm.get('stock')?.hasError('max')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El stock debe ser un número menor a 1.000.000.000</mat-error>
               <p class="postCreationLabel">Precio de alquiler por día</p>
               <span style="color: #885B34;font-weight: bold;">$</span><input class="postCreationInput" type="number" matInput name="rentalPrice" formControlName="rentalPrice">
               <mat-error *ngIf="postForm.get('rentalPrice')?.hasError('min')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El precio de alquiler por día debe ser un número mayor o igual a $0</mat-error>
+              <mat-error *ngIf="postForm.get('rentalPrice')?.hasError('max')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El precio de alquiler debe ser un número menor a 1.000.000.000</mat-error>
             </div>
             <div class="column-right">
               <p class="postCreationLabel">Categoría</p>
@@ -60,6 +62,7 @@
               <p class="postCreationLabel">Deposito</p>
               <span style="color: #885B34;font-weight: bold;">$</span><input class="postCreationInput" type="number" matInput name="depositPrice" formControlName="depositPrice">
               <mat-error *ngIf="postForm.get('depositPrice')?.hasError('min')" style="width:80%;margin-bottom:1.5rem;margin-top:-1rem;">El depósito debe ser un número mayor o igual a $0</mat-error>
+              <mat-error *ngIf="postForm.get('depositPrice')?.hasError('max')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El depósito debe ser un número menor a 1.000.000.000</mat-error>
               <div class="informationContainer">
                 <mat-icon class="informationIcon" (click)="handleInformationClick()">info</mat-icon>
                 <p *ngIf="openInformationModal" class="depositInformation">El depósito es un monto que el usuario que
@@ -80,6 +83,7 @@
               <p class="postCreationLabel">Precio de venta</p>
               <span style="color: #885B34;font-weight: bold;">$</span><input class="postTitleInput" type="number" matInput name="salesPrice" formControlName="salesPrice">
               <mat-error *ngIf="postForm.get('salesPrice')?.hasError('min')" style="width:80%;margin-bottom:1.5rem;margin-top:-1rem;">El precio de venta debe ser un número mayor o igual a $0</mat-error>
+              <mat-error *ngIf="postForm.get('salesPrice')?.hasError('max')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El precio de venta debe ser un número menor a 1.000.000.000</mat-error>
             </div>
             <br>
             <p class="checkboxInput"><input type="checkbox" formControlName="isActive"> {{this.activeCheckboxLabel}}</p>
