@@ -30,6 +30,7 @@
                 <p class="label">¿Qué tarea necesitás llevar a cabo?</p>
                 <div>
                   <input class="input" placeholder="Por ejemplo: Armar una mesa" [formControl]="prompt">
+                  <br>
                   <mat-error *ngIf="prompt.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">La descripción de la tarea no puede tener mas de 100 caracteres</mat-error>
                   <mat-slide-toggle style="margin-left: 2%" [(ngModel)]="isHandyModelSelected">Modelo IA de Handy (beta)</mat-slide-toggle>
                 </div>
