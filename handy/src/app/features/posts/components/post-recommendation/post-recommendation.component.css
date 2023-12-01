@@ -181,11 +181,12 @@ button:focus {
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     .container {
-        margin: 2rem;
+        margin: 1rem;
     }
 
     .recommendationLabel{
         line-height: 1.5rem;
+        margin-left: 2rem;
     }
 
     .photoWebContainer {
@@ -220,8 +221,8 @@ button:focus {
     }
 
     .postsSectionContainer {
-        margin-left: 1.3rem;
-        margin-right: 1.3rem;
+        margin-left: 0rem;
+        margin-right: 0rem;
         margin-bottom: 1.3rem;
     }
 
@@ -230,7 +231,7 @@ button:focus {
     }
 
     .productBox {
-        height: 18rem;
+        height: 22rem;
         width: 9.3rem;
         margin: 0.5rem;
     }
@@ -270,5 +271,9 @@ button:focus {
 
     .line {
         width: 90%;
+    }
+
+    .scoreContainer {
+      display: contents;
     }
 }

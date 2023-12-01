@@ -239,6 +239,7 @@
 
     .deliveryMessage {
         text-align: center;
+        margin: 1rem;
     }
 
     .addressContainer {
@@ -284,6 +285,7 @@
         font-weight: normal;
         margin: 2rem;
         margin-bottom: 1rem !important;
+        line-height: 2rem;
     }
 
     .purchasedSubtitle {

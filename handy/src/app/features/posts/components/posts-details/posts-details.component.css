@@ -201,7 +201,7 @@ button:focus {
     display: none;
 }
 
-.activeInformationContainer{
+.activeInformationContainer {
     width: 50%;
 }
 
@@ -322,5 +322,9 @@ button:focus {
     .paymentMethodsButton {
         width: 80%;
         margin-bottom: 2rem;
+    }
+
+    .activeInformationContainer {
+        width: 100%;
     }
 }
