@@ -35,7 +35,7 @@
                   <mat-slide-toggle style="margin-left: 2%" [(ngModel)]="isHandyModelSelected">Modelo IA de Handy (beta)</mat-slide-toggle>
                 </div>
                 <br>
-                <button *ngIf="!this.loading" class="button" (click)="getPostsByPrompt()">Consultar a Tooly</button>
+                <button *ngIf="!this.loading && !prompt.hasError('maxlength')" class="button" (click)="getPostsByPrompt()">Consultar a Tooly</button>
                 <p class="emptyTask" *ngIf="this.emptyTask">Debes escribir la tarea a llevar a cabo</p>
                 <p class="emptyTask" *ngIf="this.handyModelNotWorking">Por el momento, el modelo IA de Handy no se encuentra funcionando. Disculpe las molestias!</p>
                 <div *ngIf="this.loading" style="display: flex; flex-direction: column;">
