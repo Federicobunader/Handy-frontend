@@ -21,7 +21,7 @@ export class PostRecommendationComponent implements OnInit {
   emptyTask: Boolean = false;
   loading: Boolean = false;
 
-  prompt = new FormControl('', [Validators.required]);
+  prompt = new FormControl('', [Validators.required, Validators.maxLength(100)]);
   recommendations: Recommendation[] = [];
   wasFound: Boolean = true;
 
