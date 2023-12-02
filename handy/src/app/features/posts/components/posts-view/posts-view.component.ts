@@ -79,7 +79,6 @@ export class PostsViewComponent {
           this.ratings = response))
       )
     .subscribe(() => {
-      console.log(this.post)
       if(this.ratings.length == 0){
         this.ratingMessage = 'No hay opiniones sobre este producto.'
       } else if (this.ratings.length == 1){

@@ -300,6 +300,9 @@ export class PostsDetailsComponent {
       this.sessiontokenService.getUser(token).subscribe(
         (response) => {
           this.post.author = response;
+          if(this.post.id === 0){
+            this.addressService.setAddress(this.post.author.address);
+          }
         },
         (error) => {
           console.error('Error al obtener el usuario', error);
