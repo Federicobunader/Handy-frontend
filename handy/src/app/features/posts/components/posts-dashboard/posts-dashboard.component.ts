@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject, map, take, takeUntil } from 'rxjs';
 import { Category } from 'src/app/core/models/category';
 import { Post } from 'src/app/core/models/post';
@@ -56,6 +55,8 @@ export class PostsDashboardComponent implements OnInit {
   provinces: Province[] = [];
   locations: Location[] = [];
   brands: Brand[] = [];
+
+  provinceLoadCounter: number = 0;
 
   private $_destroyed = new Subject();
 
@@ -338,4 +339,11 @@ export class PostsDashboardComponent implements OnInit {
     this.showLabel = this.showLabel == 'Mostrar opciones de filtros' ? 'Esconder filtros' : 'Mostrar opciones de filtros';
   }
 
+
+  provinceLoad() {
+    if (this.provinceLoadCounter < 2) {
+      this.provinceLoadCounter++;
+      (<HTMLInputElement>document.getElementById('province')).value = this.user.address.location.province.id.toString();
+    }
+  }
 }
