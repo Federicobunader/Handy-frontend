@@ -15,7 +15,6 @@
     color: #c08a5a;
     letter-spacing: 0.1rem;
     margin-top: 1rem;
-    margin-bottom: 3rem;
 }
 
 .title {
@@ -201,6 +200,17 @@
     margin-top: 2rem;
 }
 
+.whatsAppButton {
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 3rem;
+}
+
+.whatsAppButton:hover {
+    width: 55px;
+}
+
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     .container {
         padding-top: 3rem;
@@ -290,7 +300,8 @@
 
     .purchasedSubtitle {
         font-size: 0.8rem;
-        margin: 2rem;
+        margin-left: 2rem;
+        margin-bottom: 1rem;
         margin-top: 0rem !important;
         font-weight: normal;
     }
@@ -301,5 +312,11 @@
 
     .goBack {
         margin-left: 2rem;
+    }
+
+    .whatsAppButton {
+        width: 40px;
+        margin-left: 2rem;
+        margin-bottom: 1rem;
     }
 }

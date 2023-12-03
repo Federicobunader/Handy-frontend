@@ -5,6 +5,16 @@
       <p class="purchasedTitle">Compra realizada a {{this.purchase.seller.firstName}} {{this.purchase.seller.lastName}} el día {{this.purchase.creationDate | dateFormat}}</p>
       <p *ngIf="this.purchase.seller.id === this.user.id" class="purchasedSubtitle">Información del comprador. Nombre: {{this.buyerFullName}} | Mail: {{this.buyerEmail}} | Teléfono: {{this.buyerTel}}</p>
       <p *ngIf="this.purchase.buyer.id === this.user.id" class="purchasedSubtitle">Información del vendedor. Mail: {{this.sellerEmail}} | Teléfono: {{this.sellerTel}}</p>
+      <div *ngIf="this.purchase.buyer.id === this.user.id">        
+        <a class="whatsAppContact" target="_blank" href="https://api.whatsapp.com/send/?phone=549{{this.purchase.seller.tel}}&text=Hola,+c%C3%B3mo+est%C3%A1s%3F+Te+quer%C3%ADa+consultar+por+una+publicaci%C3%B3n+que+ten%C3%A9s+en+Handy.">
+          <img src="../../../../../assets/icons/WhatsAppLogo.png" class="whatsAppButton">
+        </a>
+      </div>
+      <div *ngIf="this.purchase.seller.id === this.user.id">        
+        <a class="whatsAppContact" target="_blank" href="https://api.whatsapp.com/send/?phone=549{{this.purchase.buyer.tel}}&text=Hola,+c%C3%B3mo+est%C3%A1s%3F+Te+quer%C3%ADa+consultar+por+una+publicaci%C3%B3n+que+ten%C3%A9s+en+Handy.">
+          <img src="../../../../../assets/icons/WhatsAppLogo.png" class="whatsAppButton">
+        </a>
+      </div>
     </div>
     <div *ngIf="!isPurchased">
       <p routerLink="/carts" class="goBack"><u>Volver al carrito</u></p>
