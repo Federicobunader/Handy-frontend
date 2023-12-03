@@ -29,8 +29,8 @@ export class PostsDetailsComponent {
   private $_destroyed = new Subject();
 
   postForm = new FormGroup({
-    title: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
-    productName: new FormControl ('', [Validators.required, Validators.maxLength(100)]),
+    title: new FormControl ('', [Validators.required, Validators.maxLength(200)]),
+    productName: new FormControl ('', [Validators.required, Validators.maxLength(200)]),
     productDescription: new FormControl ('', [Validators.required, Validators.maxLength(1500)]),
     productCategory: new FormControl (0, [Validators.required]),
     productBrand: new FormControl (0, [Validators.required]),

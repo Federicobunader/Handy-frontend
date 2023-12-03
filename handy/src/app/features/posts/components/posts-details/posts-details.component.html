@@ -19,11 +19,11 @@
               <p class="postCreationLabel">Titulo de la publicacion</p>
               <input class="postCreationInput" type="text" matInput name="title" formControlName="title">
               <mat-error *ngIf="postForm.get('title')?.hasError('maxlength')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El titulo no puede
-                tener mas de 100 caracteres</mat-error>
+                tener mas de 200 caracteres</mat-error>
               <p class="postCreationLabel">Nombre del Producto</p>
               <input class="postCreationInput" type="text" matInput name="productName" formControlName="productName">
               <mat-error *ngIf="postForm.get('productName')?.hasError('maxlength')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El nombre del
-                producto no puede tener mas de 100 caracteres</mat-error>
+                producto no puede tener mas de 200 caracteres</mat-error>
               <p class="postCreationLabel">Stock</p>
               <input class="postCreationInput" type="number" matInput name="stock" formControlName="stock">
               <mat-error *ngIf="postForm.get('stock')?.hasError('min')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El stock debe ser un número mayor o igual a 0</mat-error>

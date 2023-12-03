@@ -203,6 +203,7 @@ export class PostsDashboardComponent implements OnInit {
   getLocations(event: any){
     this.selectedProvinceID = event == '--Seleccionar--' ? 0 : event;
     this.getLocationsIDs();
+    this.applyFilters();
     this.addressService
     .getLocations(this.selectedProvinceID)
       .pipe(
@@ -319,6 +320,7 @@ export class PostsDashboardComponent implements OnInit {
   }
 
   applyFilters(){
+    console.log(this.selectedProvinceID)
 
     this.postService
       .getActivePostsBySubCategoryAndLocationAndProvince(this.selectedSubCategoryIDs, this.selectedCategoryID,this.selectedLocationIDs, this.selectedBrandsIDs,this.selectedProvinceID, this.orderBy, this.activeFlag, this.selectedLeasingFilterFlag)
