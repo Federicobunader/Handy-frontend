@@ -16,11 +16,12 @@ export class HandyIAModelService {
         this.mapper = new RecommendationResponseMapper();
     }
 
-    getPostsByPrompt(prompt: string): Observable<RecommendationResponse> {
+    getPostsByPrompt(prompt: string, province: string): Observable<RecommendationResponse> {
         let params = new HttpParams();
 
         if (prompt && prompt.length) {
             params = params.set('prompt', prompt);
+          params = params.set('province', province);
         }
         return this.http
             .get<any[]>(handyIAModelURL + '/postsByPrompt', { params })
