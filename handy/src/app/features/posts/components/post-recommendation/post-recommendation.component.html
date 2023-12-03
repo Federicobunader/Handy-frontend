@@ -126,6 +126,15 @@
               <p class="subTitle">No se encontró una recomendación. Es posible que haya un error en la descripción de la tarea a realizar.</p>
             </ng-template>
         </div>
+      <div *ngIf="this.showChatGPTRecommendationFeedback" class="filtersBox">
+        <p *ngIf="!this.showChatGPTRecommendationThanks" class="label">¿Te fue útil la recomendación?</p>
+        <div *ngIf="!this.showChatGPTRecommendationThanks" class="filteringSection">
+            <button class="button" (click)="showThanks()">Si</button>
+            <button class="button" (click)="showThanks()">No</button>
+        </div>
+        <p *ngIf="this.showChatGPTRecommendationThanks" class="subTitle">Gracias por tu respuesta!</p>
+        <p *ngIf="this.showChatGPTRecommendationThanks" class="subTitle">La utilizaremos para mejorar nuestro modelo de IA.</p>
+      </div>
     </div>
     <div style="background-color:#f8f3e7;padding-bottom:1rem;padding-top:20vh;">
       <p class="footer">© 2023 Handy Argentina</p>

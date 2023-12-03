@@ -27,6 +27,8 @@ export class PostRecommendationComponent implements OnInit {
 
   handyModelNotWorking: Boolean = false;
   isHandyModelSelected: Boolean = false;
+  showChatGPTRecommendationFeedback: Boolean = false;
+  showChatGPTRecommendationThanks: Boolean = false;
 
   constructor(
     private chatGPTService: ChatGPTService,
@@ -65,10 +67,13 @@ export class PostRecommendationComponent implements OnInit {
     if (prompt) {
       this.emptyTask = false;
       this.loading = true;
+      this.showChatGPTRecommendationFeedback = false;
+      this.showChatGPTRecommendationThanks = false;
+      const province = this.user.address.location.province.name
       if (this.isHandyModelSelected) {
         //this.handyModelNotWorking = true;
         this.handyIAModelService
-          .getPostsByPrompt(prompt)
+          .getPostsByPrompt(prompt, province)
           .pipe(take(1))
           .subscribe((response: RecommendationResponse) => {
             this.handyModelNotWorking = !response.wasFound;
@@ -84,12 +89,13 @@ export class PostRecommendationComponent implements OnInit {
           });
       } else {
         this.chatGPTService
-          .getPostsByPrompt(prompt)
+          .getPostsByPrompt(prompt, province)
           .pipe(take(1))
           .subscribe((response: RecommendationResponse) => {
             this.wasFound = response.wasFound;
             this.recommendations = response.recommendations;
             this.loading = false;
+            this.showChatGPTRecommendationFeedback = true;
             this.recommendations.forEach( recommendation => {
               recommendation.posts.forEach( post => {
                 if(post.title.length >= 50){
@@ -106,5 +112,9 @@ export class PostRecommendationComponent implements OnInit {
 
   sendTo(post: Post){
     this.router.navigate(['posts/view', post.id]);
+  }
+
+  showThanks() {
+    this.showChatGPTRecommendationThanks = true;
   }
 }
