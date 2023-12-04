@@ -51,13 +51,12 @@
           </div>
           <div class="filter">
             <p class="filterLabel">Provincia</p>
-            <select id="province" class="picklist" #provinceOptions (change)="getLocations(provinceOptions.value)">
+            <select id="province" class="picklist" #provinceOptions [(ngModel)]="selectedProvinceID" (change)="getLocations(provinceOptions.value)">
               <option value="0">--Seleccionar--</option>
               <option *ngFor="let province of provinces" [value]="province.id">
                 {{ province.name }}
               </option>
             </select>
-            {{ this.provinceLoad() }}
           </div>
           <div class="filterMultiselect" *ngIf="selectedProvinceID != 0 && selectedProvinceID != undefined">
             <p class="filterLabel">Localidad</p>

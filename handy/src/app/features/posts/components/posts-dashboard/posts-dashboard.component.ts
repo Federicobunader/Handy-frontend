@@ -104,6 +104,7 @@ export class PostsDashboardComponent implements OnInit {
       this.sessiontokenService.getUser(token).subscribe(
         (response) => {
           this.user = response;
+          this.selectedProvinceID = this.user.address.location.province.id;
           this.getPosts();
         },
         (error) => {
@@ -337,13 +338,5 @@ export class PostsDashboardComponent implements OnInit {
   showFilters(){
     this.showAllFilters = !this.showAllFilters;
     this.showLabel = this.showLabel == 'Mostrar opciones de filtros' ? 'Esconder filtros' : 'Mostrar opciones de filtros';
-  }
-
-
-  provinceLoad() {
-    if (this.provinceLoadCounter < 2) {
-      this.provinceLoadCounter++;
-      (<HTMLInputElement>document.getElementById('province')).value = this.user.address.location.province.id.toString();
-    }
   }
 }
