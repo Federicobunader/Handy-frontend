@@ -81,8 +81,8 @@ export class PostRecommendationComponent implements OnInit {
             this.loading = false;
             this.recommendations.forEach( recommendation => {
               recommendation.posts.forEach( post => {
-                if(post.title.length >= 50){
-                  post.title = post.title.slice(0, 47) + '...';
+                if(post.title.length >= 30){
+                  post.title = post.title.slice(0, 30) + '...';
                 }
               })
             })
@@ -98,8 +98,8 @@ export class PostRecommendationComponent implements OnInit {
             this.showChatGPTRecommendationFeedback = true;
             this.recommendations.forEach( recommendation => {
               recommendation.posts.forEach( post => {
-                if(post.title.length >= 50){
-                  post.title = post.title.slice(0, 47) + '...';
+                if(post.title.length >= 30){
+                  post.title = post.title.slice(0, 30) + '...';
                 }
               })
             })
