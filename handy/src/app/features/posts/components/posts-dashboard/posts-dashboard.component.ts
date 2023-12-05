@@ -252,8 +252,8 @@ export class PostsDashboardComponent implements OnInit {
     this.postsToShow = this.posts.filter(post =>
                       post.title.toLocaleLowerCase().includes(this.selectedTitle.toLocaleLowerCase()));
     this.postsToShow.forEach( post => {
-      if(post.title.length >= 45){
-        post.title = post.title.slice(0, 45) + '...';
+      if(post.title.length >= 30){
+        post.title = post.title.slice(0, 30) + '...';
       }
     });
     this.showEmptyMessage = this.postsToShow.length == 0;

@@ -176,8 +176,8 @@ export class CartDashboardComponent {
     .subscribe(() => {
       this.listOfTotalToPayPerCartGroupByAuthor.forEach( totalToPay => {
         totalToPay.listOfTotalToPayPerCart.forEach( total => {
-          if(total.cart.post.title.length >= 40){
-            total.cart.post.title = total.cart.post.title.slice(0, 40) + '...';
+          if(total.cart.post.title.length >= 30){
+            total.cart.post.title = total.cart.post.title.slice(0, 30) + '...';
           }
         })
       })
