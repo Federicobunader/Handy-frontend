@@ -16,11 +16,11 @@
           </ng-template>
           <div class="row">
             <div class="column-left">
-              <p class="postCreationLabel">Titulo de la publicacion</p>
+              <p class="postCreationLabel">Título de la publicación</p>
               <input class="postCreationInput" type="text" matInput name="title" formControlName="title">
               <mat-error *ngIf="postForm.get('title')?.hasError('maxlength')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El titulo no puede
                 tener mas de 200 caracteres</mat-error>
-              <p class="postCreationLabel">Nombre del Producto</p>
+              <p class="postCreationLabel">Nombre del producto</p>
               <input class="postCreationInput" type="text" matInput name="productName" formControlName="productName">
               <mat-error *ngIf="postForm.get('productName')?.hasError('maxlength')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El nombre del
                 producto no puede tener mas de 200 caracteres</mat-error>
@@ -59,7 +59,7 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              <p class="postCreationLabel">Deposito</p>
+              <p class="postCreationLabel">Depósito</p>
               <span style="color: #885B34;font-weight: bold;">$</span><input class="postCreationInput" type="number" matInput name="depositPrice" formControlName="depositPrice">
               <mat-error *ngIf="postForm.get('depositPrice')?.hasError('min')" style="width:80%;margin-bottom:1.5rem;margin-top:-1rem;">El depósito debe ser un número mayor o igual a $0</mat-error>
               <mat-error *ngIf="postForm.get('depositPrice')?.hasError('max')" style="width:80%;margin-bottom:1rem;margin-top:-1rem;">El depósito debe ser un número menor a 1.000.000.000</mat-error>
@@ -73,7 +73,7 @@
             </div>
           </div>
           <div class="bottomRow">
-            <p class="postCreationLabel">Descripcion del Producto</p>
+            <p class="postCreationLabel">Descripción del producto</p>
             <textarea class="descriptionInput" type="text" matInput name="productDescription"
               formControlName="productDescription" spellcheck></textarea>
             <mat-error *ngIf="postForm.get('productDescription')?.hasError('maxlength')" style="width:80%;margin-top:-3rem;margin-bottom:1rem;">La descripción puede tener hasta 1500 caracteres</mat-error>
