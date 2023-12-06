@@ -1,17 +1,17 @@
 <body style="overflow:auto;background-color:#f8f3e7;width:100%;">
-  <nav-bar [navBarWithButtons]=true [showCart]=false></nav-bar>  
-  <div class="container"> 
+  <nav-bar [navBarWithButtons]=true [showCart]=false></nav-bar>
+  <div class="container">
     <div *ngIf="isPurchased">
       <p class="purchasedTitle">Compra realizada a {{this.purchase.seller.firstName}} {{this.purchase.seller.lastName}} el día {{this.purchase.creationDate | dateFormat}}</p>
       <p *ngIf="this.purchase.seller.id === this.user.id" class="purchasedSubtitle">Información del comprador. Nombre: {{this.buyerFullName}} | Mail: {{this.buyerEmail}} | Teléfono: {{this.buyerTel}}</p>
       <p *ngIf="this.purchase.buyer.id === this.user.id" class="purchasedSubtitle">Información del vendedor. Mail: {{this.sellerEmail}} | Teléfono: {{this.sellerTel}}</p>
-      <div *ngIf="this.purchase.buyer.id === this.user.id">        
-        <a class="whatsAppContact" target="_blank" href="https://api.whatsapp.com/send/?phone=549{{this.purchase.seller.tel}}&text=Hola,+c%C3%B3mo+est%C3%A1s%3F+Te+quer%C3%ADa+consultar+por+una+publicaci%C3%B3n+que+ten%C3%A9s+en+Handy.">
+      <div *ngIf="this.purchase.buyer.id === this.user.id">
+        <a class="whatsAppContact" target="_blank" href="https://api.whatsapp.com/send/?phone=549{{this.purchase.seller.tel}}&text=Hola,+c%C3%B3mo+est%C3%A1s%3F+Te+hablo+por+la+compra+de+Handy">
           <img src="../../../../../assets/icons/WhatsAppLogo.png" class="whatsAppButton">
         </a>
       </div>
-      <div *ngIf="this.purchase.seller.id === this.user.id">        
-        <a class="whatsAppContact" target="_blank" href="https://api.whatsapp.com/send/?phone=549{{this.purchase.buyer.tel}}&text=Hola,+c%C3%B3mo+est%C3%A1s%3F+Te+quer%C3%ADa+consultar+por+una+publicaci%C3%B3n+que+ten%C3%A9s+en+Handy.">
+      <div *ngIf="this.purchase.seller.id === this.user.id">
+        <a class="whatsAppContact" target="_blank" href="https://api.whatsapp.com/send/?phone=549{{this.purchase.buyer.tel}}&text=Hola,+c%C3%B3mo+est%C3%A1s%3F+Te+hablo+por+la+compra+de+Handy">
           <img src="../../../../../assets/icons/WhatsAppLogo.png" class="whatsAppButton">
         </a>
       </div>
@@ -20,7 +20,7 @@
       <p routerLink="/carts" class="goBack"><u>Volver al carrito</u></p>
     </div>
     <div class="box">
-      <h1 class="title">Entrega</h1> 
+      <h1 class="title">Entrega</h1>
       <hr class="line">
       <div *ngIf="isPurchased" class="deliveryContainer">
         <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="deliveryButtons">
@@ -53,18 +53,18 @@
       <div *ngIf="!showAddress && deliverySelected">
         <p class="deliveryMessage">Una vez efectuada la compra/alquiler, podrás arreglar con el vendedor el punto de entrega para retirar tus productos.</p>
       </div>
-    </div>   
-    <div class="box"> 
-      <h1 class="title">Forma de Pago</h1> 
-      <hr class="line">   
-      <div *ngIf="isPurchased" class="paymentContainer">   
+    </div>
+    <div class="box">
+      <h1 class="title">Forma de Pago</h1>
+      <hr class="line">
+      <div *ngIf="isPurchased" class="paymentContainer">
         <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="paymentButtons">
           <mat-button-toggle *ngIf="acceptsCash" disabled [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclickedDisabled': !togglePaymentMethod1}">EFECTIVO</mat-button-toggle>
           <mat-button-toggle *ngIf="acceptsMP"   disabled [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclickedDisabled': !togglePaymentMethod2}">MERCADO PAGO</mat-button-toggle>
           <mat-button-toggle *ngIf="acceptsUala" disabled [ngClass]="{'toggleClicked' : togglePaymentMethod3, 'toggleUnclickedDisabled': !togglePaymentMethod3}">UALA</mat-button-toggle>
         </mat-button-toggle-group>
       </div>
-      <div *ngIf="!isPurchased" class="paymentContainer">   
+      <div *ngIf="!isPurchased" class="paymentContainer">
         <mat-button-toggle-group name="deliveryPoint" aria-label="deliveryPoint" class="paymentButtons">
           <mat-button-toggle *ngIf="acceptsCash" [ngClass]="{'toggleClicked' : togglePaymentMethod1, 'toggleUnclicked': !togglePaymentMethod1}" (click)="setPaymentMethod('Efectivo')" value="efectivo">EFECTIVO</mat-button-toggle>
           <mat-button-toggle *ngIf="acceptsMP"   [ngClass]="{'toggleClicked' : togglePaymentMethod2, 'toggleUnclicked': !togglePaymentMethod2}" (click)="setPaymentMethod('Mercado Pago')" value="mercadoPago">MERCADO PAGO</mat-button-toggle>
@@ -74,8 +74,8 @@
       <div *ngIf="togglePaymentMethod1 && methodSelected">
         <p class="deliveryMessage">Una vez efectuada la compra/alquiler, podrás arreglar con el vendedor para poder abonar en efectivo.</p>
       </div>
-    </div> 
-    <hr class="line">  
+    </div>
+    <hr class="line">
     <div class="bottomContainer">
       <p class="totalToPay" *ngIf="!isPurchased">Total a pagar: {{this.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
       <p class="totalToPay" *ngIf="isPurchased">Total abonado: {{this.totalToPayPerAuthor.totalToPay | numberFormat }}</p>
